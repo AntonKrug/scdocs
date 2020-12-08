@@ -1,0 +1,10 @@
+SoftConsole
+===========
+
+```{toctree}
+:caption: Introduction
+:maxdepth: 2
+
+introduction/pre
+introduction/sandbox
+```
