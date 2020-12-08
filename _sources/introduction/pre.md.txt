@@ -1,2 +1,4 @@
 Preinstallation requirements
 ============================
+
+Windows / Linux
