@@ -38,12 +38,6 @@
   
     <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   
-    <link rel="stylesheet" href="../_static/panels-bootstrap.5fd3999ee7762ccc51105388f4a9d115.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" type="text/css" />
-  
-    <link rel="stylesheet" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" type="text/css" />
-  
 
   
         <link rel="index" title="Index"
@@ -152,106 +146,65 @@
 captionfigure points to a filename and has a caption. Optionally,
 you can add a label. You can make references to a table using its
 label as follows: :numref:<code class="docutils literal notranslate"><span class="pre">tab-wave-breaking</span></code>.</p>
-<div class="sphinx-bs container-lg pb-3 docutils">
-<div class="row docutils">
-<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>panel1
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my 1st line&#39;</span><span class="p">)</span>
+<span class="hll"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;my </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">nd line&#39;</span><span class="p">)</span>
+</span></pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The next info should be nested</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Here’s my warning</p>
+</div>
+</div>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>App</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="docutils container">
+<p>Blue</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-2 docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    Apples are green, or sometimes red.
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>panel2
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    Apples are green, or sometimes red.
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>panel3
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="d-flex col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>:column: col-lg-12 p-2
-panel4
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="tabbed-set docutils">
-<input checked="checked" id="bcc712f2-ffc9-4634-8408-6d10c6023e91" name="d307b56d-41e4-4462-8f2d-778e847856f4" type="radio">
-</input><label class="tabbed-label" for="bcc712f2-ffc9-4634-8408-6d10c6023e91">
-c++</label><div class="tabbed-content docutils">
-<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="k">const</span> <span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<input id="8a3c09ca-f405-4010-93b6-5979771b74be" name="d307b56d-41e4-4462-8f2d-778e847856f4" type="radio">
-</input><label class="tabbed-label" for="8a3c09ca-f405-4010-93b6-5979771b74be">
-python</label><div class="tabbed-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-        <span class="k">return</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="sphinx-bs container pb-4 docutils">
-<div class="row docutils">
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<p class="card-text">Content of the top-left panel</p>
-</div>
-</div>
-</div>
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<p class="card-text">Content of the top-right panel</p>
-<p class="card-text"><span class="sphinx-bs badge badge-primary">example</span></p>
-</div>
-</div>
-</div>
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<p class="card-text">```{dropdown} :fa:<code class="docutils literal notranslate"><span class="pre">eye,mr-1</span></code> Bottom-left panel
-Hidden content</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="d-flex col-lg-6 col-md-6 col-sm-6 col-xs-12 p-2 docutils">
-<div class="card w-100 shadow docutils">
-<div class="card-body docutils">
-<p class="card-text"><a class="sphinx-bs btn text-wrap stretched-link reference external" href="https://example.com"><span>Clickable Panel</span></a></p>
-</div>
-</div>
-</div>
-</div>
-</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-2 docutils container">
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">This is my
-multi-line caption. It is <em>pretty nifty</em> ;-)</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Caption. It is neat</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my 1st line&#39;</span><span class="p">)</span>
+<span class="hll"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;my </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">nd line&#39;</span><span class="p">)</span>
+</span></pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">This is my
+multi-line caption. It is <em>pretty nifty</em> ;-)</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>10
 11
 12
@@ -259,21 +212,21 @@ multi-line caption. It is <em>pretty nifty</em> ;-)</span><a class="headerlink" 
 14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
 </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">4</span>
 <span class="hll"><span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">+</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">4</span>
-</span><span class="k">print</span><span class="p">(</span><span class="s1">&#39;my 1st line&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;my {a}nd line&#39;</span><span class="p">)</span>
+</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my 1st line&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;my </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">nd line&#39;</span><span class="p">)</span>
 </pre></div>
 </td></tr></table></div>
 </div>
-<img alt="../_images/wavedrom-a5f856ff-dcfa-4169-a934-0c75c57cee02.svg" src="../_images/wavedrom-a5f856ff-dcfa-4169-a934-0c75c57cee02.svg" /><p>Sdfsdfs</p>
+<img alt="../_images/wavedrom-e27ca79f-7b47-42e7-9c17-2ad9e7fa217f.svg" src="../_images/wavedrom-e27ca79f-7b47-42e7-9c17-2ad9e7fa217f.svg" /><p>Sdfsdfs</p>
 <table class="colwidths-auto docutils align-default">
 <thead>
-<tr class="row-odd"><th class="text-align:left head"><p>a</p></th>
-<th class="text-align:right head"><p>b</p></th>
+<tr class="row-odd"><th class="head">a</th>
+<th class="head">b</th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td class="text-align:left"><p>c</p></td>
-<td class="text-align:right"><p>d</p></td>
+<tr class="row-even"><td>c</td>
+<td>d</td>
 </tr>
 </tbody>
 </table>
@@ -285,8 +238,8 @@ multi-line caption. It is <em>pretty nifty</em> ;-)</span><a class="headerlink" 
 <div class="figure align-center" id="sphinx-ext-graphviz">
 <div class="graphviz"><img src="../_images/graphviz-d62ede9049f9bbce1bc2eae229aa7cefeb38c36d.png" alt="How Sphinx and GraphViz Render the Final Document" usemap="#sphinx&#45;ext&#45;graphviz" class="graphviz" /></div>
 <map id="sphinx&#45;ext&#45;graphviz" name="sphinx&#45;ext&#45;graphviz">
-<area shape="rect" id="node1" href="https://www.sphinx-doc.org/" target="_blank" title="Sphinx" alt="" coords="141,32,194,65"/>
-<area shape="rect" id="node2" href="https://www.graphviz.org/" target="_blank" title="GraphViz" alt="" coords="248,4,315,37"/>
+<area shape="rect" id="node1" href="https://www.sphinx-doc.org/" target="_blank" title="Sphinx" alt="" coords="145,32,198,66"/>
+<area shape="rect" id="node2" href="https://www.graphviz.org/" target="_blank" title="GraphViz" alt="" coords="253,4,319,38"/>
 </map><p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Sphinx and GraphViz Data Flow</span><a class="headerlink" href="#sphinx-ext-graphviz" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition-additional-steps admonition">
@@ -343,6 +296,8 @@ multi-line caption. It is <em>pretty nifty</em> ;-)</span><a class="headerlink" 
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
       <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+      <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
 
   
 

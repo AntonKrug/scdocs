@@ -8,6 +8,49 @@ captionfigure points to a filename and has a caption. Optionally,
 you can add a label. You can make references to a table using its
 label as follows: :numref:`tab-wave-breaking`.
 
+```{code-block} python
+---
+lineno-start: 10
+emphasize-lines: 1, 3
+---
+a = 2
+print('my 1st line')
+print(f'my {a}nd line')
+```
+
+````{note}
+The next info should be nested
+```{warning}
+Here's my warning
+```
+````
+
+`````{tabs}
+````{tab} App
+
+        Apples are green, or sometimes red.
+
+````
+````{tab} Blue
+
+        Apples are green, or sometimes red.
+
+````
+````{tab} Python
+
+```{code-block} python
+---
+lineno-start: 10
+emphasize-lines: 1, 3
+caption: Caption. It is neat
+---
+a = 2
+print('my 1st line')
+print(f'my {a}nd line')
+```        
+````
+
+`````
 
 ````{panels}
     :container: container-lg pb-3
