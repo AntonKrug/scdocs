@@ -8,6 +8,142 @@ captionfigure points to a filename and has a caption. Optionally,
 you can add a label. You can make references to a table using its
 label as follows: :numref:`tab-wave-breaking`.
 
+inline equation $z=\sqrt{x^2+y^2}$.
+
+
+Wrap in-line code blocks in backticks: `boolean example = true;`.
+
+```
+No syntax highlighting if no language
+is indicated.
+```
+
+
+```python
+note = "Python syntax highlighting"
+print(node)
+```
+
+
+
+```{graphviz}
+     digraph {
+         rankdir="LR";
+         graph [fontname="Verdana", fontsize="9", bgcolor=transparent];
+         node [fontname="Verdana", fontsize="9", shape="rectangle", height=.15];
+
+         n0 [label="File"];
+         n1 [label="New"];
+         n2 [label="C Project or C++ Project"];
+
+
+         n0 -> n1 [len=0.1,weight=15];
+         n1 -> n2 [len=0.16,weight=15];
+     }
+```
+
+
+```{graphviz}
+     digraph {
+         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
+         node [fontname="Verdana", fontsize="9", shape="cds", width=.2, height=.3];
+         edge [arrowhead=none];
+
+         s0 [label="File"];
+         s1 [label="New"];
+         s2 [label="C Project or C++ Project"];
+
+
+         s0 -> s1;
+         s1 -> s2;
+     }
+```
+
+
+```{graphviz}
+     digraph {
+         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
+         node [fontname="Verdana", fontsize="9", shape="cds", width=.2, height=.3];
+         edge [arrowhead=none];
+         "File" -> "New" -> "C Project or C++ Project"
+     }
+```
+
+```{graphviz}
+     digraph {
+         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
+         node [fontname="Verdana", fontsize="9", shape="cds", width=.2, height=.3, margin=".05,.11"];
+         edge [arrowhead=none];
+         "Tool Settings" -> "GNU RISC-V Cross C/C++ Compiler" -> "Preprocessor" -> "Defined symbols (-D) "
+     }
+```
+
+```{graphviz}
+     digraph {
+         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
+         node [fontname="Verdana", fontsize="9", shape="rectangle", width=.1, height=.2, margin=".04,.01"];
+         edge [arrowhead=vee, arrowsize=.5];
+         "Tool Settings" -> "Cross Arm GNU C/C++ Linker" -> "General" -> "Remove unused sections (-Xlinker --gc-sections)"
+     }
+```
+
+
+```{graphviz}
+     digraph {
+         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
+         node [fontname="Verdana", fontsize="9", shape="rectangle", width=.1, height=.2, margin=".04,.01"];
+         edge [arrowsize=.7];
+         "Tool Settings" -> "Cross Arm GNU C/C++ Linker" -> "General" -> "Remove unused sections (-Xlinker --gc-sections)"
+     }
+```
+
+```{graphviz}
+     digraph {
+         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
+         node [fontname="Verdana", fontsize="9", shape="rectangle", width=.1, height=.2, margin=".04,.01"];
+         edge [arrowsize=.7];
+         "Tool Settings" -> "GNU RISC-V C/C++ Linker" -> "General" -> "Remove unused sections (-Xlinker --gc-sections)"
+     }
+```
+
+
+Check the nodes below are clickable:
+
+```{graphviz}
+    digraph { 
+        graph [fontname="Verdana", fontsize="16", bgcolor=transparent];
+
+        regexp [URL="https://godoc.org/regexp" target="_blank"];
+        bytes [URL="https://godoc.org/bytes"];
+        io [URL="https://godoc.org/io"];
+
+        regexp -> bytes;
+        regexp -> io;
+    }
+```
+
+
+```{graphviz}
+    digraph "strdducts" {
+        graph [bgcolor=transparent];
+        node [shape=record]; 
+        struct1 [shape=Mrecord, label="<f0> left|<f1> mid&#92; dle|<f2> right"]; 
+        struct2 [label="<f0> one|<f1> two"]; 
+        struct3 [label="hello&#92;nworld |{ b |{c|<here> d|e}| f}| g | h"]; 
+        struct1:f1 -> struct2:f0; struct1:f2 -> struct3:here; 
+     }
+```
+
+
+```{only}
+:: html and draft
+---
+Content for HTML and DRAFT
+
+```
+
+
+
 ```{code-block} python
 ---
 lineno-start: 10
@@ -52,64 +188,6 @@ print(f'my {a}nd line')
 
 `````
 
-````{panels}
-    :container: container-lg pb-3
-    :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
-
-    panel1
-    ---
-    panel2
-    ---
-    panel3
-    ---
-    :column: col-lg-12 p-2
-    panel4
-````
-
-````{tabbed} c++
-
-```{code-block} c++
-
-int main(const int argc, const char **argv) {
-        return 0;
-}
-```
-````
-
-````{tabbed} python
-
-```{code-block} python
-
-def main():
-        return
-```
-````
-
-
-````{panels}
-Content of the top-left panel
-
----
-
-Content of the top-right panel
-
-{badge}`example,badge-primary`
-
----
-
-```{dropdown} :fa:`eye,mr-1` Bottom-left panel
-Hidden content
-```
-
----
-
-```{link-button} https://example.com
-:text: Clickable Panel
-:classes: stretched-link
-```
-
-````
-
 
 ```{code-block} python
 ---
@@ -135,6 +213,22 @@ print(f'my {a}nd line')
         ]}
 ```
 
+
+```{wavedrom}
+
+        {"reg": [
+                {"bits": 2,  "name": "End", "attr": ["0x7F"], "type": 5},
+                {"bits": 4,  "name": "CRC", "attr": ["CRC16", "x1041","Bits 13:6"], "type": 2},
+                {"bits": 2,  "name": "Ctrl", "attr": ["ON = x01", "OFF = x00"], "type": 4},
+                {"bits": 2,  "name": "Size", "attr": "x01", "type": 4},
+                {"bits": 2,  "name": "Cmd", "attr": "xAA", "type": 4},
+                {"bits": 2,  "name": "Req/Reply", "attr": ["Req x01", "Rep x00"], "type": 4},
+                {"bits": 12,  "name": "Head", "attr": ["xEB x90"], "type": 5}
+        ], 
+        "config":{"bits": 26}
+        }
+```
+
 Sdfsdfs
 
 | a    | b    |
@@ -148,7 +242,7 @@ Sdfsdfs
 ```
 
 ```{graphviz}
-    :name: sphinx.ext.graphviz
+    :name: sphinx.ext.graphvizww
     :caption: Sphinx and GraphViz Data Flow
     :alt: How Sphinx and GraphViz Render the Final Document
     :align: center
@@ -185,3 +279,4 @@ Sdfsdfs
 ```{admonition} Additional steps
    Feel free to skip these
 ```
+

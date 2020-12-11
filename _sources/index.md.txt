@@ -5,6 +5,9 @@ SoftConsole
 :caption: Introduction
 :maxdepth: 2
 
+introduction/overview
+introduction/supported_platforms
+introduction/installation
 introduction/pre
 introduction/sandbox
 ```

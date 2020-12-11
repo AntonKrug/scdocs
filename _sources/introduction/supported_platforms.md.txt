@@ -1,0 +1,98 @@
+Supported Platforms
+===================
+
+
+
+
+
+
+
+
+
+Host operating systems
+----------------------
+
+
+`````{tabs}
+
+````{tab} Windows
+
+ - Windows 10
+ - Windows 8.1
+ - Windows 7
+````
+
+````{tab} Linux
+
+ - Ubuntu 16.04 LTS
+ - Debian 9
+ - CentOS and RHEL 7
+ - LEAP 15
+````
+`````
+
+```{note}
+Only 64-bit OSs are supported
+```
+
+
+
+
+
+
+
+
+Target CPUs
+-----------
+
+- Microchip PolarFire SoC RISC-V 64-bit multi-processor FPGA
+- Microchip Mi-V RISC-V CPU soft cores for PolarFire, RTG4, IGLOO2 and SmartFusion2 FPGAs
+- Microchip SmartFusion2 Arm Cortex-M3
+- Microchip SmartFusion Arm Cortex-M3
+- Microchip Arm Cortex-M1 for RTG4 and PolarFire FPGAs
+- Microchip Arm Cortex-M1 for M1 IGLOO, ProASIC3, ProASIC3L and Fusion FPGAs
+
+
+
+
+
+
+
+
+JTAG Debug
+----------
+`````{tabs}
+
+````{tab} Windows
+
+- Microchip FlashPro3, FlashPro4, FlashPro5 and FlashPro6
+- Olimex ARM-USB-TINY-H
+- Other JTAG debug probes supported by OpenOCD may be used but are not specifically tested or supported
+````
+
+````{tab} Linux
+
+- Microchip FlashPro5 and FlashPro6
+- Olimex ARM-USB-TINY-H
+- Other JTAG debug probes supported by OpenOCD may be used but are not specifically tested or supported
+````
+`````
+
+
+
+
+Other software
+--------------
+- Microsemi Libero SoC
+  - Microsemi Libero SoC v12.5 SP1
+  - Microsemi Firmware Catalog v12.5 SP1
+
+
+
+- Firmware (minimum required version)
+  - PolarFire SoC PSE_HAL 1.5.107
+  - RISC-V Hardware Abstraction Layer (HAL) 3.0.105
+  - SmartFusion2 CMSIS Hardware Abstraction Layer 2.3.105
+  - SmartFusion CMSIS-PAL 2.4.102
+  - Cortex-M1 CMSIS Hardware Abstraction Layer 2.0.105
+  - (DirectCore) Hardware Abstraction Layer 2.3.103
