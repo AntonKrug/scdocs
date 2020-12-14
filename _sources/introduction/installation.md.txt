@@ -1,200 +1,52 @@
+```````{jinja} scvars
+
 Installation
 ============
 
-Windows Installation
---------------------
+{% if windows is defined %}
+Windows
+-------
 
 Refer to the Supported Platforms section for details of which Windows versions are supported.
-The installer is a 64-bit executable GUI based program named Microchip-SoftConsole-v6.5.0.x-windows-x64-installer.exe (where x is the build number). It must be run with admin privileges. Run the installer and follow the GUI installer wizard instructions on screen.
+The installer is a 64-bit executable GUI based program named '{{scwinbin}}'. It must be run with administrative privileges. Run the installer and follow the GUI installer wizard instructions on screen.
 
-The Renode emulation platform can be used out of the box on Windows 8.1 and Windows 10, but on Windows 7 Microsoft .NET Framework v4.7.2 must be installed first:
-https://www.microsoft.com/net/download/dotnet-framework-runtime
+Renode depedencies on Windows
+-----------------------------
 
-In a rare case when the .NET Framework is not already installed with Windows 8.1/10 then it can be easily added by clicking on the Windows Start button, typing Turn Windows features on or off and then selecting the relevant .NET Framework to be installed/enabled from the Windows Features dialog then click OK.
-
-depends on the operating system.
-
-Tables are created using the following code. A table has a
-captionfigure points to a filename and has a caption. Optionally,
-you can add a label. You can make references to a table using its
-label as follows: :numref:`tab-wave-breaking`.
-
-```{code-block} python
----
-lineno-start: 10
-emphasize-lines: 1, 3
----
-a = 2
-print('my 1st line')
-print(f'my {a}nd line')
-```
-
-````{note}
-The next info should be nested
-```{warning}
-Here's my warning
-```
-````
-
-`````{tabs}
-````{tab} App
-
-        Apples are green, or sometimes red.
-
-````
-````{tab} Blue
-
-        Apples are green, or sometimes red.
-
-````
-````{tab} Python
-
-```{code-block} python
----
-lineno-start: 10
-emphasize-lines: 1, 3
-caption: Caption. It is neat
----
-a = 2
-print('my 1st line')
-print(f'my {a}nd line')
-```        
-````
-
-`````
-
-````{panels}
-    :container: container-lg pb-3
-    :column: col-lg-4 col-md-4 col-sm-6 col-xs-12 p-2
-
-    panel1
-    ---
-    panel2
-    ---
-    panel3
-    ---
-    :column: col-lg-12 p-2
-    panel4
-````
-
-````{tabbed} c++
-
-```{code-block} c++
-
-int main(const int argc, const char **argv) {
-        return 0;
-}
-```
-````
-
-````{tabbed} python
-
-```{code-block} python
-
-def main():
-        return
-```
-````
+The Renode emulation platform is not a crucial sub-module of SoftConsole and users who are intending to connect to hardware targets only do not need satisfy the Renode's dependencies.
 
 
-````{panels}
-Content of the top-left panel
+``````{tabs}
 
----
+````{tab} Windows 10 and 8.1
 
-Content of the top-right panel
+The Renode emulation platform can be used out of the box on many Windows 10/8.1 machines. 
+However in a rare case when the .NET Framework is not already installed with Windows 10/8.1 then it can be changed easily from within Windows features menu.
 
-{badge}`example,badge-primary`
-
----
-
-```{dropdown} :fa:`eye,mr-1` Bottom-left panel
-Hidden content
-```
-
----
-
-```{link-button} https://example.com
-:text: Clickable Panel
-:classes: stretched-link
-```
-
-````
-
-
-```{code-block} python
----
-lineno-start: 10
-emphasize-lines: 1, 3
-caption: |
-    This is my
-    multi-line caption. It is *pretty nifty* ;-)
----
-a = 2
-b = a + 4
-c = a + b+ a + 4
-print('my 1st line')
-print(f'my {a}nd line')
-```
-
-```{wavedrom}
-
-        { "signal": [
-                { "name": "clk",  "wave": "P......" },
-                { "name": "bus",  "wave": "x.==.=x", "data": ["head", "body", "tail", "data"] },
-                { "name": "wire", "wave": "0.1..0." }
-        ]}
-```
-
-Sdfsdfs
-
-| a    | b    |
-| :--- | ---: |
-| c    | d    |
-
-
-```{caution} Neque porro quisquam
-
-   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis commodo eros, quis posuere enim lobortis quis. Nullam ut tempus nibh.
+```{note}
+A administrative account is required to access the Windows features menu.
 ```
 
 ```{graphviz}
-    :name: sphinx.ext.graphviz
-    :caption: Sphinx and GraphViz Data Flow
-    :alt: How Sphinx and GraphViz Render the Final Document
-    :align: center
-
-     digraph "sphinx-ext-graphviz" {
-         size="6,4";
-         rankdir="LR";
-         graph [fontname="Verdana", fontsize="12", bgcolor=transparent];
-         node [fontname="Verdana", fontsize="12"];
-         edge [fontname="Sans", fontsize="9"];
-
-         sphinx [label="Sphinx", shape="component",
-                   href="https://www.sphinx-doc.org/",
-                   target="_blank"];
-         dot [label="GraphViz", shape="component",
-              href="https://www.graphviz.org/",
-              target="_blank"];
-         docs [label="Docs (.rst)", shape="folder",
-               fillcolor=green, style=filled];
-         svg_file [label="SVG Image", shape="note", fontcolor=white,
-                 fillcolor="#3333ff", style=filled];
-         html_files [label="HTML Files", shape="folder",
-              fillcolor=yellow, style=filled];
-
-         docs -> sphinx [label=" parse "];
-         sphinx -> dot [label=" call ", style=dashed, arrowhead=none];
-         dot -> svg_file [label=" draw "];
-         sphinx -> html_files [label=" render "];
-         svg_file -> html_files [style=dashed];
+     digraph {
+         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
+         node [fontname="Verdana", fontsize="9", shape="rectangle", width=.1, height=.2, margin=".04,.01"];
+         edge [arrowsize=.7];
+         "Start button" -> "Type 'Turn Windows features on or off'" -> "Select '.NET Framework 4.8'" -> "Click OK"
      }
 ```
 
 
-```{admonition} Additional steps
-   Feel free to skip these
-```
+````
 
 
+````{tab} Windows 7
+
+On Windows 7 the Microsoft .NET Framework v4.7.2 must be installed first:
+<https://www.microsoft.com/net/download/dotnet-framework-runtime>
+````
+``````
+{% endif %}  % End of Windows
+
+
+```````

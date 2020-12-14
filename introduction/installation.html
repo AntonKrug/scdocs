@@ -98,7 +98,8 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="supported_platforms.html">Supported Platforms</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#windows-installation">Windows Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#renode-depedencies-on-windows">Renode depedencies on Windows</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pre.html">Preinstallation requirements</a></li>
@@ -147,117 +148,45 @@
             
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="windows-installation">
-<h2>Windows Installation<a class="headerlink" href="#windows-installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
 <p>Refer to the Supported Platforms section for details of which Windows versions are supported.
-The installer is a 64-bit executable GUI based program named Microchip-SoftConsole-v6.5.0.x-windows-x64-installer.exe (where x is the build number). It must be run with admin privileges. Run the installer and follow the GUI installer wizard instructions on screen.</p>
-<p>The Renode emulation platform can be used out of the box on Windows 8.1 and Windows 10, but on Windows 7 Microsoft .NET Framework v4.7.2 must be installed first:
-https://www.microsoft.com/net/download/dotnet-framework-runtime</p>
-<p>In a rare case when the .NET Framework is not already installed with Windows 8.1/10 then it can be easily added by clicking on the Windows Start button, typing Turn Windows features on or off and then selecting the relevant .NET Framework to be installed/enabled from the Windows Features dialog then click OK.</p>
-<p>depends on the operating system.</p>
-<p>Tables are created using the following code. A table has a
-captionfigure points to a filename and has a caption. Optionally,
-you can add a label. You can make references to a table using its
-label as follows: :numref:<code class="docutils literal notranslate"><span class="pre">tab-wave-breaking</span></code>.</p>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
-</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my 1st line&#39;</span><span class="p">)</span>
-<span class="hll"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;my </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">nd line&#39;</span><span class="p">)</span>
-</span></pre></div>
-</td></tr></table></div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>The next info should be nested</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Here’s my warning</p>
+The installer is a 64-bit executable GUI based program named ‘Microchip-SoftConsole-v6.6.0.501-windows-x64-installer.exe’. It must be run with administrative privileges. Run the installer and follow the GUI installer wizard instructions on screen.</p>
 </div>
-</div>
+<div class="section" id="renode-depedencies-on-windows">
+<h2>Renode depedencies on Windows<a class="headerlink" href="#renode-depedencies-on-windows" title="Permalink to this headline">¶</a></h2>
+<p>The Renode emulation platform is not a crucial sub-module of SoftConsole and users who are intending to connect to hardware targets only do not need satisfy the Renode’s dependencies.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
 <div class="active item sphinx-data-tab-0-0 docutils container">
 <div class="docutils container">
-<p>App</p>
+<p>Windows 10 and 8.1</p>
 </div>
 </div>
 <div class="item sphinx-data-tab-0-1 docutils container">
 <div class="docutils container">
-<p>Blue</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-0-2 docutils container">
-<div class="docutils container">
-<p>Python</p>
+<p>Windows 7</p>
 </div>
 </div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    Apples are green, or sometimes red.
-</pre></div>
+<p>The Renode emulation platform can be used out of the box on many Windows 10/8.1 machines.
+However in a rare case when the .NET Framework is not already installed with Windows 10/8.1 then it can be changed easily from within Windows features menu.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A administrative account is required to access the Windows features menu.</p>
 </div>
+<div class="graphviz"><img src="../_images/graphviz-b6f14c6352f46fd16fa97c332f233486cb3041e0.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;];
+         edge [arrowsize=.7];
+         &quot;Start button&quot; -&gt; &quot;Type 'Turn Windows features on or off'&quot; -&gt; &quot;Select '.NET Framework 4.8'&quot; -&gt; &quot;Click OK&quot;
+     }" class="graphviz" /></div>
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    Apples are green, or sometimes red.
-</pre></div>
+<p>On Windows 7 the Microsoft .NET Framework v4.7.2 must be installed first:
+<a class="reference external" href="https://www.microsoft.com/net/download/dotnet-framework-runtime">https://www.microsoft.com/net/download/dotnet-framework-runtime</a></p>
 </div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-2 docutils container">
-<div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Caption. It is neat</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
-</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my 1st line&#39;</span><span class="p">)</span>
-<span class="hll"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;my </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">nd line&#39;</span><span class="p">)</span>
-</span></pre></div>
-</td></tr></table></div>
-</div>
-</div>
-</div>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">This is my
-multi-line caption. It is <em>pretty nifty</em> ;-)</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
-</span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">4</span>
-<span class="hll"><span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">+</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">4</span>
-</span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my 1st line&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;my </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">nd line&#39;</span><span class="p">)</span>
-</pre></div>
-</td></tr></table></div>
-</div>
-<img alt="../_images/wavedrom-2241325e-0d92-49d3-959f-5a494d8c2ea3.svg" src="../_images/wavedrom-2241325e-0d92-49d3-959f-5a494d8c2ea3.svg" /><p>Sdfsdfs</p>
-<table class="colwidths-auto docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head">a</th>
-<th class="head">b</th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td>c</td>
-<td>d</td>
-</tr>
-</tbody>
-</table>
-<div class="admonition caution">
-<p class="admonition-title">Caution</p>
-<p>Neque porro quisquam</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis commodo eros, quis posuere enim lobortis quis. Nullam ut tempus nibh.</p>
-</div>
-<div class="figure align-center" id="sphinx-ext-graphviz">
-<div class="graphviz"><img src="../_images/graphviz-8f1c38597ad9a4ccb3f38cb1fc83ee2d3c9fb9d0.png" alt="How Sphinx and GraphViz Render the Final Document" usemap="#sphinx&#45;ext&#45;graphviz" class="graphviz" /></div>
-<map id="sphinx&#45;ext&#45;graphviz" name="sphinx&#45;ext&#45;graphviz">
-<area shape="rect" id="node1" href="https://www.sphinx-doc.org/" target="_blank" title="Sphinx" alt="" coords="145,32,198,66"/>
-<area shape="rect" id="node2" href="https://www.graphviz.org/" target="_blank" title="GraphViz" alt="" coords="253,4,319,38"/>
-</map><p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Sphinx and GraphViz Data Flow</span><a class="headerlink" href="#sphinx-ext-graphviz" title="Permalink to this image">¶</a></p>
-</div>
-<div class="admonition-additional-steps admonition">
-<p class="admonition-title">Additional steps</p>
-<p>Feel free to skip these</p>
 </div>
 </div>
 </div>

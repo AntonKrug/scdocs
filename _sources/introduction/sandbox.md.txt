@@ -1,6 +1,20 @@
 Sandbox experiments
 ===================
 
+```{jinja} first_ctx
+
+    {% for k, v in topics.items() %}
+
+    {{k}}
+        ~~~~~
+    {{v}}
+    {% endfor %}
+```
+
+
+
+```````{jinja} scvars
+
 depends on the operating system.
 
 Tables are created using the following code. A table has a
@@ -9,6 +23,12 @@ you can add a label. You can make references to a table using its
 label as follows: :numref:`tab-wave-breaking`.
 
 inline equation $z=\sqrt{x^2+y^2}$.
+
+
+
+SoftConsole {{sc}}
+
+
 
 
 Wrap in-line code blocks in backticks: `boolean example = true;`.
@@ -24,6 +44,70 @@ note = "Python syntax highlighting"
 print(node)
 ```
 
+`````{list-table}
+:header-rows: 1
+:widths: 10 20 20
+
+* - Token
+  - Description
+  - Example
+* - FrontMatter
+  - A YAML block at the start of the document enclosed by `---`
+  - ```yaml
+    ---
+    key: value
+    ---
+    ```
+* - Directives
+  - enclosed in 3 or more backticks followed by the directive name wrapped
+  in curly brackets `{}`. See {ref}`syntax/directives` for more details.
+  - ````md
+    ```{directive}
+    :option: value
+
+    content
+    ```
+    ````
+* - Math
+  - `$$` (default) or `\[`...`\]` characters wrapping multi-line math, or even direct [amsmath](https://ctan.org/pkg/amsmath) LaTeX equations (optional).
+  See {ref}`syntax/math` for more information.
+  - ```latex
+    $$
+    a=1
+    $$
+    ```
+* - Table
+  - Standard markdown table style, with pipe separation.
+  - ```md
+    | a    | b    |
+    | :--- | ---: |
+    | c    | d    |
+    ```
+* - LineComment
+  - A commented line. See {ref}`syntax/comments` for more information.
+  - ```latex
+    % this is a comment
+    ```
+* - BlockBreak
+  - Define blocks of text. See {ref}`syntax/blockbreaks` for more information.
+  - ```md
+    +++ {"meta": "data"}
+    ```
+* - Footnote
+  - A definition for a referencing footnote, that is placed at the bottom of the document.
+   See {ref}`syntax/footnotes` for more details.
+  - ```md
+    [^ref]: Some footnote text
+    ```
+* - Admonitions (optional)
+  - An alternative approach for admonition style directives only, which has the benefit of allowing the content to be rendered in standard markdown editors.
+    See [admonition directives](syntax/admonitions) for more details.
+  - ````md
+    :::{note}
+    *content*
+    :::
+    ````
+`````
 
 
 ```{graphviz}
@@ -135,9 +219,9 @@ Check the nodes below are clickable:
 ```
 
 
-```{only}
-:: html and draft
----
+```{only} html and draft
+
+
 Content for HTML and DRAFT
 
 ```
@@ -280,3 +364,4 @@ Sdfsdfs
    Feel free to skip these
 ```
 
+```````

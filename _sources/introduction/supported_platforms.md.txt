@@ -1,3 +1,5 @@
+```````{jinja} scvars
+
 Supported Platforms
 ===================
 
@@ -13,26 +15,32 @@ Host operating systems
 ----------------------
 
 
-`````{tabs}
+``````{tabs}
 
+{% if windows is defined %}
 ````{tab} Windows
 
  - Windows 10
  - Windows 8.1
  - Windows 7
 ````
+{% endif %}
 
+
+{% if linux is defined %}
 ````{tab} Linux
 
- - Ubuntu 16.04 LTS
- - Debian 9
- - CentOS and RHEL 7
+ - Ubuntu 20.04.1 LTS
+ - Debian 10
+ - CentOS 7 and RHEL 7
  - LEAP 15
 ````
-`````
+{% endif %}
+
+``````
 
 ```{note}
-Only 64-bit OSs are supported
+Only 64-bit OSs are supported.
 ```
 
 
@@ -63,36 +71,49 @@ JTAG Debug
 ----------
 `````{tabs}
 
+{% if windows is defined %}
 ````{tab} Windows
 
 - Microchip FlashPro3, FlashPro4, FlashPro5 and FlashPro6
 - Olimex ARM-USB-TINY-H
 - Other JTAG debug probes supported by OpenOCD may be used but are not specifically tested or supported
 ````
+{% endif %}
 
+{% if linux is defined %}
 ````{tab} Linux
 
 - Microchip FlashPro5 and FlashPro6
 - Olimex ARM-USB-TINY-H
 - Other JTAG debug probes supported by OpenOCD may be used but are not specifically tested or supported
 ````
+{% endif %}
+
 `````
+
+```{note}
+Using SoftConsole from within a Virtual Machine might limit what JTAG probes can be used.
+```
+
+
 
 
 
 
 Other software
 --------------
-- Microsemi Libero SoC
-  - Microsemi Libero SoC v12.5 SP1
-  - Microsemi Firmware Catalog v12.5 SP1
+* Microchip Libero SoC
+  * Microchip {{liberosoc}}
+  * Microchip {{firmwarecatalog}}
 
++++
 
+* Firmware (minimum required version)
+  * {{mpfshal}}
+  * RISC-V Hardware Abstraction Layer (HAL) 3.0.105
+  * SmartFusion2 CMSIS Hardware Abstraction Layer 2.3.105
+  * SmartFusion CMSIS-PAL 2.4.102
+  * Cortex-M1 CMSIS Hardware Abstraction Layer 2.0.105
+  * (DirectCore) Hardware Abstraction Layer 2.3.103
 
-- Firmware (minimum required version)
-  - PolarFire SoC PSE_HAL 1.5.107
-  - RISC-V Hardware Abstraction Layer (HAL) 3.0.105
-  - SmartFusion2 CMSIS Hardware Abstraction Layer 2.3.105
-  - SmartFusion CMSIS-PAL 2.4.102
-  - Cortex-M1 CMSIS Hardware Abstraction Layer 2.0.105
-  - (DirectCore) Hardware Abstraction Layer 2.3.103
+```````

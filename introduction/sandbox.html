@@ -143,12 +143,23 @@
             
   <div class="section" id="sandbox-experiments">
 <h1>Sandbox experiments<a class="headerlink" href="#sandbox-experiments" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>c
+    ~~~~~
+d
+
+
+a
+    ~~~~~
+b
+</pre></div>
+</div>
 <p>depends on the operating system.</p>
 <p>Tables are created using the following code. A table has a
 captionfigure points to a filename and has a caption. Optionally,
 you can add a label. You can make references to a table using its
 label as follows: :numref:<code class="docutils literal notranslate"><span class="pre">tab-wave-breaking</span></code>.</p>
 <p>inline equation <span class="math notranslate nohighlight">\(z=\sqrt{x^2+y^2}\)</span>.</p>
+<p>SoftConsole SoftConsole 6.6</p>
 <p>Wrap in-line code blocks in backticks: <code class="docutils literal notranslate"><span class="pre">boolean</span> <span class="pre">example</span> <span class="pre">=</span> <span class="pre">true;</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">No</span> <span class="n">syntax</span> <span class="n">highlighting</span> <span class="k">if</span> <span class="n">no</span> <span class="n">language</span>
 <span class="ow">is</span> <span class="n">indicated</span><span class="o">.</span>
@@ -158,6 +169,93 @@ label as follows: :numref:<code class="docutils literal notranslate"><span class
 <span class="nb">print</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
 </pre></div>
 </div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 40%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Token</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Example</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>FrontMatter</p></td>
+<td><p>A YAML block at the start of the document enclosed by <code class="docutils literal notranslate"><span class="pre">---</span></code></p></td>
+<td><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="nt">key</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">value</span>
+<span class="nn">---</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Directives</p></td>
+<td><p>enclosed in 3 or more backticks followed by the directive name wrapped
+in curly brackets <code class="docutils literal notranslate"><span class="pre">{}</span></code>. See <span class="xref std std-ref">syntax/directives</span> for more details.</p></td>
+<td><div class="highlight-md notranslate"><div class="highlight"><pre><span></span>```{directive}
+:option: value
+
+content
+```
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Math</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">$$</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">\[</span></code>…<code class="docutils literal notranslate"><span class="pre">\]</span></code> characters wrapping multi-line math, or even direct <a class="reference external" href="https://ctan.org/pkg/amsmath">amsmath</a> LaTeX equations (optional).
+See <span class="xref std std-ref">syntax/math</span> for more information.</p></td>
+<td><div class="highlight-latex notranslate"><div class="highlight"><pre><span></span><span class="sb">$$</span><span class="nb"></span>
+<span class="nb">a</span><span class="o">=</span><span class="m">1</span><span class="nb"></span>
+<span class="s">$$</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Table</p></td>
+<td><p>Standard markdown table style, with pipe separation.</p></td>
+<td><div class="highlight-md notranslate"><div class="highlight"><pre><span></span>| a    | b    |
+| :--- | ---: |
+| c    | d    |
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>LineComment</p></td>
+<td><p>A commented line. See <span class="xref std std-ref">syntax/comments</span> for more information.</p></td>
+<td><div class="highlight-latex notranslate"><div class="highlight"><pre><span></span><span class="c">% this is a comment</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>BlockBreak</p></td>
+<td><p>Define blocks of text. See <span class="xref std std-ref">syntax/blockbreaks</span> for more information.</p></td>
+<td><div class="highlight-md notranslate"><div class="highlight"><pre><span></span>+++ {&quot;meta&quot;: &quot;data&quot;}
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>Footnote</p></td>
+<td><p>A definition for a referencing footnote, that is placed at the bottom of the document.
+See <span class="xref std std-ref">syntax/footnotes</span> for more details.</p></td>
+<td><div class="highlight-md notranslate"><div class="highlight"><pre><span></span>[<span class="nl">^ref</span>]: <span class="na">Some footnote text</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>Admonitions (optional)</p></td>
+<td><p>An alternative approach for admonition style directives only, which has the benefit of allowing the content to be rendered in standard markdown editors.
+See <code class="xref any docutils literal notranslate"><span class="pre">admonition</span> <span class="pre">directives</span></code> for more details.</p></td>
+<td><div class="highlight-md notranslate"><div class="highlight"><pre><span></span>:::{note}
+<span class="ge">*content*</span>
+:::
+</pre></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
 <div class="graphviz"><img src="../_images/graphviz-38423e70528d6efe29a20c83f955c2840b8fef09.png" alt="digraph {
          rankdir=&quot;LR&quot;;
          graph [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, bgcolor=transparent];
@@ -282,7 +380,7 @@ label as follows: :numref:<code class="docutils literal notranslate"><span class
 </div>
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-2 docutils container">
 <div class="literal-block-wrapper docutils container" id="id1">
-<div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">Caption. It is neat</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Caption. It is neat</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>10
 11
 12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
@@ -294,7 +392,7 @@ label as follows: :numref:<code class="docutils literal notranslate"><span class
 </div>
 </div>
 <div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 4 </span><span class="caption-text">This is my
+<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">This is my
 multi-line caption. It is <em>pretty nifty</em> ;-)</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>10
 11
@@ -308,7 +406,7 @@ multi-line caption. It is <em>pretty nifty</em> ;-)</span><a class="headerlink" 
 </pre></div>
 </td></tr></table></div>
 </div>
-<img alt="../_images/wavedrom-17f72f69-f65c-4ae4-87f8-c26523d368a8.svg" src="../_images/wavedrom-17f72f69-f65c-4ae4-87f8-c26523d368a8.svg" /><img alt="../_images/wavedrom-58a04d65-e40f-4a0d-a680-6a5f1c114846.svg" src="../_images/wavedrom-58a04d65-e40f-4a0d-a680-6a5f1c114846.svg" /><p>Sdfsdfs</p>
+<img alt="../_images/wavedrom-0be4488a-1967-4a34-83b9-435d30f8da33.svg" src="../_images/wavedrom-0be4488a-1967-4a34-83b9-435d30f8da33.svg" /><img alt="../_images/wavedrom-9030821a-2e4e-434c-873a-798473b61603.svg" src="../_images/wavedrom-9030821a-2e4e-434c-873a-798473b61603.svg" /><p>Sdfsdfs</p>
 <table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head">a</th>
@@ -331,7 +429,7 @@ multi-line caption. It is <em>pretty nifty</em> ;-)</span><a class="headerlink" 
 <map id="sphinx&#45;ext&#45;graphviz" name="sphinx&#45;ext&#45;graphviz">
 <area shape="rect" id="node1" href="https://www.sphinx-doc.org/" target="_blank" title="Sphinx" alt="" coords="145,32,198,66"/>
 <area shape="rect" id="node2" href="https://www.graphviz.org/" target="_blank" title="GraphViz" alt="" coords="253,4,319,38"/>
-</map><p class="caption"><span class="caption-number">Fig. 2 </span><span class="caption-text">Sphinx and GraphViz Data Flow</span><a class="headerlink" href="#sphinx-ext-graphvizww" title="Permalink to this image">¶</a></p>
+</map><p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Sphinx and GraphViz Data Flow</span><a class="headerlink" href="#sphinx-ext-graphvizww" title="Permalink to this image">¶</a></p>
 </div>
 <div class="admonition-additional-steps admonition">
 <p class="admonition-title">Additional steps</p>
