@@ -53,13 +53,16 @@ Only 64-bit OSs are supported.
 Target CPUs
 -----------
 
+{% if riscv is defined %}
 - Microchip PolarFire SoC RISC-V 64-bit multi-processor FPGA
 - Microchip Mi-V RISC-V CPU soft cores for PolarFire, RTG4, IGLOO2 and SmartFusion2 FPGAs
+{% endif %}
+{% if arm is defined %}
 - Microchip SmartFusion2 Arm Cortex-M3
 - Microchip SmartFusion Arm Cortex-M3
 - Microchip Arm Cortex-M1 for RTG4 and PolarFire FPGAs
 - Microchip Arm Cortex-M1 for M1 IGLOO, ProASIC3, ProASIC3L and Fusion FPGAs
-
+{% endif %}
 
 
 
@@ -92,7 +95,7 @@ JTAG Debug
 `````
 
 ```{note}
-Using SoftConsole from within a Virtual Machine might limit what JTAG probes can be used.
+Using SoftConsole from within a Virtual Machine might limit which JTAG probes can be used.
 ```
 
 

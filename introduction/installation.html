@@ -100,6 +100,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#renode-depedencies-on-windows">Renode depedencies on Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linux-post-installation-steps">Linux post installation steps</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pre.html">Preinstallation requirements</a></li>
@@ -187,6 +189,78 @@ However in a rare case when the .NET Framework is not already installed with Win
 <p>On Windows 7 the Microsoft .NET Framework v4.7.2 must be installed first:
 <a class="reference external" href="https://www.microsoft.com/net/download/dotnet-framework-runtime">https://www.microsoft.com/net/download/dotnet-framework-runtime</a></p>
 </div>
+</div>
+</div>
+<div class="section" id="linux">
+<h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
+<p><span class="xref std std-ref">installation:Linux</span></p>
+<!-- :ref:`installation:A Plain Title` --><p>Refer to the Supported Platforms section for details of which Linux distributions and versions are supported.
+Many of the commands below require root privileges using su, sudo or by logging in as root.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>SoftConsole for Linux is now fully 64-bit and unlike previous releases no longer requires additional 32-bit packages installed on Linux 64-bit.</p>
+</div>
+<ol class="simple">
+<li><p>The installer is a 64-bit executable GUI based program named Microchip-SoftConsole-v6.5.0.x-linux-x64-installer.run (where x is the build number).</p></li>
+<li><p>The installer is a 64-bit executable GUI based program named ‘Microchip-SoftConsole-v6.5.0.501-linux-x64-installer.run’.</p></li>
+<li><p>Download the installer and ensure that the execute permission bit is set before attempting to run the installer. If it is not, then set it as follows from the command line (the following assumes that the installer has been downloaded to $HOME/Downloads):</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/Downloads 
+chmod +x Microchip-SoftConsole-v6.5.0.501-linux-x64-installer.run
+./Microchip-SoftConsole-v6.5.0.501-linux-x64-installer.run
+</pre></div>
+</div>
+<ol class="simple">
+<li><p>Some desktop/window managers might not put the installer into the focus or show it in the taskbar. The installation might seem frozen, try to minimalize the terminal window to see the installation dialog underneath.</p></li>
+<li><p>Follow the installer GUI wizard or console mode instructions on screen.</p></li>
+<li><p>If, after installing, the desktop/”start” menu shortcuts do not appear or work correctly then log out and back in again first. If there is still a problem with shortcuts, make sure the xdg-utils package is installed and uninstall and then reinstall SoftConsole. The installer requires the xdg-utils package to create shortcuts and menus, but the supported distributions should have it already installed by default.</p></li>
+</ol>
+</div>
+<div class="section" id="linux-post-installation-steps">
+<h2>Linux post installation steps<a class="headerlink" href="#linux-post-installation-steps" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p>Many platforms have GCC and make packages installed by default, but it is advisable to make sure that these are installed.</p></li>
+</ol>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-1-0 docutils container">
+<div class="docutils container">
+<p>Ubuntu/Debian</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-1-1 docutils container">
+<div class="docutils container">
+<p>CentOS/Red Hat Enterprise Linux</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-1-2 docutils container">
+<div class="docutils container">
+<p>OpenSuse/LEAP</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 active docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install build-essential
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-1 docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum groupinstall <span class="s1">&#39;Development Tools&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-2 docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>zypper install -t pattern devel_basis
+</pre></div>
+</div>
+</div>
+</div>
+<ol class="simple">
+<li><p>It is recommended that the Linux platform used to run SoftConsole has all available updates installed.</p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It may be possible to install and run SoftConsole on other Linux distributions or versions once the required packages are installed. However, some earlier distributions (for example, CentOS/RHEL 5.x and 6.x) may not work and are not recommended or supported.</p>
 </div>
 </div>
 </div>

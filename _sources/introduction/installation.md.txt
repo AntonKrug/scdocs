@@ -49,4 +49,79 @@ On Windows 7 the Microsoft .NET Framework v4.7.2 must be installed first:
 {% endif %}  % End of Windows
 
 
+{% if linux is defined %}
+Linux
+-----
+
+{ref}`installation:Linux`
+
+<!-- :ref:`installation:A Plain Title` -->
+
+Refer to the Supported Platforms section for details of which Linux distributions and versions are supported.
+Many of the commands below require root privileges using su, sudo or by logging in as root.
+
+```{note}
+SoftConsole for Linux is now fully 64-bit and unlike previous releases no longer requires additional 32-bit packages installed on Linux 64-bit.
+```
+
+1. The installer is a 64-bit executable GUI based program named Microchip-SoftConsole-v6.5.0.x-linux-x64-installer.run (where x is the build number).
+
+
+2. The installer is a 64-bit executable GUI based program named '{{sclinbin}}'.
+
+
+3. Download the installer and ensure that the execute permission bit is set before attempting to run the installer. If it is not, then set it as follows from the command line (the following assumes that the installer has been downloaded to $HOME/Downloads): 
+
+```{code-block} bash
+cd ~/Downloads 
+chmod +x {{sclinbin}}
+./{{sclinbin}}
+```
+4. Some desktop/window managers might not put the installer into the focus or show it in the taskbar. The installation might seem frozen, try to minimalize the terminal window to see the installation dialog underneath.
+
+5. Follow the installer GUI wizard or console mode instructions on screen.
+
+6. If, after installing, the desktop/”start” menu shortcuts do not appear or work correctly then log out and back in again first. If there is still a problem with shortcuts, make sure the xdg-utils package is installed and uninstall and then reinstall SoftConsole. The installer requires the xdg-utils package to create shortcuts and menus, but the supported distributions should have it already installed by default.
+
+
+Linux post installation steps
+-----------------------------
+
+1. Many platforms have GCC and make packages installed by default, but it is advisable to make sure that these are installed.
+
+
+``````{tabs}
+
+````{tab} Ubuntu/Debian
+
+```{code-block} bash
+apt-get install build-essential
+```
+````
+
+
+````{tab} CentOS/Red Hat Enterprise Linux
+
+```{code-block} bash
+yum groupinstall 'Development Tools'
+```
+````
+
+````{tab} OpenSuse/LEAP
+
+```{code-block} bash
+zypper install -t pattern devel_basis
+```
+````
+
+``````
+
+2. It is recommended that the Linux platform used to run SoftConsole has all available updates installed.
+
+```{note}
+It may be possible to install and run SoftConsole on other Linux distributions or versions once the required packages are installed. However, some earlier distributions (for example, CentOS/RHEL 5.x and 6.x) may not work and are not recommended or supported.
+```
+
+{% endif %}  % End of Linux
+
 ```````
