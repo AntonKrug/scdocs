@@ -301,7 +301,7 @@ print(f'my {a}nd line')
 ```{wavedrom}
 
         {"reg": [
-                {"bits": 2,  "name": "End", "attr": ["0x7F"], "type": 5},
+                {"bits": 2,  "name": "BEGINING", "attr": ["0x7F"], "type": 5},
                 {"bits": 4,  "name": "CRC", "attr": ["CRC16", "x1041","Bits 13:6"], "type": 2},
                 {"bits": 2,  "name": "Ctrl", "attr": ["ON = x01", "OFF = x00"], "type": 4},
                 {"bits": 2,  "name": "Size", "attr": "x01", "type": 4},
