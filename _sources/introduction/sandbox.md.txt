@@ -364,4 +364,16 @@ Sdfsdfs
    Feel free to skip these
 ```
 
+https://github.com/coleifer/dot-theme
+
+
+https://graphviz.org/Gallery/directed/psg.html
+
+https://graphviz.org/Gallery/directed/ninja.html
+
+https://graphviz.org/Gallery/directed/neural-network.html
+
+https://graphviz.org/Gallery/directed/go-package.html
+
+
 ```````

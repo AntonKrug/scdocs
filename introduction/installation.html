@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; SoftConsole 6.6 420 documentation</title>
+  <title>Installation &mdash; SoftConsole 7.0.501 2021-02 documentation</title>
   
 
   
@@ -38,13 +38,15 @@
   
     <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   
+    <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  
 
   
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="SoftConsole 6.6 420 documentation" href="../index.html"/>
-        <link rel="next" title="Preinstallation requirements" href="pre.html"/>
+    <link rel="top" title="SoftConsole 7.0.501 2021-02 documentation" href="../index.html"/>
+        <link rel="next" title="Sandbox experiments" href="sandbox.html"/>
         <link rel="prev" title="Supported Platforms" href="supported_platforms.html"/> 
 
   
@@ -73,7 +75,7 @@
             
             
               <div class="version">
-                6.6
+                7.0
               </div>
             
           
@@ -98,11 +100,12 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="supported_platforms.html">Supported Platforms</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#renode-depedencies-on-windows">Renode depedencies on Windows</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linux-post-installation-steps">Linux post installation steps</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pre.html">Preinstallation requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox experiments</a></li>
 </ul>
 
@@ -148,6 +151,47 @@
             
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="windows">
+<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
+<p>Refer to the Supported Platforms section for details of which Windows versions are supported.
+The installer is a 64-bit executable GUI based program named ‘Microchip-SoftConsole-2021-02-501-windows-x64-installer.exe’. It must be run with administrative privileges. Run the installer and follow the GUI installer wizard instructions on screen.</p>
+</div>
+<div class="section" id="renode-depedencies-on-windows">
+<h2>Renode depedencies on Windows<a class="headerlink" href="#renode-depedencies-on-windows" title="Permalink to this headline">¶</a></h2>
+<p>The Renode emulation platform is not a crucial sub-module of SoftConsole and users who are intending to connect to hardware targets only do not need satisfy the Renode’s dependencies.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="docutils container">
+<p>Windows 10/8.1</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="docutils container">
+<p>Windows 7</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<p>The Renode emulation platform can be used out of the box on many Windows 10/8.1 machines.
+However in a rare case when the .NET Framework is not already installed with Windows 10/8.1 then it can be changed easily from within Windows features menu.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A administrative account is required to access the Windows features menu.</p>
+</div>
+<div class="graphviz"><img src="../_images/graphviz-b6f14c6352f46fd16fa97c332f233486cb3041e0.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;];
+         edge [arrowsize=.7];
+         &quot;Start button&quot; -&gt; &quot;Type 'Turn Windows features on or off'&quot; -&gt; &quot;Select '.NET Framework 4.8'&quot; -&gt; &quot;Click OK&quot;
+     }" class="graphviz" /></div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<p>On Windows 7 the Microsoft .NET Framework v4.7.2 must be installed first:
+<a class="reference external" href="https://www.microsoft.com/net/download/dotnet-framework-runtime">https://www.microsoft.com/net/download/dotnet-framework-runtime</a></p>
+</div>
+</div>
+</div>
 <div class="section" id="linux">
 <h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
 <p><span class="xref std std-ref">installation:Linux</span></p>
@@ -157,17 +201,15 @@ Many of the commands below require root privileges using su, sudo or by logging 
 <p class="admonition-title">Note</p>
 <p>SoftConsole for Linux is now fully 64-bit and unlike previous releases no longer requires additional 32-bit packages installed on Linux 64-bit.</p>
 </div>
-<ol class="simple">
-<li><p>The installer is a 64-bit executable GUI based program named Microchip-SoftConsole-v6.5.0.x-linux-x64-installer.run (where x is the build number).</p></li>
-<li><p>The installer is a 64-bit executable GUI based program named ‘Microchip-SoftConsole-v6.5.0.501-linux-x64-installer.run’.</p></li>
-<li><p>Download the installer and ensure that the execute permission bit is set before attempting to run the installer. If it is not, then set it as follows from the command line (the following assumes that the installer has been downloaded to $HOME/Downloads):</p></li>
-</ol>
+<ol>
+<li><p>The installer is a 64-bit executable GUI based program named ‘Microchip-SoftConsole-2021-02-501-linux-x64-installer.run’.</p></li>
+<li><p>Download the installer and ensure that the execute permission bit is set before attempting to run the installer. If it is not, then set it as follows from the command line (the following assumes that the installer has been downloaded to $HOME/Downloads):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/Downloads 
-chmod +x Microchip-SoftConsole-v6.5.0.501-linux-x64-installer.run
-./Microchip-SoftConsole-v6.5.0.501-linux-x64-installer.run
+chmod +x Microchip-SoftConsole-2021-02-501-linux-x64-installer.run
+./Microchip-SoftConsole-2021-02-501-linux-x64-installer.run
 </pre></div>
 </div>
-<ol class="simple">
+</li>
 <li><p>Some desktop/window managers might not put the installer into the focus or show it in the taskbar. The installation might seem frozen, try to minimalize the terminal window to see the installation dialog underneath.</p></li>
 <li><p>Follow the installer GUI wizard or console mode instructions on screen.</p></li>
 <li><p>If, after installing, the desktop/”start” menu shortcuts do not appear or work correctly then log out and back in again first. If there is still a problem with shortcuts, make sure the xdg-utils package is installed and uninstall and then reinstall SoftConsole. The installer requires the xdg-utils package to create shortcuts and menus, but the supported distributions should have it already installed by default.</p></li>
@@ -175,50 +217,50 @@ chmod +x Microchip-SoftConsole-v6.5.0.501-linux-x64-installer.run
 </div>
 <div class="section" id="linux-post-installation-steps">
 <h2>Linux post installation steps<a class="headerlink" href="#linux-post-installation-steps" title="Permalink to this headline">¶</a></h2>
-<ol class="simple">
-<li><p>Many platforms have GCC and make packages installed by default, but it is advisable to make sure that these are installed.</p></li>
-</ol>
+<ol>
+<li><p>Many platforms have GCC and make packages installed by default, but it is advisable to make sure that these are installed.</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-0-0 docutils container">
+<div class="active item sphinx-data-tab-1-0 docutils container">
 <div class="docutils container">
 <p>Ubuntu/Debian</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-0-1 docutils container">
+<div class="item sphinx-data-tab-1-1 docutils container">
 <div class="docutils container">
-<p>CentOS/Red Hat Enterprise Linux</p>
+<p>CentOS/RHEL</p>
 </div>
 </div>
-<div class="item sphinx-data-tab-0-2 docutils container">
+<div class="item sphinx-data-tab-1-2 docutils container">
 <div class="docutils container">
 <p>OpenSuse/LEAP</p>
 </div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 active docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install build-essential
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-1 docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum groupinstall <span class="s1">&#39;Development Tools&#39;</span>
 </pre></div>
 </div>
 </div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-2 docutils container">
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-2 docutils container">
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>zypper install -t pattern devel_basis
 </pre></div>
 </div>
 </div>
 </div>
-<ol class="simple">
-<li><p>It is recommended that the Linux platform used to run SoftConsole has all available updates installed.</p></li>
-</ol>
+</li>
+<li><p>It is recommended that the Linux platform used to run SoftConsole has all available updates installed.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>It may be possible to install and run SoftConsole on other Linux distributions or versions once the required packages are installed. However, some earlier distributions (for example, CentOS/RHEL 5.x and 6.x) may not work and are not recommended or supported.</p>
 </div>
+</li>
+</ol>
 </div>
 </div>
 
@@ -229,7 +271,7 @@ chmod +x Microchip-SoftConsole-v6.5.0.501-linux-x64-installer.run
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pre.html" class="btn btn-neutral float-right" title="Preinstallation requirements" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="sandbox.html" class="btn btn-neutral float-right" title="Sandbox experiments" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="supported_platforms.html" class="btn btn-neutral" title="Supported Platforms" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -262,7 +304,7 @@ chmod +x Microchip-SoftConsole-v6.5.0.501-linux-x64-installer.run
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'6.6 420',
+            VERSION:'7.0.501 2021-02',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -271,10 +313,10 @@ chmod +x Microchip-SoftConsole-v6.5.0.501-linux-x64-installer.run
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/language_data.js"></script>
       <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
       <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="../_static/clipboard.min.js"></script>
+      <script type="text/javascript" src="../_static/copybutton.js"></script>
 
   
 

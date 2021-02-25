@@ -1,4 +1,5 @@
 ```````{jinja} scvars
+{% import 'source/jinja/macros.html' as macros %}
 
 Supported Platforms
 ===================
@@ -97,7 +98,6 @@ JTAG Debug
 ```{note}
 Using SoftConsole from within a Virtual Machine might limit which JTAG probes can be used.
 ```
-
 
 
 

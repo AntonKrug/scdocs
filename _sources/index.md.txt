@@ -8,6 +8,5 @@ SoftConsole
 introduction/overview
 introduction/supported_platforms
 introduction/installation
-introduction/pre
 introduction/sandbox
 ```

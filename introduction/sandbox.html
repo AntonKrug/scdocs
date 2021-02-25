@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Sandbox experiments &mdash; SoftConsole 6.6 420 documentation</title>
+  <title>Sandbox experiments &mdash; SoftConsole 7.0.501 2021-02 documentation</title>
   
 
   
@@ -38,13 +38,15 @@
   
     <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   
+    <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
+  
 
   
         <link rel="index" title="Index"
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
-    <link rel="top" title="SoftConsole 6.6 420 documentation" href="../index.html"/>
-        <link rel="prev" title="Preinstallation requirements" href="pre.html"/> 
+    <link rel="top" title="SoftConsole 7.0.501 2021-02 documentation" href="../index.html"/>
+        <link rel="prev" title="Installation" href="installation.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -72,7 +74,7 @@
             
             
               <div class="version">
-                6.6
+                7.0
               </div>
             
           
@@ -97,7 +99,6 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="supported_platforms.html">Supported Platforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pre.html">Preinstallation requirements</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Sandbox experiments</a></li>
 </ul>
 
@@ -159,7 +160,7 @@ captionfigure points to a filename and has a caption. Optionally,
 you can add a label. You can make references to a table using its
 label as follows: :numref:<code class="docutils literal notranslate"><span class="pre">tab-wave-breaking</span></code>.</p>
 <p>inline equation <span class="math notranslate nohighlight">\(z=\sqrt{x^2+y^2}\)</span>.</p>
-<p>SoftConsole SoftConsole 6.6</p>
+<p>SoftConsole SoftConsole 7.0</p>
 <p>Wrap in-line code blocks in backticks: <code class="docutils literal notranslate"><span class="pre">boolean</span> <span class="pre">example</span> <span class="pre">=</span> <span class="pre">true;</span></code>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">No</span> <span class="n">syntax</span> <span class="n">highlighting</span> <span class="k">if</span> <span class="n">no</span> <span class="n">language</span>
 <span class="ow">is</span> <span class="n">indicated</span><span class="o">.</span>
@@ -335,9 +336,9 @@ See <code class="xref any docutils literal notranslate"><span class="pre">admoni
         struct3 [label=&quot;hello&amp;#92;nworld |{ b |{c|&lt;here&gt; d|e}| f}| g | h&quot;]; 
         struct1:f1 -&gt; struct2:f0; struct1:f2 -&gt; struct3:here; 
      }" class="graphviz" /></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
 </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my 1st line&#39;</span><span class="p">)</span>
 <span class="hll"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;my </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">nd line&#39;</span><span class="p">)</span>
 </span></pre></div>
@@ -381,9 +382,9 @@ See <code class="xref any docutils literal notranslate"><span class="pre">admoni
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-2 docutils container">
 <div class="literal-block-wrapper docutils container" id="id1">
 <div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">Caption. It is neat</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>10
-11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
 </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my 1st line&#39;</span><span class="p">)</span>
 <span class="hll"><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;my </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1">nd line&#39;</span><span class="p">)</span>
 </span></pre></div>
@@ -394,11 +395,11 @@ See <code class="xref any docutils literal notranslate"><span class="pre">admoni
 <div class="literal-block-wrapper docutils container" id="id2">
 <div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">This is my
 multi-line caption. It is <em>pretty nifty</em> ;-)</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
-<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>10
-11
-12
-13
-14</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<div class="highlight-python notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="hll"><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
 </span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">4</span>
 <span class="hll"><span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="o">+</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">4</span>
 </span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;my 1st line&#39;</span><span class="p">)</span>
@@ -406,7 +407,7 @@ multi-line caption. It is <em>pretty nifty</em> ;-)</span><a class="headerlink" 
 </pre></div>
 </td></tr></table></div>
 </div>
-<img alt="../_images/wavedrom-f613a480-192f-4240-94b3-b6cd0c0ad2c3.svg" src="../_images/wavedrom-f613a480-192f-4240-94b3-b6cd0c0ad2c3.svg" /><img alt="../_images/wavedrom-f0ac87e7-9e24-44bf-b43e-7930bbccf5cb.svg" src="../_images/wavedrom-f0ac87e7-9e24-44bf-b43e-7930bbccf5cb.svg" /><p>Sdfsdfs</p>
+<img alt="../_images/wavedrom-7ed6b101-c83e-49ce-9ce4-5dca040cb926.svg" src="../_images/wavedrom-7ed6b101-c83e-49ce-9ce4-5dca040cb926.svg" /><img alt="../_images/wavedrom-81c36e03-7911-431f-a0a3-df435a4691be.svg" src="../_images/wavedrom-81c36e03-7911-431f-a0a3-df435a4691be.svg" /><p>Sdfsdfs</p>
 <table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head">a</th>
@@ -435,6 +436,11 @@ multi-line caption. It is <em>pretty nifty</em> ;-)</span><a class="headerlink" 
 <p class="admonition-title">Additional steps</p>
 <p>Feel free to skip these</p>
 </div>
+<p>https://github.com/coleifer/dot-theme</p>
+<p>https://graphviz.org/Gallery/directed/psg.html</p>
+<p>https://graphviz.org/Gallery/directed/ninja.html</p>
+<p>https://graphviz.org/Gallery/directed/neural-network.html</p>
+<p>https://graphviz.org/Gallery/directed/go-package.html</p>
 </div>
 
 
@@ -445,7 +451,7 @@ multi-line caption. It is <em>pretty nifty</em> ;-)</span><a class="headerlink" 
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
       
-        <a href="pre.html" class="btn btn-neutral" title="Preinstallation requirements" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="installation.html" class="btn btn-neutral" title="Installation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -475,7 +481,7 @@ multi-line caption. It is <em>pretty nifty</em> ;-)</span><a class="headerlink" 
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'../',
-            VERSION:'6.6 420',
+            VERSION:'7.0.501 2021-02',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true
@@ -484,9 +490,10 @@ multi-line caption. It is <em>pretty nifty</em> ;-)</span><a class="headerlink" 
       <script type="text/javascript" src="../_static/jquery.js"></script>
       <script type="text/javascript" src="../_static/underscore.js"></script>
       <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/language_data.js"></script>
       <script type="text/javascript" src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
       <script type="text/javascript" src="../_static/sphinx_tabs/tabs.js"></script>
+      <script type="text/javascript" src="../_static/clipboard.min.js"></script>
+      <script type="text/javascript" src="../_static/copybutton.js"></script>
       <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
