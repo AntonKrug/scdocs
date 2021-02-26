@@ -1,5 +1,5 @@
 ```````{jinja} scvars
-{% import 'source/jinja/macros.html' as macros %}
+{% import '_jinja/macros.html' as macros %}
 
 Installation
 ============
@@ -9,37 +9,12 @@ Windows
 -------
 
 Refer to the Supported Platforms section for details of which Windows versions are supported.
-The installer is a 64-bit executable GUI based program named '{{scwinbin}}'. It must be run with administrative privileges. Run the installer and follow the GUI installer wizard instructions on screen.
-
-Renode depedencies on Windows
------------------------------
-
-The Renode emulation platform is not a crucial sub-module of SoftConsole and users who are intending to connect to hardware targets only do not need satisfy the Renode's dependencies.
-
-
-``````{tabs}
-
-````{tab} Windows 10/8.1
-
-The Renode emulation platform can be used out of the box on many Windows 10/8.1 machines. 
-However in a rare case when the .NET Framework is not already installed with Windows 10/8.1 then it can be changed easily from within Windows features menu.
-
-```{note}
-A administrative account is required to access the Windows features menu.
+The installer is a 64-bit executable GUI based program named:
+```{code-block} bash
+{{scwinbin}}
 ```
+It must be run with administrative privileges. Run the installer and follow the GUI installer wizard instructions on screen.
 
-{{ macros.breadcrumb_square('"Start button" -> "Type \'Turn Windows features on or off\'" -> "Select \'.NET Framework 4.8\'" -> "Click OK"') }}
-
-
-````
-
-
-````{tab} Windows 7
-
-On Windows 7 the Microsoft .NET Framework v4.7.2 must be installed first:
-<https://www.microsoft.com/net/download/dotnet-framework-runtime>
-````
-``````
 {% endif %}  % End of Windows
 
 
@@ -76,43 +51,6 @@ SoftConsole for Linux is now fully 64-bit and unlike previous releases no longer
 5. If, after installing, the desktop/”start” menu shortcuts do not appear or work correctly then log out and back in again first. If there is still a problem with shortcuts, make sure the xdg-utils package is installed and uninstall and then reinstall SoftConsole. The installer requires the xdg-utils package to create shortcuts and menus, but the supported distributions should have it already installed by default.
 
 
-Linux post installation steps
------------------------------
-
-1. Many platforms have GCC and make packages installed by default, but it is advisable to make sure that these are installed.
-
-
-    ``````{tabs}
-    
-    ````{tab} Ubuntu/Debian
-    
-    ```{code-block} bash
-    apt-get install build-essential
-    ```
-    ````
-    
-    
-    ````{tab} CentOS/RHEL
-    
-    ```{code-block} bash
-    yum groupinstall 'Development Tools'
-    ```
-    ````
-    
-    ````{tab} OpenSuse/LEAP
-    
-    ```{code-block} bash
-    zypper install -t pattern devel_basis
-    ```
-    ````
-    
-    ``````
-
-2. It is recommended that the Linux platform used to run SoftConsole has all available updates installed.
-
-    ```{note}
-    It may be possible to install and run SoftConsole on other Linux distributions or versions once the required packages are installed. However, some earlier distributions (for example, CentOS/RHEL 5.x and 6.x) may not work and are not recommended or supported.
-    ```
 
 {% endif %}  % End of Linux
 

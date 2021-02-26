@@ -1,5 +1,5 @@
 ```````{jinja} scvars
-{% import 'source/jinja/macros.html' as macros %}
+{% import '_jinja/macros.html' as macros %}
 
 Supported Platforms
 ===================
