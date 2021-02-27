@@ -1,0 +1,100 @@
+
+1. Many platforms have GCC and make packages installed by default, but it is advisable to make sure that these are installed.
+
+
+    ``````{tabs}
+    
+    ````{tab} Ubuntu/Debian
+    
+    ```{code-block} bash
+    apt-get install build-essential
+    ```
+    ````
+    
+    
+    ````{tab} CentOS/RHEL
+    
+    ```{code-block} bash
+    yum groupinstall 'Development Tools'
+    ```
+    ````
+    
+    ````{tab} OpenSuse/LEAP
+    
+    ```{code-block} bash
+    zypper install -t pattern devel_basis
+    ```
+    ````
+    
+    ``````
+
+2. It is recommended that the Linux platform used to run SoftConsole has all available updates installed.
+
+    ```{note}
+    It may be possible to install and run SoftConsole on other Linux distributions or versions once the required packages are installed. However, some earlier distributions (for example, CentOS/RHEL 5.x and 6.x) may not work and are not recommended or supported.
+    ```
+
+### Program and Debug PolarFire SoC
+
+If you want to use mpfs programmer you need to install program and debug
+
+### Renode depedencies
+
+Renode requires mono framework to run and is provided by mono-project, add its package repository running the following:
+
+
+``````{tabs}
+
+````{tab} Ubuntu 20.04
+
+```{code-block} bash
+sudo apt install gnupg ca-certificates
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+echo "deb https://download.mono-project.com/repo/ubuntu stable-focal main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+sudo apt update
+
+sudo apt install mono-devel mono-full
+```
+
+````
+
+
+````{tab} Debian 10
+
+```{code-block} bash
+sudo apt install apt-transport-https dirmngr gnupg ca-certificates
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
+echo "deb https://download.mono-project.com/repo/debian stable-buster main" | sudo tee /etc/apt/sources.list.d/mono-official-stable.list
+sudo apt update
+
+sudo apt install mono-devel mono-full
+```
+
+````
+
+````{tab} CentOS/RHEL 7
+
+```{warning}
+These commands have to be run from **root** account.
+```
+
+```{code-block} bash
+rpmkeys --import "http://pool.sks-keyservers.net/pks/lookup?op=get&search=0x3fa7e0328081bff6a14da29aa6a19b38d3d831ef"
+su -c 'curl https://download.mono-project.com/repo/centos7-stable.repo | tee /etc/yum.repos.d/mono-centos7-stable.repo'
+
+yum install mono-devel mono-full
+```
+
+
+````
+
+``````
+
+
+```{note}
+For users who wish to use Renode on a unsupported platform, they can on their own risk visit [mono project website](https://www.mono-project.com/download/stable/) and follow the instructions.
+```
+
+### Writting models for Renode 
+
+Users, wishing to write Renode models can use [Mono Develop IDE](https://www.monodevelop.com/).
