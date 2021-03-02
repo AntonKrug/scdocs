@@ -7,6 +7,9 @@ If you want to use mpfs programmer you need to install program and debug
 
 The Renode emulation platform is not a crucial sub-module of SoftConsole and users who are intending to connect to hardware targets only do not need satisfy the Renode's dependencies.
 
+```{note}
+A administrative account is required to install the .NET framework.
+```
 
 ``````{tabs}
 
@@ -17,10 +20,6 @@ However in a rare case when the .NET Framework is not already installed with Win
 
 {{ macros.breadcrumb_square('"Start button" -> "Type \'Turn Windows features on or off\'" -> "Select \'.NET Framework 4.8\'" -> "Click OK"') }}
 
-```{note}
-A administrative account is required to access the Windows features menu.
-```
-
 ````
 
 
@@ -28,10 +27,6 @@ A administrative account is required to access the Windows features menu.
 
 On Windows 7 the Microsoft .NET Framework v4.7.2 must be installed first:
 <https://www.microsoft.com/net/download/dotnet-framework-runtime>
-
-```{note}
-A administrative account is required to install the .NET framework.
-```
 
 ````
 
