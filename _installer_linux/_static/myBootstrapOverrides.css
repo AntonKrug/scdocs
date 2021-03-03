@@ -1,0 +1,36 @@
+/* Header for the TABs should standout */
+.item.docutils.container {
+  font-size: large;
+  font-weight: bold;
+  margin-top: 16px;
+}
+
+
+/* Then regular headers needs to be bold as the TAB header would standout too much */
+h1, .h1 {
+  font-size: 39px;
+  font-weight: bold;
+}
+
+
+h2, .h2 {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+
+h3, .h3 {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* For the cosmo theme to make hyperlinks in 'note' sections more visible */
+.admonition.alert-info a {
+  color: pink;
+  font-weight: bold;
+}
+
+/* Do not want to display the search form */
+.navbar-form.navbar-right {
+  display: none;
+}
