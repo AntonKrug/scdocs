@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=cp1252" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Windows Post Installation</title>
+    <title>Post Installation</title>
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/bootstrap-sphinx.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" />
@@ -90,8 +90,8 @@
   <div class="row">
     <div class="body col-md-12 content" role="main">
       
-  <div class="section" id="windows-post-installation">
-<h1>Windows Post Installation</h1>
+  <div class="section" id="post-installation">
+<h1>Post Installation</h1>
 <div class="section" id="program-and-debug-polarfire-soc">
 <h2>Program and Debug PolarFire SoC</h2>
 <p>If you want to use mpfs programmer you need to install program and debug</p>
@@ -130,125 +130,6 @@ On Windows 7 the Microsoft .NET Framework v4.7.2 must be installed first:
 <a class="reference external" href="https://www.microsoft.com/net/download/dotnet-framework-runtime" target="_blank">https://www.microsoft.com/net/download/dotnet-framework-runtime</a></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="linux-post-installation">
-<h1>Linux Post Installation</h1>
-<ol>
-<li><p class="first">Many platforms have GCC and make packages installed by default, but it is advisable to make sure that these are installed.</p>
-<div class="sphinx-tabs docutils container">
-<div class="docutils container">
-<div class="item docutils container">
-<div class="docutils container">
-<p>Ubuntu/Debian</p>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 active docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install build-essential
-</pre></div>
-</div>
-</div>
-</div>
-<div class="docutils container">
-<div class="item docutils container">
-<div class="docutils container">
-<p>CentOS/RHEL</p>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-1 docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum groupinstall <span class="s1">&#39;Development Tools&#39;</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="docutils container">
-<div class="item docutils container">
-<div class="docutils container">
-<p>OpenSuse/LEAP</p>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-2 docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>zypper install -t pattern devel_basis
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-</li>
-<li><p class="first">It is recommended that the Linux platform used to run SoftConsole has all available updates installed.</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">It may be possible to install and run SoftConsole on other Linux distributions or versions once the required packages are installed. However, some earlier distributions (for example, CentOS/RHEL 5.x and 6.x) may not work and are not recommended or supported.</p>
-</div>
-</li>
-</ol>
-<div class="section" id="id1">
-<h2>Program and Debug PolarFire SoC</h2>
-<p>If you want to use mpfs programmer you need to install program and debug</p>
-</div>
-<div class="section" id="id2">
-<h2>Renode depedencies</h2>
-<p>Renode requires mono framework to run and is provided by mono-project, add its package repository running the following:</p>
-<div class="sphinx-tabs docutils container">
-<div class="docutils container">
-<div class="item docutils container">
-<div class="docutils container">
-Ubuntu 20.04</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-0 active docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install gnupg ca-certificates
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-<span class="nb">echo</span> <span class="s2">&quot;deb https://download.mono-project.com/repo/ubuntu stable-focal main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/mono-official-stable.list
-sudo apt update
-
-sudo apt install mono-devel mono-full
-</pre></div>
-</div>
-</div>
-</div>
-<div class="docutils container">
-<div class="item docutils container">
-<div class="docutils container">
-Debian 10</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-1 docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install apt-transport-https dirmngr gnupg ca-certificates
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-<span class="nb">echo</span> <span class="s2">&quot;deb https://download.mono-project.com/repo/debian stable-buster main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/mono-official-stable.list
-sudo apt update
-
-sudo apt install mono-devel mono-full
-</pre></div>
-</div>
-</div>
-</div>
-<div class="docutils container">
-<div class="item docutils container">
-<div class="docutils container">
-CentOS/RHEL 7</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-2 docutils container">
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">These commands have to be run from <strong>root</strong> account.</p>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rpmkeys --import <span class="s2">&quot;http://pool.sks-keyservers.net/pks/lookup?op=get&amp;search=0x3fa7e0328081bff6a14da29aa6a19b38d3d831ef&quot;</span>
-su -c <span class="s1">&#39;curl https://download.mono-project.com/repo/centos7-stable.repo | tee /etc/yum.repos.d/mono-centos7-stable.repo&#39;</span>
-
-yum install mono-devel mono-full
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">For users who wish to use Renode on a unsupported platform, they can on their own risk visit <a class="reference external" href="https://www.mono-project.com/download/stable/" target="_blank">mono project website</a> and follow the instructions.</p>
-</div>
-</div>
-<div class="section" id="writting-models-for-renode">
-<h2>Writting models for Renode</h2>
-<p>Users, wishing to write Renode models can use <a class="reference external" href="https://www.monodevelop.com/" target="_blank">Mono Develop IDE</a>.</p>
 </div>
 </div>
 
