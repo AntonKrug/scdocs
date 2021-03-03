@@ -1,12 +1,10 @@
 ```````{jinja} scvars
 {% import '_jinja/macros.html' as macros %}
 
-Installation
-============
+# Installation
 
 {% if windows is defined %}
-Windows
--------
+## Windows
 
 Refer to the Supported Platforms section for details of which Windows versions are supported.
 The installer is a 64-bit executable GUI based program named:
@@ -19,8 +17,7 @@ It must be run with administrative privileges. Run the installer and follow the 
 
 
 {% if linux is defined %}
-Linux
------
+## Linux
 
 {ref}`installation:Linux`
 

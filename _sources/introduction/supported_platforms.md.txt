@@ -1,19 +1,14 @@
 ```````{jinja} scvars
 {% import '_jinja/macros.html' as macros %}
 
-Supported Platforms
-===================
+# Supported Platforms
 
 
 
 
 
 
-
-
-
-Host operating systems
-----------------------
+## Host operating systems
 
 
 ``````{tabs}
@@ -51,8 +46,7 @@ Only 64-bit OSs are supported.
 
 
 
-Target CPUs
------------
+## Target CPUs
 
 {% if riscv is defined %}
 - Microchip PolarFire SoC RISC-V 64-bit multi-processor FPGA
@@ -71,8 +65,8 @@ Target CPUs
 
 
 
-JTAG Debug
-----------
+## JTAG Debug
+
 `````{tabs}
 
 {% if windows is defined %}
@@ -103,13 +97,11 @@ Using SoftConsole from within a Virtual Machine might limit which JTAG probes ca
 
 
 
-Other software
---------------
+## Other software
+
 * Microchip Libero SoC
   * Microchip {{liberosoc}}
   * Microchip {{firmwarecatalog}}
-
-+++
 
 * Firmware (minimum required version)
   * {{mpfshal}}
