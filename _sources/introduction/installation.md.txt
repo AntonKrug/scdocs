@@ -7,10 +7,8 @@
 ## Windows
 
 Refer to the Supported Platforms section for details of which Windows versions are supported.
-The installer is a 64-bit executable GUI based program named:
-```{code-block} bash
-{{scwinbin}}
-```
+The installer is a 64-bit executable GUI based program named: {{scwinbin}}
+
 It must be run with administrative privileges. Run the installer and follow the GUI installer wizard instructions on screen.
 
 {% endif %}  % End of Windows
@@ -30,7 +28,7 @@ Many of the commands below require root privileges using su, sudo or by logging 
 SoftConsole for Linux is now fully 64-bit and unlike previous releases no longer requires additional 32-bit packages installed on Linux 64-bit.
 ```
 
-1. The installer is a 64-bit executable GUI based program named '{{sclinbin}}'.
+1. The installer is a 64-bit executable GUI based program named: {{sclinbin}}
 
 
 2. Download the installer and ensure that the execute permission bit is set before attempting to run the installer. If it is not, then set it as follows from the command line (the following assumes that the installer has been downloaded to $HOME/Downloads): 
