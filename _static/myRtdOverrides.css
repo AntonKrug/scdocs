@@ -1,21 +1,31 @@
+/* Spacing between bullet points */
 .section li {
   margin-bottom: 5px;
 }
 
-/* p {
-  margin-bottom: 5px;
-} */
-
-p {
-  margin: initial;
+/* Larger content body */
+.wy-nav-content {
+  max-width: 950px;
+  min-height: 100vh;
 }
 
-
-.sphinx-tab.tab.segment {
-  padding-bottom: 5px;
+/* Highlighted text has less saturated background */
+.highlight {
+  background: #fefffa;
 }
 
-h3 {
-  margin-top: 10px;
+/* But more saturated line */
+.highlight .hll {
+  background-color: #ff9;
 }
 
+/* Black background for search */
+.wy-side-nav-search {
+  background-color: black;
+}
+
+/* Gray version text */
+.wy-side-nav-search>div.version {
+  color:hsla(0,0%,100%,.5)
+}
+ 

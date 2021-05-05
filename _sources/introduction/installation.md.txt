@@ -17,7 +17,7 @@ It must be run with administrative privileges. Run the installer and follow the 
 {% if linux is defined %}
 ## Linux
 
-{ref}`installation:Linux`
+<!-- {ref}`installation:Linux` -->
 
 <!-- :ref:`installation:A Plain Title` -->
 

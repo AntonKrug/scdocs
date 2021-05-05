@@ -1,0 +1,210 @@
+# Graphviz experiments
+
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+
+## Clickable nodes
+
+```{graphviz}
+    digraph { 
+        graph [bgcolor=transparent]
+        node [shape=box style=filled target="_blank"]
+
+        Microchip       [{{gv_pink}} URL="http://www.microchip.com/"]
+        "{{sc}}"        [{{gv_blue}} URL="https://www.microsemi.com/softconsole"]
+        "{{liberosoc}}" [{{gv_green}} URL="https://www.microsemi.com/libero"]
+        FP              [{{gv_gray}} URL="https://www.microsemi.com/existing-parts/parts/152631"]
+        Icicle          [{{gv_yellow}} URL="https://www.microsemi.com/products/fpga-soc/polarfire-soc-icicle-quick-start-guide"]
+
+        Microchip -> "{{sc}}"
+        Microchip -> "{{liberosoc}}"
+
+        "{{sc}}"        -> FP
+        "{{liberosoc}}" -> FP
+
+        FP -> Icicle
+    }
+```
+
+## Breadcrumbs macros
+
+{{ macros.breadcrumb_square('"Start button" -> "Type \'Turn Windows features on or off\'" -> "Select \'.NET Framework 4.8\'" -> "Click OK"') }}
+
+
+## Breadcrumbs variants
+
+
+```{graphviz}
+     digraph {
+         rankdir="LR";
+         graph [fontname="Verdana", fontsize="9", bgcolor=transparent];
+         node [fontname="Verdana", fontsize="9", shape="rectangle", height=.15];
+
+         n0 [label="File"];
+         n1 [label="New"];
+         n2 [label="C Project or C++ Project"];
+
+
+         n0 -> n1 [len=0.1,weight=15];
+         n1 -> n2 [len=0.16,weight=15];
+     }
+```
+
+
+```{graphviz}
+     digraph {
+         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
+         node [fontname="Verdana", fontsize="9", shape="cds", width=.2, height=.3];
+         edge [arrowhead=none];
+         "File" -> "New" -> "C Project or C++ Project"
+     }
+```
+
+```{graphviz}
+     digraph {
+         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
+         node [fontname="Verdana", fontsize="9", shape="cds", width=.2, height=.3, margin=".05,.11"];
+         edge [arrowhead=none];
+         "Tool Settings" -> "GNU RISC-V Cross C/C++ Compiler" -> "Preprocessor" -> "Defined symbols (-D) "
+     }
+```
+
+```{graphviz}
+     digraph {
+         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
+         node [fontname="Verdana", fontsize="9", shape="rectangle", width=.1, height=.2, margin=".04,.01"];
+         edge [arrowhead=vee, arrowsize=.5];
+         "Tool Settings" -> "Cross Arm GNU C/C++ Linker" -> "General" -> "Remove unused sections (-Xlinker --gc-sections)"
+     }
+```
+
+
+```{graphviz}
+     digraph {
+         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
+         node [fontname="Verdana", fontsize="9", shape="rectangle", width=.1, height=.2, margin=".04,.01"];
+         edge [arrowsize=.7];
+         "Tool Settings" -> "Cross Arm GNU C/C++ Linker" -> "General" -> "Remove unused sections (-Xlinker --gc-sections)"
+     }
+```
+
+```{graphviz}
+     digraph {
+         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
+         node [fontname="Verdana", fontsize="9", shape="rectangle", width=.1, height=.2, margin=".04,.01"];
+         edge [arrowsize=.7];
+         "Tool Settings" -> "GNU RISC-V C/C++ Linker" -> "General" -> "Remove unused sections (-Xlinker --gc-sections)"
+     }
+```
+
+
+## Inside tabs
+
+
+`````{tabs}
+````{tab} App
+
+```{graphviz}
+    digraph "strdducts" {
+        graph [bgcolor=transparent];
+        node [shape=record]; 
+        struct1 [shape=Mrecord, label="<f0> left|<f1> mid&#92; dle|<f2> right"]; 
+        struct2 [label="<f0> one|<f1> two"]; 
+        struct3 [label="hello&#92;nworld |{ b |{c|<here> d|e}| f}| g | h"]; 
+        struct1:f1 -> struct2:f0; struct1:f2 -> struct3:here; 
+     }
+```
+
+````
+````{tab} Blue
+
+        Apples are green, or sometimes red.
+
+````
+````{tab} Python
+
+```{code-block} python
+---
+lineno-start: 10
+emphasize-lines: 1, 3
+---
+a = 2
+b = a + 4
+c = a + b+ a + 4
+print('my 1st line')
+print(f'my {a}nd line')
+```        
+````
+
+`````
+ 
+
+## Different styles
+
+
+```{graphviz}
+    digraph {
+    graph [fontsize=30 labelloc="t" label="" splines=true overlap=false rankdir="LR" bgcolor=transparent]
+    node [style="filled" penwidth=1 fillcolor="white" fontname="Courier New" shape="Mrecord"]
+    edge [penwidth=5 fontsize=28 fontcolor="black"]
+    ratio=auto
+    
+    "state0" [ style = "filled, bold" penwidth = 5 label =<<table border="0" cellborder="0" cellpadding="3" bgcolor="white"><tr><td bgcolor="black" align="center" colspan="2"><font color="white">State #0</font></td></tr><tr><td align="left" port="r0">&#40;0&#41; s -&gt; &bull;e $ </td></tr><tr><td align="left" port="r1">&#40;1&#41; e -&gt; &bull;l '=' r </td></tr><tr><td align="left" port="r2">&#40;2&#41; e -&gt; &bull;r </td></tr><tr><td align="left" port="r3">&#40;3&#41; l -&gt; &bull;'*' r </td></tr><tr><td align="left" port="r4">&#40;4&#41; l -&gt; &bull;'n' </td></tr><tr><td align="left" port="r5">&#40;5&#41; r -&gt; &bull;l </td></tr></table>> ];
+    "state1" [ label =<<table border="0" cellborder="0" cellpadding="3" bgcolor="white"><tr><td bgcolor="black" align="center" colspan="2"><font color="white">State #1</font></td></tr><tr><td align="left" port="r3">&#40;3&#41; l -&gt; &bull;'*' r </td></tr><tr><td align="left" port="r3">&#40;3&#41; l -&gt; '*' &bull;r </td></tr><tr><td align="left" port="r4">&#40;4&#41; l -&gt; &bull;'n' </td></tr><tr><td align="left" port="r5">&#40;5&#41; r -&gt; &bull;l </td></tr></table>> ];
+    "state5" [ fillcolor="black" label =<<table border="0" cellborder="0" cellpadding="3" bgcolor="black"><tr><td bgcolor="black" align="center" colspan="2"><font color="white">State #5</font></td></tr><tr><td align="left" port="r0"><font color="white">&#40;0&#41; s -&gt; e &bull;$ </font></td></tr></table>> ];
+    "state6" [ label =<<table border="0" cellborder="0" cellpadding="3" bgcolor="white"><tr><td bgcolor="black" align="center" colspan="2"><font color="white">State #6</font></td></tr><tr><td align="left" port="r1">&#40;1&#41; e -&gt; l &bull;'=' r </td></tr><tr><td align="left" port="r5">&#40;5&#41; r -&gt; l &bull;</td><td bgcolor="grey" align="right">$</td></tr></table>> ];
+    "state7" [ label =<<table border="0" cellborder="0" cellpadding="3" bgcolor="white"><tr><td bgcolor="black" align="center" colspan="2"><font color="white">State #7</font></td></tr><tr><td align="left" port="r1">&#40;1&#41; e -&gt; l '=' &bull;r </td></tr><tr><td align="left" port="r3">&#40;3&#41; l -&gt; &bull;'*' r </td></tr><tr><td align="left" port="r4">&#40;4&#41; l -&gt; &bull;'n' </td></tr><tr><td align="left" port="r5">&#40;5&#41; r -&gt; &bull;l </td></tr></table>> ];
+    "state8" [ label =<<table border="0" cellborder="0" cellpadding="3" bgcolor="white"><tr><td bgcolor="black" align="center" colspan="2"><font color="white">State #8</font></td></tr><tr><td align="left" port="r1">&#40;1&#41; e -&gt; l '=' r &bull;</td><td bgcolor="grey" align="right">$</td></tr></table>> ];
+    "state9" [ label =<<table border="0" cellborder="0" cellpadding="3" bgcolor="white"><tr><td bgcolor="black" align="center" colspan="2"><font color="white">State #9</font></td></tr><tr><td align="left" port="r2">&#40;2&#41; e -&gt; r &bull;</td><td bgcolor="grey" align="right">$</td></tr></table>> ];
+
+    state0 -> state5 [ label="e" ];
+    state0 -> state6 [ label="l" ];
+    state0 -> state9 [ label="r" ];
+    state0 -> state1 [ penwidth=1 fontsize=20 fontcolor="grey28" label="*" ];
+    state1 -> state1 [ penwidth=1 fontsize=20 fontcolor="grey28" label="*" ];
+    state6 -> state7 [ penwidth=1 fontsize=20 fontcolor="grey28" label="=" ];
+    state7 -> state8 [ label="r" ];
+    state7 -> state1 [ penwidth=1 fontsize=20 fontcolor="grey28" label="*" ];
+    }
+```
+
+## Colored styles with links
+
+
+```{graphviz}
+    :name: sphinx.ext.graphvizww
+    :caption: Sphinx and GraphViz Data Flow
+    :alt: How Sphinx and GraphViz Render the Final Document
+    :align: center
+
+     digraph "sphinx-ext-graphviz" {
+         size="6,4";
+         rankdir="LR";
+         graph [fontname="Verdana", fontsize="12", bgcolor=transparent];
+         node [fontname="Verdana", fontsize="12"];
+         edge [fontname="Sans", fontsize="9"];
+
+         sphinx [label="Sphinx", shape="component",
+                   href="https://www.sphinx-doc.org/",
+                   target="_blank"];
+         dot [label="GraphViz", shape="component",
+              href="https://www.graphviz.org/",
+              target="_blank"];
+         docs [label="Docs (.rst)", shape="folder",
+               fillcolor=green, style=filled];
+         svg_file [label="SVG Image", shape="note", fontcolor=white,
+                 fillcolor="#3333ff", style=filled];
+         html_files [label="HTML Files", shape="folder",
+              fillcolor=yellow, style=filled];
+
+         docs -> sphinx [label=" parse "];
+         sphinx -> dot [label=" call ", style=dashed, arrowhead=none];
+         dot -> svg_file [label=" draw "];
+         sphinx -> html_files [label=" render "];
+         svg_file -> html_files [style=dashed];
+     }
+```
+
+
+```````

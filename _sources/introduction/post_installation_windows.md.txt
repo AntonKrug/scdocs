@@ -26,7 +26,8 @@ However in a rare case when the .NET Framework is not already installed with Win
 ````{tab} Windows 7
 
 On Windows 7 the Microsoft .NET Framework v4.7.2 must be installed first:
-<https://www.microsoft.com/net/download/dotnet-framework-runtime>
+
+<https://www.microsoft.com/net/download/dotnet-framework-runtime>   
 
 ````
 

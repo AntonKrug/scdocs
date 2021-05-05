@@ -9,5 +9,6 @@ introduction/overview
 introduction/supported_platforms
 introduction/installation
 introduction/post_installation
+introduction/graphviz
 introduction/sandbox
 ```

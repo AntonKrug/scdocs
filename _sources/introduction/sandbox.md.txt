@@ -19,7 +19,7 @@ depends on the operating system.
 Tables are created using the following code. A table has a
 captionfigure points to a filename and has a caption. Optionally,
 you can add a label. You can make references to a table using its
-label as follows: :numref:`tab-wave-breaking`.
+<!-- label as follows: :numref:`tab-wave-breaking`. -->
 
 inline equation $z=\sqrt{x^2+y^2}$.
 
@@ -43,179 +43,8 @@ note = "Python syntax highlighting"
 print(node)
 ```
 
-`````{list-table}
-:header-rows: 1
-:widths: 10 20 20
-
-* - Token
-  - Description
-  - Example
-* - FrontMatter
-  - A YAML block at the start of the document enclosed by `---`
-  - ```yaml
-    ---
-    key: value
-    ---
-    ```
-* - Directives
-  - enclosed in 3 or more backticks followed by the directive name wrapped
-  in curly brackets `{}`. See {ref}`syntax/directives` for more details.
-  - ````md
-    ```{directive}
-    :option: value
-
-    content
-    ```
-    ````
-* - Math
-  - `$$` (default) or `\[`...`\]` characters wrapping multi-line math, or even direct [amsmath](https://ctan.org/pkg/amsmath) LaTeX equations (optional).
-  See {ref}`syntax/math` for more information.
-  - ```latex
-    $$
-    a=1
-    $$
-    ```
-* - Table
-  - Standard markdown table style, with pipe separation.
-  - ```md
-    | a    | b    |
-    | :--- | ---: |
-    | c    | d    |
-    ```
-* - LineComment
-  - A commented line. See {ref}`syntax/comments` for more information.
-  - ```latex
-    % this is a comment
-    ```
-* - BlockBreak
-  - Define blocks of text. See {ref}`syntax/blockbreaks` for more information.
-  - ```md
-    +++ {"meta": "data"}
-    ```
-* - Footnote
-  - A definition for a referencing footnote, that is placed at the bottom of the document.
-   See {ref}`syntax/footnotes` for more details.
-  - ```md
-    [^ref]: Some footnote text
-    ```
-* - Admonitions (optional)
-  - An alternative approach for admonition style directives only, which has the benefit of allowing the content to be rendered in standard markdown editors.
-    See [admonition directives](syntax/admonitions) for more details.
-  - ````md
-    :::{note}
-    *content*
-    :::
-    ````
-`````
 
 
-```{graphviz}
-     digraph {
-         rankdir="LR";
-         graph [fontname="Verdana", fontsize="9", bgcolor=transparent];
-         node [fontname="Verdana", fontsize="9", shape="rectangle", height=.15];
-
-         n0 [label="File"];
-         n1 [label="New"];
-         n2 [label="C Project or C++ Project"];
-
-
-         n0 -> n1 [len=0.1,weight=15];
-         n1 -> n2 [len=0.16,weight=15];
-     }
-```
-
-
-```{graphviz}
-     digraph {
-         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
-         node [fontname="Verdana", fontsize="9", shape="cds", width=.2, height=.3];
-         edge [arrowhead=none];
-
-         s0 [label="File"];
-         s1 [label="New"];
-         s2 [label="C Project or C++ Project"];
-
-
-         s0 -> s1;
-         s1 -> s2;
-     }
-```
-
-
-```{graphviz}
-     digraph {
-         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
-         node [fontname="Verdana", fontsize="9", shape="cds", width=.2, height=.3];
-         edge [arrowhead=none];
-         "File" -> "New" -> "C Project or C++ Project"
-     }
-```
-
-```{graphviz}
-     digraph {
-         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
-         node [fontname="Verdana", fontsize="9", shape="cds", width=.2, height=.3, margin=".05,.11"];
-         edge [arrowhead=none];
-         "Tool Settings" -> "GNU RISC-V Cross C/C++ Compiler" -> "Preprocessor" -> "Defined symbols (-D) "
-     }
-```
-
-```{graphviz}
-     digraph {
-         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
-         node [fontname="Verdana", fontsize="9", shape="rectangle", width=.1, height=.2, margin=".04,.01"];
-         edge [arrowhead=vee, arrowsize=.5];
-         "Tool Settings" -> "Cross Arm GNU C/C++ Linker" -> "General" -> "Remove unused sections (-Xlinker --gc-sections)"
-     }
-```
-
-
-```{graphviz}
-     digraph {
-         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
-         node [fontname="Verdana", fontsize="9", shape="rectangle", width=.1, height=.2, margin=".04,.01"];
-         edge [arrowsize=.7];
-         "Tool Settings" -> "Cross Arm GNU C/C++ Linker" -> "General" -> "Remove unused sections (-Xlinker --gc-sections)"
-     }
-```
-
-```{graphviz}
-     digraph {
-         graph [rankdir="LR", ranksep=.01, bgcolor=transparent];
-         node [fontname="Verdana", fontsize="9", shape="rectangle", width=.1, height=.2, margin=".04,.01"];
-         edge [arrowsize=.7];
-         "Tool Settings" -> "GNU RISC-V C/C++ Linker" -> "General" -> "Remove unused sections (-Xlinker --gc-sections)"
-     }
-```
-
-
-Check the nodes below are clickable:
-
-```{graphviz}
-    digraph { 
-        graph [fontname="Verdana", fontsize="16", bgcolor=transparent];
-
-        regexp [URL="https://godoc.org/regexp" target="_blank"];
-        bytes [URL="https://godoc.org/bytes"];
-        io [URL="https://godoc.org/io"];
-
-        regexp -> bytes;
-        regexp -> io;
-    }
-```
-
-
-```{graphviz}
-    digraph "strdducts" {
-        graph [bgcolor=transparent];
-        node [shape=record]; 
-        struct1 [shape=Mrecord, label="<f0> left|<f1> mid&#92; dle|<f2> right"]; 
-        struct2 [label="<f0> one|<f1> two"]; 
-        struct3 [label="hello&#92;nworld |{ b |{c|<here> d|e}| f}| g | h"]; 
-        struct1:f1 -> struct2:f0; struct1:f2 -> struct3:here; 
-     }
-```
 
 
 ```{only} html and draft
@@ -288,7 +117,10 @@ print(f'my {a}nd line')
 ```
 
 ```{wavedrom}
-
+---
+height: 300px
+width: 840 px
+---
         { "signal": [
                 { "name": "clk",  "wave": "P......" },
                 { "name": "bus",  "wave": "x.==.=x", "data": ["tiny", "body", "tail", "data"] },
@@ -298,21 +130,41 @@ print(f'my {a}nd line')
 
 
 ```{wavedrom}
-
+---
+height: 300px
+width: 840 px
+---
         {"reg": [
-                {"bits": 2,  "name": "BEGINING", "attr": ["0x7F"], "type": 5},
+                {"bits": 2,  "name": "Start", "attr": ["0x7F"], "type": 5},
                 {"bits": 4,  "name": "CRC", "attr": ["CRC16", "x1041","Bits 13:6"], "type": 2},
-                {"bits": 2,  "name": "Ctrl", "attr": ["ON = x01", "OFF = x00"], "type": 4},
+                {"bits": 2,  "name": "Ctrl", "attr": ["ON = x01", "OFF = x00"], "type": 6},
                 {"bits": 2,  "name": "Size", "attr": "x01", "type": 4},
                 {"bits": 2,  "name": "Cmd", "attr": "xAA", "type": 4},
-                {"bits": 2,  "name": "Req/Reply", "attr": ["Req x01", "Rep x00"], "type": 4},
-                {"bits": 12,  "name": "Head", "attr": ["xEB x90"], "type": 5}
+                {"bits": 2,  "name": "Req", "attr": ["Req x01", "Rep x00"], "type": 4},
+                {"bits": 12,  "name": "Head", "attr": [0, 1, 2, "xEB x90"], "type": 5}
         ], 
         "config":{"bits": 26}
         }
 ```
 
-Sdfsdfs
+
+```{wavedrom}
+---
+height: 300px
+width: 840 px
+---
+        {"reg": [
+                {"bits": 2,  "name": "Start", "attr": ["0x7F"], "type": 5},
+                {"bits": 4,  "name": "CRC", "attr": ["CRC16", "x1041","Bits 13:6"], "type": 2},
+                {"bits": 2,  "name": "Ctrl", "attr": ["ON = x01", "OFF = x00"], "type": 6},
+                {"bits": 2,  "name": "Size", "attr": "x01", "type": 4},
+                {"bits": 2,  "name": "Cmd", "attr": "xAA", "type": 4},
+                {"bits": 2,  "name": "Req", "attr": ["Req x01", "Rep x00"], "type": 4}
+        ], 
+        "config":{"bits": 14}
+        }
+```
+
 
 | a    | b    |
 | :--- | ---: |
@@ -324,55 +176,11 @@ Sdfsdfs
    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mattis commodo eros, quis posuere enim lobortis quis. Nullam ut tempus nibh.
 ```
 
-```{graphviz}
-    :name: sphinx.ext.graphvizww
-    :caption: Sphinx and GraphViz Data Flow
-    :alt: How Sphinx and GraphViz Render the Final Document
-    :align: center
-
-     digraph "sphinx-ext-graphviz" {
-         size="6,4";
-         rankdir="LR";
-         graph [fontname="Verdana", fontsize="12", bgcolor=transparent];
-         node [fontname="Verdana", fontsize="12"];
-         edge [fontname="Sans", fontsize="9"];
-
-         sphinx [label="Sphinx", shape="component",
-                   href="https://www.sphinx-doc.org/",
-                   target="_blank"];
-         dot [label="GraphViz", shape="component",
-              href="https://www.graphviz.org/",
-              target="_blank"];
-         docs [label="Docs (.rst)", shape="folder",
-               fillcolor=green, style=filled];
-         svg_file [label="SVG Image", shape="note", fontcolor=white,
-                 fillcolor="#3333ff", style=filled];
-         html_files [label="HTML Files", shape="folder",
-              fillcolor=yellow, style=filled];
-
-         docs -> sphinx [label=" parse "];
-         sphinx -> dot [label=" call ", style=dashed, arrowhead=none];
-         dot -> svg_file [label=" draw "];
-         sphinx -> html_files [label=" render "];
-         svg_file -> html_files [style=dashed];
-     }
-```
 
 
 ```{admonition} Additional steps
    Feel free to skip these
 ```
-
-https://github.com/coleifer/dot-theme
-
-
-https://graphviz.org/Gallery/directed/psg.html
-
-https://graphviz.org/Gallery/directed/ninja.html
-
-https://graphviz.org/Gallery/directed/neural-network.html
-
-https://graphviz.org/Gallery/directed/go-package.html
 
 
 ```````
