@@ -104,11 +104,15 @@ Using SoftConsole from within a Virtual Machine might limit which JTAG probes ca
   * Microchip {{firmwarecatalog}}
 
 * Firmware (minimum required version)
+{% if riscv is defined %}
   * {{mpfshal}}
   * RISC-V Hardware Abstraction Layer (HAL) 3.0.105
+{% endif %}
+{% if arm is defined %}
   * SmartFusion2 CMSIS Hardware Abstraction Layer 2.3.105
   * SmartFusion CMSIS-PAL 2.4.102
   * Cortex-M1 CMSIS Hardware Abstraction Layer 2.0.105
   * (DirectCore) Hardware Abstraction Layer 2.3.103
+{% endif %}
 
 ```````
