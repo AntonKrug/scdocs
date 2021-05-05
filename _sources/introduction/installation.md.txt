@@ -37,7 +37,6 @@ SoftConsole for Linux is now fully 64-bit and unlike previous releases no longer
     cd ~/Downloads 
     chmod +x {{sclinbin}}
     ./{{sclinbin}}
-    echo "new command here"
     ```
 
 3. Some desktop/window managers might not put the installer into the focus or show it in the taskbar. The installation might seem frozen, try to minimalize the terminal window to see the installation dialog underneath.
