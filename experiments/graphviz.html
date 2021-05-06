@@ -23,6 +23,8 @@
 
   
   
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  
 
   
   
@@ -49,7 +51,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Sandbox" href="sandbox.html" />
+    <link rel="next" title="Wavedrom" href="wavedrom.html" />
     <link rel="prev" title="Post Installation" href="../introduction/post_installation.html" /> 
 </head>
 
@@ -136,6 +138,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#large-graphs">Large graphs</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="wavedrom.html">Wavedrom</a></li>
 <li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox</a></li>
 </ul>
 
@@ -252,7 +255,7 @@
 </div>
 <div class="section" id="clusters">
 <h2>Clusters<a class="headerlink" href="#clusters" title="Permalink to this headline">¶</a></h2>
-<div class="graphviz"><img src="../_images/graphviz-908ad7a2ad59508c8e887b7f33af0c24b29eb1de.png" alt="digraph G {
+<div class="graphviz"><img src="../_images/graphviz-44264016bfd4d304db4220794d94145df2a7fd7c.png" alt="digraph G {
         graph [bgcolor=transparent]
 
         subgraph cluster_0 {
@@ -270,13 +273,14 @@
             b0 -&gt; b1 -&gt; b2 -&gt; b3;
             label = &quot;Libero&quot;;
         }
+        
         start -&gt; a0;
         start -&gt; b0;
-        a1 -&gt; b3;
-        b2 -&gt; a3;
-        a3 -&gt; a0;
-        a3 -&gt; end;
-        b3 -&gt; end;
+        a1    -&gt; b3;
+        b2    -&gt; a3;
+        a3    -&gt; a0;
+        a3    -&gt; end;
+        b3    -&gt; end;
 
         start [shape=Mdiamond style=filled fillcolor=&quot;#E5D4EB&quot; color=&quot;#C49ED2&quot;];
         end [shape=Msquare style=filled fillcolor=&quot;#E3D9CF&quot; color=&quot;#BFA891&quot;];
@@ -422,30 +426,39 @@
 </div>
 <div class="section" id="state-machine">
 <h2>State machine<a class="headerlink" href="#state-machine" title="Permalink to this headline">¶</a></h2>
-<div class="graphviz"><img src="../_images/graphviz-3b2d834631b32c44a08565a581ac6b839b0745f3.png" alt="digraph finite_state_machine {
+<div class="graphviz"><img src="../_images/graphviz-2838863de4c890bf866a3f9a48587ed98d8e401b.png" alt="digraph finite_state_machine {
         graph [bgcolor=transparent]
-        rankdir=LR;
-        edge [fontsize=26];
-        node [shape = doublecircle, width=2.0, fontsize=24, fixedsize=true,style=filled, colorscheme=spectral5]; New  [fillcolor=3] Terminated [fillcolor=5];
-        node [shape = circle, width=2.0, fontsize=24, fixedsize=true, colorscheme=spectral5]; Runnable [fillcolor=4] Waiting [fillcolor=2] &quot;Timed\nWaiting&quot; [fillcolor=2] Blocked [fillcolor=1];
+        rankdir=LR
+        edge [fontsize=26]
+        
+        node [shape = doublecircle, width=2.0, fontsize=24, fixedsize=true,style=filled, colorscheme=spectral5]
+        New        [fillcolor=3] 
+        Terminated [fillcolor=5]
 
-        New -&gt; Runnable [ label = &quot;Thread.start&quot; ];
-        Runnable -&gt; Waiting [ label = &quot;Object.wait&quot; ];
-        Runnable -&gt; Waiting [ label = &quot;Thread.sleep&quot; ];
-        Runnable -&gt; Waiting [ label = &quot;LockSupport.park&quot; ];
-        Waiting -&gt; Blocked [ label = &quot;Reacquire monitor lock after\nleaving Object.wait&quot; ]
-        Waiting -&gt; Blocked [label = &quot;Spurious wake-up&quot;]
-        &quot;Timed\nWaiting&quot; -&gt; Blocked [ label = &quot;Reaquire monitor lock after\n leaving Object.wait&quot; ]
-        &quot;Timed\nWaiting&quot; -&gt; Terminated [ label = &quot;Exception&quot; ]
-        &quot;Timed\nWaiting&quot; -&gt; Blocked [ label = &quot;Spurious wake-up&quot; ]
-        Runnable -&gt; &quot;Timed\nWaiting&quot; [ label = &quot;Object.wait&quot; ];
-        Runnable -&gt; Blocked [ label = &quot;Contended Monitor\nEnter&quot; ];
-        Blocked -&gt; Runnable [ label = &quot;Contended Monitor\nEntered&quot; ];
-        Runnable -&gt; Terminated [ label = &quot;Thread finishes\nexecution&quot; ]
-        Runnable -&gt; Terminated [ label = &quot;Exception&quot; ]
-        Waiting -&gt; Runnable [ label = &quot;Object.notify\nObject.notifyAll&quot; ]
-        Waiting -&gt; Terminated [ label = &quot;Exception&quot; ]
-        &quot;Timed\nWaiting&quot; -&gt; Runnable [ label = &quot;Object.notify\nObject.notifyAll&quot; ]
+        node [shape=circle width=2.0 fontsize=24 fixedsize=true colorscheme=spectral5 fillcolor=2]
+        Runnable         [fillcolor=4]
+        Blocked          [fillcolor=1]
+        Waiting
+        &quot;Timed\nWaiting&quot;
+
+
+        New              -&gt; Runnable         [label=&quot;Thread.start&quot;]
+        Runnable         -&gt; Waiting          [label=&quot;Object.wait&quot;]
+        Runnable         -&gt; Waiting          [label=&quot;Thread.sleep&quot;]
+        Runnable         -&gt; Waiting          [label=&quot;LockSupport.park&quot;]
+        Waiting          -&gt; Blocked          [label=&quot;Reacquire monitor lock after\nleaving Object.wait&quot;]
+        Waiting          -&gt; Blocked          [label=&quot;Spurious wake-up&quot;]
+        &quot;Timed\nWaiting&quot; -&gt; Blocked          [label=&quot;Reaquire monitor lock after\n leaving Object.wait&quot;]
+        &quot;Timed\nWaiting&quot; -&gt; Terminated       [label=&quot;Exception&quot;]
+        &quot;Timed\nWaiting&quot; -&gt; Blocked          [label=&quot;Spurious wake-up&quot;]
+        Runnable         -&gt; &quot;Timed\nWaiting&quot; [label=&quot;Object.wait&quot;]
+        Runnable         -&gt; Blocked          [label=&quot;Contended Monitor\nEnter&quot;]
+        Blocked          -&gt; Runnable         [label=&quot;Contended Monitor\nEntered&quot;]
+        Runnable         -&gt; Terminated       [label=&quot;Thread finishes\nexecution&quot;]
+        Runnable         -&gt; Terminated       [label=&quot;Exception&quot;]
+        Waiting          -&gt; Runnable         [label=&quot;Object.notify\nObject.notifyAll&quot;]
+        Waiting          -&gt; Terminated       [label=&quot;Exception&quot;]
+        &quot;Timed\nWaiting&quot; -&gt; Runnable         [label=&quot;Object.notify\nObject.notifyAll&quot;]
     }" class="graphviz" /></div>
 </div>
 <div class="section" id="horizontal-order">
@@ -489,20 +502,20 @@
 </div>
 <div class="section" id="chart">
 <h2>Chart<a class="headerlink" href="#chart" title="Permalink to this headline">¶</a></h2>
-<div class="graphviz"><img src="../_images/graphviz-37f0aaa3f03f8d0bd43412811d7dce4e2aa9070d.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-c600e1e0ec6012ce6426d6ef9f097ac138513886.png" alt="digraph {
         graph [bgcolor=transparent]
-        node  [fontname=&quot;Handlee&quot;]
+        node  [fontname=&quot;Handlee&quot; shape=rect]
         edge  [fontname=&quot;Handlee&quot;]
 
-        draw  [label=&quot;Draw a picture&quot; shape=rect style=filled fillcolor=&quot;#FFECCC&quot; color=&quot;#FFE3B3&quot;]
-        win   [label=&quot;You win!&quot; shape=oval style=filled fillcolor=&quot;#D4E2F9&quot; color=&quot;#9CBDF2&quot;]
-        guess [label=&quot;Did they\nguess it?&quot; shape=diamond style=filled fillcolor=&quot;#EAF7DA&quot; color=&quot;#B9E584&quot;]
-        point [label=&quot;Point repeatedly\nto the same picture.&quot; shape=rect style=filled fillcolor=&quot;#E5D4EB&quot; color=&quot;#C49ED2&quot;]
+        draw  [label=&quot;Search for error&quot;                       style=filled fillcolor=&quot;#FFECCC&quot; color=&quot;#FFE3B3&quot;]
+        win   [label=&quot;You win!&quot; shape=oval                    style=filled fillcolor=&quot;#D4E2F9&quot; color=&quot;#9CBDF2&quot;]
+        guess [label=&quot;Did they\nguess it?&quot; shape=diamond      style=filled fillcolor=&quot;#EAF7DA&quot; color=&quot;#B9E584&quot;]
+        point [label=&quot;Point repeatedly\nto the same picture.&quot; style=filled fillcolor=&quot;#E5D4EB&quot; color=&quot;#C49ED2&quot;]
 
-        draw -&gt; guess
-        win -&gt; guess [ label=&quot;Yes&quot; dir=back ]
+        draw    -&gt; guess
+        win     -&gt; guess   [label=&quot;Yes&quot; dir=back]
         point:s -&gt; guess:s
-        guess -&gt; point [ label = &quot;No&quot; ]
+        guess   -&gt; point   [label=&quot;No&quot;]
         {
             rank=same;
             guess; point; win;
@@ -647,10 +660,10 @@
 <div class="section" id="colored-styles-with-links">
 <h2>Colored styles with links<a class="headerlink" href="#colored-styles-with-links" title="Permalink to this headline">¶</a></h2>
 <div class="figure align-center" id="sphinx-ext-graphvizww">
-<div class="graphviz"><img src="../_images/graphviz-7b8675744d00f9c7d895927a8178fe79dacc375d.png" alt="How Sphinx and GraphViz Render the Final Document" usemap="#sphinx&#45;ext&#45;graphviz" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-d75fefae74ceab9bbc1d7f1f2a3aec024eaab260.png" alt="How Sphinx and GraphViz Render the Final Document" usemap="#sphinx&#45;ext&#45;graphviz" class="graphviz" /></div>
 <map id="sphinx&#45;ext&#45;graphviz" name="sphinx&#45;ext&#45;graphviz">
-<area shape="rect" id="node1" href="https://www.sphinx-doc.org/" target="_blank" title="Sphinx" alt="" coords="205,45,280,93"/>
-<area shape="rect" id="node2" href="https://www.graphviz.org/" target="_blank" title="GraphViz" alt="" coords="357,5,451,53"/>
+<area shape="rect" id="node1" href="https://www.sphinx-doc.org/" target="_blank" title="Sphinx" alt="" coords="249,45,324,93"/>
+<area shape="rect" id="node2" href="https://www.graphviz.org/" target="_blank" title="GraphViz" alt="" coords="401,5,495,53"/>
 </map><p class="caption"><span class="caption-number">Fig. 1 </span><span class="caption-text">Sphinx and GraphViz Data Flow</span><a class="headerlink" href="#sphinx-ext-graphvizww" title="Permalink to this image">¶</a></p>
 </div>
 </div>
@@ -1326,6 +1339,7 @@
 <p><a class="reference external" href="http://yifanhu.net/GALLERY/GRAPHS/index.html">http://yifanhu.net/GALLERY/GRAPHS/index.html</a></p>
 <p><a class="reference external" href="http://yifanhu.net/GALLERY/GRAPHS/index7.html">http://yifanhu.net/GALLERY/GRAPHS/index7.html</a></p>
 <p><a class="reference external" href="http://yifanhu.net/GALLERY/GRAPHS/index57.html">http://yifanhu.net/GALLERY/GRAPHS/index57.html</a></p>
+<p><a class="reference external" href="http://yifanhu.net/GALLERY/GRAPHS/index105.html">http://yifanhu.net/GALLERY/GRAPHS/index105.html</a></p>
 </div>
 </div>
 
@@ -1335,7 +1349,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="sandbox.html" class="btn btn-neutral float-right" title="Sandbox" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="wavedrom.html" class="btn btn-neutral float-right" title="Wavedrom" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="../introduction/post_installation.html" class="btn btn-neutral float-left" title="Post Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

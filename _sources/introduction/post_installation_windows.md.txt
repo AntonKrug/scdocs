@@ -1,6 +1,11 @@
 ### Program and Debug PolarFire SoC
 
-If you want to use mpfs programmer you need to install program and debug
+If you want to use mpfs programmer you need to install Program and debug, or Libero:
+
+<https://www.microsemi.com/product-directory/dev-tools/4970-programming>
+
+<https://www.microsemi.com/product-directory/design-resources/1750-libero-soc>
+
 
 
 ### Renode depedencies

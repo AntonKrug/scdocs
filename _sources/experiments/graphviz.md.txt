@@ -64,13 +64,14 @@
             b0 -> b1 -> b2 -> b3;
             label = "Libero";
         }
+        
         start -> a0;
         start -> b0;
-        a1 -> b3;
-        b2 -> a3;
-        a3 -> a0;
-        a3 -> end;
-        b3 -> end;
+        a1    -> b3;
+        b2    -> a3;
+        a3    -> a0;
+        a3    -> end;
+        b3    -> end;
 
         start [shape=Mdiamond {{gv_purple}}];
         end [shape=Msquare {{gv_brown}}];
@@ -238,28 +239,37 @@ print(f'my {a}nd line')
 ```{graphviz}
     digraph finite_state_machine {
         graph [bgcolor=transparent]
-        rankdir=LR;
-        edge [fontsize=26];
-        node [shape = doublecircle, width=2.0, fontsize=24, fixedsize=true,style=filled, colorscheme=spectral5]; New  [fillcolor=3] Terminated [fillcolor=5];
-        node [shape = circle, width=2.0, fontsize=24, fixedsize=true, colorscheme=spectral5]; Runnable [fillcolor=4] Waiting [fillcolor=2] "Timed\nWaiting" [fillcolor=2] Blocked [fillcolor=1];
+        rankdir=LR
+        edge [fontsize=26]
+        
+        node [shape = doublecircle, width=2.0, fontsize=24, fixedsize=true,style=filled, colorscheme=spectral5]
+        New        [fillcolor=3] 
+        Terminated [fillcolor=5]
 
-        New -> Runnable [ label = "Thread.start" ];
-        Runnable -> Waiting [ label = "Object.wait" ];
-        Runnable -> Waiting [ label = "Thread.sleep" ];
-        Runnable -> Waiting [ label = "LockSupport.park" ];
-        Waiting -> Blocked [ label = "Reacquire monitor lock after\nleaving Object.wait" ]
-        Waiting -> Blocked [label = "Spurious wake-up"]
-        "Timed\nWaiting" -> Blocked [ label = "Reaquire monitor lock after\n leaving Object.wait" ]
-        "Timed\nWaiting" -> Terminated [ label = "Exception" ]
-        "Timed\nWaiting" -> Blocked [ label = "Spurious wake-up" ]
-        Runnable -> "Timed\nWaiting" [ label = "Object.wait" ];
-        Runnable -> Blocked [ label = "Contended Monitor\nEnter" ];
-        Blocked -> Runnable [ label = "Contended Monitor\nEntered" ];
-        Runnable -> Terminated [ label = "Thread finishes\nexecution" ]
-        Runnable -> Terminated [ label = "Exception" ]
-        Waiting -> Runnable [ label = "Object.notify\nObject.notifyAll" ]
-        Waiting -> Terminated [ label = "Exception" ]
-        "Timed\nWaiting" -> Runnable [ label = "Object.notify\nObject.notifyAll" ]
+        node [shape=circle width=2.0 fontsize=24 fixedsize=true colorscheme=spectral5 fillcolor=2]
+        Runnable         [fillcolor=4]
+        Blocked          [fillcolor=1]
+        Waiting
+        "Timed\nWaiting"
+
+
+        New              -> Runnable         [label="Thread.start"]
+        Runnable         -> Waiting          [label="Object.wait"]
+        Runnable         -> Waiting          [label="Thread.sleep"]
+        Runnable         -> Waiting          [label="LockSupport.park"]
+        Waiting          -> Blocked          [label="Reacquire monitor lock after\nleaving Object.wait"]
+        Waiting          -> Blocked          [label="Spurious wake-up"]
+        "Timed\nWaiting" -> Blocked          [label="Reaquire monitor lock after\n leaving Object.wait"]
+        "Timed\nWaiting" -> Terminated       [label="Exception"]
+        "Timed\nWaiting" -> Blocked          [label="Spurious wake-up"]
+        Runnable         -> "Timed\nWaiting" [label="Object.wait"]
+        Runnable         -> Blocked          [label="Contended Monitor\nEnter"]
+        Blocked          -> Runnable         [label="Contended Monitor\nEntered"]
+        Runnable         -> Terminated       [label="Thread finishes\nexecution"]
+        Runnable         -> Terminated       [label="Exception"]
+        Waiting          -> Runnable         [label="Object.notify\nObject.notifyAll"]
+        Waiting          -> Terminated       [label="Exception"]
+        "Timed\nWaiting" -> Runnable         [label="Object.notify\nObject.notifyAll"]
     }
 ```
 
@@ -310,18 +320,18 @@ print(f'my {a}nd line')
 ```{graphviz}
     digraph {
         graph [bgcolor=transparent]
-        node  [fontname="Handlee"]
+        node  [fontname="Handlee" shape=rect]
         edge  [fontname="Handlee"]
 
-        draw  [label="Draw a picture" shape=rect {{gv_orange}}]
-        win   [label="You win!" shape=oval {{gv_navy}}]
-        guess [label="Did they\nguess it?" shape=diamond {{gv_lime}}]
-        point [label="Point repeatedly\nto the same picture." shape=rect {{gv_purple}}]
+        draw  [label="Search for error"                       {{gv_orange}}]
+        win   [label="You win!" shape=oval                    {{gv_navy}}]
+        guess [label="Did they\nguess it?" shape=diamond      {{gv_lime}}]
+        point [label="Point repeatedly\nto the same picture." {{gv_purple}}]
 
-        draw -> guess
-        win -> guess [ label="Yes" dir=back ]
+        draw    -> guess
+        win     -> guess   [label="Yes" dir=back]
         point:s -> guess:s
-        guess -> point [ label = "No" ]
+        guess   -> point   [label="No"]
         {
             rank=same;
             guess; point; win;
@@ -488,30 +498,23 @@ plt.show()
     :align: center
 
      digraph "sphinx-ext-graphviz" {
-         size="9,6";
-         rankdir="LR";
-         graph [fontname="Verdana", fontsize="12", bgcolor=transparent];
-         node [fontname="Verdana", fontsize="12"];
-         edge [fontname="Sans", fontsize="9"];
+         rankdir="LR"
 
-         sphinx [label="Sphinx", shape="component",
-                   href="https://www.sphinx-doc.org/",
-                   target="_blank"];
-         dot [label="GraphViz", shape="component",
-              href="https://www.graphviz.org/",
-              target="_blank"];
-         docs [label="Docs (.rst)", shape="folder",
-               fillcolor=green, style=filled];
-         svg_file [label="SVG Image", shape="note", fontcolor=white,
-                 fillcolor="#3333ff", style=filled];
-         html_files [label="HTML Files", shape="folder",
-              fillcolor=yellow, style=filled];
+         graph [fontname=Verdana  fontsize=12 bgcolor=transparent]
+         node  [fontname=Verdana  fontsize=12 shape=component style=filled fillcolor="#ffffff" target="_blank"]
+         edge  [fontname=Sans     fontsize=9]
 
-         docs -> sphinx [label=" parse "];
-         sphinx -> dot [label=" call ", style=dashed, arrowhead=none];
-         dot -> svg_file [label=" draw "];
-         sphinx -> html_files [label=" render "];
-         svg_file -> html_files [style=dashed];
+         sphinx     [label="Sphinx"            href="https://www.sphinx-doc.org/"]
+         dot        [label="GraphViz"          href="https://www.graphviz.org/"]
+         docs       [label="Docs (.rst | .md)" shape=folder fillcolor=green ]
+         svg_file   [label="SVG Image"         shape=note   fontcolor=white fillcolor="#3333ff"]
+         html_files [label="HTML Files"        shape=folder fillcolor=yellow]
+
+         docs     -> sphinx     [label=" parse "]
+         sphinx   -> dot        [label=" call " style=dashed arrowhead=none]
+         dot      -> svg_file   [label=" draw "]
+         sphinx   -> html_files [label=" render "]
+         svg_file -> html_files [style=dashed]
      }
 ```
 
@@ -1190,6 +1193,8 @@ plt.show()
 <http://yifanhu.net/GALLERY/GRAPHS/index7.html>
 
 <http://yifanhu.net/GALLERY/GRAPHS/index57.html>
+
+<http://yifanhu.net/GALLERY/GRAPHS/index105.html>
 
 
 ```````

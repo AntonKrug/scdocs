@@ -7,16 +7,12 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Program and Debug PolarFire SoC &mdash; SoftConsole 2021-05 v7.0.501 documentation</title>
+  <title>Wavedrom &mdash; SoftConsole 2021-05 v7.0.501 documentation</title>
   
 
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
@@ -41,8 +37,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
-        <script src="../_static/sphinx_tabs/tabs.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
     
@@ -50,7 +44,9 @@
 
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sandbox" href="sandbox.html" />
+    <link rel="prev" title="Graphviz" href="graphviz.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -104,15 +100,30 @@
             
               <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="supported_platforms.html">Supported Platforms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/post_installation.html">Post Installation</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Experiments</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../experiments/graphviz.html">Graphviz</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../experiments/wavedrom.html">Wavedrom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../experiments/sandbox.html">Sandbox</a></li>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="graphviz.html">Graphviz</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Wavedrom</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simple">Simple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#diagram">Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#groups">Groups</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#clocks">Clocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#gaps">Gaps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ddr">DDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#horizontal-scale-1">Horizontal scale 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#horizontal-scale-4">Horizontal scale 4</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-lot-of-styling">A lot of styling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#arrows">Arrows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sharp-arrows-lines">Sharp arrows/lines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bit-register">26-bit Register</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">16-bit register</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox</a></li>
 </ul>
 
             
@@ -161,7 +172,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Program and Debug PolarFire SoC</li>
+      <li>Wavedrom</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -178,42 +189,47 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="program-and-debug-polarfire-soc">
-<h1>Program and Debug PolarFire SoC<a class="headerlink" href="#program-and-debug-polarfire-soc" title="Permalink to this headline">¶</a></h1>
-<p>If you want to use mpfs programmer you need to install Program and debug, or Libero:</p>
-<p><a class="reference external" href="https://www.microsemi.com/product-directory/dev-tools/4970-programming">https://www.microsemi.com/product-directory/dev-tools/4970-programming</a></p>
-<p><a class="reference external" href="https://www.microsemi.com/product-directory/design-resources/1750-libero-soc">https://www.microsemi.com/product-directory/design-resources/1750-libero-soc</a></p>
-</div>
-<div class="section" id="renode-depedencies">
-<h1>Renode depedencies<a class="headerlink" href="#renode-depedencies" title="Permalink to this headline">¶</a></h1>
-<p>The Renode emulation platform is not a crucial sub-module of SoftConsole and users who are intending to connect to hardware targets only do not need satisfy the Renode’s dependencies.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>A administrative account is required to install the .NET framework.</p>
-</div>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-0-0 docutils container">
-<div class="docutils container">
-<p>Windows 10/8.1</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-0-1 docutils container">
-<div class="docutils container">
-<p>Windows 7</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
-<p>The Renode emulation platform can be used out of the box on many Windows 10/8.1 machines.
-However in a rare case when the .NET Framework is not already installed with Windows 10/8.1 then it can be changed easily from within Windows features menu.</p>
-<p>{{ macros.breadcrumb_square(‘“Start button” -&gt; “Type ‘Turn Windows features on or off’” -&gt; “Select ‘.NET Framework 4.8’” -&gt; “Click OK”’) }}</p>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
-<p>On Windows 7 the Microsoft .NET Framework v4.7.2 must be installed first:</p>
-<p><a class="reference external" href="https://www.microsoft.com/net/download/dotnet-framework-runtime">https://www.microsoft.com/net/download/dotnet-framework-runtime</a></p>
-</div>
-</div>
+  <div class="section" id="wavedrom">
+<h1>Wavedrom<a class="headerlink" href="#wavedrom" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="simple">
+<h2>Simple<a class="headerlink" href="#simple" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/wavedrom-5b61047c-91d2-4cb9-9077-cb6b60415acc.svg" src="../_images/wavedrom-5b61047c-91d2-4cb9-9077-cb6b60415acc.svg" /></div>
+<div class="section" id="diagram">
+<h2>Diagram<a class="headerlink" href="#diagram" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/wavedrom-a5f225d6-fd19-41f1-a5a5-90176c4a9ac2.svg" height="300px" src="../_images/wavedrom-a5f225d6-fd19-41f1-a5a5-90176c4a9ac2.svg" width="840px" /></div>
+<div class="section" id="groups">
+<h2>Groups<a class="headerlink" href="#groups" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/wavedrom-5dcbd8ce-6ee5-4e28-807e-081d2bc826c4.svg" height="600px" src="../_images/wavedrom-5dcbd8ce-6ee5-4e28-807e-081d2bc826c4.svg" width="600px" /></div>
+<div class="section" id="clocks">
+<h2>Clocks<a class="headerlink" href="#clocks" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/wavedrom-b06e7161-6fc0-45f2-bf74-7ac1db073aed.svg" height="600px" src="../_images/wavedrom-b06e7161-6fc0-45f2-bf74-7ac1db073aed.svg" width="600px" /></div>
+<div class="section" id="gaps">
+<h2>Gaps<a class="headerlink" href="#gaps" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/wavedrom-1e1130d7-1316-484e-98cd-694ccecf8f77.svg" height="600px" src="../_images/wavedrom-1e1130d7-1316-484e-98cd-694ccecf8f77.svg" width="600px" /></div>
+<div class="section" id="ddr">
+<h2>DDR<a class="headerlink" href="#ddr" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/wavedrom-c3142bf1-c6ad-45a3-af54-bd4417f47a24.svg" height="600px" src="../_images/wavedrom-c3142bf1-c6ad-45a3-af54-bd4417f47a24.svg" width="800px" /></div>
+<div class="section" id="horizontal-scale-1">
+<h2>Horizontal scale 1<a class="headerlink" href="#horizontal-scale-1" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/wavedrom-98f8aeb4-2103-438c-8461-1618bb362ef1.svg" src="../_images/wavedrom-98f8aeb4-2103-438c-8461-1618bb362ef1.svg" /></div>
+<div class="section" id="horizontal-scale-4">
+<h2>Horizontal scale 4<a class="headerlink" href="#horizontal-scale-4" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/wavedrom-fcd06658-5859-439c-b091-58ef4125b641.svg" src="../_images/wavedrom-fcd06658-5859-439c-b091-58ef4125b641.svg" /></div>
+<div class="section" id="a-lot-of-styling">
+<h2>A lot of styling<a class="headerlink" href="#a-lot-of-styling" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/wavedrom-8aeb9e09-101e-44b1-9698-6a36bddb43b4.svg" src="../_images/wavedrom-8aeb9e09-101e-44b1-9698-6a36bddb43b4.svg" /></div>
+<div class="section" id="arrows">
+<h2>Arrows<a class="headerlink" href="#arrows" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/wavedrom-75227d2d-07f1-44b1-84d1-d3e89e71de82.svg" height="800px" src="../_images/wavedrom-75227d2d-07f1-44b1-84d1-d3e89e71de82.svg" width="840px" /></div>
+<div class="section" id="sharp-arrows-lines">
+<h2>Sharp arrows/lines<a class="headerlink" href="#sharp-arrows-lines" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/wavedrom-fe6a2229-8581-4b6c-aec6-7caf292f7d54.svg" height="800px" src="../_images/wavedrom-fe6a2229-8581-4b6c-aec6-7caf292f7d54.svg" width="800px" /></div>
+<div class="section" id="bit-register">
+<h2>26-bit Register<a class="headerlink" href="#bit-register" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/wavedrom-2f524a04-048e-4373-af81-ef2838d1d641.svg" height="300px" src="../_images/wavedrom-2f524a04-048e-4373-af81-ef2838d1d641.svg" width="840px" /></div>
+<div class="section" id="id1">
+<h2>16-bit register<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<img alt="../_images/wavedrom-c9c5a583-c759-4b9d-9374-d1714a3e61b6.svg" height="300px" src="../_images/wavedrom-c9c5a583-c759-4b9d-9374-d1714a3e61b6.svg" width="840px" /></div>
 </div>
 
 
@@ -221,6 +237,10 @@ However in a rare case when the .NET Framework is not already installed with Win
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="sandbox.html" class="btn btn-neutral float-right" title="Sandbox" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="graphviz.html" class="btn btn-neutral float-left" title="Graphviz" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 
@@ -236,7 +256,7 @@ However in a rare case when the .NET Framework is not already installed with Win
 </a></center>
 
 <script>
-    var uri = "feedback/com?document=SoftConsole&release=2021-05 v7.0.501&page=introduction/post_installation_windows.md.txt";
+    var uri = "feedback/com?document=SoftConsole&release=2021-05 v7.0.501&page=experiments/wavedrom.md.txt";
     var res = encodeURI(uri);
     document.getElementById("feeedbackLink").href = res;
 </script>

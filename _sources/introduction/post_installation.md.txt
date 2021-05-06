@@ -6,24 +6,21 @@
 
 {% if windows is defined and linux is defined %}
 ## Windows
-{% include 'introduction/post_installation_windows.md' %}
+{% include 'main/introduction/post_installation_windows.md' %}
 ## Linux
-{% include 'introduction/post_installation_linux.md' %}
+{% include 'main/introduction/post_installation_linux.md' %}
 {% else %}
 
 
 
 
 {% if windows is defined %}
-{% include 'introduction/post_installation_windows.md' %}
+{% include 'main/introduction/post_installation_windows.md' %}
 {% endif %}  % End of Windows
 
 
-
-
-
 {% if linux is defined %}
-{% include 'introduction/post_installation_linux.md' %}
+{% include 'main/introduction/post_installation_linux.md' %}
 {% endif %}  % End of Linux
 
 

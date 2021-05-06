@@ -4,7 +4,6 @@
 :caption: Introduction
 :maxdepth: 1
 
-introduction/overview
 introduction/supported_platforms
 introduction/installation
 introduction/post_installation
@@ -16,5 +15,6 @@ introduction/post_installation
 :maxdepth: 1
 
 experiments/graphviz
+experiments/wavedrom
 experiments/sandbox
 ```
