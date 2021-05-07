@@ -15,7 +15,7 @@ height: 300px
 ---
         { "signal": [
                 { "name": "clk",  "wave": "P......" },
-                { "name": "bus",  "wave": "x.34.5x", "data": ["tiny", "body", "tail"] },
+                { "name": "bus",  "wave": "x.34.5x", "data": ["head", "body", "tail"] },
                 { "name": "wire", "wave": "0.1..0." }
         ]}
 ```
@@ -202,8 +202,8 @@ height: 800px
 
 ```{wavedrom}
 ---
+width:  840px
 height: 300px
-width: 840 px
 ---
         {"reg": [
                 {"bits": 2,  "name": "Start", "attr": ["0x7F"], "type": 5},
@@ -219,12 +219,12 @@ width: 840 px
 ```
 
 
-## 16-bit register
+## 14-bit register
 
 ```{wavedrom}
 ---
+width:  840px
 height: 300px
-width: 840 px
 ---
         {"reg": [
                 {"bits": 2,  "name": "Start", "attr": ["0x7F"], "type": 5},
