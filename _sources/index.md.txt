@@ -11,7 +11,7 @@ introduction/post_installation
 
 
 ```{toctree}
-:caption: Experiments remove this soon
+:caption: Experiments
 :maxdepth: 1
 
 experiments/graphviz
