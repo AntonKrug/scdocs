@@ -15,17 +15,20 @@
 
 ```````{jinja} scvars
 
-depends on the operating system.
-
 Tables are created using the following code. A table has a
 captionfigure points to a filename and has a caption. Optionally,
 you can add a label. You can make references to a table using its
 <!-- label as follows: :numref:`tab-wave-breaking`. -->
 
-inline equation $z=\sqrt{x^2+y^2}$.
+Inline equation: $z=\sqrt{x^2+y^2}$.
+
+Separate equation:
+
+```{math} e^{i\pi} + 1 = 0
+```
 
 
-
+Data driven text:
 SoftConsole {{sc}}
 
 
