@@ -11,7 +11,7 @@
 ```{wavedrom}
 ---
 width:  840px
-height: 300px
+height: 210px
 ---
         { "signal": [
                 { "name": "clk",  "wave": "P......" },
@@ -24,7 +24,7 @@ height: 300px
 ```{wavedrom}
 ---
 width:  600px
-height: 600px
+height: 314px
 ---
 { signal: [
   {    name: 'clk',   wave: 'p..Pp..P'},
@@ -50,7 +50,7 @@ height: 600px
 ```{wavedrom}
 ---
 width:  600px
-height: 600px
+height: 450px
 ---
 { signal: [
   { name: "pclk", wave: 'p.......' },
@@ -71,7 +71,7 @@ height: 600px
 ```{wavedrom}
 ---
 width:  600px
-height: 600px
+height: 167px
 ---
 { signal: [
   { name: "clk",         wave: "p.....|..." },
@@ -87,7 +87,7 @@ height: 600px
 ```{wavedrom}
 ---
 width:  800px
-height: 600px
+height: 163px
 ---
 { signal: [
   { name: "CK",   wave: "P.......",                                              period: 2  },
@@ -162,7 +162,7 @@ foot: {text:
 ```{wavedrom}
 ---
 width:  840px
-height: 800px
+height: 191px
 ---
 { signal: [
   { name: 'A', wave: '01........0....',  node: '.a........j' },
@@ -183,7 +183,7 @@ height: 800px
 ```{wavedrom}
 ---
 width:  800px
-height: 800px
+height: 283px
 ---
 { signal: [
   { name: 'A', wave: '01..0..',  node: '.a..e..' },
@@ -203,7 +203,7 @@ height: 800px
 ```{wavedrom}
 ---
 width:  840px
-height: 300px
+height: 103px
 ---
         {"reg": [
                 {"bits": 2,  "name": "Start", "attr": ["0x7F"],                       "type": 5},
@@ -224,7 +224,7 @@ height: 300px
 ```{wavedrom}
 ---
 width:  840px
-height: 300px
+height: 89px
 ---
         {"reg": [
                 {"bits": 2, "name": "Start", "attr": ["0x7F"],                       "type": 5},
