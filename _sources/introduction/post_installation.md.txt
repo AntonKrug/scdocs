@@ -1,4 +1,4 @@
-```````{jinja}
+```````{jinja} scvars
 {% import '_jinja/macros.html' as macros %}
 
 # Post Installation
