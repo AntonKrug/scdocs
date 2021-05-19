@@ -1,7 +1,7 @@
-```````{jinja} scvars
+:::::::::{jinja} scvars
 # What is new
 
 {% include 'main/introduction/_whatsnew2021.1.inc' %}
 {% include 'main/introduction/_whatsnew6.5.inc' %}
 
-```````
+:::::::::

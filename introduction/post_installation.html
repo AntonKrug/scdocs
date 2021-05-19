@@ -13,10 +13,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
@@ -41,8 +37,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
-        <script src="../_static/sphinx_tabs/tabs.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
     
@@ -111,17 +105,8 @@
 <li class="toctree-l1"><a class="reference internal" href="supported_platforms.html">Supported Platforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Post Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#program-and-debug-polarfire-soc">Program and Debug PolarFire SoC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#renode-depedencies">Renode depedencies</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Program and Debug PolarFire SoC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Renode depedencies</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#writting-models-for-renode">Writting models for Renode</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a></li>
 </ul>
 </li>
 </ul>
@@ -195,168 +180,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="post-installation">
+  <p>:::::::::{jinja} scvars
+{% import ‘_jinja/macros.html’ as macros %}</p>
+<div class="section" id="post-installation">
 <h1>Post Installation<a class="headerlink" href="#post-installation" title="Permalink to this headline">¶</a></h1>
+<p>{% if windows is defined and linux is defined %}</p>
 <div class="section" id="windows">
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="program-and-debug-polarfire-soc">
-<h3>Program and Debug PolarFire SoC<a class="headerlink" href="#program-and-debug-polarfire-soc" title="Permalink to this headline">¶</a></h3>
-<p>If you want to use mpfs programmer you need to install Program and debug, or Libero:</p>
-<p><a class="reference external" href="https://www.microsemi.com/product-directory/dev-tools/4970-programming">https://www.microsemi.com/product-directory/dev-tools/4970-programming</a></p>
-<p><a class="reference external" href="https://www.microsemi.com/product-directory/design-resources/1750-libero-soc">https://www.microsemi.com/product-directory/design-resources/1750-libero-soc</a></p>
-</div>
-<div class="section" id="renode-depedencies">
-<h3>Renode depedencies<a class="headerlink" href="#renode-depedencies" title="Permalink to this headline">¶</a></h3>
-<p>The Renode emulation platform is not a crucial sub-module of SoftConsole and users who are intending to connect to hardware targets only do not need satisfy the Renode’s dependencies.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>A administrative account is required to install the .NET framework.</p>
-</div>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-0-0 docutils container">
-<div class="docutils container">
-<p>Windows 10/8.1</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-0-1 docutils container">
-<div class="docutils container">
-<p>Windows 7</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
-<p>The Renode emulation platform can be used out of the box on many Windows 10/8.1 machines.
-However in a rare case when the .NET Framework is not already installed with Windows 10/8.1 then it can be changed easily from within Windows features menu.</p>
-<div class="graphviz"><img src="../_images/graphviz-60adfe5b8bc2cd7abaad8ed53e32cd14026ccdbc.png" alt="digraph {
-         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
-         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;];
-         edge [arrowsize=.7];
-         &quot;Start button&quot; -&gt; &quot;Type 'Turn Windows features on or off'&quot; -&gt; &quot;Select '.NET Framework 4.8'&quot; -&gt; &quot;Click OK&quot;
-     }" class="graphviz" /></div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
-<p>On Windows 7 the Microsoft .NET Framework v4.7.2 must be installed first:</p>
-<p><a class="reference external" href="https://www.microsoft.com/net/download/dotnet-framework-runtime">https://www.microsoft.com/net/download/dotnet-framework-runtime</a></p>
-</div>
-</div>
-</div>
+<p>{% include ‘main/introduction/_post_installation_windows.inc’ %}</p>
 </div>
 <div class="section" id="linux">
 <h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
-<ol>
-<li><p>Many platforms have GCC and make packages installed by default, but it is advisable to make sure that these are installed.</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-1-0 docutils container">
-<div class="docutils container">
-<p>Ubuntu/Debian</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-1-1 docutils container">
-<div class="docutils container">
-<p>CentOS/RHEL</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-1-2 docutils container">
-<div class="docutils container">
-<p>OpenSuse/LEAP</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-0 active docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install build-essential
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-1 docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>yum groupinstall <span class="s1">&#39;Development Tools&#39;</span>
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-1-2 docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>zypper install -t pattern devel_basis
-</pre></div>
-</div>
-</div>
-</div>
-</li>
-<li><p>It is recommended that the Linux platform used to run SoftConsole has all available updates installed.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It may be possible to install and run SoftConsole on other Linux distributions or versions once the required packages are installed. However, some earlier distributions (for example, CentOS/RHEL 5.x and 6.x) may not work and are not recommended or supported.</p>
-</div>
-</li>
-</ol>
-<div class="section" id="id1">
-<h3>Program and Debug PolarFire SoC<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>If you want to use mpfs programmer you need to install Program and debug, or Libero:</p>
-<p><a class="reference external" href="https://www.microsemi.com/product-directory/dev-tools/4970-programming">https://www.microsemi.com/product-directory/dev-tools/4970-programming</a></p>
-<p><a class="reference external" href="https://www.microsemi.com/product-directory/design-resources/1750-libero-soc">https://www.microsemi.com/product-directory/design-resources/1750-libero-soc</a></p>
-</div>
-<div class="section" id="id2">
-<h3>Renode depedencies<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<p>Renode requires mono framework to run and is provided by mono-project, add its package repository running the following:</p>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-2-0 docutils container">
-<div class="docutils container">
-<p>Ubuntu 20.04</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-2-1 docutils container">
-<div class="docutils container">
-<p>Debian 10</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-2-2 docutils container">
-<div class="docutils container">
-<p>CentOS/RHEL 7</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-0 active docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install gnupg ca-certificates
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-<span class="nb">echo</span> <span class="s2">&quot;deb https://download.mono-project.com/repo/ubuntu stable-focal main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/mono-official-stable.list
-sudo apt update
-
-sudo apt install mono-devel mono-full
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-1 docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt install apt-transport-https dirmngr gnupg ca-certificates
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF
-<span class="nb">echo</span> <span class="s2">&quot;deb https://download.mono-project.com/repo/debian stable-buster main&quot;</span> <span class="p">|</span> sudo tee /etc/apt/sources.list.d/mono-official-stable.list
-sudo apt update
-
-sudo apt install mono-devel mono-full
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-2-2 docutils container">
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>These commands have to be run from <strong>root</strong> account.</p>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rpmkeys --import <span class="s2">&quot;http://pool.sks-keyservers.net/pks/lookup?op=get&amp;search=0x3fa7e0328081bff6a14da29aa6a19b38d3d831ef&quot;</span>
-su -c <span class="s1">&#39;curl https://download.mono-project.com/repo/centos7-stable.repo | tee /etc/yum.repos.d/mono-centos7-stable.repo&#39;</span>
-
-yum install mono-devel mono-full
-</pre></div>
-</div>
-</div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For users who wish to use Renode on a unsupported platform, they can on their own risk visit <a class="reference external" href="https://www.mono-project.com/download/stable/">mono project website</a> and follow the instructions.</p>
-</div>
-</div>
-<div class="section" id="writting-models-for-renode">
-<h3>Writting models for Renode<a class="headerlink" href="#writting-models-for-renode" title="Permalink to this headline">¶</a></h3>
-<p>Users, wishing to write Renode models can use <a class="reference external" href="https://www.monodevelop.com/">Mono Develop IDE</a> as their C# editor. Renode is made as a Mono Develop project, therefore it should be able to open Renode’s sources without any extra manual steps.</p>
-</div>
+<p>{% include ‘main/introduction/_post_installation_linux.inc’ %}
+{% else %}</p>
+<p>{% if windows is defined %}
+{% include ‘main/introduction/_post_installation_windows.inc’ %}
+{% endif %}  % End of Windows</p>
+<p>{% if linux is defined %}
+{% include ‘main/introduction/_post_installation_linux.inc’ %}
+{% endif %}  % End of Linux</p>
+<p>{% endif %}</p>
+<p>:::::::::</p>
 </div>
 </div>
 

@@ -1,4 +1,4 @@
-```````{jinja} scvars
+:::::::::{jinja} scvars
 {% import '_jinja/macros.html' as macros %}
 
 # Post Installation
@@ -27,4 +27,4 @@
 
 {% endif %}
 
-```````
+:::::::::
