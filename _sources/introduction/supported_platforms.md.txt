@@ -1,4 +1,4 @@
-:::::::::{jinja} scvars
+```````{jinja} scvars
 {% import '_jinja/macros.html' as macros %}
 
 # Supported Platforms
@@ -7,36 +7,37 @@
 
 
 
+
 ## Host operating systems
 
 
-::::::{tabs}
+``````{tabs}
 
 {% if windows is defined %}
-::::{tab} Windows
+````{tab} Windows
 
  - Windows 10
  - Windows 8.1
  - Windows 7
-::::
+````
 {% endif %}
 
 
 {% if linux is defined %}
-::::{tab} Linux
+````{tab} Linux
 
  - Ubuntu 20.04.1 LTS
  - Debian 10
  - CentOS 7 and RHEL 7
  - LEAP 15
-::::
+````
 {% endif %}
 
-::::::
+``````
 
-:::{note}
+```{note}
 Only 64-bit OSs are supported.
-:::
+```
 
 
 
@@ -66,31 +67,31 @@ Only 64-bit OSs are supported.
 
 ## JTAG Debug
 
-::::::{tabs}
+`````{tabs}
 
 {% if windows is defined %}
-::::{tab} Windows
+````{tab} Windows
 
 - Microchip FlashPro3, FlashPro4, FlashPro5 and FlashPro6
 - Olimex ARM-USB-TINY-H
 - Other JTAG debug probes supported by OpenOCD may be used but are not specifically tested or supported
-::::
+````
 {% endif %}
 
 {% if linux is defined %}
-::::{tab} Linux
+````{tab} Linux
 
 - Microchip FlashPro5 and FlashPro6
 - Olimex ARM-USB-TINY-H
 - Other JTAG debug probes supported by OpenOCD may be used but are not specifically tested or supported
-::::
+````
 {% endif %}
 
-::::::
+`````
 
-:::{note}
+```{note}
 Using SoftConsole from within a Virtual Machine might limit which JTAG probes can be used.
-:::
+```
 
 
 
@@ -121,4 +122,4 @@ Using SoftConsole from within a Virtual Machine might limit which JTAG probes ca
 {% include 'main/introduction/_support_table6.5.inc' %}
 
 
-:::::::::
+```````

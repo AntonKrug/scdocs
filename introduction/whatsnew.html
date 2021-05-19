@@ -101,7 +101,21 @@
               <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="about.html">About this document</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">What is new</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">What is new</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#softconsole-2021-1">SoftConsole 2021.1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flashpro-support-matrix">FlashPro support matrix</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#softconsole-6-5">SoftConsole 6.5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Features</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sc65knownissues">Known issues</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">FlashPro support matrix</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="supported_platforms.html">Supported Platforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
@@ -176,12 +190,86 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p>:::::::::{jinja} scvars</p>
-<div class="section" id="what-is-new">
+  <div class="section" id="what-is-new">
 <h1>What is new<a class="headerlink" href="#what-is-new" title="Permalink to this headline">¶</a></h1>
-<p>{% include ‘main/introduction/_whatsnew2021.1.inc’ %}
-{% include ‘main/introduction/_whatsnew6.5.inc’ %}</p>
-<p>:::::::::</p>
+<div class="section" id="softconsole-2021-1">
+<h2>SoftConsole 2021.1<a class="headerlink" href="#softconsole-2021-1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="features">
+<h3>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Support for programming PolarFire SoC boot mode 0/1/2/3. Please refer to <SoftConsole-installdir>/extras/mpfs/mpfs-bootmodes-readme.txt for full details.</p>
+<ul>
+<li><p>Extra attention needs to be paid for boards which do not have SMK intialised yet and extra steps in Libero/FlashProExpress are necesary.</p></li>
+</ul>
+</li>
+<li><p>Original SoftConsole v6.4 Bash script-based support for boot modes 0/1 replaced by a Java utility program that supports all boot modes. The built_tools on Linux version were removed in the process as the bundled bash/shell scripting is not needed, and still the bundled bash/zsh/shell on the distribution can be used.</p></li>
+<li><p>Improved custom Eclipse launcher for SoftConsole which generates our recomended workspace settings when creating new workspace.</p></li>
+<li><p>Fixed a bug in CDT whereby register groups that were previously configured got lost whenever a debug connection attempt failed.</p></li>
+<li><p>Please refer to the table in the section below for details of FlashPro programmer support in SoftConsole v2021.1.</p></li>
+</ul>
+</div>
+<div class="section" id="known-issues">
+<h3>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h3>
+<p>All issues inherited from 6.5 (see <a class="reference internal" href="#sc65knownissues"><span class="std std-ref">SoftConsole 6.5 Known issues</span></a>)</p>
+</div>
+<div class="section" id="flashpro-support-matrix">
+<h3>FlashPro support matrix<a class="headerlink" href="#flashpro-support-matrix" title="Permalink to this headline">¶</a></h3>
+<p>|  | Standalone<br/>FlashPro6 | Embedded<br/>FlashPro6<br/>Rev B | Embedded<br/>FlashPro6<br/>Rev A | Standalone<br/>&amp;<br/>Embedded<br/>FlashPro5 | Standalone<br/>&amp;<br/>Embedded<br/>FlashPro4 | Standalone<br/>&amp;<br/>Embedded<br/>FlashPro3/LCPS |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Windows                                                              | &amp;#10003; | &amp;#10003; |            | &amp;#10003; | &amp;#10003; | &amp;#10003; |
+| Linux                                                                | &amp;#10003; | &amp;#10003; |            | &amp;#10003; |             |             |
+| Virtual Machine                                                      |             |             |            |             |             |             |
+| Docker on Linux                                                      | &amp;#10003; | &amp;#10003; |            | &amp;#10003; |             |             |
+| Debug PolarFire SoC<br/>MSS Core Complex                             | &amp;#10003; | &amp;#10003; |            | &amp;#10003; | &amp;#10003; | &amp;#10003; |
+| PolarFire SoC UltraSoC<br/>trace/debug                               | &amp;#10003; |             |            | &amp;#10003; | &amp;#10003; | &amp;#10003; |
+| Debug Mi-V RV32 RISCV<br/>soft core via<br/>CoreJTAGDebug/UJTAG      |             |             |            | &amp;#10003; | &amp;#10003; | &amp;#10003; |
+| Debug Mi-V RV32 RISCV<br/>soft core via<br/>JTAG signals on I/O pins | &amp;#10003; |             |            | &amp;#10003; | &amp;#10003; | &amp;#10003; |
+| Debug Cortex-M1 soft<br/>core via<br/>CoreJTAGDebug/UJTAG            |             |             |            | &amp;#10003; | &amp;#10003; | &amp;#10003; |
+| Cortex-M1 soft core<br/>debug via JTAG signals<br/>on I/O pins       | &amp;#10003; |             |            | &amp;#10003; | &amp;#10003; | &amp;#10003; |</p>
+<p>:::{note}
+Any Embedded FlashPro6 Rev A can be upgraded to Embedded FlashPro6 Rev B by following the upgrade chapter from Libero Documentation
+:::</p>
+</div>
+</div>
+<div class="section" id="softconsole-6-5">
+<h2>SoftConsole 6.5<a class="headerlink" href="#softconsole-6-5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id1">
+<h3>Features<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Support for PolarFire SoC Icicle board’s Embedded FlashPro6 Rev B for debugging a PolarFire SoC MSS
+(Microcontroller Sybsystem) RISC-V multicore core complex based SoC.</p></li>
+</ul>
+</div>
+<div class="section" id="sc65knownissues">
+<span id="id2"></span><h3>Known issues<a class="headerlink" href="#sc65knownissues" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Port selection when multiple FlashPros are connected might not work.</p></li>
+<li><p>Providing the symbol files in the debug launchers are necesary to avoid errors on RV32 targets (see launchers of example projects).</p></li>
+<li><p>The Icicle board’s Embedded FlashPro6 programmer <strong>must</strong> be upgraded from Rev A to Rev
+B for it to work with SoftConsole. Refer to the Libero SoC v12.5 SP1 or Program Debug Tools v12.5 SP1 (or
+later) release notes for details of how to upgrade the Embedded FlashPro6 from Rev A to Rev B.
+The following table below summarizes the FlashPro support in SoftConsole v6.5 and later.</p></li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h3>FlashPro support matrix<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>|  | Standalone<br/>FlashPro6 | Embedded<br/>FlashPro6<br/>Rev B | Embedded<br/>FlashPro6<br/>Rev A | Standalone<br/>&amp;<br/>Embedded<br/>FlashPro5 | Standalone<br/>&amp;<br/>Embedded<br/>FlashPro4 | Standalone<br/>&amp;<br/>Embedded<br/>FlashPro3/LCPS |
+| :-: | :-: | :-: | :-: | :-: | :-: | :-: |
+| Windows                                                              | &amp;#10003; | &amp;#10003; |            | &amp;#10003; | &amp;#10003; | &amp;#10003; |
+| Linux                                                                | &amp;#10003; | &amp;#10003; |            | &amp;#10003; |             |             |
+| Virtual Machine                                                      |             |             |            |             |             |             |
+| Docker on Linux                                                      | &amp;#10003; | &amp;#10003; |            | &amp;#10003; |             |             |
+| Debug PolarFire SoC<br/>MSS Core Complex                             | &amp;#10003; | &amp;#10003; |            | &amp;#10003; | &amp;#10003; | &amp;#10003; |
+| PolarFire SoC UltraSoC<br/>trace/debug                               | &amp;#10003; |             |            | &amp;#10003; | &amp;#10003; | &amp;#10003; |
+| Debug Mi-V RV32 RISCV<br/>soft core via<br/>CoreJTAGDebug/UJTAG      |             |             |            | &amp;#10003; | &amp;#10003; | &amp;#10003; |
+| Debug Mi-V RV32 RISCV<br/>soft core via<br/>JTAG signals on I/O pins | &amp;#10003; |             |            | &amp;#10003; | &amp;#10003; | &amp;#10003; |
+| Debug Cortex-M1 soft<br/>core via<br/>CoreJTAGDebug/UJTAG            |             |             |            | &amp;#10003; | &amp;#10003; | &amp;#10003; |
+| Cortex-M1 soft core<br/>debug via JTAG signals<br/>on I/O pins       | &amp;#10003; |             |            | &amp;#10003; | &amp;#10003; | &amp;#10003; |</p>
+<p>:::{note}
+Any Embedded FlashPro6 Rev A can be upgraded to Embedded FlashPro6 Rev B by following the upgrade chapter from Libero Documentation
+:::</p>
+</div>
+</div>
 </div>
 
 

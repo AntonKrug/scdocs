@@ -104,11 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What is new</a></li>
 <li class="toctree-l1"><a class="reference internal" href="supported_platforms.html">Supported Platforms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Post Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Post Installation</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Experiments</span></p>
 <ul>
@@ -180,28 +176,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p>:::::::::{jinja} scvars
-{% import ‘_jinja/macros.html’ as macros %}</p>
-<div class="section" id="post-installation">
+  <div class="section" id="post-installation">
 <h1>Post Installation<a class="headerlink" href="#post-installation" title="Permalink to this headline">¶</a></h1>
-<p>{% if windows is defined and linux is defined %}</p>
-<div class="section" id="windows">
-<h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
-<p>{% include ‘main/introduction/_post_installation_windows.inc’ %}</p>
-</div>
-<div class="section" id="linux">
-<h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
-<p>{% include ‘main/introduction/_post_installation_linux.inc’ %}
-{% else %}</p>
-<p>{% if windows is defined %}
-{% include ‘main/introduction/_post_installation_windows.inc’ %}
-{% endif %}  % End of Windows</p>
-<p>{% if linux is defined %}
-{% include ‘main/introduction/_post_installation_linux.inc’ %}
-{% endif %}  % End of Linux</p>
-<p>{% endif %}</p>
-<p>:::::::::</p>
-</div>
 </div>
 
 

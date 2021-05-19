@@ -7,9 +7,9 @@ Or just search your error message in the troubleshooting section when recieved a
 
 **reference troubleshooting**
 
-:::{note}
+```{note}
 Users of previous releases should watch for changes and in the [](whatsnew.md#what-is-new) chapter and re-read all affected chapters.
-:::
+```
 
 
 ## Used terms
