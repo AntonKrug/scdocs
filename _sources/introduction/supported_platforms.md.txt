@@ -14,7 +14,7 @@
 ``````{tabs}
 
 {% if windows is defined %}
-````{group-tab} Windows
+````{tab} Windows
 
  - Windows 10
  - Windows 8.1
@@ -24,7 +24,7 @@
 
 
 {% if linux is defined %}
-````{group-tab} Linux
+````{tab} Linux
 
  - Ubuntu 20.04.1 LTS
  - Debian 10
@@ -70,7 +70,7 @@ Only 64-bit OSs are supported.
 `````{tabs}
 
 {% if windows is defined %}
-````{group-tab} Windows
+````{tab} Windows
 
 - Microchip FlashPro3, FlashPro4, FlashPro5 and FlashPro6
 - Olimex ARM-USB-TINY-H
@@ -79,7 +79,7 @@ Only 64-bit OSs are supported.
 {% endif %}
 
 {% if linux is defined %}
-````{group-tab} Linux
+````{tab} Linux
 
 - Microchip FlashPro5 and FlashPro6
 - Olimex ARM-USB-TINY-H
