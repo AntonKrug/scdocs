@@ -20,3 +20,43 @@ Where this is mentioned substitute the actual SoftConsole install directory name
  - Windows example: C:\Microchip\SoftConsole_v2021.1 
  - Linux example: $HOME/Microchip/SoftConsole_v2021.1
 
+
+
+| Standalone FlashPro6 | Embedded FlashPro6 Rev B | 
+| -------------------- | ------------------------ | 
+| Windows              | Check                    |
+
+| Standalone FlashPro6 | Embedded FlashPro6 Rev B | 
+| --- | --- | 
+| Windows              | Check                    |
+
+
+| Standalone FlashPro6 | Embedded FlashPro6 Rev B | 
+| -------------------- | ------------------------ | 
+| Windows              | {{u_check}}              |
+
+
+| Standalone FlashPro6 | Embedded FlashPro6 Rev B | 
+| :-: | :-: | 
+| Windows              | Check                    |
+
+
+| Standalone <br /> FlashPro6 | Embedded FlashPro6 Rev B | 
+| :-: | :-: | 
+| Windows              | Check                    |
+
+
+| Standalone <br/> FlashPro6 | Embedded FlashPro6 Rev B | 
+| :-: | :-: | 
+| Windows              | Check                    |
+
+
+
+| Standalone FlashPro6 | Embedded FlashPro6 Rev B | 
+| -------------------- | ------------------------ | 
+|                      | {{u_check}}              |
+
+
+| Standalone FlashPro6 | Embedded FlashPro6 Rev B | 
+| -------------------- | ------------------------ | 
+| | {{u_check}}              |
