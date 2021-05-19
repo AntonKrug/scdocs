@@ -22,7 +22,7 @@
         graph [bgcolor=transparent]
         node  [shape=box target="_blank"]
 
-        Microchip       [{{gv_pink}}   URL="http://www.microchip.com/"]
+        Microchip       [{{gv_pink}}   URL="https://www.microchip.com/"]
         "{{sc}}"        [{{gv_blue}}   URL="https://www.microsemi.com/softconsole"]
         "{{liberosoc}}" [{{gv_green}}  URL="https://www.microsemi.com/libero"]
         FP              [{{gv_gray}}   URL="https://www.microsemi.com/existing-parts/parts/152631"]

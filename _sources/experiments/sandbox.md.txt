@@ -14,6 +14,7 @@
 ## Experiments with markup
 
 ```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
 
 Tables are created using the following code. A table has a
 captionfigure points to a filename and has a caption. Optionally,
@@ -46,6 +47,14 @@ is indicated.
 note = "Python syntax highlighting"
 print(node)
 ```
+
+
+## Instanciating a table from a macro
+
+{{ macros.custom_table('| line 33 | sodfsdfsdfsdfsdfs fdsmething dsad | fddfsdsf dsads |') }}
+
+
+{{ macros.custom_table('| line 1 | sdsad | fddfsdsfs |') }}
 
 
 

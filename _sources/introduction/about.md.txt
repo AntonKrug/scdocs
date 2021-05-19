@@ -1,0 +1,23 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# About this document
+
+This is manual for Microchip {{sc}}.
+
+The manual is recomended to be read in full at least once. Between the releases watch for changes and in the changelog section and re-read the affected sections. Or just search your error message in the troubleshooting section when recieved a error.
+
+**reference troubleshooting**
+
+See [](whatsnew.md#what-is-new)
+
+
+## Used terms
+
+This document uses **\<SoftConsole-install-dir\>** as a placeholder for the actual SoftConsole install directory.
+Where this is mentioned substitute the actual SoftConsole install directory name.
+
+ - Windows example: C:\Microchip\SoftConsole_v2021.1 
+ - Linux example: $HOME/Microchip/SoftConsole_v2021.1
+
+ ```````

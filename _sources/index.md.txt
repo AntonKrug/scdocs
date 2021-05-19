@@ -4,6 +4,8 @@
 :caption: Introduction
 :maxdepth: 1
 
+introduction/about
+introduction/whatsnew
 introduction/supported_platforms
 introduction/installation
 introduction/post_installation
