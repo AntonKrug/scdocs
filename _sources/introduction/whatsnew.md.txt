@@ -1,4 +1,6 @@
 ```````{jinja} scvars
+
+(whatisnew)=
 # What is new
 
 {% include 'main/introduction/_whatsnew2021.1.inc' %}

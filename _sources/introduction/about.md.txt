@@ -1,3 +1,4 @@
+```````{jinja} scvars
 # About this document
 
 This is manual for Microchip {{sc}}.
@@ -8,7 +9,7 @@ Or just search your error message in the troubleshooting section when recieved a
 **reference troubleshooting**
 
 ```{note}
-Users of previous releases should watch for changes and in the [](whatsnew.md#what-is-new) chapter and re-read all affected chapters.
+Users of previous releases should watch for changes and in the {ref}`What is new<whatisnew>` chapter and re-read all affected chapters.
 ```
 
 
@@ -20,3 +21,4 @@ Where this is mentioned substitute the actual SoftConsole install directory name
  - Windows example: C:\Microchip\SoftConsole_v2021.1 
  - Linux example: $HOME/Microchip/SoftConsole_v2021.1
 
+```````
