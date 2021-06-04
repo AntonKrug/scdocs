@@ -199,7 +199,7 @@ workspace is located at:</p>
 <p><code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;/extras/workspace.examples</span></code></p>
 <p>This workspace contains several simple example projects and debug launch configurations that are ready to use
 once the relevant projects have been updated to match the target hardware – for example by copying the Libero
-SoC generated *<em>drivers_config</em> folder into the project where applicable. It is also advisable to update these
+SoC generated <strong>drivers_config</strong> folder into the project where applicable. It is also advisable to update these
 example projects with the relevant CMSIS/HAL and firmware drivers generated from the Firmware Catalog.
 It is advisable to make a copy of this example workspace and use the copy for experimentation. Workspaces were
 not designed nor intended to be shared between machines nor operating systems. Do not make your own empty
@@ -213,20 +213,26 @@ may be lost.</p>
 <div class="section" id="example-projects">
 <h3>Example projects<a class="headerlink" href="#example-projects" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>mpfs-blinky: Simple GPIO LED and UART example program targeting the Renode PolarFire SoC emulation platform. The associated tool and debug launch configurations facilitate debugging this example on the emulation platform. Refer to the README and Renode sections for more information.</p></li>
-<li><p>mpfs-mustein-julia: A Renode-only example showcasing a simple graphical peripheral and own platform</p></li>
-<li><p>mpfs-freertos-lwip: Demonstration of a FreeRTOS implementation running a LwIP and a Webserver.</p></li>
-<li><p>fpga-cortex-m1-blinky: LED blinker program for a system containing the encrypted HDL soft core CoreCortexM1 (Microsemi:DirectCore:CoreCortexM1:<version>) in an RTG4 or PolarFire FPGA device.</p></li>
-<li><p>m1fpga-cortex-m1-blinky: LED blinker program for a system containing the pre placed and routed CortexM1 (Microsemi:DirectCore:CortexM1Top:<version>) in an M1 variant IGLOO, ProASIC3, ProASIC3L or Fusion FPGA device.</p></li>
-<li><p>miv-rv32im-interrupt-blinky: interrupt driven LED blinker and UART echo program for a system containing the Mi-V RISC-V soft processor that supports at least the M extension.</p></li>
-<li><p>miv-rv32im-systick-blinky: timer driven LED blinker and UART echo program for a system containing the MiV RISC-V soft processor that supports at least the M extension.</p></li>
-<li><p>miv-rv32iamf-mandelbrot-uart: Displaying Mandelbrot fractals with ASCII art through UART while using the RISC-V F extension</p></li>
-<li><p>miv-rv32iamf-raytracer-uart-cpp: ASCII art raytraced rendering of a sphere while using C++ and RISC-V F extension. Output is displayed over UART, extra attention needs to be paid to the readme and get the UART clocked correctly. The terminal window most likely must be resized to fit the content without any artifacts.</p></li>
-<li><p>smartfusion-cortex-m3-blinky: LED blinker program for a SmartFusion Cortex-M3 system.</p></li>
-<li><p>smartfusion2-cortex-m3-blinky: LED blinker program for a SmartFusion2 Cortex-M3 system.</p></li>
-<li><p>All the Mi-V projects can be run and debugged without target hardware on the Renode emulation platform.</p></li>
-<li><p>The projects have enabled cppcheck on each build.</p></li>
+<li><p><strong>mpfs-blinky:</strong> Simple GPIO LED and UART example program targeting the Renode PolarFire SoC emulation platform. The associated tool and debug launch configurations facilitate debugging this example on the emulation platform. Refer to the README and Renode sections for more information.</p></li>
+<li><p><strong>mpfs-mustein-julia:</strong> A Renode-only example showcasing a simple graphical peripheral and own platform</p></li>
+<li><p><strong>mpfs-freertos-lwip:</strong> Demonstration of a FreeRTOS implementation running a LwIP and a Webserver.</p></li>
+<li><p><strong>fpga-cortex-m1-blinky:</strong> LED blinker program for a system containing the encrypted HDL soft core CoreCortexM1 (Microsemi:DirectCore:CoreCortexM1:<version>) in an RTG4 or PolarFire FPGA device.</p></li>
+<li><p><strong>m1fpga-cortex-m1-blinky:</strong> LED blinker program for a system containing the pre placed and routed CortexM1 (Microsemi:DirectCore:CortexM1Top:<version>) in an M1 variant IGLOO, ProASIC3, ProASIC3L or Fusion FPGA device.</p></li>
+<li><p><strong>miv-rv32im-interrupt-blinky:</strong> interrupt driven LED blinker and UART echo program for a system containing the Mi-V RISC-V soft processor that supports at least the M extension.</p></li>
+<li><p><strong>miv-rv32im-systick-blinky:</strong> timer driven LED blinker and UART echo program for a system containing the MiV RISC-V soft processor that supports at least the M extension.</p></li>
+<li><p><strong>miv-rv32iamf-mandelbrot-uart:</strong> Displaying Mandelbrot fractals with ASCII art through UART while using the RISC-V F extension</p></li>
+<li><p><strong>miv-rv32iamf-raytracer-uart-cpp:</strong> ASCII art raytraced rendering of a sphere while using C++ and RISC-V F extension. Output is displayed over UART, extra attention needs to be paid to the readme and get the UART clocked correctly. The terminal window most likely must be resized to fit the content without any artifacts.</p></li>
+<li><p><strong>smartfusion-cortex-m3-blinky:</strong> LED blinker program for a SmartFusion Cortex-M3 system.</p></li>
+<li><p><strong>smartfusion2-cortex-m3-blinky:</strong> LED blinker program for a SmartFusion2 Cortex-M3 system.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All the Mi-V projects can be run and debugged without target hardware on the Renode emulation platform.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The projects have enabled cppcheck on each build.</p>
+</div>
 </div>
 <div class="section" id="example-debug-launch-configurations">
 <h3>Example debug launch configurations<a class="headerlink" href="#example-debug-launch-configurations" title="Permalink to this headline">¶</a></h3>
