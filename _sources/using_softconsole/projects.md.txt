@@ -1,0 +1,5 @@
+# Projects
+
+## Creating a new project
+
+![New project wizzard](images/new-project.png)

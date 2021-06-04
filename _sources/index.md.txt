@@ -11,6 +11,14 @@ introduction/installation
 introduction/post_installation
 ```
 
+```{toctree}
+:caption: Using SoftConsole
+:maxdepth: 1
+
+using_softconsole/workspace
+using_softconsole/projects
+```
+
 
 ```{toctree}
 :caption: Experiments

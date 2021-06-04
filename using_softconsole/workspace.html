@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>About this document &mdash; SoftConsole 2021-05 v7.0.501 documentation</title>
+  <title>Workspaces &mdash; SoftConsole 2021-05 v7.0.501 documentation</title>
   
 
   
@@ -45,8 +45,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="What is new" href="whatsnew.html" />
-    <link rel="prev" title="SoftConsole" href="../index.html" /> 
+    <link rel="next" title="Projects" href="projects.html" />
+    <link rel="prev" title="Post Installation" href="../introduction/post_installation.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -99,20 +99,26 @@
             
             
               <p class="caption"><span class="caption-text">Introduction</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">About this document</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#used-terms">Used terms</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What is new</a></li>
-<li class="toctree-l1"><a class="reference internal" href="supported_platforms.html">Supported Platforms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About this document</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/whatsnew.html">What is new</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/post_installation.html">Post Installation</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Using SoftConsole</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Workspaces</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-workspace">Example workspace</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#example-projects">Example projects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-debug-launch-configurations">Example debug launch configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#empty-workspace">Empty workspace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-new-workspace">Creating a new workspace</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Experiments</span></p>
 <ul>
@@ -167,7 +173,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>About this document</li>
+      <li>Workspaces</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -184,24 +190,53 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="about-this-document">
-<h1>About this document<a class="headerlink" href="#about-this-document" title="Permalink to this headline">¶</a></h1>
-<p>This is manual for Microchip SoftConsole 2021.05 v7.0.</p>
-<p>The manual for first time users is strogly recomended to be read in full at least once. The installation might require extra manual steps.
-Or just search your error message in the troubleshooting section when recieved a error.</p>
-<p><strong>reference troubleshooting</strong></p>
+  <div class="section" id="workspaces">
+<h1>Workspaces<a class="headerlink" href="#workspaces" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="example-workspace">
+<h2>Example workspace<a class="headerlink" href="#example-workspace" title="Permalink to this headline">¶</a></h2>
+<p>SoftConsole includes an example workspace which is opened by default when you run SoftConsole. This example
+workspace is located at:</p>
+<p><code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;/extras/workspace.examples</span></code></p>
+<p>This workspace contains several simple example projects and debug launch configurations that are ready to use
+once the relevant projects have been updated to match the target hardware – for example by copying the Libero
+SoC generated *<em>drivers_config</em> folder into the project where applicable. It is also advisable to update these
+example projects with the relevant CMSIS/HAL and firmware drivers generated from the Firmware Catalog.
+It is advisable to make a copy of this example workspace and use the copy for experimentation. Workspaces were
+not designed nor intended to be shared between machines nor operating systems. Do not make your own empty
+workspaces and do not transfer workspaces between machines or OSes.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Users of previous releases should watch for changes and in the <a class="reference internal" href="whatsnew.html#whatisnew"><span class="std std-ref">What is new</span></a> chapter and re-read all affected chapters.</p>
+<p>The SoftConsole uninstaller will delete some or all of this workspace in which case any changes made
+may be lost.</p>
 </div>
-<div class="section" id="used-terms">
-<h2>Used terms<a class="headerlink" href="#used-terms" title="Permalink to this headline">¶</a></h2>
-<p>This document uses <strong>&lt;SoftConsole-install-dir&gt;</strong> as a placeholder for the actual SoftConsole install directory.
-Where this is mentioned substitute the actual SoftConsole install directory name.</p>
+<p>Refer to the README.txt (or .md/.html) for each example project for more information.</p>
+<div class="section" id="example-projects">
+<h3>Example projects<a class="headerlink" href="#example-projects" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li><p>Windows example: C:\Microchip\SoftConsole_v2021.1</p></li>
-<li><p>Linux example: $HOME/Microchip/SoftConsole_v2021.1</p></li>
+<li><p>mpfs-blinky: Simple GPIO LED and UART example program targeting the Renode PolarFire SoC emulation platform. The associated tool and debug launch configurations facilitate debugging this example on the emulation platform. Refer to the README and Renode sections for more information.</p></li>
+<li><p>mpfs-mustein-julia: A Renode-only example showcasing a simple graphical peripheral and own platform</p></li>
+<li><p>mpfs-freertos-lwip: Demonstration of a FreeRTOS implementation running a LwIP and a Webserver.</p></li>
+<li><p>fpga-cortex-m1-blinky: LED blinker program for a system containing the encrypted HDL soft core CoreCortexM1 (Microsemi:DirectCore:CoreCortexM1:<version>) in an RTG4 or PolarFire FPGA device.</p></li>
+<li><p>m1fpga-cortex-m1-blinky: LED blinker program for a system containing the pre placed and routed CortexM1 (Microsemi:DirectCore:CortexM1Top:<version>) in an M1 variant IGLOO, ProASIC3, ProASIC3L or Fusion FPGA device.</p></li>
+<li><p>miv-rv32im-interrupt-blinky: interrupt driven LED blinker and UART echo program for a system containing the Mi-V RISC-V soft processor that supports at least the M extension.</p></li>
+<li><p>miv-rv32im-systick-blinky: timer driven LED blinker and UART echo program for a system containing the MiV RISC-V soft processor that supports at least the M extension.</p></li>
+<li><p>miv-rv32iamf-mandelbrot-uart: Displaying Mandelbrot fractals with ASCII art through UART while using the RISC-V F extension</p></li>
+<li><p>miv-rv32iamf-raytracer-uart-cpp: ASCII art raytraced rendering of a sphere while using C++ and RISC-V F extension. Output is displayed over UART, extra attention needs to be paid to the readme and get the UART clocked correctly. The terminal window most likely must be resized to fit the content without any artifacts.</p></li>
+<li><p>smartfusion-cortex-m3-blinky: LED blinker program for a SmartFusion Cortex-M3 system.</p></li>
+<li><p>smartfusion2-cortex-m3-blinky: LED blinker program for a SmartFusion2 Cortex-M3 system.</p></li>
+<li><p>All the Mi-V projects can be run and debugged without target hardware on the Renode emulation platform.</p></li>
+<li><p>The projects have enabled cppcheck on each build.</p></li>
 </ul>
+</div>
+<div class="section" id="example-debug-launch-configurations">
+<h3>Example debug launch configurations<a class="headerlink" href="#example-debug-launch-configurations" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="empty-workspace">
+<h2>Empty workspace<a class="headerlink" href="#empty-workspace" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="creating-a-new-workspace">
+<h2>Creating a new workspace<a class="headerlink" href="#creating-a-new-workspace" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -211,8 +246,8 @@ Where this is mentioned substitute the actual SoftConsole install directory name
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="whatsnew.html" class="btn btn-neutral float-right" title="What is new" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../index.html" class="btn btn-neutral float-left" title="SoftConsole" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="projects.html" class="btn btn-neutral float-right" title="Projects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../introduction/post_installation.html" class="btn btn-neutral float-left" title="Post Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
@@ -238,7 +273,7 @@ Where this is mentioned substitute the actual SoftConsole install directory name
 </center>
 
 <script>
-    var pageName = "introduction/about.md.txt".replace(/\.txt/g,'');
+    var pageName = "using_softconsole/workspace.md.txt".replace(/\.txt/g,'');
     var uri = "feedback/com?document=SoftConsole&release=2021-05 v7.0.501&page=" + pageName;
     var res = encodeURI(uri);
     document.getElementById("feeedbackLink").href = res;
