@@ -1,0 +1,30 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# Post Installation
+
+
+{% if windows is defined and linux is defined %}
+## Windows
+{% include 'main/using_softconsole/_post_installation_windows.inc' %}
+## Linux
+{% include 'main/using_softconsole/_post_installation_linux.inc' %}
+{% else %}
+
+
+
+
+{% if windows is defined %}
+{% include 'main/using_softconsole/_post_installation_windows.inc' %}
+{% endif %}  % End of Windows
+
+
+{% if linux is defined %}
+{% include 'main/using_softconsole/_post_installation_linux.inc' %}
+{% endif %}  % End of Linux
+
+
+
+{% endif %}
+
+```````

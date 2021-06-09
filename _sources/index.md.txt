@@ -7,14 +7,15 @@
 introduction/about
 introduction/whatsnew
 introduction/supported_platforms
-introduction/installation
-introduction/post_installation
+introduction/used_packages
 ```
 
 ```{toctree}
 :caption: Using SoftConsole
 :maxdepth: 1
 
+using_softconsole/installation
+using_softconsole/post_installation
 using_softconsole/workspace
 using_softconsole/projects
 ```
