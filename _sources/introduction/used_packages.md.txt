@@ -4,6 +4,7 @@
 {{sc}} uses several, mostly free and/or open source, packages. Microchip acknowledges and thanks those organization, communities and individual developers who work on these projects and make them available to others for reuse under the relevant license conditions.
 
 {% include 'main/introduction/_used_packages/java.inc' %}
+{% include 'main/introduction/_used_packages/eclipse-cdt.inc' %}
 
 
 ```````
