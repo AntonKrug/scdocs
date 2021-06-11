@@ -124,6 +124,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode emulation platform</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Experiments</span></p>
 <ul>
@@ -302,97 +303,106 @@
 </div>
 <div class="section" id="flashpro-support-matrix">
 <h2>FlashPro support matrix<a class="headerlink" href="#flashpro-support-matrix" title="Permalink to this headline">¶</a></h2>
-<table class="colwidths-auto docutils align-default">
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"></th>
-<th class="head">Standalone<br/>FlashPro6</th>
-<th class="head">Embedded<br/>FlashPro6<br/>Rev B</th>
-<th class="head">Embedded<br/>FlashPro6<br/>Rev A</th>
-<th class="head">Standalone<br/>&amp;<br/>Embedded<br/>FlashPro5</th>
-<th class="head">Standalone<br/>&amp;<br/>Embedded<br/>FlashPro4</th>
-<th class="head">Standalone<br/>&amp;<br/>Embedded<br/>FlashPro3/LCPS</th>
+<th class="head"><p>Standalone<br/>FlashPro6</p></th>
+<th class="head"><p>Embedded<br/>FlashPro6<br/>Rev B</p></th>
+<th class="head"><p>Embedded<br/>FlashPro6<br/>Rev A</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro5</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro4</p></th>
+<th class="head"><p>Standalone<br/>&amp;<br/>Embedded<br/>FlashPro3/LCPS</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td>Windows</td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
+<tr class="row-even"><td><p>Windows</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
 <td></td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
 </tr>
-<tr class="row-odd"><td>Linux</td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
+<tr class="row-odd"><td><p>Linux</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
 <td></td>
-<td><strong>Yes</strong></td>
-<td></td>
-<td></td>
-</tr>
-<tr class="row-even"><td>Virtual Machine</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><p><strong>Yes</strong></p></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td>Docker on Linux</td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
+<tr class="row-even"><td><p>Virtual Machine</p></td>
 <td></td>
-<td><strong>Yes</strong></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td>Debug PolarFire SoC<br/>MSS Core Complex</td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
+<tr class="row-odd"><td><p>Docker on Linux</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
 <td></td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
 </tr>
-<tr class="row-odd"><td>PolarFire SoC UltraSoC<br/>trace/debug</td>
-<td><strong>Yes</strong></td>
+<tr class="row-even"><td><p>Debug PolarFire SoC<br/>MSS Core Complex</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
 <td></td>
-<td></td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
 </tr>
-<tr class="row-even"><td>Debug Mi-V RV32 RISCV<br/>soft core via<br/>CoreJTAGDebug/UJTAG</td>
+<tr class="row-odd"><td><p>PolarFire SoC UltraSoC<br/>trace/debug</p></td>
+<td><p><strong>Yes</strong></p></td>
 <td></td>
 <td></td>
-<td></td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
 </tr>
-<tr class="row-odd"><td>Debug Mi-V RV32 RISCV<br/>soft core via<br/>JTAG signals on I/O pins</td>
-<td><strong>Yes</strong></td>
+<tr class="row-even"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/>CoreJTAGDebug/UJTAG</p></td>
 <td></td>
 <td></td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
 </tr>
-<tr class="row-even"><td>Debug Cortex-M1 soft<br/>core via<br/>CoreJTAGDebug/UJTAG</td>
+<tr class="row-odd"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/>JTAG signals on I/O pins</p></td>
+<td><p><strong>Yes</strong></p></td>
 <td></td>
 <td></td>
-<td></td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
 </tr>
-<tr class="row-odd"><td>Cortex-M1 soft core<br/>debug via JTAG signals<br/>on I/O pins</td>
-<td><strong>Yes</strong></td>
+<tr class="row-even"><td><p>Debug Cortex-M1 soft<br/>core via<br/>CoreJTAGDebug/UJTAG</p></td>
 <td></td>
 <td></td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
-<td><strong>Yes</strong></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p>Cortex-M1 soft core<br/>debug via JTAG signals<br/>on I/O pins</p></td>
+<td><p><strong>Yes</strong></p></td>
+<td></td>
+<td></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
+<td><p><strong>Yes</strong></p></td>
 </tr>
 </tbody>
 </table>

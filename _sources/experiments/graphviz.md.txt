@@ -15,6 +15,12 @@
     }
 ```
 
+Single line syntax:
+
+```{graphviz}
+digraph { graph [bgcolor=transparent]; 1 -> 2; 2 -> 3; 3 -> 1; }
+```
+
 ## Clickable nodes
 
 ```{graphviz}

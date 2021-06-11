@@ -33,6 +33,26 @@ Data driven text:
 SoftConsole {{sc}}
 
 
+```{math} e^{i\pi} + 1 = 0
+---
+label: euler
+---
+```
+
+Euler's identity, equation {math:numref}`euler`, was elected one of the
+most beautiful mathematical formulas.
+
+
+Since Pythagoras, we know that {math}`a^2 + b^2 = c^2`
+
+
+- Nested directives inside bullet points 1
+
+- ```{note}
+  test
+  ```
+
+- test 2
 
 
 Wrap in-line code blocks in backticks: `boolean example = true;`.

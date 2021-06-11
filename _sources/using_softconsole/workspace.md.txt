@@ -1,3 +1,6 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
 # Workspaces
 
 ## Example workspace
@@ -44,3 +47,4 @@ All the Mi-V (including mpfs) projects can be run and debugged without target ha
 ## Creating a new workspace
 
 
+```````

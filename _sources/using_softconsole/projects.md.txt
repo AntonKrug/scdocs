@@ -1,5 +1,10 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
 # Projects
 
 ## Creating a new project
 
 ![New project wizzard](images/wizzard-new-project.png)
+
+```````
