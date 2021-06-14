@@ -68,4 +68,8 @@ u54_4 StartGdbServer 3337
       - Uncheck **Initial Reset**
       - Check **Load symbols**
 
+## Tips and troubleshooting
+
+{% include 'main/troubleshooting/renode/_license.inc' %}
+
 ```````

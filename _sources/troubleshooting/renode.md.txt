@@ -1,0 +1,8 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+## Renode
+
+{% include 'main/troubleshooting/renode/_license.inc' %}
+
+```````

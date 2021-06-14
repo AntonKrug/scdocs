@@ -23,6 +23,14 @@ using_softconsole/renode
 
 
 ```{toctree}
+:caption: Troubleshooting
+:maxdepth: 1
+
+troubleshooting/renode
+```
+
+
+```{toctree}
 :caption: Experiments
 :maxdepth: 1
 
