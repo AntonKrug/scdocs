@@ -1,0 +1,71 @@
+# Features, justifications and culrprits
+
+This goes over reaons why some stuff is done the way it's done
+
+## Personalities
+
+Currently the project in the ./source folder has multiple personalities (each with slightly different config/presentation), but eventually could be driven by one content, just included, presented themed differently.
+
+ - **cppcheck**: My experiment to make better document for cppcheck warning exclusions.
+ - **installer** Included instalation related sections of the main document, which could be shown after installer finished installing SC.
+ - **main** The main SC document, where most of the work, content should live.
+
+## Things to avoid
+
+It's better not to include any unicode (or fancy characters, smileys, check box tick marks....). Be careful, copy pasting from the PDF might include some invisible unicode issues, slitghtly different dash '-', different white space ' '. Especialy for code section which are expected to be copy/pasted, be in ascii and work reliably. It's better to be careful from what the content is copied and what formating you .md in your editor has enabled.
+
+Use as little as possible of HTML, if cannot be avoided I used the <br/> to break a new line in a table, but try to use any markup way of breaking the content (like double new line). This is breaking up the presentation/content separation and making harder for us later to switch from HTML medium (if we will even neeed to do so).
+
+## Known issues
+
+### Simple tables can't cotain URL links
+Use CSV or list-tables.
+
+### Automatice headers do not work
+There was other underlying issue, but one was the structure, the automatic headers are fairly trivial, not working well with nesting. Structure like this:
+
+- What is new
+  - 6.6
+    - Features
+    - Bugs  
+  - 6.5
+    - Features
+    - Bugs
+
+Wouldn't be possible because ther are duplicate labels, renaming the structure in a way that each section would be unique could render the headers and their nesting obsolete. What is the point of the 6.6 or 6.5 father if every single subsection will contain it:
+
+- What is new
+  - 6.6
+    - 6.6 Features
+    - 6.6 Bugs
+  - 6.5
+    - 6.5 Features
+    - 6.5 Bugs
+
+So now the automatic headers are disabled, the duplicate header entries are ignored when builting the document. And when cross reference is done, just one extra step has to be done. Make a landing anchor label, see _whatsnew6.5.inc where a custom label which makes sense to us can be used (instead of generated lable from a header which might not make much sense out of the context and out of the contex of the parent headers).
+
+
+## Duplication of content
+
+We find goldem middle path between reusing material and referencing it to other sections. With current RN we were corss referencing a lot, which look like made people not read the references.
+
+We could try this time instead of 'the table is the same as version xyz' have the table content duplicated by including it.
+
+However too much of duplication might create own sets of problems, so we have to by trial/error find a healthy balance.
+
+Importing documents can be done by different ways, there is sphinx bundled directive 'include'
+
+<https://myst-parser.readthedocs.io/en/latest/using/howto.html>
+
+it can be made to include restructured documents as well (and inside their restrcutured syntax is expected).
+Be vary:
+ - about references (relative links, to images for example) and everything what could be broken if the current path would move
+ - nested markup, for example if the included document contains level 3 heading, then it's good to import into into places where it matches correctly (something which already has level 1 and level 2). If the import is going to happen from parents which are at different levels, it's better to include the heading in the parent before the import and then imported file will have just the body without heading.
+   - Dedicated headers in parent can remedy the warnings mentioned above with duplicate headers.
+ - jinja scripts/variables/macros do not work, they will be copied as raw strings without being processed
+ - just as my preference to the included files I give the name underscore prefix so the included content will not be grouped together with the parent content and gave it .inc extensions. And made config to ignore the .md files, technically it's possible to include the .md as well, but the Sphinx will be processing all the .md files and will complain about unreferenced content
+
+My preference is to use the jinja a lot, and even if it's not used, it better to 
+However if any of the included documents
+
+

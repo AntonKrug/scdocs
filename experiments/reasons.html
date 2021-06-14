@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Renode emulation platform &mdash; SoftConsole 2021-05 v7.0.501 documentation</title>
+  <title>Features, justifications and culrprits &mdash; SoftConsole 2021-05 v7.0.501 documentation</title>
   
 
   
@@ -44,9 +44,7 @@
 
     
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Renode" href="../troubleshooting/renode.html" />
-    <link rel="prev" title="Projects" href="projects.html" /> 
+    <link rel="search" title="Search" href="../search.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -106,18 +104,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction/used_packages.html">Used packages</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Using SoftConsole</span></p>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
-<li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Renode emulation platform</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#tips-and-troubleshooting">Tips and troubleshooting</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#using-open-source-software-tool-such-as-renode-will-contaminate-my-proprietary-code">Using Open Source Software tool such as Renode will contaminate my proprietary code?</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode emulation platform</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Troubleshooting</span></p>
 <ul>
@@ -125,9 +117,9 @@
 </ul>
 <p class="caption"><span class="caption-text">Experiments</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../experiments/graphviz.html">Graphviz</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../experiments/wavedrom.html">Wavedrom</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../experiments/sandbox.html">Sandbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graphviz.html">Graphviz</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wavedrom.html">Wavedrom</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sandbox.html">Sandbox</a></li>
 </ul>
 
             
@@ -176,7 +168,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Renode emulation platform</li>
+      <li>Features, justifications and culrprits</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -193,101 +185,93 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="renode-emulation-platform">
-<h1>Renode emulation platform<a class="headerlink" href="#renode-emulation-platform" title="Permalink to this headline">¶</a></h1>
-<p><img alt="Renode logo" src="../_images/renode_logo.png" /></p>
-<p>Renode™ is an open-source software development framework with commercial support from Antmicro that lets you develop, debug and test multi-node device systems reliably, scalably and effectively. If all installation dependencies are met (see installation section), then the RISC-V examples can be run in the emulator.</p>
-<p>To debug an example in the emulator Renode must be run with the Mi-V model (external tool launcher called Mi-V-Renodeemulation-platform) or PolarFire SoC MPFS (previously known as PSE, see MPFS HAL manual for more details) model and a debug launcher attaches to the running Renode (for example miv-rv32im-systick-blinky Attach-to-Renode). The debug launchers for Renode are almost identical to the launchers for real 32-bit RISC-V hardware targets except:</p>
-<ul>
-<li><p>Disabled/uncheck “Start OpenOCD locally” as Renode debugging does not use OpenOCD/JTAG but connects GDB directly to the Renode GDB Remote Serial Protocol interface.</p>
-<div class="graphviz"><img src="../_images/graphviz-af2d6cdd55fc201391851a2066a4ab0d78c91eb3.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;OpenOCD Setup&quot; -&gt; &quot;Start OpenOCD locally&quot;; }" class="graphviz" /></div>
-</li>
-<li><p>RISC-V 32-bit targets need the following commands:</p>
-<div class="graphviz"><img src="../_images/graphviz-abd8b4e32dfaacd65c6785ae4bfea169b31f6643.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }" class="graphviz" /></div>
-<p>Have set the architecture and symbols:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">arch</span> <span class="n">riscv</span><span class="p">:</span><span class="n">rv32</span>
-</pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>TODO - Don’t forget
-Add symbol file command and explain the macro</p>
-</div>
-</li>
-<li><p>For PolarFire SoC targets the launcher must be changed (this changed in SoftConsole 6.1).</p>
-<ul>
-<li><p>The Startup -&gt; Run/Restart Commands needs to contain the following code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>monitor $COMMON_PC=`sysbus.e51 PC`
-monitor runMacro $SetAllPCs
-monitor start
-</pre></div>
-</div>
-</li>
-<li><p>Change the <em>e51</em> to <em>u54_1</em> in the code above if the connection is made to <em>u54_1</em>, change accordingly for <em>u54_2</em>, <em>u54_3</em>, and <em>u54_4</em>.</p></li>
-<li><p>The SoftConsole 2021.05 v7.0 platform script needs to be used (it’s not compatible with SoftConsole 6.1). The scripts now start the servers with the auto-start feature disabled (no “true” appended on each line)</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">e51</span> <span class="n">StartGdbServer</span> <span class="mi">3333</span>
-<span class="n">u54_1</span> <span class="n">StartGdbServer</span> <span class="mi">3334</span>
-<span class="n">u54_2</span> <span class="n">StartGdbServer</span> <span class="mi">3335</span>
-<span class="n">u54_3</span> <span class="n">StartGdbServer</span> <span class="mi">3336</span>
-<span class="n">u54_4</span> <span class="n">StartGdbServer</span> <span class="mi">3337</span>
-</pre></div>
-</div>
-</li>
-<li><p>Connect to port with the correct hart, check the Port number value:</p>
-<div class="graphviz"><img src="../_images/graphviz-36846921ca63f2232a08da454340de4390f24121.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;Remote Target&quot; -&gt; &quot;Port number&quot;; }" class="graphviz" /></div>
-<table class="colwidths-auto docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head">Hart</th>
-<th class="head">Port Number</th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td>e51</td>
-<td>3333</td>
-</tr>
-<tr class="row-odd"><td>u54_1</td>
-<td>3334</td>
-</tr>
-<tr class="row-even"><td>u54_2</td>
-<td>3335</td>
-</tr>
-<tr class="row-odd"><td>u54_3</td>
-<td>3336</td>
-</tr>
-<tr class="row-even"><td>u54_4</td>
-<td>3337</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li><p>The very first launcher will configure the platform, PCs and start execution of the code. If a second connection is required to debug another hart, then extra steps need to be followed</p>
+  <div class="section" id="features-justifications-and-culrprits">
+<h1>Features, justifications and culrprits<a class="headerlink" href="#features-justifications-and-culrprits" title="Permalink to this headline">¶</a></h1>
+<p>This goes over reaons why some stuff is done the way it’s done</p>
+<div class="section" id="personalities">
+<h2>Personalities<a class="headerlink" href="#personalities" title="Permalink to this headline">¶</a></h2>
+<p>Currently the project in the ./source folder has multiple personalities (each with slightly different config/presentation), but eventually could be driven by one content, just included, presented themed differently.</p>
 <ul class="simple">
-<li><p>Base the second launcher by making a duplicate of the first launcher</p></li>
-<li><p>In the Debugger tab:</p>
-<ul>
-<li><p>Leave the <strong>Start OpenOCD locally</strong> unchecked</p></li>
-<li><p>Select a new port to connect to (3333 to 3337 depending what hart is targeted)</p></li>
+<li><p><strong>cppcheck</strong>: My experiment to make better document for cppcheck warning exclusions.</p></li>
+<li><p><strong>installer</strong> Included instalation related sections of the main document, which could be shown after installer finished installing SC.</p></li>
+<li><p><strong>main</strong> The main SC document, where most of the work, content should live.</p></li>
 </ul>
-</li>
-<li><p>In the Startup tab:</p>
-<ul>
-<li><p>Uncheck <strong>Initial Reset</strong></p></li>
-<li><p>Check <strong>Load symbols</strong></p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<div class="section" id="tips-and-troubleshooting">
-<h2>Tips and troubleshooting<a class="headerlink" href="#tips-and-troubleshooting" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="using-open-source-software-tool-such-as-renode-will-contaminate-my-proprietary-code">
-<h3>Using Open Source Software tool such as Renode will contaminate my proprietary code?<a class="headerlink" href="#using-open-source-software-tool-such-as-renode-will-contaminate-my-proprietary-code" title="Permalink to this headline">¶</a></h3>
-<p>Using the tool will not impose any obligations or restrictions on the user’s code, his license or his IP. In an edge case where the user would copy part of the Renode’s source code, modify it and redistribute its binaries, then there are obligations to meet, however Renode has MIT license and allows wide use (including commercial, private use and sublicensing it with a more restrictive license):</p>
-<p><a class="reference external" href="https://tldrlegal.com/license/mit-license">https://tldrlegal.com/license/mit-license</a></p>
-<p>If in doubt consult with a legal team.</p>
 </div>
+<div class="section" id="things-to-avoid">
+<h2>Things to avoid<a class="headerlink" href="#things-to-avoid" title="Permalink to this headline">¶</a></h2>
+<p>It’s better not to include any unicode (or fancy characters, smileys, check box tick marks….). Be careful, copy pasting from the PDF might include some invisible unicode issues, slitghtly different dash ‘-‘, different white space ‘ ‘. Especialy for code section which are expected to be copy/pasted, be in ascii and work reliably. It’s better to be careful from what the content is copied and what formating you .md in your editor has enabled.</p>
+<p>Use as little as possible of HTML, if cannot be avoided I used the <br/> to break a new line in a table, but try to use any markup way of breaking the content (like double new line). This is breaking up the presentation/content separation and making harder for us later to switch from HTML medium (if we will even neeed to do so).</p>
+</div>
+<div class="section" id="known-issues">
+<h2>Known issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="simple-tables-can-t-cotain-url-links">
+<h3>Simple tables can’t cotain URL links<a class="headerlink" href="#simple-tables-can-t-cotain-url-links" title="Permalink to this headline">¶</a></h3>
+<p>Use CSV or list-tables.</p>
+</div>
+<div class="section" id="automatice-headers-do-not-work">
+<h3>Automatice headers do not work<a class="headerlink" href="#automatice-headers-do-not-work" title="Permalink to this headline">¶</a></h3>
+<p>There was other underlying issue, but one was the structure, the automatic headers are fairly trivial, not working well with nesting. Structure like this:</p>
+<ul class="simple">
+<li><p>What is new</p>
+<ul>
+<li><p>6.6</p>
+<ul>
+<li><p>Features</p></li>
+<li><p>Bugs</p></li>
+</ul>
+</li>
+<li><p>6.5</p>
+<ul>
+<li><p>Features</p></li>
+<li><p>Bugs</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Wouldn’t be possible because ther are duplicate labels, renaming the structure in a way that each section would be unique could render the headers and their nesting obsolete. What is the point of the 6.6 or 6.5 father if every single subsection will contain it:</p>
+<ul class="simple">
+<li><p>What is new</p>
+<ul>
+<li><p>6.6</p>
+<ul>
+<li><p>6.6 Features</p></li>
+<li><p>6.6 Bugs</p></li>
+</ul>
+</li>
+<li><p>6.5</p>
+<ul>
+<li><p>6.5 Features</p></li>
+<li><p>6.5 Bugs</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>So now the automatic headers are disabled, the duplicate header entries are ignored when builting the document. And when cross reference is done, just one extra step has to be done. Make a landing anchor label, see _whatsnew6.5.inc where a custom label which makes sense to us can be used (instead of generated lable from a header which might not make much sense out of the context and out of the contex of the parent headers).</p>
+</div>
+</div>
+<div class="section" id="duplication-of-content">
+<h2>Duplication of content<a class="headerlink" href="#duplication-of-content" title="Permalink to this headline">¶</a></h2>
+<p>We find goldem middle path between reusing material and referencing it to other sections. With current RN we were corss referencing a lot, which look like made people not read the references.</p>
+<p>We could try this time instead of ‘the table is the same as version xyz’ have the table content duplicated by including it.</p>
+<p>However too much of duplication might create own sets of problems, so we have to by trial/error find a healthy balance.</p>
+<p>Importing documents can be done by different ways, there is sphinx bundled directive ‘include’</p>
+<p><a class="reference external" href="https://myst-parser.readthedocs.io/en/latest/using/howto.html">https://myst-parser.readthedocs.io/en/latest/using/howto.html</a></p>
+<p>it can be made to include restructured documents as well (and inside their restrcutured syntax is expected).
+Be vary:</p>
+<ul class="simple">
+<li><p>about references (relative links, to images for example) and everything what could be broken if the current path would move</p></li>
+<li><p>nested markup, for example if the included document contains level 3 heading, then it’s good to import into into places where it matches correctly (something which already has level 1 and level 2). If the import is going to happen from parents which are at different levels, it’s better to include the heading in the parent before the import and then imported file will have just the body without heading.</p>
+<ul>
+<li><p>Dedicated headers in parent can remedy the warnings mentioned above with duplicate headers.</p></li>
+</ul>
+</li>
+<li><p>jinja scripts/variables/macros do not work, they will be copied as raw strings without being processed</p></li>
+<li><p>just as my preference to the included files I give the name underscore prefix so the included content will not be grouped together with the parent content and gave it .inc extensions. And made config to ignore the .md files, technically it’s possible to include the .md as well, but the Sphinx will be processing all the .md files and will complain about unreferenced content</p></li>
+</ul>
+<p>My preference is to use the jinja a lot, and even if it’s not used, it better to
+However if any of the included documents</p>
 </div>
 </div>
 
@@ -296,10 +280,6 @@ monitor start
            
           </div>
           <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../troubleshooting/renode.html" class="btn btn-neutral float-right" title="Renode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="projects.html" class="btn btn-neutral float-left" title="Projects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-    </div>
 
   <hr/>
 
@@ -324,7 +304,7 @@ monitor start
 </center>
 
 <script>
-    var pageName = "using_softconsole/renode.md.txt".replace(/\.txt/g,'');
+    var pageName = "experiments/reasons.md.txt".replace(/\.txt/g,'');
     var uri = "feedback/com?document=SoftConsole&release=2021-05 v7.0.501&page=" + pageName;
     var res = encodeURI(uri);
     document.getElementById("feeedbackLink").href = res;
