@@ -37,4 +37,5 @@ troubleshooting/renode
 experiments/graphviz
 experiments/wavedrom
 experiments/sandbox
+experiments/reasons
 ```
