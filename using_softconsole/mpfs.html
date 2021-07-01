@@ -228,18 +228,12 @@
 the device is powered on/reset. In particular, what exactly the RISC-V
 multi-core CPU Core Complex part of PolarFire SoC’s Microcontroller Subsystem
 (MSS) does out of reset:</p>
-<p>Boot mode 0 “idle boot”: boots and simply waits for a debugger connection.</p>
-<p>Boot mode 1 “non-secure boot”: boots and executes a program stored in eNVM
-which has been linked for storage in and execution from eNVM.</p>
-<p>Boot mode 2 “user secure boot”: boots, checks the integrity of an encrypted
-and/or authenticated program stored in sNVM and, if it is correct, copies it
-to LIM (Loosely Integrated Memory) RAM and starts executing it from there.
-The program executed may be a secure boot loader implemented by the user.
-The program is linked for execution from LIM.</p>
-<p>Boot mode 3 “factory secure boot”: boots, verifies a program image stored
-in eNVM using an Elliptic Curve Digital Signature Algorithm (ECDSA) and, if
-correct, starts executing the program from eNVM. The program is linked for
-storage in and execution from eNVM.</p>
+<ul class="simple">
+<li><p>Boot mode 0 “idle boot”: boots and simply waits for a debugger connection.</p></li>
+<li><p>Boot mode 1 “non-secure boot”: boots and executes a program stored in eNVM which has been linked for storage in and execution from eNVM.</p></li>
+<li><p>Boot mode 2 “user secure boot”: boots, checks the integrity of an encrypted and/or authenticated program stored in sNVM and, if it is correct, copies it to LIM (Loosely Integrated Memory) RAM and starts executing it from there. The program executed may be a secure boot loader implemented by the user. The program is linked for execution from LIM.</p></li>
+<li><p>Boot mode 3 “factory secure boot”: boots, verifies a program image stored in eNVM using an Elliptic Curve Digital Signature Algorithm (ECDSA) and, if correct, starts executing the program from eNVM. The program is linked for storage in and execution from eNVM.</p></li>
+</ul>
 <p>Refer to the PolarFire SoC documentation for more detailed information about
 these boot modes.</p>
 <p><a class="reference external" href="https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga#documentation">https://www.microsemi.com/product-directory/soc-fpgas/5498-polarfire-soc-fpga#documentation</a></p>
@@ -298,13 +292,15 @@ following locations:</p>
 <h3>mpfsBootmodeProgrammer<a class="headerlink" href="#mpfsbootmodeprogrammer" title="Permalink to this headline">¶</a></h3>
 <p>In order to simplify boot mode programming, SoftConsole bundles the
 mpfsBootmodeProgrammer Java program utility:</p>
-<p><softconsole-install-dir>/extras/mpfs/mpfsBootmodeProgrammer.jar</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">softconsole</span><span class="o">-</span><span class="n">install</span><span class="o">-</span><span class="nb">dir</span><span class="o">&gt;/</span><span class="n">extras</span><span class="o">/</span><span class="n">mpfs</span><span class="o">/</span><span class="n">mpfsBootmodeProgrammer</span><span class="o">.</span><span class="n">jar</span>
+</pre></div>
+</div>
 <p>mpfsBootmodeProgrammer takes care of the details of converting a program
 executable ELF file for use with the selected boot mode and calling fpgenprog
 to program target with the relevant boot mode data and store the boot program
 image in NVM (eNVM or sNVM).</p>
 <p>Full sources for  mpfsBootmodeProgrammer and instructions on how to build it
-are also bundled with SoftConsole.</p>
+are also bundled with SoftConsole (in the same folder as the JAR file).</p>
 </div>
 </div>
 <div class="section" id="boot-mode-programming-external-launch-configurations">
@@ -330,7 +326,7 @@ Project Explorer and the relevant build configuration must be built and the ELF
 file exist in order for the boot mode 1, 2 and 3 external tool launch
 configurations to work.</p>
 <p>Boot mode 0 does not require a project to be selected/built and, by default,
-works in the <SoftConsole-install-dir>/extras/mpfs/bootmode0 directory.</p>
+works in the <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;/extras/mpfs/bootmode0</span></code> directory.</p>
 <p>A project can be selected in the Project Explorer by clicking on any folder in
 the project hierarchy. If no project is selected then a message of the
 following form will be displayed:</p>
@@ -342,9 +338,14 @@ following form will be displayed:</p>
 <p>The active build configuration can be selected in SoftConsole in different ways
 including by using the “Hammer” build toolbar button dropdown list of available
 build configurations or by right clicking on the selected project in the
-Project Explorer and then Build Configurations &gt; Set Active &gt;
-<build-configuration>.</p>
-<p>If the selected build configuration’s directory does not exist then a message
+Project Explorer and then:</p>
+<div class="graphviz"><img src="../_images/graphviz-46e0b67910e8afd0055d43d14fa86e83bbe7ce06.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Build Configurations&quot; -&gt; &quot;Set Active&quot; -&gt; &quot;&lt;build-configuration&gt;&quot;
+     }" class="graphviz" /></div>
+<br/><p>If the selected build configuration’s directory does not exist then a message
 of the following form will be displayed:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Problem</span> <span class="n">Occurred</span>
 <span class="s1">&#39;Launching PolarFire SoC program ... boot mode ...&#39;</span> <span class="n">has</span> <span class="n">encountered</span> <span class="n">a</span> <span class="n">problem</span><span class="o">.</span>
@@ -354,7 +355,7 @@ of the following form will be displayed:</p>
 <p>If no ELF file exists or other validation checks fail then the
 mpfsBootmodeProgrammer utility will emit an appropriate warning or error
 message to the output log.</p>
-<p>mpfsBootmodeProgrammer always generated a <workdir>/bootmode<n>/debugLog.txt
+<p>mpfsBootmodeProgrammer always generated a <code class="docutils literal notranslate"><span class="pre">&lt;workdir&gt;/bootmode&lt;n&gt;/debugLog.txt</span></code>
 log file which contains detailed information about the tasks carried out.</p>
 <div class="section" id="boot-program-link-requirements">
 <h3>Boot program link requirements<a class="headerlink" href="#boot-program-link-requirements" title="Permalink to this headline">¶</a></h3>
@@ -382,10 +383,13 @@ which the target is programmed. For example, depending on the MSS configuration
 and Libero design contents some sNVM clients will be automatically generated
 precluding the relevant pages from being used for a boot mode 2 program
 image.</p>
-<p>IMPORTANT: It is critical, when programming boot mode 2 from SoftConsole, that
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>It is critical, when programming boot mode 2 from SoftConsole, that
 the available sNVM space and relevant start page are checked in the Libero
 project first. Not doing so could cause corruption of sNVM content required for
 correct functioning of the target design.</p>
+</div>
 <p>mpfsBootmodeProgrammer does validation checking on the boot program ELF file to
 ensure that it matches the selected boot mode requirements.</p>
 </div>
@@ -394,36 +398,43 @@ ensure that it matches the selected boot mode requirements.</p>
 <p>mpfsBootmodeProgrammer works in the specified workdir and generates artifacts
 into a bootmodeN (0 &lt;= N &lt;= 3) directory below this.</p>
 <p>By default, the preconfigured boot mode 0 external tool launch configuration
-works in <SoftConsole-install-dir>/extras/mpfs and generates aretefacts into
+works in <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;/extras/mpfs</span></code> and generates aretefacts into
 the bootmode0 directory below this.</p>
 <p>By default, the preconfigured boot mode 1-3 external tool launch configurations
 use the selected project’s active build configuration directory as the workdir
 and generates artifacts into a bootmodeN (1 &lt;= N &lt;= 3) directory below this.</p>
-<p>mpfsBootmodeProgrammer generates a <workdir>/bootmodeN/debugLog.txt (0 &lt;= N &lt;=
+<p>mpfsBootmodeProgrammer generates a <code class="docutils literal notranslate"><span class="pre">&lt;workdir&gt;/bootmodeN/debugLog.txt</span></code> (0 &lt;= N &lt;=
 3) log file which can be useful for checking what operations were carried out
 especially in the case of a programming failure.</p>
 <p>For boot modes 1-3 mpfsBootmodeProgrammer generates the boot mode program image
-Intel Hex file that can be used in Libero’s Design Flow &gt; Program Design &gt;
-Configure Design Initialization Data and Memories &gt; eNVM/sNVM configurators.</p>
-<p>The name of this file includes</p>
+Intel Hex file that can be used in Libero:</p>
+<div class="graphviz"><img src="../_images/graphviz-6140ce83a648b520ed6a7ff2ccdea95eed81cce9.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Design Flow&quot; -&gt; &quot;Program Design&quot; -&gt; &quot;Configure Design Initialization Data and Memories&quot; -&gt; &quot;eNVM/sNVM configurators&quot;
+     }" class="graphviz" /></div>
+<br/><p>The name of this file includes</p>
 <ol class="simple">
 <li><p>the ELF file basename - for example “mpfs-blinky” for “mpfs-blinky.elf”</p></li>
 <li><p>“bmN” (1 &lt;= N &lt;= 3) indicating the boot mode</p></li>
 <li><p>“pM” (where M is an NVM page number) indicating the NVM (eNVM or sNVM) page  at which the boot mode program image (including prepended “header” data) is stored.</p></li>
 </ol>
-<p>For boot mode 2 the filename also contains “ap” or “ac” indicating whether the
-boot program is stored in authenticated plaintext or authenticated ciphertext
+<p>For boot mode 2 the filename also contains <code class="docutils literal notranslate"><span class="pre">ap</span></code> or <code class="docutils literal notranslate"><span class="pre">ac</span></code> indicating whether the
+boot program is stored in <code class="docutils literal notranslate"><span class="pre">authenticated</span> <span class="pre">plaintext</span></code> or <code class="docutils literal notranslate"><span class="pre">authenticated</span> <span class="pre">ciphertext</span></code>
 sNVM pages respectively.</p>
 <p>Examples of boot mode program image Intel Hex file names include:</p>
-<p>Boot mode 1: mpfs-blinky-bm1-p0.hex
-Boot mode 2: mpfs-blinky-bm2-ap-p20.hex (authenticated plaintext)
-Boot mode 2: mpfs-blinky-bm2-ac-p32.hex (authenticated encrypted ciphertext)
-Boot mode 3: mpfs-blinky-bm3-p0.hex</p>
+<ul class="simple">
+<li><p>Boot mode 1: mpfs-blinky-bm1-p0.hex</p></li>
+<li><p>Boot mode 2: mpfs-blinky-bm2-ap-p20.hex (authenticated plaintext)</p></li>
+<li><p>Boot mode 2: mpfs-blinky-bm2-ac-p32.hex (authenticated encrypted ciphertext)</p></li>
+<li><p>Boot mode 3: mpfs-blinky-bm3-p0.hex</p></li>
+</ul>
 <p>For boot mode 2 the USK (User sNVM/Secret Key) used is stored in
-<elf-file-basename>-bm2-usk.txt. This or another USK is required when
+<code class="docutils literal notranslate"><span class="pre">&lt;elf-file-basename&gt;-bm2-usk.txt</span></code>. This or another USK is required when
 configuring the boot mode 2 program image sNVM client in Libero.</p>
 <p>For boot mode 3 the ECC (Elliptic Curve Cryptography) public key x and y values
-are stored in <elf-file-basename>-bm3-public-key-xy.txt and these details are
+are stored in <code class="docutils literal notranslate"><span class="pre">&lt;elf-file-basename&gt;-bm3-public-key-xy.txt</span></code> and these details are
 required when configuring the boot mode 3 program image eNVM client in Libero.</p>
 </div>
 <div class="section" id="troubleshooting">
@@ -432,9 +443,9 @@ required when configuring the boot mode 3 program image eNVM client in Libero.</
 of the problem. If necessary also check the debugLog.txt log file that
 mpfsBootmodeProgrammer generates for more details.</p>
 <p>If mpfsBootmodeProgrammer cannot find fpgenprog or the required
-RISC-V GCC/binutils tools then check that the FPGENPROG and SC_INSTALL_DIR
+RISC-V GCC/binutils tools then check that the <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> and <code class="docutils literal notranslate"><span class="pre">SC_INSTALL_DIR</span></code>
 environment variables are configured correctly. Both environment variables are
-set from the softconsole.{cmd|sh} start script but the FPGENPROG variable may
+set from the <code class="docutils literal notranslate"><span class="pre">softconsole.{cmd|sh}</span></code> start script but the <code class="docutils literal notranslate"><span class="pre">FPGENPROG</span></code> variable may
 require adjustment depending on where Libero SoC or Programming and Debug Tools
 are installed. This can be set by configuring the variable in the OS
 environment, by editing the softconsole.{cmd|sh} script itself or in the
@@ -504,16 +515,22 @@ appropriate design that causes the SMK to be (re)generated:</p>
 <p>Elliptic Curve Cryptography private and public keys for boot mode 3 are
 automatically generated and there is no facility to pass an external key file
 yet.</p>
-<p>Support “advanced” options such as U_MSS_BOOTCFG:U_MSS_REVOCATION_ENABLE,
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Support for “advanced” options such as U_MSS_BOOTCFG:U_MSS_REVOCATION_ENABLE,
 SBIC:OPTIONS[7:0], SBIC:VERSION and SBIC:DSN is not yet available.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>Boot mode programming assumes that the full capacity of eNVM and sNVM is
-available for storing the boot loader program and does not have any knowledge
+available for storing the boot loader program and <strong>does not</strong> have any knowledge
 of any eNVM/sNVM clients configured via other tools (e.g. PolarFire SoC MSS
 Configurator, Libero SoC etc.). It is important, especially for boot mode 2,
 to check that only unused/available NVM is used from SoftConsole when
 programming boot modes.</p>
+</div>
 <p>mpfsBootmodeProgrammer assumes that the base address of the program image is
-identical to the program start address (_start) which is true when using the
+identical to the program start address (<code class="docutils literal notranslate"><span class="pre">_start</span></code>) which is true when using the
 PolarFire SoC HAL example linker scripts but may not be so in the general case.</p>
 </div>
 <div class="section" id="mpfsbootmodeprogrammer-usage-help">
