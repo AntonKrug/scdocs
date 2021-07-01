@@ -1,8 +1,8 @@
 ```````{jinja} scvars
 
-# Packages/Tools/Resources
+# Packages, Tools and Resources
 
-## Related Tools/Resources
+## Related Tools and Resources
 
 ### Libero SoC/Firmware Catalog
 
