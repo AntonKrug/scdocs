@@ -1,0 +1,18 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# Project settings
+
+
+{% include 'main/troubleshooting/project/_application_too_big.inc' %}
+{% include 'main/troubleshooting/project/_Osize_unaligned.inc' %}
+{% include 'main/troubleshooting/project/_program_file_doesnt_exist.inc' %}
+{% include 'main/troubleshooting/project/_redirect_uart.inc' %}
+{% include 'main/troubleshooting/project/_no_stdlib.inc' %}
+{% include 'main/troubleshooting/project/_removed_unused_sections_build_fail.inc' %}
+{% include 'main/troubleshooting/project/_gdb_not_detected.inc' %}
+{% include 'main/troubleshooting/project/_printf_float.inc' %}
+{% include 'main/troubleshooting/project/_duplicate_entry.inc' %}
+{% include 'main/troubleshooting/project/_undefined_reference_stack.inc' %}
+
+```````

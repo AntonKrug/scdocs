@@ -45,8 +45,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Renode" href="../troubleshooting/renode.html" />
-    <link rel="prev" title="Projects" href="projects.html" /> 
+    <link rel="next" title="Flashpro and OpenOCD" href="../troubleshooting/flashpro.html" />
+    <link rel="prev" title="PolarFire SoC" href="mpfs.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -100,10 +100,9 @@
             
               <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About this document</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/whatsnew.html">What is new</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/used_packages.html">Used packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages/Tools/Resources</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Using SoftConsole</span></p>
 <ul class="current">
@@ -111,17 +110,22 @@
 <li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Renode emulation platform</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#tips-and-troubleshooting">Tips and troubleshooting</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#using-open-source-software-tool-such-as-renode-will-contaminate-my-proprietary-code">Using Open Source Software tool such as Renode will contaminate my proprietary code?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#useful-links">Useful Links</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#windows-firewall">Windows firewall</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-<p class="caption"><span class="caption-text">Troubleshooting</span></p>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Experiments</span></p>
 <ul>
@@ -196,15 +200,15 @@
             
   <div class="section" id="renode-emulation-platform">
 <h1>Renode emulation platform<a class="headerlink" href="#renode-emulation-platform" title="Permalink to this headline">¶</a></h1>
-<p><img alt="Renode logo" src="../_images/renode_logo.png" /></p>
+<p><img alt="Renode logo" src="../_images/renode_logo1.png" /></p>
 <p>Renode™ is an open-source software development framework with commercial support from Antmicro that lets you develop, debug and test multi-node device systems reliably, scalably and effectively. If all installation dependencies are met (see installation section), then the RISC-V examples can be run in the emulator.</p>
 <p>To debug an example in the emulator Renode must be run with the Mi-V model (external tool launcher called Mi-V-Renodeemulation-platform) or PolarFire SoC MPFS (previously known as PSE, see MPFS HAL manual for more details) model and a debug launcher attaches to the running Renode (for example miv-rv32im-systick-blinky Attach-to-Renode). The debug launchers for Renode are almost identical to the launchers for real 32-bit RISC-V hardware targets except:</p>
 <ul>
 <li><p>Disabled/uncheck “Start OpenOCD locally” as Renode debugging does not use OpenOCD/JTAG but connects GDB directly to the Renode GDB Remote Serial Protocol interface.</p>
-<div class="graphviz"><img src="../_images/graphviz-af2d6cdd55fc201391851a2066a4ab0d78c91eb3.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;OpenOCD Setup&quot; -&gt; &quot;Start OpenOCD locally&quot;; }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-cc07c7dcc6ceebb08add3cf1500011b81e0078fd.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;OpenOCD Setup&quot; -&gt; &quot;Start OpenOCD locally&quot;; }" class="graphviz" /></div>
 </li>
 <li><p>RISC-V 32-bit targets need the following commands:</p>
-<div class="graphviz"><img src="../_images/graphviz-abd8b4e32dfaacd65c6785ae4bfea169b31f6643.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-83839a180d94385294ded83427d951661e1e541a.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }" class="graphviz" /></div>
 <p>Have set the architecture and symbols:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span> <span class="n">arch</span> <span class="n">riscv</span><span class="p">:</span><span class="n">rv32</span>
 </pre></div>
@@ -234,7 +238,7 @@ monitor start
 </div>
 </li>
 <li><p>Connect to port with the correct hart, check the Port number value:</p>
-<div class="graphviz"><img src="../_images/graphviz-36846921ca63f2232a08da454340de4390f24121.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;Remote Target&quot; -&gt; &quot;Port number&quot;; }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-59da6a7d87af8a3988aebeae726c77321763810a.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debugger&quot; -&gt; &quot;Remote Target&quot; -&gt; &quot;Port number&quot;; }" class="graphviz" /></div>
 <table class="colwidths-auto docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head">Hart</th>
@@ -280,14 +284,17 @@ monitor start
 </ul>
 </li>
 </ul>
-<div class="section" id="tips-and-troubleshooting">
-<h2>Tips and troubleshooting<a class="headerlink" href="#tips-and-troubleshooting" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="using-open-source-software-tool-such-as-renode-will-contaminate-my-proprietary-code">
-<h3>Using Open Source Software tool such as Renode will contaminate my proprietary code?<a class="headerlink" href="#using-open-source-software-tool-such-as-renode-will-contaminate-my-proprietary-code" title="Permalink to this headline">¶</a></h3>
-<p>Using the tool will not impose any obligations or restrictions on the user’s code, his license or his IP. In an edge case where the user would copy part of the Renode’s source code, modify it and redistribute its binaries, then there are obligations to meet, however Renode has MIT license and allows wide use (including commercial, private use and sublicensing it with a more restrictive license):</p>
-<p><a class="reference external" href="https://tldrlegal.com/license/mit-license">https://tldrlegal.com/license/mit-license</a></p>
-<p>If in doubt consult with a legal team.</p>
+<div class="section" id="useful-links">
+<h2>Useful Links<a class="headerlink" href="#useful-links" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://renode.readthedocs.io/en/latest/">Renode’s documentation</a></p></li>
+</ul>
 </div>
+<div class="section" id="windows-firewall">
+<h2>Windows firewall<a class="headerlink" href="#windows-firewall" title="Permalink to this headline">¶</a></h2>
+<p>On Windows if there is a firewall in use then the first time that a debug session is run the firewall may prompt that it is blocking
+OpenOCD, <code class="docutils literal notranslate"><span class="pre">fpServer.exe</span></code> and/or <code class="docutils literal notranslate"><span class="pre">renode.exe</span></code>. Allow the firewall to unblock these and save this as the default setting if
+necessary.</p>
 </div>
 </div>
 
@@ -297,8 +304,8 @@ monitor start
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../troubleshooting/renode.html" class="btn btn-neutral float-right" title="Renode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="projects.html" class="btn btn-neutral float-left" title="Projects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../troubleshooting/flashpro.html" class="btn btn-neutral float-right" title="Flashpro and OpenOCD" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="mpfs.html" class="btn btn-neutral float-left" title="PolarFire SoC" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

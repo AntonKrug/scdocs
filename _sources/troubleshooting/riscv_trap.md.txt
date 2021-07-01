@@ -1,0 +1,13 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# RISC-V Trap Exceptions
+
+{% include 'main/troubleshooting/riscv_trap/_exit_code.inc' %}
+{% include 'main/troubleshooting/riscv_trap/_csrs.inc' %}
+{% include 'main/troubleshooting/riscv_trap/_mcause2.inc' %}
+{% include 'main/troubleshooting/riscv_trap/_misaligned.inc' %}
+
+{% include 'main/troubleshooting/riscv_trap/_floating_point_trap.inc' %}
+
+```````

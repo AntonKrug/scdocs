@@ -52,7 +52,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Wavedrom" href="wavedrom.html" />
-    <link rel="prev" title="Renode" href="../troubleshooting/renode.html" /> 
+    <link rel="prev" title="Product Support" href="../troubleshooting/support.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -106,10 +106,9 @@
             
               <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About this document</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/whatsnew.html">What is new</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/used_packages.html">Used packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages/Tools/Resources</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Using SoftConsole</span></p>
 <ul>
@@ -117,16 +116,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode emulation platform</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Troubleshooting</span></p>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Experiments</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Graphviz</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#simple">Simple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fixed-locations">Fixed locations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#single-line-syntax">Single line syntax:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#clickable-nodes">Clickable nodes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#breadcrumbs-macros">Breadcrumbs macros</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#clusters">Clusters</a></li>
@@ -230,41 +238,70 @@
         b -&gt; c
         c -&gt; a
     }" class="graphviz" /></div>
-<p>Single line syntax:</p>
+</div>
+<div class="section" id="fixed-locations">
+<h2>Fixed locations<a class="headerlink" href="#fixed-locations" title="Permalink to this headline">¶</a></h2>
+<p>Doesn’t look working</p>
+<div class="graphviz"><img src="../_images/graphviz-4c020d65d0eacbf334f0d34a88127c40926f6ca4.png" alt="digraph {
+        splines=true      
+
+        a [pos=&quot;0.0,0.0!&quot;];
+        b [pos=&quot;0.0,1.0!&quot;];
+        c [pos=&quot;0.0,2.0!&quot;];  
+
+        a -&gt; b;
+        a -&gt; c;
+        b -&gt; c;
+    }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-6ac276530fa60ad65cbb38cc019f8b1daac573a4.png" alt="digraph {
+        splines=true; esep=1;
+
+
+        a [pos=&quot;0.0,0.0!&quot;];
+        b [pos=&quot;0.0,1.0!&quot;];
+        c [pos=&quot;0.0,2.0!&quot;];  
+
+        a -&gt; b;
+        a -&gt; c;
+        b -&gt; c;
+    }" class="graphviz" /></div>
+</div>
+<div class="section" id="single-line-syntax">
+<h2>Single line syntax:<a class="headerlink" href="#single-line-syntax" title="Permalink to this headline">¶</a></h2>
 <div class="graphviz"><img src="../_images/graphviz-c9fa6be36ada87480c13ff10b45dddd35ab91afa.png" alt="digraph { graph [bgcolor=transparent]; 1 -&gt; 2; 2 -&gt; 3; 3 -&gt; 1; }" class="graphviz" /></div>
 </div>
 <div class="section" id="clickable-nodes">
 <h2>Clickable nodes<a class="headerlink" href="#clickable-nodes" title="Permalink to this headline">¶</a></h2>
-<div class="graphviz"><img src="../_images/graphviz-25acec13c46d1d5694dd55df3bcc4741f98df03c.png" alt="digraph { 
+<div class="graphviz"><img src="../_images/graphviz-213ee879ca31e1261f8f09dca467e971fa98acca.png" alt="digraph { 
         graph [bgcolor=transparent]
         node  [shape=box target=&quot;_blank&quot;]
 
         Microchip       [style=filled fillcolor=&quot;#FFD9DA&quot; color=&quot;#FF9EA0&quot;   URL=&quot;https://www.microchip.com/&quot;]
         &quot;SoftConsole 2021.05 v7.0&quot;        [style=filled fillcolor=&quot;#CCECFF&quot; color=&quot;#6AC0FF&quot;   URL=&quot;https://www.microsemi.com/softconsole&quot;]
         &quot;Libero SoC v2021.1&quot; [style=filled fillcolor=&quot;#D2ECD2&quot; color=&quot;#96C796&quot;  URL=&quot;https://www.microsemi.com/libero&quot;]
-        FP              [style=filled fillcolor=&quot;#E1E1E1&quot; color=&quot;#777777&quot;   URL=&quot;https://www.microsemi.com/existing-parts/parts/152631&quot;]
+        FlashPro        [style=filled fillcolor=&quot;#E1E1E1&quot; color=&quot;#777777&quot;   URL=&quot;https://www.microsemi.com/existing-parts/parts/152631&quot;]
         Icicle          [style=filled fillcolor=&quot;#FFF7C2&quot; color=&quot;#FFDC6D&quot; URL=&quot;https://www.microsemi.com/products/fpga-soc/polarfire-soc-icicle-quick-start-guide&quot;]
 
         Microchip -&gt; &quot;SoftConsole 2021.05 v7.0&quot;
         Microchip -&gt; &quot;Libero SoC v2021.1&quot;
 
-        &quot;SoftConsole 2021.05 v7.0&quot;        -&gt; FP
-        &quot;Libero SoC v2021.1&quot; -&gt; FP
+        &quot;SoftConsole 2021.05 v7.0&quot;        -&gt; FlashPro
+        &quot;Libero SoC v2021.1&quot; -&gt; FlashPro
 
-        FP -&gt; Icicle
-    }" usemap="#grapvize44924cd56" class="graphviz" /></div>
-<map id="grapvize44924cd56" name="grapvize44924cd56">
+        FlashPro -&gt; Icicle
+    }" usemap="#grapviz3a143b579d" class="graphviz" /></div>
+<map id="grapviz3a143b579d" name="grapviz3a143b579d">
 <area shape="rect" id="node1" href="https://www.microchip.com/" target="_blank" title="Microchip" alt="" coords="170,5,269,53"/>
 <area shape="rect" id="node2" href="https://www.microsemi.com/softconsole" target="_blank" title="SoftConsole 2021.05 v7.0" alt="" coords="5,101,217,149"/>
 <area shape="rect" id="node3" href="https://www.microsemi.com/libero" target="_blank" title="Libero SoC v2021.1" alt="" coords="242,101,413,149"/>
-<area shape="rect" id="node4" href="https://www.microsemi.com/existing-parts/parts/152631" target="_blank" title="FP" alt="" coords="183,197,255,245"/>
+<area shape="rect" id="node4" href="https://www.microsemi.com/existing-parts/parts/152631" target="_blank" title="FlashPro" alt="" coords="176,197,263,245"/>
 <area shape="rect" id="node5" href="https://www.microsemi.com/products/fpga-soc/polarfire-soc-icicle-quick-start-guide" target="_blank" title="Icicle" alt="" coords="183,293,255,341"/>
 </map></div>
 <div class="section" id="breadcrumbs-macros">
 <h2>Breadcrumbs macros<a class="headerlink" href="#breadcrumbs-macros" title="Permalink to this headline">¶</a></h2>
-<div class="graphviz"><img src="../_images/graphviz-a55f248962c63412e85904f02ff348ece1f9f95e.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-8c0cb1216ea6495485cb93c34d106cd519d1e9cd.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
-         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Start button&quot; -&gt; &quot;Type 'Turn Windows features on or off'&quot; -&gt; &quot;Select '.NET Framework 4.8'&quot; -&gt; &quot;Click OK&quot;
      }" class="graphviz" /></div>
@@ -1366,7 +1403,7 @@
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="wavedrom.html" class="btn btn-neutral float-right" title="Wavedrom" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../troubleshooting/renode.html" class="btn btn-neutral float-left" title="Renode" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../troubleshooting/support.html" class="btn btn-neutral float-left" title="Product Support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

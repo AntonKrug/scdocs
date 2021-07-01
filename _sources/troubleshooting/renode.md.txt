@@ -1,8 +1,14 @@
 ```````{jinja} scvars
 {% import '_jinja/macros.html' as macros %}
 
-## Renode
+# Renode
+
+![Renode logo](renode/images/renode_logo.png)
 
 {% include 'main/troubleshooting/renode/_license.inc' %}
+{% include 'main/troubleshooting/renode/_mono.inc' %}
+{% include 'main/troubleshooting/renode/_crash_on_startup.inc' %}
+{% include 'main/troubleshooting/renode/_stack.inc' %}
+{% include 'main/troubleshooting/renode/_robot.inc' %}
 
 ```````

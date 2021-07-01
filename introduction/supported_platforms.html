@@ -51,8 +51,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Used packages" href="used_packages.html" />
-    <link rel="prev" title="What is new" href="whatsnew.html" /> 
+    <link rel="next" title="Packages/Tools/Resources" href="tools_resources.html" />
+    <link rel="prev" title="About SoftConsole and this document" href="about.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -106,17 +106,37 @@
             
               <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="about.html">About this document</a></li>
-<li class="toctree-l1"><a class="reference internal" href="whatsnew.html">What is new</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about.html">About SoftConsole and this document</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Supported Platforms</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#host-operating-systems">Host operating systems</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#target-cpus">Target CPUs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#jtag-debug">JTAG Debug</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#other-software">Other software</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#flashpro-support-matrix">FlashPro support matrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#flashpro-support-matrix">FlashPro support matrix</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#flashpro6">FlashPro6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flashpro5">FlashPro5</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="used_packages.html">Used packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#boards">Boards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#microchip-polarfire-soc-icicle">Microchip - PolarFire SoC - Icicle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#microchip-polarfire-fpga-mpf300-video-kit-ns">Microchip - PolarFire FPGA - MPF300-VIDEO-KIT-NS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#microchip-polarfire-fpga-mpf300-eval-kit-es">Microchip - PolarFire FPGA - MPF300-EVAL-KIT-ES</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#microchip-polarfire-fpga-mpf300-splash-kit">Microchip - PolarFire FPGA - MPF300-SPLASH-KIT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#microchip-smartfusion2-m2s-hello-fpga-kit">Microchip - SmartFusion2 - M2S-HELLO-FPGA-KIT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#aries-polarfire-soc-m100pf-som">Aries - PolarFire SoC - M100PF SoM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#arrow-polarfire-fpga-everest-dev-board">Arrow - PolarFire FPGA - Everest Dev Board</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#digi-key-smartfusion2-maker-board-m2s010-mkr-kit">Digi-key - SmartFusion2 - Maker Board M2S010-MKR-KIT</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#future-polarfire-fpga-avalanche-avmpf300ts-03">Future - PolarFire FPGA - Avalanche AVMPF300TS-03</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#future-igloo2-futurem2gl-evb">Future - IGLOO2 - FUTUREM2GL-EVB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trenz-smartfusion-2-smartberry-tem0002-02-010ca">Trenz - SmartFusion 2 - SmartBerry TEM0002-02-010CA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trenz-smartfusion-2-smf2000">Trenz - SmartFusion 2 - SMF2000</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#trenz-smartfusion-2-fpga-module-tem0005-02-010i">Trenz - SmartFusion 2 - FPGA module TEM0005-02-010I</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sundance-polarfire-soc-polarberry">Sundance - PolarFire SoC - PolarBerry</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tools_resources.html">Packages/Tools/Resources</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Using SoftConsole</span></p>
 <ul>
@@ -124,11 +144,18 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode emulation platform</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Troubleshooting</span></p>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Experiments</span></p>
 <ul>
@@ -377,7 +404,7 @@
 <td><p><strong>Yes</strong></p></td>
 <td><p><strong>Yes</strong></p></td>
 </tr>
-<tr class="row-even"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/>CoreJTAGDebug/UJTAG</p></td>
+<tr class="row-even"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/>CoreJTAGDebug/<strong>UJTAG</strong></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -385,7 +412,7 @@
 <td><p><strong>Yes</strong></p></td>
 <td><p><strong>Yes</strong></p></td>
 </tr>
-<tr class="row-odd"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/>JTAG signals on I/O pins</p></td>
+<tr class="row-odd"><td><p>Debug Mi-V RV32 RISCV<br/>soft core via<br/><strong>JTAG signals on I/O pins</strong></p></td>
 <td><p><strong>Yes</strong></p></td>
 <td></td>
 <td></td>
@@ -393,7 +420,7 @@
 <td><p><strong>Yes</strong></p></td>
 <td><p><strong>Yes</strong></p></td>
 </tr>
-<tr class="row-even"><td><p>Debug Cortex-M1 soft<br/>core via<br/>CoreJTAGDebug/UJTAG</p></td>
+<tr class="row-even"><td><p>Debug Cortex-M1<br/>soft core via<br/>CoreJTAGDebug/<strong>UJTAG</strong></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -401,7 +428,7 @@
 <td><p><strong>Yes</strong></p></td>
 <td><p><strong>Yes</strong></p></td>
 </tr>
-<tr class="row-odd"><td><p>Cortex-M1 soft core<br/>debug via JTAG signals<br/>on I/O pins</p></td>
+<tr class="row-odd"><td><p>Debug Cortex-M1<br/>soft core via<br/><strong>JTAG signals on I/O pins</strong></p></td>
 <td><p><strong>Yes</strong></p></td>
 <td></td>
 <td></td>
@@ -415,6 +442,73 @@
 <p class="admonition-title">Note</p>
 <p>Refer to the Libero SoC v12.5 SP1 or Program Debug Tools v12.5 SP1 (or later) release notes for details of how to upgrade the Embedded FlashPro6 from Rev A to Rev B.</p>
 </div>
+<div class="section" id="flashpro6">
+<h3>FlashPro6<a class="headerlink" href="#flashpro6" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/152632"><img alt="FP6" src="../_images/fp6.jpg" /></a></p>
+</div>
+<div class="section" id="flashpro5">
+<h3>FlashPro5<a class="headerlink" href="#flashpro5" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/152631"><img alt="FP5" src="../_images/fp5.jpg" /></a></p>
+</div>
+</div>
+<div class="section" id="boards">
+<h2>Boards<a class="headerlink" href="#boards" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="microchip-polarfire-soc-icicle">
+<h3>Microchip - PolarFire SoC - Icicle<a class="headerlink" href="#microchip-polarfire-soc-icicle" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.microsemi.com/products/fpga-soc/polarfire-soc-icicle-quick-start-guide"><img alt="board image" src="../_images/icicle.png" /></a></p>
+</div>
+<div class="section" id="microchip-polarfire-fpga-mpf300-video-kit-ns">
+<h3>Microchip - PolarFire FPGA - MPF300-VIDEO-KIT-NS<a class="headerlink" href="#microchip-polarfire-fpga-mpf300-video-kit-ns" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/150804"><img alt="board image" src="../_images/MPF300-VIDEO-KIT.jpg" /></a></p>
+</div>
+<div class="section" id="microchip-polarfire-fpga-mpf300-eval-kit-es">
+<h3>Microchip - PolarFire FPGA - MPF300-EVAL-KIT-ES<a class="headerlink" href="#microchip-polarfire-fpga-mpf300-eval-kit-es" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/150789"><img alt="board image" src="../_images/MPF300-EVAL-KIT-ES.png" /></a></p>
+</div>
+<div class="section" id="microchip-polarfire-fpga-mpf300-splash-kit">
+<h3>Microchip - PolarFire FPGA - MPF300-SPLASH-KIT<a class="headerlink" href="#microchip-polarfire-fpga-mpf300-splash-kit" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/144001"><img alt="board image" src="../_images/MPF300-SPLASH-KIT-ES.png" /></a></p>
+</div>
+<div class="section" id="microchip-smartfusion2-m2s-hello-fpga-kit">
+<h3>Microchip - SmartFusion2 - M2S-HELLO-FPGA-KIT<a class="headerlink" href="#microchip-smartfusion2-m2s-hello-fpga-kit" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/150925"><img alt="board image" src="../_images/M2S-HELLO-FPGA-KIT.png" /></a></p>
+</div>
+<div class="section" id="aries-polarfire-soc-m100pf-som">
+<h3>Aries - PolarFire SoC - M100PF SoM<a class="headerlink" href="#aries-polarfire-soc-m100pf-som" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://shop.aries-embedded.de/search?sSearch=M100PF"><img alt="board image" src="../_images/M100PF-2.jpg" /></a></p>
+</div>
+<div class="section" id="arrow-polarfire-fpga-everest-dev-board">
+<h3>Arrow - PolarFire FPGA - Everest Dev Board<a class="headerlink" href="#arrow-polarfire-fpga-everest-dev-board" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/143998"><img alt="board image" src="../_images/EVEREST-DEV-BOARD.png" /></a></p>
+</div>
+<div class="section" id="digi-key-smartfusion2-maker-board-m2s010-mkr-kit">
+<h3>Digi-key - SmartFusion2 - Maker Board M2S010-MKR-KIT<a class="headerlink" href="#digi-key-smartfusion2-maker-board-m2s010-mkr-kit" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/144012"><img alt="board image" src="../_images/M2S010-MKR-KIT.png" /></a></p>
+</div>
+<div class="section" id="future-polarfire-fpga-avalanche-avmpf300ts-03">
+<h3>Future - PolarFire FPGA - Avalanche AVMPF300TS-03<a class="headerlink" href="#future-polarfire-fpga-avalanche-avmpf300ts-03" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/139680"><img alt="board image" src="../_images/AVMPF300TS-03.jpg" /></a></p>
+</div>
+<div class="section" id="future-igloo2-futurem2gl-evb">
+<h3>Future - IGLOO2 - FUTUREM2GL-EVB<a class="headerlink" href="#future-igloo2-futurem2gl-evb" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.microsemi.com/existing-parts/parts/143948"><img alt="board image" src="../_images/FUTUREM2SF_EVB.jpg" /></a></p>
+</div>
+<div class="section" id="trenz-smartfusion-2-smartberry-tem0002-02-010ca">
+<h3>Trenz - SmartFusion 2 - SmartBerry TEM0002-02-010CA<a class="headerlink" href="#trenz-smartfusion-2-smartberry-tem0002-02-010ca" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://shop.trenz-electronic.de/en/TEM0002-02-010CA-SmartBerry-FPGA-Module-with-Microsemi-SmartFusion2-M2S010-SoC-256-MByte-DDR3L"><img alt="board image" src="../_images/TEM0002-02-010CA.jpg" /></a></p>
+</div>
+<div class="section" id="trenz-smartfusion-2-smf2000">
+<h3>Trenz - SmartFusion 2 - SMF2000<a class="headerlink" href="#trenz-smartfusion-2-smf2000" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://shop.trenz-electronic.de/en/TEM0001-01A-010C-SMF2000-FPGA-Module-with-Microsemi-SmartFusion2-8-MByte-SDRAM"><img alt="board image" src="../_images/SMF2000.jpg" /></a></p>
+</div>
+<div class="section" id="trenz-smartfusion-2-fpga-module-tem0005-02-010i">
+<h3>Trenz - SmartFusion 2 - FPGA module TEM0005-02-010I<a class="headerlink" href="#trenz-smartfusion-2-fpga-module-tem0005-02-010i" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://shop.trenz-electronic.de/en/TEM0005-02-010I-FPGA-Module-with-Microsemi-SmartFusion2-M2S010-SoC-256-MByte-DDR3"><img alt="board image" src="../_images/TEM0005-02-010I.jpg" /></a></p>
+</div>
+<div class="section" id="sundance-polarfire-soc-polarberry">
+<h3>Sundance - PolarFire SoC - PolarBerry<a class="headerlink" href="#sundance-polarfire-soc-polarberry" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.crowdsupply.com/sundance-dsp/polarberry"><img alt="board image" src="../_images/polarberry.jpg" /></a></p>
+</div>
 </div>
 </div>
 
@@ -424,8 +518,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="used_packages.html" class="btn btn-neutral float-right" title="Used packages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="whatsnew.html" class="btn btn-neutral float-left" title="What is new" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tools_resources.html" class="btn btn-neutral float-right" title="Packages/Tools/Resources" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="about.html" class="btn btn-neutral float-left" title="About SoftConsole and this document" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

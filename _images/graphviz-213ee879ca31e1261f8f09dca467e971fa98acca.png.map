@@ -1,0 +1,7 @@
+<map id="%3" name="%3">
+<area shape="rect" id="node1" href="https://www.microchip.com/" target="_blank" title="Microchip" alt="" coords="170,5,269,53"/>
+<area shape="rect" id="node2" href="https://www.microsemi.com/softconsole" target="_blank" title="SoftConsole 2021.05 v7.0" alt="" coords="5,101,217,149"/>
+<area shape="rect" id="node3" href="https://www.microsemi.com/libero" target="_blank" title="Libero SoC v2021.1" alt="" coords="242,101,413,149"/>
+<area shape="rect" id="node4" href="https://www.microsemi.com/existing-parts/parts/152631" target="_blank" title="FlashPro" alt="" coords="176,197,263,245"/>
+<area shape="rect" id="node5" href="https://www.microsemi.com/products/fpga-soc/polarfire-soc-icicle-quick-start-guide" target="_blank" title="Icicle" alt="" coords="183,293,255,341"/>
+</map>

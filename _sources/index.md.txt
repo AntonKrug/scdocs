@@ -5,9 +5,8 @@
 :maxdepth: 1
 
 introduction/about
-introduction/whatsnew
 introduction/supported_platforms
-introduction/used_packages
+introduction/tools_resources
 ```
 
 ```{toctree}
@@ -18,15 +17,22 @@ using_softconsole/installation
 using_softconsole/post_installation
 using_softconsole/workspace
 using_softconsole/projects
+using_softconsole/mpfs
 using_softconsole/renode
 ```
 
 
 ```{toctree}
-:caption: Troubleshooting
+:caption: Tips, Tricks and Troubleshooting
 :maxdepth: 1
 
+troubleshooting/flashpro
+troubleshooting/project
+troubleshooting/riscv
+troubleshooting/riscv_trap
 troubleshooting/renode
+troubleshooting/eclipse
+troubleshooting/support
 ```
 
 
@@ -39,3 +45,4 @@ experiments/wavedrom
 experiments/sandbox
 experiments/reasons
 ```
+

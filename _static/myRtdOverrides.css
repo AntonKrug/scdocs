@@ -9,6 +9,17 @@
   min-height: 100vh;
 }
 
+/* Make background for the content white*/
+.wy-nav-content {
+  background: #fff !important;
+}
+
+@media screen and (min-width:1100px) {
+  .wy-nav-content {
+    background:#fff !important;
+  }
+}
+
 /* Highlighted text has less saturated background */
 .highlight {
   background: #fefffa;

@@ -106,10 +106,9 @@
             
               <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About this document</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/whatsnew.html">What is new</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/used_packages.html">Used packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages/Tools/Resources</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Using SoftConsole</span></p>
 <ul class="current">
@@ -117,24 +116,34 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Post Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#windows">Windows</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#program-and-debug-polarfire-soc">Program and Debug PolarFire SoC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#renode-depedencies">Renode depedencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#renode-dependencies">Renode dependencies</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#windows-firewall">Windows firewall</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#linux">Linux</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">Program and Debug PolarFire SoC</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">Renode depedencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#renode-depedencies">Renode depedencies</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#writting-models-for-renode">Writting models for Renode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-targets-flashpro">Hardware targets (FlashPro)</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#check-that-flashpro-can-be-used-without-root">Check that FlashPro can be used without root</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="renode.html">Renode emulation platform</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Troubleshooting</span></p>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Experiments</span></p>
 <ul>
@@ -213,12 +222,16 @@
 <h2>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="program-and-debug-polarfire-soc">
 <h3>Program and Debug PolarFire SoC<a class="headerlink" href="#program-and-debug-polarfire-soc" title="Permalink to this headline">¶</a></h3>
-<p>If you want to use mpfs programmer you need to install Program and debug, or Libero:</p>
+<p>If you want to use MPFS programmer you need to install Program and debug, or Libero:</p>
 <p><a class="reference external" href="https://www.microsemi.com/product-directory/dev-tools/4970-programming">https://www.microsemi.com/product-directory/dev-tools/4970-programming</a></p>
 <p><a class="reference external" href="https://www.microsemi.com/product-directory/design-resources/1750-libero-soc">https://www.microsemi.com/product-directory/design-resources/1750-libero-soc</a></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>elaborate</p>
 </div>
-<div class="section" id="renode-depedencies">
-<h3>Renode depedencies<a class="headerlink" href="#renode-depedencies" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="renode-dependencies">
+<h3>Renode dependencies<a class="headerlink" href="#renode-dependencies" title="Permalink to this headline">¶</a></h3>
 <p>The Renode emulation platform is not a crucial sub-module of SoftConsole and users who are intending to connect to hardware targets only do not need satisfy the Renode’s dependencies.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -240,9 +253,9 @@
 <div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
 <p>The Renode emulation platform can be used out of the box on many Windows 10/8.1 machines.
 However in a rare case when the .NET Framework is not already installed with Windows 10/8.1 then it can be changed easily from within Windows features menu.</p>
-<div class="graphviz"><img src="../_images/graphviz-265cea97439e1c58616327f3c6dca2766651925b.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-02c9360d08aa1dbd4b956b49a0c10b555ed6304e.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
-         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
          &quot;Start button&quot; -&gt; &quot;Type 'Turn Windows features on or off'&quot; -&gt; &quot;Select '.NET Framework 4.8'&quot; -&gt; &quot;Click OK&quot;
      }" class="graphviz" /></div>
@@ -253,6 +266,12 @@ However in a rare case when the .NET Framework is not already installed with Win
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="windows-firewall">
+<h2>Windows firewall<a class="headerlink" href="#windows-firewall" title="Permalink to this headline">¶</a></h2>
+<p>On Windows if there is a firewall in use then the first time that a debug session is run the firewall may prompt that it is blocking
+OpenOCD, <code class="docutils literal notranslate"><span class="pre">fpServer.exe</span></code> and/or <code class="docutils literal notranslate"><span class="pre">renode.exe</span></code>. Allow the firewall to unblock these and save this as the default setting if
+necessary.</p>
 </div>
 <div class="section" id="linux">
 <h2>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h2>
@@ -306,8 +325,8 @@ However in a rare case when the .NET Framework is not already installed with Win
 <p><a class="reference external" href="https://www.microsemi.com/product-directory/dev-tools/4970-programming">https://www.microsemi.com/product-directory/dev-tools/4970-programming</a></p>
 <p><a class="reference external" href="https://www.microsemi.com/product-directory/design-resources/1750-libero-soc">https://www.microsemi.com/product-directory/design-resources/1750-libero-soc</a></p>
 </div>
-<div class="section" id="id2">
-<h3>Renode depedencies<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="renode-depedencies">
+<h3>Renode depedencies<a class="headerlink" href="#renode-depedencies" title="Permalink to this headline">¶</a></h3>
 <p>Renode requires mono framework to run and is provided by mono-project, add its package repository running the following:</p>
 <div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -368,6 +387,238 @@ yum install mono-devel mono-full
 <div class="section" id="writting-models-for-renode">
 <h3>Writting models for Renode<a class="headerlink" href="#writting-models-for-renode" title="Permalink to this headline">¶</a></h3>
 <p>Users, wishing to write Renode models can use <a class="reference external" href="https://www.monodevelop.com/">Mono Develop IDE</a> as their C# editor. Renode is made as a Mono Develop project, therefore it should be able to open Renode’s sources without any extra manual steps.</p>
+</div>
+<div class="section" id="hardware-targets-flashpro">
+<span id="linux-post-install-hw"></span><h3>Hardware targets (FlashPro)<a class="headerlink" href="#hardware-targets-flashpro" title="Permalink to this headline">¶</a></h3>
+<p>By default, USB devices are only accessible with root privileges. To debug using SoftConsole and FlashPro5/6 as a
+non-root user some additional steps must be taken.</p>
+<ul>
+<li><p>Copy the OpenOCD udev rules file and tell the udev subsystem to load it. This rules file describes all USB JTAG devices supported by OpenOCD to the system and makes them accessible by non-root users (replace <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;</span></code> with your installation path):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;SoftConsole-install-dir&gt;/openocd/share/openocd/contrib
+sudo cp <span class="m">60</span>-openocd.rules /etc/udev/rules.d
+sudo udevadm trigger
+</pre></div>
+</div>
+<p>If <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d/60-openocd.rules</span></code> already exists then make sure to overwrite it with the new version in this release as it contains additional rule data not in the earlier version.</p>
+<p>In some cases it may be necessary to reboot for the changes to take effect. Some distributions do not create the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group and/or may not add users to it automatically. In that case the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group must be created manually and the user added to the <code class="docutils literal notranslate"><span class="pre">plugdev</span></code> group.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo groupadd plugdev
+sudo usermod -a -G plugdev &lt;username&gt;
+</pre></div>
+</div>
+</li>
+<li><p>If you previously used SoftConsole v4.x or 5.0 and installed the <code class="docutils literal notranslate"><span class="pre">99-openocd.rules</span></code> file into <code class="docutils literal notranslate"><span class="pre">/etc/udev/rules.d</span></code> then you can delete that file as it is now redundant and superseded by <code class="docutils literal notranslate"><span class="pre">60-openocd.rules</span></code>. Then run again:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo udevadm trigger
+</pre></div>
+</div>
+<p>Or reboot the PC for the changes to take effect.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="check-that-flashpro-can-be-used-without-root">
+<h2>Check that FlashPro can be used without root<a class="headerlink" href="#check-that-flashpro-can-be-used-without-root" title="Permalink to this headline">¶</a></h2>
+<p>Connect a FlashPro5/6 JTAG programmer to a native Linux host machine (this might not work on a VM) and check that it is visible to the operating system:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lsusb
+Bus <span class="m">001</span> Device <span class="m">004</span>: ID <span class="m">1514</span>:2008 Actel
+Bus <span class="m">001</span> Device <span class="m">004</span>: ID <span class="m">1514</span>:2009 Actel
+</pre></div>
+</div>
+<p>If the FlashPro5 (VID=1514 PID=2008) or FlashPro6 (VID=1514 PID=2009) does not appear then double check that the previous steps were carried out correctly.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>TODO add embedded FP6 PID</p>
+</div>
+<ul class="simple">
+<li><p>To the JTAG end of the FlashPro connect a suitable board containing a Cortex-M1, SmartFusion or SmartFusion2 Cortex-M3, or RISC-V CPU based SoC design.</p>
+<ul>
+<li><p>Make sure you are connecting to the right JTAG connector (in case of Icicle board it’s <strong>J23</strong> and not J10, the J10 is used <strong>only</strong> to reprogram the embedded JTAG)</p></li>
+</ul>
+</li>
+<li><p>Power the board on.</p></li>
+<li><p>Make sure that the board is configured for FlashPro JTAG debugging of the target CPU (depending on the board and CPU/SoC in use some board switches/jumpers configuration may be required).</p></li>
+<li><p>Make sure that it has correct and matching Libero design (if you are going to connect to Mi-V RV-32 then you need working Mi-V design on the device)</p></li>
+<li><p>Run OpenOCD from the command line to ensure that the debug connection can be established to the target CPU/SoC:</p></li>
+</ul>
+<p>First go to the correct directory (replace <code class="docutils literal notranslate"><span class="pre">&lt;SoftConsole-install-dir&gt;</span></code> with your installation path):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> &lt;SoftConsole-install-dir&gt;/openocd/bin
+</pre></div>
+</div>
+<p>And then execute the following:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-3-0 docutils container">
+<div class="docutils container">
+<p>Cortex-M1</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-3-1 docutils container">
+<div class="docutils container">
+<p>Cortex-M3</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-3-2 docutils container">
+<div class="docutils container">
+<p>Mi-V RISCV</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-3-3 docutils container">
+<div class="docutils container">
+<p>PolarFire SoC</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-0 active docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -f board/microsemi-cortex-m1.cfg
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-1 docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -c <span class="s2">&quot;set DEVICE M2S090&quot;</span> -f board/microsemi-cortex-m3.cfg
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">M2S090</span></code> needs to match the target.</p>
+<p><strong>Example:</strong> When using Trenz <a class="reference external" href="https://shop.trenz-electronic.de/en/TEM0001-01A-010C-SMF2000-FPGA-Module-with-Microsemi-SmartFusion2-8-MByte-SDRAM?c=486">SMF2000</a> board, it needs to be changed to <code class="docutils literal notranslate"><span class="pre">M2S010</span></code>.</p>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-2 docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -f board/microsemi-riscv.cfg
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-3-3 docutils container">
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>./openocd -c <span class="s2">&quot;set DEVICE MPFS&quot;</span> -f board/microsemi-riscv.cfg
+</pre></div>
+</div>
+</div>
+</div>
+<p>The output should be similar to the following:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-4-0 docutils container">
+<div class="docutils container">
+<p>Cortex-M1</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-4-1 docutils container">
+<div class="docutils container">
+<p>Cortex-M3</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-4-2 docutils container">
+<div class="docutils container">
+<p>Mi-V RISC-V</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-0 active docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Open On-Chip Debugger
+Licensed under GNU GPL v2
+For bug reports, read
+http://openocd.org/doc/doxygen/bugs.html
+Info : only one transport option; autoselect &#39;jtag&#39;
+adapter speed: 6000 kHz
+microsemi_flashpro tunnel_jtag_via_ujtag off
+cortex_m reset_config sysresetreq
+trst_only separate trst_push_pull
+do_board_reset_init
+<span class="hll">Info : FlashPro ports available: usb50266
+</span>Info : FlashPro port used: usb50266
+Info : clock speed 6000 kHz
+<span class="hll">Info : JTAG tap: FPGA.tap tap/device found: 0x2353a1cf (mfg: 0x0e7
+</span><span class="hll">(GateField), part: 0x353a, ver: 0x2)
+</span>microsemi_flashpro tunnel_jtag_via_ujtag on
+Info : JTAG tap: FPGA.tap disabled
+Info : JTAG tap: FPGA.dap enabled
+<span class="hll">Info : Cortex-M1 IDCODE = 0x4ba00477
+</span>Info : FPGA.cpu: hardware has 2 breakpoints, 1 watchpoints
+cortex_m auto_bp_type off
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice from the log above, the following was recognized correctly</p>
+<ul class="simple">
+<li><p>The FlashPro ports</p></li>
+<li><p>The ID code of the JTAG tap</p></li>
+<li><p>And the Cortex-M1 IDCODE</p></li>
+</ul>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-1 docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Open On-Chip Debugger
+Licensed under GNU GPL v2
+For bug reports, read
+http://openocd.org/doc/doxygen/bugs.html
+M2S090
+Info : only one transport option; autoselect &#39;jtag&#39;
+adapter speed: 6000 kHz
+cortex_m reset_config sysresetreq
+trst_only separate trst_push_pull
+do_board_reset_init
+<span class="hll">Info : FlashPro ports available: S201Z7LB20, E200X3ID7
+</span>Info : FlashPro port used: S201Z7LB20
+Info : clock speed 6000 kHz
+<span class="hll">Info : JTAG tap: M2S090.tap tap/device found: 0x1f8071cf (mfg: 0x0e7
+</span><span class="hll">(GateField), part: 0xf807, ver: 0x1)
+</span>Info : JTAG tap: M2S090.tap disabled
+Info : JTAG tap: M2S090.dap enabled
+<span class="hll">Info : Cortex-M3 IDCODE = 0x4ba00477
+</span>Info : M2S090.cpu: hardware has 6 breakpoints, 4 watchpoints
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice from the log above, the following was recognized correctly</p>
+<ul class="simple">
+<li><p>The FlashPro ports</p></li>
+<li><p>The ID code of the JTAG tap</p></li>
+<li><p>And the Cortex-M3 IDCODE</p></li>
+</ul>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-4-2 docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Open On-Chip Debugger
+Licensed under GNU GPL v2
+For bug reports, read
+http://openocd.org/doc/doxygen/bugs.html
+Info : only one transport option; autoselect &#39;jtag&#39;
+adapter speed: 6000 kHz
+microsemi_flashpro tunnel_jtag_via_ujtag off
+trst_only separate trst_push_pull
+do_board_reset_init
+<span class="hll">Info : FlashPro ports available: S201Z7LB20, E200X3ID7
+</span>Info : FlashPro port used: S201Z7LB20
+Info : clock speed 6000 kHz
+<span class="hll">Info : JTAG tap: FPGA.tap tap/device found: 0x1f8071cf (mfg: 0x0e7
+</span><span class="hll">(GateField), part: 0xf807, ver: 0x1)
+</span>microsemi_flashpro tunnel_jtag_via_ujtag on
+Info : JTAG tap: FPGA.tap disabled
+Info : JTAG tap: FPGA.dap enabled
+<span class="hll">Info : RISC-V IDCODE = 0x10e31913
+</span>Info : Examined RISCV core; XLEN=32, misa=0x40902223
+halted at 0x80000b60 due to debug interrupt
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice from the log above, the following was recognized correctly</p>
+<ul class="simple">
+<li><p>The FlashPro ports</p></li>
+<li><p>The ID code of the JTAG tap</p></li>
+<li><p>And the RISC-V IDCODE</p></li>
+</ul>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Output of the following form or other errors (excluding any documented in the known issues section) indicate a problem in which case double check that all the <strong>post installation</strong> steps have been carried out correctly and that the target hardware/board is correctly configured for debugging of the target CPU/SoC.</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Info: FlashPro ports available: none
+Info: FlashPro port used: usb
+<span class="hll">Error: InitializeProgrammer(usb) failed: Can not connect to the programmer
+</span></pre></div>
 </div>
 </div>
 </div>

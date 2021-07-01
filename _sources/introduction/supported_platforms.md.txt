@@ -100,12 +100,12 @@ Using SoftConsole from within a Virtual Machine might limit which JTAG probes ca
 ## Other software
 
 * Microchip Libero SoC
-  * Microchip {{liberosoc}}
-  * Microchip {{firmwarecatalog}}
+  * Microchip {{liberoSoc}}
+  * Microchip {{firmwareCatalog}}
 
 * Firmware (minimum required version)
 {% if riscv is defined %}
-  * {{mpfshal}}
+  * {{mpfsHal}}
   * RISC-V Hardware Abstraction Layer (HAL) 3.0.105
 {% endif %}
 {% if arm is defined %}
@@ -121,5 +121,69 @@ Using SoftConsole from within a Virtual Machine might limit which JTAG probes ca
 
 {% include 'main/introduction/_support_table6.5.inc' %}
 
+
+### FlashPro6
+[![FP6](images/flashpro/fp6.jpg)](https://www.microsemi.com/existing-parts/parts/152632)
+
+### FlashPro5
+[![FP5](images/flashpro/fp5.jpg)](https://www.microsemi.com/existing-parts/parts/152631)
+
+## Boards
+
+
+
+### Microchip - PolarFire SoC - Icicle
+[![board image](images/pfsoc/icicle.png)](https://www.microsemi.com/products/fpga-soc/polarfire-soc-icicle-quick-start-guide)
+
+### Microchip - PolarFire FPGA - MPF300-VIDEO-KIT-NS
+[![board image](images/pffpga/MPF300-VIDEO-KIT.jpg)](https://www.microsemi.com/existing-parts/parts/150804)
+
+### Microchip - PolarFire FPGA - MPF300-EVAL-KIT-ES
+[![board image](images/pffpga/MPF300-EVAL-KIT-ES.png)](https://www.microsemi.com/existing-parts/parts/150789)
+
+### Microchip - PolarFire FPGA - MPF300-SPLASH-KIT
+[![board image](images/pffpga/MPF300-SPLASH-KIT-ES.png)](https://www.microsemi.com/existing-parts/parts/144001)
+
+### Microchip - SmartFusion2 - M2S-HELLO-FPGA-KIT
+[![board image](images/sf2/M2S-HELLO-FPGA-KIT.png)](https://www.microsemi.com/existing-parts/parts/150925)
+
+
+
+### Aries - PolarFire SoC - M100PF SoM
+[![board image](images/pfsoc/M100PF-2.jpg)](https://shop.aries-embedded.de/search?sSearch=M100PF)
+
+
+
+### Arrow - PolarFire FPGA - Everest Dev Board
+[![board image](images/pffpga/EVEREST-DEV-BOARD.png)](https://www.microsemi.com/existing-parts/parts/143998)
+
+
+
+
+### Digi-key - SmartFusion2 - Maker Board M2S010-MKR-KIT
+[![board image](images/sf2/M2S010-MKR-KIT.png)](https://www.microsemi.com/existing-parts/parts/144012)
+
+
+
+### Future - PolarFire FPGA - Avalanche AVMPF300TS-03
+[![board image](images/pffpga/AVMPF300TS-03.jpg)](https://www.microsemi.com/existing-parts/parts/139680)
+
+### Future - IGLOO2 - FUTUREM2GL-EVB
+[![board image](images/igloo2/FUTUREM2SF_EVB.jpg)](https://www.microsemi.com/existing-parts/parts/143948)
+
+
+
+### Trenz - SmartFusion 2 - SmartBerry TEM0002-02-010CA
+[![board image](images/sf2/TEM0002-02-010CA.jpg)](https://shop.trenz-electronic.de/en/TEM0002-02-010CA-SmartBerry-FPGA-Module-with-Microsemi-SmartFusion2-M2S010-SoC-256-MByte-DDR3L)
+
+### Trenz - SmartFusion 2 - SMF2000 
+[![board image](images/sf2/SMF2000.jpg)](https://shop.trenz-electronic.de/en/TEM0001-01A-010C-SMF2000-FPGA-Module-with-Microsemi-SmartFusion2-8-MByte-SDRAM)
+
+### Trenz - SmartFusion 2 - FPGA module TEM0005-02-010I
+[![board image](images/sf2/TEM0005-02-010I.jpg)](https://shop.trenz-electronic.de/en/TEM0005-02-010I-FPGA-Module-with-Microsemi-SmartFusion2-M2S010-SoC-256-MByte-DDR3)
+
+
+### Sundance - PolarFire SoC - PolarBerry
+[![board image](images/pfsoc/polarberry.jpg)](https://www.crowdsupply.com/sundance-dsp/polarberry)
 
 ```````

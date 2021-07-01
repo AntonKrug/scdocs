@@ -1,0 +1,18 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# Flashpro and OpenOCD
+
+{% include 'main/troubleshooting/flashpro/_firewall.inc' %}
+{% include 'main/troubleshooting/flashpro/_multiple_sessions.inc' %}
+{% include 'main/troubleshooting/flashpro/_no_vm.inc' %}
+{% include 'main/troubleshooting/flashpro/_remote_openocd.inc' %}
+{% include 'main/troubleshooting/flashpro/_check_without_root.inc' %}
+{% include 'main/troubleshooting/flashpro/_cannot_be_shared.inc' %}
+{% include 'main/troubleshooting/flashpro/_ftdio_sio.inc' %}
+{% include 'main/troubleshooting/flashpro/_efp6_rev_a.inc' %}
+{% include 'main/troubleshooting/riscv/_openocd_crash.inc' %}
+{% include 'main/troubleshooting/flashpro/_crashes.inc' %}
+
+
+```````

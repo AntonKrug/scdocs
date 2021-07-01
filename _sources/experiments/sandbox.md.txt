@@ -81,12 +81,18 @@ print(node)
 
 
 ```{only} html and draft
-
-
 Content for HTML and DRAFT
-
 ```
 
+`````{only} html
+Content for HTML.
+
+```{note}
+Warning:
+
+This 'only + tag' directive is designed to control only content of document. It could not control sections, labels and so on.
+```
+`````
 
 
 ```{code-block} python

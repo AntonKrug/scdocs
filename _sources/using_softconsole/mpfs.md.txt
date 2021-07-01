@@ -1,0 +1,9 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+
+# PolarFire SoC
+
+{% include 'main/using_softconsole/_mpfs_programming.inc' %}
+
+```````

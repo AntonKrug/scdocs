@@ -1,0 +1,38 @@
+# Product Support
+Microsemi SoC Products Group backs its products with various support services, including Customer Service, Customer Technical Support Center, a website, electronic mail, and worldwide sales offices. This appendix contains information about contacting Microsemi SoC Products Group and using these support services.
+
+## Customer Service
+Contact Customer Service for non-technical product support, such as product pricing, product upgrades, update information, order status, and authorization.
+
+ - From North America, call **800.262.1060**
+ - From the rest of the world, call **650.318.4460**
+ - Fax, from anywhere in the world **408.643.6913**
+
+## Customer Technical Support Center
+
+Microsemi SoC Products Group staffs its Customer Technical Support Center with highly skilled engineers who can help answer your hardware, software, and design questions about Microsemi SoC Products. The Customer Technical Support Center spends a great deal of time creating application notes, answers to common design cycle questions, documentation of known issues and various FAQs. So, before you contact us, please visit our online resources. It is very likely we have already answered your questions.
+
+## Technical Support
+For Microsemi SoC Products Support, visit http://www.microsemi.com/products/fpga-soc/design-support/fpga-socsupport.
+
+
+## Website
+You can browse a variety of technical and non-technical information on the Microsemi SoC Products Group home page, at <http://www.microsemi.com/soc/>
+
+## Contacting the Customer Technical Support Center
+Highly skilled engineers staff the Technical Support Center. The Technical Support Center can be contacted by email or through the Microsemi SoC Products Group website.
+
+### Email 
+
+You can communicate your technical questions to our email address and receive answers back by email, fax, or phone. Also, if you have design problems, you can email your design files to receive assistance. We constantly monitor the email account throughout the day. When sending your request to us, please be sure to include your full name, company name, and your contact information for efficient processing of your request. The technical support email address is <soc_tech@microsemi.com>.
+
+### My Cases
+
+Microsemi SoC Products Group customers may submit and track technical cases online by going to My Cases. 
+
+### Outside the U.S. 
+
+Customers needing assistance outside the US time zones can either contact technical support via email (<soc_tech@microsemi.com>) or contact a local sales office. Visit About Us for sales office listings and corporate contacts.
+
+## ITAR Technical Support
+For technical support on RH and RT FPGAs that are regulated by International Traffic in Arms Regulations (ITAR), contact us via <soc_tech_itar@microsemi.com>. Alternatively, within My Cases, select Yes in the ITAR drop-down list. For a complete list of ITAR-regulated Microsemi FPGAs, visit the ITAR web page.

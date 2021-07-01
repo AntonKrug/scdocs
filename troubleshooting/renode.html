@@ -45,8 +45,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Graphviz" href="../experiments/graphviz.html" />
-    <link rel="prev" title="Renode emulation platform" href="../using_softconsole/renode.html" /> 
+    <link rel="next" title="Eclipse" href="eclipse.html" />
+    <link rel="prev" title="RISC-V Trap Exceptions" href="riscv_trap.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -100,10 +100,9 @@
             
               <p class="caption"><span class="caption-text">Introduction</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About this document</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/whatsnew.html">What is new</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/about.html">About SoftConsole and this document</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/supported_platforms.html">Supported Platforms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/used_packages.html">Used packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/tools_resources.html">Packages/Tools/Resources</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Using SoftConsole</span></p>
 <ul>
@@ -111,14 +110,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode emulation platform</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Troubleshooting</span></p>
+<p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="flashpro.html">Flashpro and OpenOCD</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project.html">Project settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="riscv.html">RISC-V</a></li>
+<li class="toctree-l1"><a class="reference internal" href="riscv_trap.html">RISC-V Trap Exceptions</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Renode</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#using-open-source-software-tool-such-as-renode-will-contaminate-my-proprietary-code">Using Open Source Software tool such as Renode will contaminate my proprietary code?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-oss-tool-such-as-renode-will-contaminate-my-proprietary-code">Using OSS tool such as Renode will contaminate my proprietary code?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#source-id-13802-was-not-found-when-attempting-to-remove-it">Source ID 13802 was not found when attempting to remove it</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#renode-on-startup-crashes-with-an-unhandled-exception">Renode on startup crashes with an unhandled exception</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deeply-nested-code-causes-crashes-and-glitches">Deeply nested code causes crashes and glitches</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-are-the-robot-references-in-softconsole">What are the Robot references in SoftConsole?</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="eclipse.html">Eclipse</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Product Support</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Experiments</span></p>
 <ul>
@@ -193,11 +203,57 @@
             
   <div class="section" id="renode">
 <h1>Renode<a class="headerlink" href="#renode" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="using-open-source-software-tool-such-as-renode-will-contaminate-my-proprietary-code">
-<h2>Using Open Source Software tool such as Renode will contaminate my proprietary code?<a class="headerlink" href="#using-open-source-software-tool-such-as-renode-will-contaminate-my-proprietary-code" title="Permalink to this headline">¶</a></h2>
-<p>Using the tool will not impose any obligations or restrictions on the user’s code, his license or his IP. In an edge case where the user would copy part of the Renode’s source code, modify it and redistribute its binaries, then there are obligations to meet, however Renode has MIT license and allows wide use (including commercial, private use and sublicensing it with a more restrictive license):</p>
+<p><img alt="Renode logo" src="../_images/renode_logo.png" /></p>
+<div class="section" id="using-oss-tool-such-as-renode-will-contaminate-my-proprietary-code">
+<h2>Using OSS tool such as Renode will contaminate my proprietary code?<a class="headerlink" href="#using-oss-tool-such-as-renode-will-contaminate-my-proprietary-code" title="Permalink to this headline">¶</a></h2>
+<p>Using the Renode (Open Source Software) will not impose any obligations or restrictions on the user’s code, his license or his IP. In an edge case where the user would copy part of the Renode’s source code, modify it and redistribute its binaries, then there are obligations to meet, however Renode has MIT license and allows wide use (including commercial, private use and sublicensing it with a more restrictive license):</p>
 <p><a class="reference external" href="https://tldrlegal.com/license/mit-license">https://tldrlegal.com/license/mit-license</a></p>
 <p>If in doubt consult with a legal team.</p>
+</div>
+<div class="section" id="source-id-13802-was-not-found-when-attempting-to-remove-it">
+<h2>Source ID 13802 was not found when attempting to remove it<a class="headerlink" href="#source-id-13802-was-not-found-when-attempting-to-remove-it" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Renode</span><span class="p">:</span><span class="mi">5523</span><span class="p">):</span> <span class="n">GLib</span><span class="o">-</span><span class="n">CRITICAL</span> <span class="o">**</span><span class="p">:</span> <span class="n">Source</span> <span class="n">ID</span> <span class="mi">13802</span> <span class="n">was</span> <span class="ow">not</span> <span class="n">found</span> <span class="n">when</span> <span class="n">attempting</span> <span class="n">to</span> <span class="n">remove</span> <span class="n">it</span>
+</pre></div>
+</div>
+<p>Possibly caused by not meeting Renode’s dependencies. Renode requires the mono to be at least v5. Double check if the newest versions of the <code class="docutils literal notranslate"><span class="pre">mono-complete</span></code>, <code class="docutils literal notranslate"><span class="pre">gtk-sharp2</span></code> and <code class="docutils literal notranslate"><span class="pre">libcanberra-gtk</span></code> are installed. And confirm the mono is v5 or higher:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mono</span> <span class="o">--</span><span class="n">version</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="renode-on-startup-crashes-with-an-unhandled-exception">
+<h2>Renode on startup crashes with an unhandled exception<a class="headerlink" href="#renode-on-startup-crashes-with-an-unhandled-exception" title="Permalink to this headline">¶</a></h2>
+<p>If the exception message contains the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Could not find a part of the path &quot;/&lt;YOUR_PATH&gt;/.renode/history&quot;
+</pre></div>
+</div>
+<p>Then it could have been caused by moving the SoftConsole installation and the config pointing to the old (and nonexistent) location of the history file. Correct the path inside the <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/home/.renode/config</span></code> or just delete the config and let Renode to re-create it.</p>
+</div>
+<div class="section" id="deeply-nested-code-causes-crashes-and-glitches">
+<h2>Deeply nested code causes crashes and glitches<a class="headerlink" href="#deeply-nested-code-causes-crashes-and-glitches" title="Permalink to this headline">¶</a></h2>
+<p>Experiencing a CPU abort message inside Renode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">ERROR</span><span class="p">]</span> <span class="n">u54_1</span><span class="p">:</span> <span class="n">CPU</span> <span class="n">abort</span> <span class="p">[</span><span class="n">PC</span><span class="o">=</span><span class="mh">0x0</span><span class="p">]:</span> <span class="n">Trying</span> <span class="n">to</span> <span class="n">execute</span> <span class="n">code</span> <span class="n">outside</span> <span class="n">RAM</span> <span class="ow">or</span> <span class="n">ROM</span> <span class="n">at</span>
+<span class="mh">0x0000000000000000</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Or causing reboots, glitches or failures (continuous or intermittent) can be a sign of a small stack and a stack overflow, adjust the stack sizes in the linker script or refactor code to conserve the limited stack. See sections:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>TODO references:
+Static stack profiling
+Renode emulation platform</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This error can happen on any hart and is not limited to u54_1, nor PolarFireSoC. Stack overflow can be triggered on any platform and thus the error messages or observed behavior might be slightly different.</p>
+</div>
+</div>
+<div class="section" id="what-are-the-robot-references-in-softconsole">
+<h2>What are the Robot references in SoftConsole?<a class="headerlink" href="#what-are-the-robot-references-in-softconsole" title="Permalink to this headline">¶</a></h2>
+<p>SoftConsole 2021.05 v7.0 is bundled with Nokia’s RED (Robot EDitor) plugin. Robot can be used for automated testing of Renode and real hardware targets. Currently the RED is not supported SoftConsole feature and requires additional manual steps to work (which are not documented yet), however users might try to experiment with it at their own risks.</p>
+<p><a class="reference external" href="https://robotframework.org/">https://robotframework.org/</a></p>
+<p><a class="reference external" href="https://github.com/nokia/RED">https://github.com/nokia/RED</a></p>
+<p><a class="reference external" href="https://renode.readthedocs.io/en/latest/advanced/building_from_sources.html#prerequisites">https://renode.readthedocs.io/en/latest/advanced/building_from_sources.html#prerequisites</a></p>
+<p><a class="reference external" href="https://renode.readthedocs.io/en/latest/tutorials/zephyr-ptp-testing.html">https://renode.readthedocs.io/en/latest/tutorials/zephyr-ptp-testing.html</a></p>
 </div>
 </div>
 
@@ -207,8 +263,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../experiments/graphviz.html" class="btn btn-neutral float-right" title="Graphviz" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../using_softconsole/renode.html" class="btn btn-neutral float-left" title="Renode emulation platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="eclipse.html" class="btn btn-neutral float-right" title="Eclipse" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="riscv_trap.html" class="btn btn-neutral float-left" title="RISC-V Trap Exceptions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
