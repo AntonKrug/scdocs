@@ -48,7 +48,7 @@ There are few common places where these breadcrumbs start:
 
  - The `Project's settings` as starting location, example:
 
-   {{ macros.breadcrumb_indent('"Project Settings" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "General" -> "Check \'-nostartfiles\'"', '   ') }}
+   {{ macros.breadcrumb_indent('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "General" -> "Check \'-nostartfiles\'"', '   ') }}
 
    Which requires the user to first go into Project's settings/properties by following these steps:
 
@@ -58,7 +58,7 @@ There are few common places where these breadcrumbs start:
 
    It opens the following menu and can be navigated with the breadcrumbs:
 
-   {{ macros.breadcrumb_indent('"Project Settings" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "General" -> "Check \'-nostartfiles\'"', '   ') }}
+   {{ macros.breadcrumb_indent('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "General" -> "Check \'-nostartfiles\'"', '   ') }}
 
    ![board image](images/breadcrumbs/project_properties_menu.png)
 
@@ -85,7 +85,7 @@ There are few common places where these breadcrumbs start:
 
 Architecture and ABI settings affect all platforms, but it's very important with RISC-V because of all the possible extensions and their possible combinations.
 
-{{ macros.breadcrumb_square('"Project Settings" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "Target Processor"') }}
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "Target Processor"') }}
 
 
 ### Architecture
@@ -97,7 +97,7 @@ Architecture is configured with the following settings, it describes what the ta
 
 ### ABI
 
-ABI describes what registers are used and available on the target, which ones are used to pass variable arguments to functions, which one are return variables. Which registers get saved by calle and which one by caller. The ABI can't use more than the HW is capable of. ABI can be configured with following:
+ABI describes how many and what registers are used and available on the target, which ones are used to pass variable arguments to functions, which one are return variables. Which registers get saved by calle and which one by caller. The ABI can't use more than the HW is capable of. ABI can be configured with following:
 
 ![board image](images/architecture-abi/abi.png)
 

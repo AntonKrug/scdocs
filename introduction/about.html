@@ -260,12 +260,12 @@ There are few common places where these breadcrumbs start:</p>
 <p><img alt="board image" src="../_images/menu_toolbar.png" /></p>
 </li>
 <li><p>The <code class="docutils literal notranslate"><span class="pre">Project's</span> <span class="pre">settings</span></code> as starting location, example:</p>
-<div class="graphviz"><img src="../_images/graphviz-290d94904dbfda96723cdb741b1d02f2762a3325.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Check '-nostartfiles'&quot;; }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-0d3696fe041bc72717b173aa6185503c9aee2318.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Check '-nostartfiles'&quot;; }" class="graphviz" /></div>
 <p>Which requires the user to first go into Project’s settings/properties by following these steps:</p>
 <div class="graphviz"><img src="../_images/graphviz-d27acdb4e917268e3d9eb49672aa8b3e5d28b012.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Right click on &lt;your_project&gt; in the Project Explorer&quot; -&gt; &quot;Properties&quot;; }" class="graphviz" /></div>
 <p><img alt="board image" src="../_images/project_properties.png" /></p>
 <p>It opens the following menu and can be navigated with the breadcrumbs:</p>
-<div class="graphviz"><img src="../_images/graphviz-290d94904dbfda96723cdb741b1d02f2762a3325.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Check '-nostartfiles'&quot;; }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-0d3696fe041bc72717b173aa6185503c9aee2318.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Check '-nostartfiles'&quot;; }" class="graphviz" /></div>
 <p><img alt="board image" src="../_images/project_properties_menu.png" /></p>
 </li>
 <li><p>The launchers <code class="docutils literal notranslate"><span class="pre">Debug</span> <span class="pre">configuration</span></code> as starting location, example:</p>
@@ -284,11 +284,11 @@ There are few common places where these breadcrumbs start:</p>
 <div class="section" id="architecture-and-abi">
 <h2>Architecture and ABI<a class="headerlink" href="#architecture-and-abi" title="Permalink to this headline">¶</a></h2>
 <p>Architecture and ABI settings affect all platforms, but it’s very important with RISC-V because of all the possible extensions and their possible combinations.</p>
-<div class="graphviz"><img src="../_images/graphviz-8102b0bf1a3b2c9456fbb4a49f1f14ffca35c3ef.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-8496ab80b55abcf491b16f4af91559abcdaf2c1d.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
-         &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Target Processor&quot;
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Target Processor&quot;
      }" class="graphviz" /></div>
 <div class="section" id="architecture">
 <h3>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h3>
@@ -297,7 +297,7 @@ There are few common places where these breadcrumbs start:</p>
 </div>
 <div class="section" id="abi">
 <h3>ABI<a class="headerlink" href="#abi" title="Permalink to this headline">¶</a></h3>
-<p>ABI describes what registers are used and available on the target, which ones are used to pass variable arguments to functions, which one are return variables. Which registers get saved by calle and which one by caller. The ABI can’t use more than the HW is capable of. ABI can be configured with following:</p>
+<p>ABI describes how many and what registers are used and available on the target, which ones are used to pass variable arguments to functions, which one are return variables. Which registers get saved by calle and which one by caller. The ABI can’t use more than the HW is capable of. ABI can be configured with following:</p>
 <p><img alt="board image" src="../_images/abi.png" /></p>
 </div>
 <div class="section" id="multilibs">

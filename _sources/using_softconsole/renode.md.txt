@@ -74,5 +74,7 @@ u54_4 StartGdbServer 3337
 
 
 {% include 'main/troubleshooting/flashpro/_firewall.inc' %}
+{% include 'main/troubleshooting/renode/_cant_open_port.inc' %}
+
 
 ```````

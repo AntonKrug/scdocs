@@ -359,7 +359,7 @@
 <div class="section" id="mstatus">
 <h3>mstatus<a class="headerlink" href="#mstatus" title="Permalink to this headline">¶</a></h3>
 <p>Can contain global interrupt enable bit but many other flags (RV64/RV128):</p>
-<img alt="../_images/wavedrom-a9c1a656-809c-4ef0-983f-14a9a149dd81.svg" height="300px" src="../_images/wavedrom-a9c1a656-809c-4ef0-983f-14a9a149dd81.svg" width="840px" /><div class="admonition note">
+<img alt="../_images/wavedrom-1533caba-7988-482a-8ac1-5e55b07477d6.svg" height="300px" src="../_images/wavedrom-1533caba-7988-482a-8ac1-5e55b07477d6.svg" width="840px" /><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Depending on the application and the problem, but typically the most useful and important CSRs are mcause, mtval/mbadaddr and mepc. Therefore, when troubleshooting a trap issue these 3 CSRs should be addressed first as they can give very good picture what happened and why.</p>
 </div>
@@ -539,7 +539,7 @@ This issue can be solved by any of the following:</p>
 <li><p>Remove the floating-point math and replace it with <strong>fixed-point</strong> arithmetic (if that is viable)</p></li>
 <li><p>Switch to <strong>soft-float</strong> implementation, this will increase the code size and decrease the performance significantly as all IEEE754 functionality will be emulated in software.
 To switch to soft-float <strong>both</strong> <code class="docutils literal notranslate"><span class="pre">Floating</span> <span class="pre">point</span></code> and <code class="docutils literal notranslate"><span class="pre">Floating</span> <span class="pre">point</span> <span class="pre">ABI</span></code> have to be set to <code class="docutils literal notranslate"><span class="pre">none</span></code> in the following:</p>
-<div class="graphviz"><img src="../_images/graphviz-d5879af31c903fe520816604924fba2aad9f27ef.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Architecture&quot; -&gt; &quot;Target Processor&quot;; }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-b2ecfc868eaba1d6ed77ad8abc7c789ee961a654.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Architecture&quot; -&gt; &quot;Target Processor&quot;; }" class="graphviz" /></div>
 <p><img alt="F ABI matching" src="../_images/float-match-abi-rv32ima.png" /></p>
 </li>
 <li><p>Switch to a target that has <strong>hardware</strong> <code class="docutils literal notranslate"><span class="pre">F</span></code> support.</p></li>

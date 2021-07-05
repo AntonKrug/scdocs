@@ -215,12 +215,12 @@
 <p>If the program image size is too large, then check the list and map files for details of what application and library code is contributing to the total size. Note that the ELF file size on disk is not indicative of the program image size when running on the embedded hardware target. Some useful common tips for reducing the program image size:</p>
 <ol>
 <li><p>Tell the compiler to <strong>optimize</strong>:</p>
-<div class="graphviz"><img src="../_images/graphviz-8b7a8df2881f0e02f1b58dc5ae65ef44b867ab97.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Optimization&quot;; }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-b4868d93613d300d4d33b73613e86667da8c0d0f.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Optimization&quot;; }" class="graphviz" /></div>
 <p>Level = <code class="docutils literal notranslate"><span class="pre">Optimize</span> <span class="pre">for</span> <span class="pre">size</span> <span class="pre">-Os</span></code> (this will negatively affect debugging capabilities)</p>
 </li>
 <li><p>Use <strong>newlib-nano</strong>.</p>
 <p>Multiple things can be configured in the <code class="docutils literal notranslate"><span class="pre">Linker</span></code>, go into its setting by:</p>
-<div class="graphviz"><img src="../_images/graphviz-3f3a9f12d2478509d8ce344498cec827af7a842e.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU Arm/RISC-V Cross C/C++ Linker&quot;; }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-532359876b411b18de1152a4efb42470e3b959d3.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU Arm/RISC-V Cross C/C++ Linker&quot;; }" class="graphviz" /></div>
 <p>Then check to use the <code class="docutils literal notranslate"><span class="pre">nano.spec</span></code>:</p>
 <div class="graphviz"><img src="../_images/graphviz-ade4deafa8bf65d78ac29f649e6da07cbf101327.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;GNU Arm/RISC-V Cross C/C++ Linker&quot; -&gt; &quot;Miscellaneous&quot; -&gt; &quot;Use newlib-nano (--spec=nano.specs)&quot;; }" class="graphviz" /></div>
 <p>Uncheck the <code class="docutils literal notranslate"><span class="pre">nodefaultlibs</span></code>:</p>
@@ -250,12 +250,12 @@
 <p>The blocks can be quickly and conditionally compiled out when not needed (in essence enabled/disabled). Adding addition extra auxiliary features into the ifdef blocks could produce further code shrinking as it’s less frequent that all the features have to be used on the target all the time. Custom (or existing) configurations can be used to have different defines and the <code class="docutils literal notranslate"><span class="pre">Debug</span></code> configuration having different set of features enabled then <code class="docutils literal notranslate"><span class="pre">Release</span></code> configuration (debugging/troubleshooting log features on a production code will not just make it bigger, but often are considered as a security risk as well).</p>
 </li>
 <li><p>Check if the floating point is using hardware and not software implementation. Not enabling hardware properly and using floating point will emulate every instruction in software and enlarge the codebase significantly. Do not use RVF or RVD floating point without setting the corresponding floating point ABI in :</p>
-<div class="graphviz"><img src="../_images/graphviz-2c6ef5fd501f4c09e1900d6074402a87910f2332.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Target processor&quot;; }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-c6a6b18179f72dbd2725057169c25f3ac34d8437.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Target processor&quot;; }" class="graphviz" /></div>
 <p>With RISC-V cores implementing the <code class="docutils literal notranslate"><span class="pre">F</span></code> and/or <code class="docutils literal notranslate"><span class="pre">D</span></code> extensions the Floating-point divide/sqrt instructions (<code class="docutils literal notranslate"><span class="pre">-mfdiv</span></code>) can also be enabled.</p>
 </li>
 <li><p>Check what function or blocks of project code should be prioritized for optimization. Create a size analysis post build
 step under:</p>
-<div class="graphviz"><img src="../_images/graphviz-ca85c917bfe34f72695be487a71a5c290e8db1b9.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Build Steps&quot; -&gt; &quot;Post-build steps&quot;; }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-5bcbd3bc4c4cc97ade601a67401205da499c7480.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Build Steps&quot; -&gt; &quot;Post-build steps&quot;; }" class="graphviz" /></div>
 <p>and put the following in the Command field:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>${cross_prefix}nm${cross_suffix} --print-size --size-sort ${BuildArtifactFileName}
 </pre></div>
@@ -264,7 +264,7 @@ step under:</p>
 <p>After the build all symbols with their sizes will be displayed and ordered by the size. This can point to functions which will benefit from optimizations the most. It can reveal design/code issues as when a large library could have been linked into a project by mistake or other unnecessary code compiled in.</p>
 </li>
 <li><p>Enable hardware features if the core is capable – e.g. use the RISC-V M extension fully if present. Under:</p>
-<div class="graphviz"><img src="../_images/graphviz-ab0b3e8ab6a486d27128402eafe00e2b68ecc265.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Target processor&quot;; }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-3cdd83acf7abacaa9c53d6ba58bc860b06cc1ad9.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Target processor&quot;; }" class="graphviz" /></div>
 <p>Enable/check the Multiply extension (<code class="docutils literal notranslate"><span class="pre">RVM</span></code>) and the Integer divide instructions (<code class="docutils literal notranslate"><span class="pre">-mdiv</span></code>) options if appropriate. If the target implements the Compressed extension (<code class="docutils literal notranslate"><span class="pre">RVC</span></code>) then enable/check that too.</p>
 </li>
 <li><p>See the <code class="docutils literal notranslate"><span class="pre">miv-rv32imaf-raytracer-uart-cpp</span></code> as an example when making a C++ project. C++ is a large language with an overhead which is very significant from an embedded perspective. Disable as much as is viable in the Optimization tab settings:</p>
@@ -336,7 +336,7 @@ Good and generic launchers (such as launchers bundled in the workspace.examples)
 </div>
 </li>
 <li><p>Go to the C/C++ Compiler settings:</p>
-<div class="graphviz"><img src="../_images/graphviz-7a57a7a29409955ecfc141a7442ab19bd914788f.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Compiler&quot;; }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-dc783b8b924de1d59016a97daf18e34053ba4445.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Compiler&quot;; }" class="graphviz" /></div>
 <p>And add the define symbol <code class="docutils literal notranslate"><span class="pre">MSCC_STDIO_THRU_CORE_UART_APB</span></code> to the:</p>
 <div class="graphviz"><img src="../_images/graphviz-ccbe02ead5f0c523264c39eb7df8961aa1f15d34.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;GNU RISC-V Cross C/C++ Compiler&quot; -&gt; &quot;Preprocessor&quot; -&gt; &quot;Defined Symbols&quot;; }" class="graphviz" /></div>
 </li>
@@ -358,11 +358,11 @@ Good and generic launchers (such as launchers bundled in the workspace.examples)
 </pre></div>
 </div>
 <p>Then possibly no libraries are present to implement these calls, go to the linker settings:</p>
-<div class="graphviz"><img src="../_images/graphviz-ad35f88b1e9aaeb56fbdf95048897ed30e21cccd.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-64bf6f300bb6c59114cea1e27d426890be76b06c.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
-         &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot;
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot;
      }" class="graphviz" /></div>
 <br/><p>And uncheck the <code class="docutils literal notranslate"><span class="pre">nodefaultlibs</span></code>:</p>
 <div class="graphviz"><img src="../_images/graphviz-93e16ca19644a7720c0b23e6171671d060e46937.png" alt="digraph {
@@ -383,11 +383,11 @@ Good and generic launchers (such as launchers bundled in the workspace.examples)
 <h2>Build fails when using “Print removed sections (-Xlinker –print-gc-sections)”<a class="headerlink" href="#build-fails-when-using-print-removed-sections-xlinker-print-gc-sections" title="Permalink to this headline">¶</a></h2>
 <p>When the option to print removed unused sections is selected, then CDT may report that the build has failed even though it was completed correctly. This is because of a bug in CDT whereby the <code class="docutils literal notranslate"><span class="pre">--print-gc-sections</span></code> option prints removed sections to stderr and CDT incorrectly interprets <strong>any</strong> output on <code class="docutils literal notranslate"><span class="pre">stderr</span></code> as a build error. This bug has been reported to the CDT project and for now it is safe to ignore such build failure false positives.</p>
 <p>Alternatively disable the <code class="docutils literal notranslate"><span class="pre">--print-gc-sections</span></code> option resolve the issue. First go to the <code class="docutils literal notranslate"><span class="pre">Tool</span> <span class="pre">settings</span></code> :</p>
-<div class="graphviz"><img src="../_images/graphviz-3b51dd2f06bd54875a2a318957c8854047de2039.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-04b6e1cee4ff945c8d60ff20ff3eea916dbcfebd.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
-         &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; 
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; 
      }" class="graphviz" /></div>
 <br/><p>For RISC-V targets uncheck the <code class="docutils literal notranslate"><span class="pre">--print-gc-sections</span></code> inside the <code class="docutils literal notranslate"><span class="pre">Tool</span> <span class="pre">settings</span></code>:</p>
 <div class="graphviz"><img src="../_images/graphviz-e02324363e7926e5bf0ea26f6dd1eb2c6967d30d.png" alt="digraph {
@@ -476,11 +476,11 @@ Verify if the <code class="docutils literal notranslate"><span class="pre">newli
 <h2>Invalid project path: Duplicate path entries found Warnings<a class="headerlink" href="#invalid-project-path-duplicate-path-entries-found-warnings" title="Permalink to this headline">¶</a></h2>
 <p>Using macros in include files can cause these warnings, use relative paths on all included folders instead.
 RISC-V projects:</p>
-<div class="graphviz"><img src="../_images/graphviz-5cd7d64effe46d9c248f49840fb1980617d1036e.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-5e375e2e780ca97b3013c1fea3d31f52bf66508b.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
-         &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Compiler&quot; -&gt; &quot;Includes&quot;
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Compiler&quot; -&gt; &quot;Includes&quot;
      }" class="graphviz" /></div>
 <br/><p>For example replace <code class="docutils literal notranslate"><span class="pre">&quot;${workspace_loc:/${ProjName}/drivers/CoreUARTapb}&quot;</span></code> with <code class="docutils literal notranslate"><span class="pre">&quot;../drivers/CoreUARTapb&quot;</span></code></p>
 </div>

@@ -5,7 +5,12 @@
 
 ![Renode logo](renode/images/renode_logo.png)
 
+{% include 'main/troubleshooting/renode/_cant_open_port.inc' %}
 {% include 'main/troubleshooting/renode/_license.inc' %}
+{% include 'main/troubleshooting/renode/_unsaved_wireshark.inc' %}
+{% include 'main/troubleshooting/renode/_wireshark_traffic.inc' %}
+{% include 'main/troubleshooting/renode/_tunsetiff.inc' %}
+{% include 'main/troubleshooting/renode/_delete_tap.inc' %}
 {% include 'main/troubleshooting/renode/_mono.inc' %}
 {% include 'main/troubleshooting/renode/_crash_on_startup.inc' %}
 {% include 'main/troubleshooting/renode/_stack.inc' %}

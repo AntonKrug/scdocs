@@ -115,6 +115,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Renode emulation platform</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#useful-links">Useful Links</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#windows-firewall">Windows firewall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -296,6 +297,12 @@ monitor start
 <p>On Windows if there is a firewall in use then the first time that a debug session is run the firewall may prompt that it is blocking
 OpenOCD, <code class="docutils literal notranslate"><span class="pre">fpServer.exe</span></code> and/or <code class="docutils literal notranslate"><span class="pre">renode.exe</span></code>. Allow the firewall to unblock these and save this as the default setting if
 necessary.</p>
+</div>
+<div class="section" id="there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">
+<h2>There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code><a class="headerlink" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true" title="Permalink to this headline">¶</a></h2>
+<p>Something is keeping the port <code class="docutils literal notranslate"><span class="pre">3333</span></code> opened, it could be some other application, but in most cases it’s just a previous instance
+of the Renode. Close it by pressing X on the window or stop the group launcher which should stop the Renode and the gdb
+client as well.</p>
 </div>
 </div>
 

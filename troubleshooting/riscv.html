@@ -258,11 +258,11 @@ Warn : keep_alive() was not invoked in the 1000ms timelimit. GDB alive packet no
 </div>
 <p>Possibly using the Mi-V RISC-V or PolarFire SoC startup code while the compiler is trying to use its own startup code.
 Possible fix is to not use the compiler startup code. Check the following checkbox:</p>
-<div class="graphviz"><img src="../_images/graphviz-acaab80902c2b39bdeb0193325136fdb36e309db.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-395c59643e413a12e198f9d41157c764a73d3d1d.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
-         &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;-nostartfiles option&quot;
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;-nostartfiles option&quot;
      }" class="graphviz" /></div>
 </div>
 <div class="section" id="error-got-exception-when-reading-some-risc-v-registers">
@@ -426,7 +426,7 @@ Truncated register 16 in remote &#39;g&#39; packet
 </div>
 <div class="section" id="cc1-exe-error-march-your-architecture-invalid-isa-string">
 <h2>cc1.exe: error: -march=&lt;YOUR_ARCHITECTURE&gt; invalid ISA string<a class="headerlink" href="#cc1-exe-error-march-your-architecture-invalid-isa-string" title="Permalink to this headline">¶</a></h2>
-<p>The ABI and the architecture need to be correct valid combination (rv32 architecture will not work with rv64 ABI), check your project settings. See Packages used section for listed supported multilibs as that might be related issue. Following error indicates the same issue:</p>
+<p>The ABI and the architecture need to be correct valid combination (rv32 architecture will not work with rv64 ABI), check your Project Properties. See Packages used section for listed supported multilibs as that might be related issue. Following error indicates the same issue:</p>
 <div class="highlight-text notranslate"><div class="highlight"><pre><span></span>target emulation `elf64-littleriscv&#39; does not match `elf32-littleriscv&#39;
 </pre></div>
 </div>
@@ -434,14 +434,14 @@ Truncated register 16 in remote &#39;g&#39; packet
 </pre></div>
 </div>
 <p>When valid, but unsupported multilib combination is selected, then RV64G is used as fallback, this can cause misleading error messages about mixing floats, mixing 32-but/64-bit, but it’s only symptoms of misconfiguring multilibs. The used multilib is compound together from the selections made in the</p>
-<div class="graphviz"><img src="../_images/graphviz-b6c82578421008ffb7e58778c24ccb7ad1261310.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-4c395b47eedff281e595e793d092072027bfc8d2.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
-         &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Target Processor&quot;
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Target Processor&quot;
      }" class="graphviz" /></div>
 <br/>
-Delete existing build folder (sometimes make clean is not enough), double check if the project settings are correct (if in doubt compare side by side with similar existing working project) and rebuild the project. Many cryptic looking errors can be caused using invalid or unsupported combinations in the project settings.</div>
+Delete existing build folder (sometimes make clean is not enough), double check if the Project Properties are correct (if in doubt compare side by side with similar existing working project) and rebuild the project. Many cryptic looking errors can be caused using invalid or unsupported combinations in the Project Properties.</div>
 <div class="section" id="requested-abi-requires-march-to-subsume-the-d-extension">
 <h2>requested ABI requires -march to subsume the ‘D’ extension<a class="headerlink" href="#requested-abi-requires-march-to-subsume-the-d-extension" title="Permalink to this headline">¶</a></h2>
 <p>Or the following:</p>
@@ -452,19 +452,19 @@ Delete existing build folder (sometimes make clean is not enough), double check 
 section for listed <a class="reference internal" href="../introduction/tools_resources.html#multilibs"><span class="std std-ref">supported multilibs</span></a> combinations.</p>
 <p>Enabling <code class="docutils literal notranslate"><span class="pre">D</span></code> by unintentionally can be caused by using <code class="docutils literal notranslate"><span class="pre">RV64G</span></code> without realizing it, this can happen when the target processor is set to <code class="docutils literal notranslate"><span class="pre">Toolchain</span> <span class="pre">default</span></code>. The toolchain default then will use <code class="docutils literal notranslate"><span class="pre">march=rv64gc/mabi=lp64</span></code> even if the application is meant for other targets such as Mi-V RV32.</p>
 <p>Make sure the following is <strong>NOT</strong> set to <code class="docutils literal notranslate"><span class="pre">Toolchain</span> <span class="pre">default</span></code>:</p>
-<div class="graphviz"><img src="../_images/graphviz-0be21a0293c6d0f254632b641b0d0243aea3b2ec.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-a69badc009bcecab8263195965dcb240e8d02b82.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
-         &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Architecture&quot; -&gt; &quot;Target Processor&quot;
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Architecture&quot; -&gt; &quot;Target Processor&quot;
      }" class="graphviz" /></div>
 <br/><p>Another cause is when selected architecture/ABI combination is not supported and the default RV64G is used instead. Double check if the selected Architecture and ABI combination is supported by our <a class="reference internal" href="../introduction/tools_resources.html#multilibs"><span class="std std-ref">multilibs</span></a>.</p>
 <p>Examples of supported architecture/ABI settings of the:</p>
-<div class="graphviz"><img src="../_images/graphviz-0be21a0293c6d0f254632b641b0d0243aea3b2ec.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-a69badc009bcecab8263195965dcb240e8d02b82.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
-         &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Architecture&quot; -&gt; &quot;Target Processor&quot;
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Architecture&quot; -&gt; &quot;Target Processor&quot;
      }" class="graphviz" /></div>
 <br/><div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
@@ -505,11 +505,11 @@ used</p>
 <p>Possibly it can be caused when selected RISC-V architecture/ABI does not have a matching multilib and the default
 RV64GC is used instead. On RV32 targets the problem is obvious, however on RV64 target this problem might surface in more subtle way.</p>
 <p>Examples of supported architecture/ABI settings of the:</p>
-<div class="graphviz"><img src="../_images/graphviz-0be21a0293c6d0f254632b641b0d0243aea3b2ec.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-a69badc009bcecab8263195965dcb240e8d02b82.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
-         &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Architecture&quot; -&gt; &quot;Target Processor&quot;
+         &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Architecture&quot; -&gt; &quot;Target Processor&quot;
      }" class="graphviz" /></div>
 <br/><div class="sphinx-tabs docutils container">
 <div class="ui top attached tabular menu sphinx-menu docutils container">
