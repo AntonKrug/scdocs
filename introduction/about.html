@@ -102,6 +102,13 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">About SoftConsole and this document</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#used-terms">Used terms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#breadcrumbs">Breadcrumbs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#architecture-and-abi">Architecture and ABI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#architecture">Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#abi">ABI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#multilibs">Multilibs</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#what-is-new">What is new</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#softconsole-2021-1">SoftConsole 2021.1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#features">Features</a></li>
@@ -131,6 +138,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode emulation platform</a></li>
 </ul>
@@ -230,9 +238,209 @@ Or just search your error message in the troubleshooting section when received a
 <p>This document uses <strong>&lt;SoftConsole-install-dir&gt;</strong> as a placeholder for the actual SoftConsole install directory.
 Where this is mentioned substitute the actual SoftConsole install directory name.</p>
 <ul class="simple">
-<li><p>Windows example: C:\Microchip\SoftConsole_v2021.1</p></li>
-<li><p>Linux example: $HOME/Microchip/SoftConsole_v2021.1</p></li>
+<li><p>Windows example: <code class="docutils literal notranslate"><span class="pre">C:\Microchip\SoftConsole_v2021.1</span></code></p></li>
+<li><p>Linux example: <code class="docutils literal notranslate"><span class="pre">$HOME/Microchip/SoftConsole_v2021.1</span></code></p></li>
 </ul>
+</div>
+<div class="section" id="breadcrumbs">
+<h2>Breadcrumbs<a class="headerlink" href="#breadcrumbs" title="Permalink to this headline">¶</a></h2>
+<p>Often in this document, the steps are described in ‘breadcrumbs’ form such as this:</p>
+<div class="graphviz"><img src="../_images/graphviz-abc5ab7bbb71728455148a5a9ae4ce8bc5b8a364.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Do A first&quot; -&gt; &quot;Then do B&quot; -&gt; &quot;Finally do C&quot;
+     }" class="graphviz" /></div>
+<br/><p>Usually these reference GUI location where to click to navigate the menus, submenus, their tabs and dialogs.
+There are few common places where these breadcrumbs start:</p>
+<ul>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">SoftConsole</span> <span class="pre">Menu</span> <span class="pre">toolbar</span></code> as starting location, example:</p>
+<div class="graphviz"><img src="../_images/graphviz-d8d1ddc9c8f7599e659116b61a1dd2cfb51bc644.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot;; }" class="graphviz" /></div>
+<p>Which is located under the Window’s title:</p>
+<p><img alt="board image" src="../_images/menu_toolbar.png" /></p>
+</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Project's</span> <span class="pre">settings</span></code> as starting location, example:</p>
+<div class="graphviz"><img src="../_images/graphviz-290d94904dbfda96723cdb741b1d02f2762a3325.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Check '-nostartfiles'&quot;; }" class="graphviz" /></div>
+<p>Which requires the user to first go into Project’s settings/properties by following these steps:</p>
+<div class="graphviz"><img src="../_images/graphviz-d27acdb4e917268e3d9eb49672aa8b3e5d28b012.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Right click on &lt;your_project&gt; in the Project Explorer&quot; -&gt; &quot;Properties&quot;; }" class="graphviz" /></div>
+<p><img alt="board image" src="../_images/project_properties.png" /></p>
+<p>It opens the following menu and can be navigated with the breadcrumbs:</p>
+<div class="graphviz"><img src="../_images/graphviz-290d94904dbfda96723cdb741b1d02f2762a3325.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;Check '-nostartfiles'&quot;; }" class="graphviz" /></div>
+<p><img alt="board image" src="../_images/project_properties_menu.png" /></p>
+</li>
+<li><p>The launchers <code class="docutils literal notranslate"><span class="pre">Debug</span> <span class="pre">configuration</span></code> as starting location, example:</p>
+<div class="graphviz"><img src="../_images/graphviz-549b3d8d84b073cc27b3972b52ac6b84c938420d.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Debug Configuration&quot; -&gt; &quot;Debugger&quot; -&gt; &quot;GDB Client Setup&quot; -&gt; &quot;Commands&quot;; }" class="graphviz" /></div>
+<p>Which requires the user to open the corresponding debug launcher associated with your project:</p>
+<div class="graphviz"><img src="../_images/graphviz-d9a3997245fc367850d4972e6738e1e04dca9f71.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations&quot; -&gt; &quot;Launcher for &lt;YOUR_PROJECT&gt;&quot;; }" class="graphviz" /></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Each project might have multiple Debug Launchers associated with the project, for example one <code class="docutils literal notranslate"><span class="pre">hw</span></code> for Hardware targets and one <code class="docutils literal notranslate"><span class="pre">Renode</span></code> for Renode emulated targets. User needs to select the coresponding launcher within the context of the SoftConsole chapter. Renode troubleshooting guide will expect users to select the Renode variants of the launchers.</p>
+</div>
+<p>This will open the following dialog menu:</p>
+<p><img alt="board image" src="../_images/debug_launcher.png" /></p>
+</li>
+</ul>
+</div>
+<div class="section" id="architecture-and-abi">
+<h2>Architecture and ABI<a class="headerlink" href="#architecture-and-abi" title="Permalink to this headline">¶</a></h2>
+<p>Architecture and ABI settings affect all platforms, but it’s very important with RISC-V because of all the possible extensions and their possible combinations.</p>
+<div class="graphviz"><img src="../_images/graphviz-8102b0bf1a3b2c9456fbb4a49f1f14ffca35c3ef.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Target Processor&quot;
+     }" class="graphviz" /></div>
+<div class="section" id="architecture">
+<h3>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h3>
+<p>Architecture is configured with the following settings, it describes what the target HW is capable of:</p>
+<p><img alt="board image" src="../_images/arch.png" /></p>
+</div>
+<div class="section" id="abi">
+<h3>ABI<a class="headerlink" href="#abi" title="Permalink to this headline">¶</a></h3>
+<p>ABI describes what registers are used and available on the target, which ones are used to pass variable arguments to functions, which one are return variables. Which registers get saved by calle and which one by caller. The ABI can’t use more than the HW is capable of. ABI can be configured with following:</p>
+<p><img alt="board image" src="../_images/abi.png" /></p>
+</div>
+<div class="section" id="multilibs">
+<h3>Multilibs<a class="headerlink" href="#multilibs" title="Permalink to this headline">¶</a></h3>
+<p>Are build for specific combinations of Architecture and ABI. Currently supported:</p>
+<table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head">march</th>
+<th class="head">mabi</th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td>rv32i</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-odd"><td>rv32ia</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-even"><td>rv32iac</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-odd"><td>rv32iaf</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-even"><td>rv32iafc</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-odd"><td>rv32ic</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-even"><td>rv32if</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-odd"><td>rv32ifc</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-even"><td>rv32im</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-odd"><td>rv32ima</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-even"><td>rv32imac</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-odd"><td>rv32imaf</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-even"><td>rv32imafc</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-odd"><td>rv32imc</td>
+<td>ilp32</td>
+</tr>
+<tr class="row-even"><td>rv32imf</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-odd"><td>rv32imfc</td>
+<td>ilp32f</td>
+</tr>
+<tr class="row-even"><td>rv64i</td>
+<td>lp64</td>
+</tr>
+<tr class="row-odd"><td>rv64ia</td>
+<td>lp64</td>
+</tr>
+<tr class="row-even"><td>rv64iac</td>
+<td>lp64</td>
+</tr>
+<tr class="row-odd"><td>rv64iaf</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-even"><td>rv64iafc</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-odd"><td>rv64iafd</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-even"><td>rv64iafdc</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-odd"><td>rv64ic</td>
+<td>lp64</td>
+</tr>
+<tr class="row-even"><td>rv64if</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-odd"><td>rv64ifc</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-even"><td>rv64ifd</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-odd"><td>rv64ifdc</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-even"><td>rv64im</td>
+<td>lp64</td>
+</tr>
+<tr class="row-odd"><td>rv64ima</td>
+<td>lp64</td>
+</tr>
+<tr class="row-even"><td>rv64imac</td>
+<td>lp64</td>
+</tr>
+<tr class="row-odd"><td>rv64imaf</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-even"><td>rv64imafc</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-odd"><td>rv64imafd</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-even"><td>rv64imafdc</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-odd"><td>rv64imc</td>
+<td>lp64</td>
+</tr>
+<tr class="row-even"><td>rv64imf</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-odd"><td>rv64imfc</td>
+<td>lp64f</td>
+</tr>
+<tr class="row-even"><td>rv64imfd</td>
+<td>lp64d</td>
+</tr>
+<tr class="row-odd"><td>rv64imfdc</td>
+<td>lp64d</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ul class="simple">
+<li><p>Be specific. Avoid using <code class="docutils literal notranslate"><span class="pre">Toolchain</span> <span class="pre">default</span></code> settings which will revert to RV64GC and on RV32 targets will give obscure errors.</p></li>
+<li><p>Double check if your combincation of Architecture/ABI is supported, if not it will revert to the default (RV64GC) and cause problems.</p></li>
+<li><p>SoftConsole supports only native ABIs, <code class="docutils literal notranslate"><span class="pre">RV64IMAFD</span></code> architecture is supporting only the ABI which contains the <code class="docutils literal notranslate"><span class="pre">D</span></code> extension. However it is possible to change the architecture to <code class="docutils literal notranslate"><span class="pre">RV64IMAF</span></code> and then the <code class="docutils literal notranslate"><span class="pre">F</span></code> ABI will work. If it’s needed to use some subset of ABI, change the Architecture first. It’s OK to compile for less capable Architecture</p></li>
+</ul>
+</div>
+</div>
 </div>
 <div class="section" id="what-is-new">
 <span id="whatisnew"></span><h2>What is new<a class="headerlink" href="#what-is-new" title="Permalink to this headline">¶</a></h2>

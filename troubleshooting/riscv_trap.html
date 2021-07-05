@@ -110,6 +110,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode emulation platform</a></li>
 </ul>
@@ -358,7 +359,7 @@
 <div class="section" id="mstatus">
 <h3>mstatus<a class="headerlink" href="#mstatus" title="Permalink to this headline">¶</a></h3>
 <p>Can contain global interrupt enable bit but many other flags (RV64/RV128):</p>
-<img alt="../_images/wavedrom-f7b5d97c-fb42-4357-908f-5fcd89a70888.svg" height="300px" src="../_images/wavedrom-f7b5d97c-fb42-4357-908f-5fcd89a70888.svg" width="840px" /><div class="admonition note">
+<img alt="../_images/wavedrom-a9c1a656-809c-4ef0-983f-14a9a149dd81.svg" height="300px" src="../_images/wavedrom-a9c1a656-809c-4ef0-983f-14a9a149dd81.svg" width="840px" /><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Depending on the application and the problem, but typically the most useful and important CSRs are mcause, mtval/mbadaddr and mepc. Therefore, when troubleshooting a trap issue these 3 CSRs should be addressed first as they can give very good picture what happened and why.</p>
 </div>
@@ -525,7 +526,7 @@ troubleshoot a trap without even opening the listing file, see Symbols and simpl
 <p><img alt="screenshot" src="../_images/step0080.png" /></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>When <code class="docutils literal notranslate"><span class="pre">mcause</span></code> CRS is 2 then the content of the <code class="docutils literal notranslate"><span class="pre">mbadaddr</span></code> CSR is exactly the opcode <code class="docutils literal notranslate"><span class="pre">0xa812e27</span></code> of the <code class="docutils literal notranslate"><span class="pre">fsw</span> <span class="pre">fs0,188(sp)</span></code> instruction. And therefore it’s possible to decode the instruction without having access to the listing file.</p>
+<p>When <code class="docutils literal notranslate"><span class="pre">mcause</span></code> CSR is 2 then the content of the <code class="docutils literal notranslate"><span class="pre">mbadaddr</span></code> CSR is exactly the opcode <code class="docutils literal notranslate"><span class="pre">0xa812e27</span></code> of the <code class="docutils literal notranslate"><span class="pre">fsw</span> <span class="pre">fs0,188(sp)</span></code> instruction. And therefore it’s possible to decode the instruction without having access to the listing file.</p>
 </div>
 <p>Looking at the RISC-V reference card shows that the <code class="docutils literal notranslate"><span class="pre">fsw</span> <span class="pre">fs0,188(sp)</span></code> belongs to the floating-point instructions of the <code class="docutils literal notranslate"><span class="pre">F</span></code> extension:</p>
 <p><img alt="screenshot" src="../_images/reference_card_1.png" />

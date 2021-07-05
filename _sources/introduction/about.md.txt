@@ -1,4 +1,6 @@
 ```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
 # About SoftConsole and this document
 
 This is manual for Microchip {{sc}}.
@@ -18,9 +20,98 @@ Users of previous releases should watch for changes and in the {ref}`What is new
 This document uses **\<SoftConsole-install-dir\>** as a placeholder for the actual SoftConsole install directory.
 Where this is mentioned substitute the actual SoftConsole install directory name.
 
- - Windows example: C:\Microchip\SoftConsole_v2021.1 
- - Linux example: $HOME/Microchip/SoftConsole_v2021.1
+ - Windows example: `C:\Microchip\SoftConsole_v2021.1`
+ - Linux example: `$HOME/Microchip/SoftConsole_v2021.1`
 
+
+## Breadcrumbs
+
+Often in this document, the steps are described in 'breadcrumbs' form such as this:
+
+{{ macros.breadcrumb_square('"Do A first" -> "Then do B" -> "Finally do C"') }}
+<br/>
+
+Usually these reference GUI location where to click to navigate the menus, submenus, their tabs and dialogs.
+There are few common places where these breadcrumbs start:
+
+
+
+ - The `SoftConsole Menu toolbar` as starting location, example:
+
+   {{ macros.breadcrumb_indent('"SoftConsole Menu toolbar" -> "Run" -> "Debug Configurations"', '   ') }}
+
+   Which is located under the Window's title: 
+
+   ![board image](images/breadcrumbs/menu_toolbar.png)
+
+
+
+ - The `Project's settings` as starting location, example:
+
+   {{ macros.breadcrumb_indent('"Project Settings" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "General" -> "Check \'-nostartfiles\'"', '   ') }}
+
+   Which requires the user to first go into Project's settings/properties by following these steps:
+
+   {{ macros.breadcrumb_indent('"Right click on <your_project> in the Project Explorer" -> "Properties"', '   ') }}
+
+   ![board image](images/breadcrumbs/project_properties.png)
+
+   It opens the following menu and can be navigated with the breadcrumbs:
+
+   {{ macros.breadcrumb_indent('"Project Settings" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "General" -> "Check \'-nostartfiles\'"', '   ') }}
+
+   ![board image](images/breadcrumbs/project_properties_menu.png)
+
+
+
+ - The launchers `Debug configuration` as starting location, example:
+
+   {{ macros.breadcrumb_indent('"Debug Configuration" -> "Debugger" -> "GDB Client Setup" -> "Commands"', '   ') }}
+
+   Which requires the user to open the corresponding debug launcher associated with your project:
+
+   {{ macros.breadcrumb_indent('"SoftConsole Menu toolbar" -> "Run" -> "Debug Configurations" -> "Launcher for <YOUR_PROJECT>"', '   ') }}
+
+   ```{note}
+   Each project might have multiple Debug Launchers associated with the project, for example one `hw` for Hardware targets and one `Renode` for Renode emulated targets. User needs to select the coresponding launcher within the context of the SoftConsole chapter. Renode troubleshooting guide will expect users to select the Renode variants of the launchers.
+   ```
+
+   This will open the following dialog menu:
+
+   ![board image](images/breadcrumbs/debug_launcher.png)
+
+
+## Architecture and ABI
+
+Architecture and ABI settings affect all platforms, but it's very important with RISC-V because of all the possible extensions and their possible combinations.
+
+{{ macros.breadcrumb_square('"Project Settings" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "Target Processor"') }}
+
+
+### Architecture
+
+Architecture is configured with the following settings, it describes what the target HW is capable of:
+
+![board image](images/architecture-abi/arch.png)
+
+
+### ABI
+
+ABI describes what registers are used and available on the target, which ones are used to pass variable arguments to functions, which one are return variables. Which registers get saved by calle and which one by caller. The ABI can't use more than the HW is capable of. ABI can be configured with following:
+
+![board image](images/architecture-abi/abi.png)
+
+### Multilibs
+
+Are build for specific combinations of Architecture and ABI. Currently supported:
+
+{% include 'main/introduction/used_packages/_riscv-toolchain-multilibs.inc' %}
+
+```{note}
+ - Be specific. Avoid using `Toolchain default` settings which will revert to RV64GC and on RV32 targets will give obscure errors.
+ - Double check if your combincation of Architecture/ABI is supported, if not it will revert to the default (RV64GC) and cause problems.
+ - SoftConsole supports only native ABIs, `RV64IMAFD` architecture is supporting only the ABI which contains the `D` extension. However it is possible to change the architecture to `RV64IMAF` and then the `F` ABI will work. If it's needed to use some subset of ABI, change the Architecture first. It's OK to compile for less capable Architecture
+```
 
 (whatisnew)=
 ## What is new

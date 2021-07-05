@@ -111,6 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode emulation platform</a></li>
 </ul>
@@ -300,11 +301,11 @@ step under:</p>
 <p>Possibly caused by build finishing successfully and the ELF file existing, but a misconfigured debug launch configuration cannot see it.
 Then a likely cause is the use of the wrong slash in the program path name. It is advisable to use the forward slash <code class="docutils literal notranslate"><span class="pre">/</span></code> in such paths for Windows and Linux cross OS compatibility. If the backslash <code class="docutils literal notranslate"><span class="pre">\</span></code> is used then it will only work on Windows but the forward slash works on both. Unfortunately the debug launch configuration editor on Windows defaults to using the backslash.</p>
 <p>Change the slash in launcher configuration from “Debug\blinky.elf” to “Debug/blinky.elf”:</p>
-<div class="graphviz"><img src="../_images/graphviz-17b97f74f60e9e68c637249ce820a08a264b70e3.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-7261bee2e108a0131cb7ce6edd627bd1c42b2c2e.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
-         &quot;Soft Console Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations...&quot; -&gt; &quot;&lt;YOUR_LAUNCHER&gt;&quot; -&gt; &quot;Main&quot; -&gt; &quot;C/C++ Application&quot;
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations...&quot; -&gt; &quot;&lt;YOUR_LAUNCHER&gt;&quot; -&gt; &quot;Main&quot; -&gt; &quot;C/C++ Application&quot;
      }" class="graphviz" /></div>
 <br/><p>Another cause of this problem is building one configuration (for example Release) and having launcher hard-coded for different configuration (for example Debug).
 Good and generic launchers (such as launchers bundled in the workspace.examples) always use the macro approach:</p>
@@ -316,11 +317,11 @@ Good and generic launchers (such as launchers bundled in the workspace.examples)
 </pre></div>
 </div>
 <p>Together with build configuration set to <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">Active</span></code>:</p>
-<div class="graphviz"><img src="../_images/graphviz-398a2db478db5ef27cd1605b6e6f794fd4e7d036.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-1d5c8e4619b8cc94e89eca3333eaa501f5ccbc7d.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
-         &quot;Soft Console Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations...&quot; -&gt; &quot;&lt;YOUR_LAUNCHER&gt;&quot; -&gt; &quot;Main&quot; -&gt; &quot;Build Configuration&quot; -&gt; &quot;Use Active&quot;
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Run&quot; -&gt; &quot;Debug Configurations...&quot; -&gt; &quot;&lt;YOUR_LAUNCHER&gt;&quot; -&gt; &quot;Main&quot; -&gt; &quot;Build Configuration&quot; -&gt; &quot;Use Active&quot;
      }" class="graphviz" /></div>
 <br/><p>It will allow the launcher to work with any configuration seemingly such as Debug/Release (or many more).</p>
 </div>

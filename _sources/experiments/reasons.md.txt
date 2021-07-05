@@ -76,7 +76,7 @@ However too much of duplication might create own sets of problems, so we have to
 
 Importing documents can be done by different ways, there is sphinx bundled directive 'include'
 
-<https://myst-parser.readthedocs.io/en/latest/using/howto.html>
+<https://myst-parser.readthedocs.io/en/latest/sphinx/index.html>
 
 it can be made to include restructured documents as well (and inside their restrcutured syntax is expected).
 Be vary:

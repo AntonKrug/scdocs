@@ -1,0 +1,32 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+# Debugging
+
+## Debug launch configurations
+
+To debug a program a debug launch configuration must be created. Most of the default settings for a debug launch
+configuration can be left as they are but a few needs to be manually configured. Use the example projects and
+debug launch configurations as a guide to creating new debug launch configurations.
+
+ 1. Select the project in the Project Explorer and from the:
+
+    {{ macros.breadcrumb_indent('"SoftConsole Menu toolbar" -> "Run" -> "Debug Configurations"','    ') }}
+
+ 2. In the Debug Configurations dialog select GDB OpenOCD Debugging and click on the New launch configuration button which will create a new debug launch configuration for the previously selected project.
+
+ 3. For PolarFire SoC Renode emulation please refer to the README provided with the PolarFire SoC/PSE example project(s) in the example workspace.
+
+ 4. On the Main tab ensure that the `C/C++ Application` field contains the correct executable name. 
+    `````{note}
+    Using forward slashes in paths here aids portability of projects and debug launch configurations between Windows and Linux:
+
+    ```{warning}
+    TODO: Add screenshot
+    ```
+
+    `````
+
+
+
+```````

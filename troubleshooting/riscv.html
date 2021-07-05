@@ -116,6 +116,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode emulation platform</a></li>
 </ul>
@@ -257,11 +258,11 @@ Warn : keep_alive() was not invoked in the 1000ms timelimit. GDB alive packet no
 </div>
 <p>Possibly using the Mi-V RISC-V or PolarFire SoC startup code while the compiler is trying to use its own startup code.
 Possible fix is to not use the compiler startup code. Check the following checkbox:</p>
-<div class="graphviz"><img src="../_images/graphviz-567f04e9cb33c343265bb4ec2b02d5d79ba5cae6.png" alt="digraph {
+<div class="graphviz"><img src="../_images/graphviz-acaab80902c2b39bdeb0193325136fdb36e309db.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
          edge [arrowsize=.7];
-         &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ linker&quot; -&gt; &quot;General&quot; -&gt; &quot;-nostartfiles option&quot;
+         &quot;Project Settings&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;GNU RISC-V Cross C/C++ Linker&quot; -&gt; &quot;General&quot; -&gt; &quot;-nostartfiles option&quot;
      }" class="graphviz" /></div>
 </div>
 <div class="section" id="error-got-exception-when-reading-some-risc-v-registers">
@@ -280,7 +281,7 @@ then OpenOCD may display a message of the form:</p>
 <p>Possibly caused when project settings which affect floating point section changed without doing a clean rebuild.</p>
 <ul>
 <li><p>Clean the project</p>
-<div class="graphviz"><img src="../_images/graphviz-d565492406b16ca3881921ad98869ee8ac47d805.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Soft Console Menu toolbar&quot; -&gt; &quot;Project&quot; -&gt; &quot;Clean&quot; -&gt; &quot;Check 'Clean all'&quot; -&gt; &quot;Click 'Clean' button&quot;; }" class="graphviz" /></div>
+<div class="graphviz"><img src="../_images/graphviz-a78f65eae7b1f01885efc81c053fb3b6cb93ab99.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Project&quot; -&gt; &quot;Clean&quot; -&gt; &quot;Check 'Clean all'&quot; -&gt; &quot;Click 'Clean' button&quot;; }" class="graphviz" /></div>
 <p>Sometimes this is not enough and deleting the build folders is enecesary, for example: Debug/Release configurations (however configuration names might differ between projects).</p>
 </li>
 <li><p>Also check that the <code class="docutils literal notranslate"><span class="pre">RVF</span></code> floating point configuration options and select matching <code class="docutils literal notranslate"><span class="pre">arch/abi</span></code>.</p>
