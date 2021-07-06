@@ -1,3 +1,5 @@
+![Microchip Logo](/_static/mhcp-full.png)
+
 # SoftConsole
 
 ```{toctree}
@@ -20,6 +22,7 @@ using_softconsole/projects
 using_softconsole/debugging
 using_softconsole/mpfs
 using_softconsole/renode
+using_softconsole/other
 ```
 
 
@@ -32,6 +35,7 @@ troubleshooting/project
 troubleshooting/riscv
 troubleshooting/riscv_trap
 troubleshooting/renode
+troubleshooting/renode_networking
 troubleshooting/eclipse
 troubleshooting/support
 ```

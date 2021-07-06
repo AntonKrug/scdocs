@@ -1,0 +1,11 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+
+# Other features
+
+
+{% include 'main/using_softconsole/_stack_profiling.inc' %}
+{% include 'main/using_softconsole/_cppcheck.inc' %}
+
+```````

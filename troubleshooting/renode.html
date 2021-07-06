@@ -13,10 +13,6 @@
   
   <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/sphinx_tabs/tabs.css" type="text/css" />
   <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
   <link rel="stylesheet" href="../_static/copybutton.css" type="text/css" />
   <link rel="stylesheet" href="../_static/myRtdOverrides.css" type="text/css" />
@@ -41,8 +37,6 @@
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
         <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
-        <script src="../_static/sphinx_tabs/tabs.js"></script>
         <script src="../_static/clipboard.min.js"></script>
         <script src="../_static/copybutton.js"></script>
     
@@ -51,7 +45,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Eclipse" href="eclipse.html" />
+    <link rel="next" title="Renode networking" href="renode_networking.html" />
     <link rel="prev" title="RISC-V Trap Exceptions" href="riscv_trap.html" /> 
 </head>
 
@@ -71,7 +65,7 @@
 
           
             
-            <img src="../_static/mhcp-100.png" class="logo" alt="Logo"/>
+            <img src="../_static/softconsole-32.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -119,6 +113,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode emulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/other.html">Other features</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
 <ul class="current">
@@ -129,16 +124,13 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Renode</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-oss-tool-such-as-renode-will-contaminate-my-proprietary-code">Using OSS tool such as Renode will contaminate my proprietary code?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#wireshark-constantly-shows-dialog-about-unsaved-packets">Wireshark constantly shows dialog about unsaved packets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#wireshark-shows-a-significant-amount-of-traffic-and-overloads-my-target">Wireshark shows a significant amount of traffic and overloads my target</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#could-not-set-tunsetiff-error-2"><code class="docutils literal notranslate"><span class="pre">Could</span> <span class="pre">not</span> <span class="pre">set</span> <span class="pre">TUNSETIFF,</span> <span class="pre">error:</span> <span class="pre">2</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#how-do-i-delete-renodes-bridge-tap-networking-interface">How do I delete Renode’s bridge TAP networking interface?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#source-id-13802-was-not-found-when-attempting-to-remove-it">Source ID 13802 was not found when attempting to remove it</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#renode-on-startup-crashes-with-an-unhandled-exception">Renode on startup crashes with an unhandled exception</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#deeply-nested-code-causes-crashes-and-glitches">Deeply nested code causes crashes and glitches</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#what-are-the-robot-references-in-softconsole">What are the Robot references in SoftConsole?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#renode-on-startup-crashes-with-an-unhandled-exception">Renode on startup crashes with an unhandled exception</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="renode_networking.html">Renode networking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eclipse.html">Eclipse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Product Support</a></li>
 </ul>
@@ -228,90 +220,6 @@ client as well.</p>
 <p><a class="reference external" href="https://tldrlegal.com/license/mit-license">https://tldrlegal.com/license/mit-license</a></p>
 <p>If in doubt consult with a legal team.</p>
 </div>
-<div class="section" id="wireshark-constantly-shows-dialog-about-unsaved-packets">
-<h2>Wireshark constantly shows dialog about unsaved packets<a class="headerlink" href="#wireshark-constantly-shows-dialog-about-unsaved-packets" title="Permalink to this headline">¶</a></h2>
-<p>Wait for the Renode’s Wireshark to open and then go to:</p>
-<div class="graphviz"><img src="../_images/graphviz-fc5e1cb17b6696b59fde5cb05f3efbdc7d9d6343.png" alt="digraph {
-         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
-         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
-         edge [arrowsize=.7];
-         &quot;Edit&quot; -&gt; &quot;Preferences&quot; -&gt; &quot;Uncheck the 'Confirm unsaved capture files'&quot; -&gt; &quot;Click 'OK'&quot;
-     }" class="graphviz" /></div>
-<br/><div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>User’s Wireshark settings are not affected as these settings are for Renode’s Wireshark</p>
-</div>
-</div>
-<div class="section" id="wireshark-shows-a-significant-amount-of-traffic-and-overloads-my-target">
-<h2>Wireshark shows a significant amount of traffic and overloads my target<a class="headerlink" href="#wireshark-shows-a-significant-amount-of-traffic-and-overloads-my-target" title="Permalink to this headline">¶</a></h2>
-<p>It is important to distinguish between really lost packets (for example when buffer overflow happened) and packets which just
-took too long for a response that they were considered lost and re-transmitting was triggered.
-In the case of PolarFire SoC model a Warning level logger can be enabled on the CadenceGEM peripheral by using:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">logLevel</span> <span class="mi">2</span> <span class="n">sysbus</span><span class="o">.</span><span class="n">mac0</span>
-</pre></div>
-</div>
-<p>If a buffer overflow occurs, then Renode will print the following message:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Receive</span> <span class="n">DMA</span> <span class="n">buffer</span> <span class="n">overflow</span>
-</pre></div>
-</div>
-<p>Because Renode will not emulate the PolarFire SoC model at full speed, therefore the performance cannot be compared with
-the real hardware. Processing packets on Renode and sending responses will take longer than they would on the real hardware.
-Networking is very latency-sensitive and many protocols can timeout and send a retransmission of the request while the target
-was processing the response, causing the target to have even more requests to process. Therefore extra care should be made
-to not overload the target with unnecessary packets.</p>
-<p>It’s recommended either not to bridge the renode-tap0 with the host’s interface to keep away unnecessary traffic and keep the
-interfaces separate with their own, non-overlapping IP networks. Even if the interfaces are not bridged there might be daemons
-running which queries and discovery requests to all networks. For example, NTP time sync service might at some cases start
-querying the network range and produce frequent packets. Temporarily disable the daemon to see if it does improve the issue:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">ntp</span> <span class="n">stop</span>
-</pre></div>
-</div>
-<p>Monitoring what process do on the network might give indications of what services/tools might be causing unnecessary packets.
-Use <code class="docutils literal notranslate"><span class="pre">netstat</span></code> to print networking connections and disable unneeded services which flood the Renode’s network with
-unnecessary packets and requests.</p>
-</div>
-<div class="section" id="could-not-set-tunsetiff-error-2">
-<h2><code class="docutils literal notranslate"><span class="pre">Could</span> <span class="pre">not</span> <span class="pre">set</span> <span class="pre">TUNSETIFF,</span> <span class="pre">error:</span> <span class="pre">2</span></code><a class="headerlink" href="#could-not-set-tunsetiff-error-2" title="Permalink to this headline">¶</a></h2>
-<p>When creating a networking bridge from the Renode emulation a TUN/TAP interface on the host must be created. Renode
-probes if the interface is already present and when it’s not, it will try if a current user has privileges to create such interface. In
-most cases, the current user doesn’t have privileges to do so and will invoke this error message. In general, it should be safe to
-ignore this error as it is sometimes expected.</p>
-<p>When the user has no privileges to create the tap, then Renode will invoke polkit to elevate users privileges for this command
-to succeed. Behavior differs between distributions and how polkit/sudo is configured. It might request for user’s password, it
-might continue without prompt or it might wait for a fingerprint scan.</p>
-<p>If the tap interface already is present on the system, Renode should continue without error message even when previously it
-was displaying the message.
-Related topics in Renode’s documentation:</p>
-<p><a class="reference external" href="https://renode.readthedocs.io/en/latest/networking/host-network.html">https://renode.readthedocs.io/en/latest/networking/host-network.html</a>
-<a class="reference external" href="https://renode.readthedocs.io/en/latest/networking/wireshark.html">https://renode.readthedocs.io/en/latest/networking/wireshark.html</a></p>
-</div>
-<div class="section" id="how-do-i-delete-renodes-bridge-tap-networking-interface">
-<h2>How do I delete Renode’s bridge TAP networking interface?<a class="headerlink" href="#how-do-i-delete-renodes-bridge-tap-networking-interface" title="Permalink to this headline">¶</a></h2>
-<div class="sphinx-tabs docutils container">
-<div class="ui top attached tabular menu sphinx-menu docutils container">
-<div class="active item sphinx-data-tab-0-0 docutils container">
-<div class="docutils container">
-<p>As super user</p>
-</div>
-</div>
-<div class="item sphinx-data-tab-0-1 docutils container">
-<div class="docutils container">
-<p>As a regular user</p>
-</div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-0 active docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ip link del tap0
-</pre></div>
-</div>
-</div>
-<div class="ui bottom attached sphinx-tab tab segment sphinx-data-tab-0-1 docutils container">
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo ip link del tap0
-</pre></div>
-</div>
-</div>
-</div>
-</div>
 <div class="section" id="source-id-13802-was-not-found-when-attempting-to-remove-it">
 <h2>Source ID 13802 was not found when attempting to remove it<a class="headerlink" href="#source-id-13802-was-not-found-when-attempting-to-remove-it" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">Renode</span><span class="p">:</span><span class="mi">5523</span><span class="p">):</span> <span class="n">GLib</span><span class="o">-</span><span class="n">CRITICAL</span> <span class="o">**</span><span class="p">:</span> <span class="n">Source</span> <span class="n">ID</span> <span class="mi">13802</span> <span class="n">was</span> <span class="ow">not</span> <span class="n">found</span> <span class="n">when</span> <span class="n">attempting</span> <span class="n">to</span> <span class="n">remove</span> <span class="n">it</span>
@@ -321,14 +229,6 @@ Related topics in Renode’s documentation:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mono</span> <span class="o">--</span><span class="n">version</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="renode-on-startup-crashes-with-an-unhandled-exception">
-<h2>Renode on startup crashes with an unhandled exception<a class="headerlink" href="#renode-on-startup-crashes-with-an-unhandled-exception" title="Permalink to this headline">¶</a></h2>
-<p>If the exception message contains the following:</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Could not find a part of the path &quot;/&lt;YOUR_PATH&gt;/.renode/history&quot;
-</pre></div>
-</div>
-<p>Then it could have been caused by moving the SoftConsole installation and the config pointing to the old (and nonexistent) location of the history file. Correct the path inside the <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/home/.renode/config</span></code> or just delete the config and let Renode to re-create it.</p>
 </div>
 <div class="section" id="deeply-nested-code-causes-crashes-and-glitches">
 <h2>Deeply nested code causes crashes and glitches<a class="headerlink" href="#deeply-nested-code-causes-crashes-and-glitches" title="Permalink to this headline">¶</a></h2>
@@ -357,15 +257,23 @@ Renode emulation platform</p>
 <p><a class="reference external" href="https://renode.readthedocs.io/en/latest/advanced/building_from_sources.html#prerequisites">https://renode.readthedocs.io/en/latest/advanced/building_from_sources.html#prerequisites</a></p>
 <p><a class="reference external" href="https://renode.readthedocs.io/en/latest/tutorials/zephyr-ptp-testing.html">https://renode.readthedocs.io/en/latest/tutorials/zephyr-ptp-testing.html</a></p>
 </div>
+<div class="section" id="renode-on-startup-crashes-with-an-unhandled-exception">
+<h2>Renode on startup crashes with an unhandled exception<a class="headerlink" href="#renode-on-startup-crashes-with-an-unhandled-exception" title="Permalink to this headline">¶</a></h2>
+<p>If the exception message contains the following:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Could not find a part of the path &quot;/&lt;YOUR_PATH&gt;/.renode/history&quot;
+</pre></div>
 </div>
-
+<p>Then it could have been caused by moving the SoftConsole installation and the config pointing to the old (and nonexistent) location of the history file. Correct the path inside the <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/home/.renode/config</span></code> or just delete the config and let Renode to re-create it.</p>
+</div>
+</div>
+<span class="target" id="troubleshoot-renode"></span>
 
            </div>
            
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="eclipse.html" class="btn btn-neutral float-right" title="Eclipse" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="renode_networking.html" class="btn btn-neutral float-right" title="Renode networking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="riscv_trap.html" class="btn btn-neutral float-left" title="RISC-V Trap Exceptions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

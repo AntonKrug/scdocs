@@ -1,0 +1,18 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
+(troubleshoot_renode_networking)=
+# Renode networking
+
+![Renode logo](renode/images/renode_logo.png)
+
+
+{% include 'main/troubleshooting/renode_networking/_unsaved_wireshark.inc' %}
+{% include 'main/troubleshooting/renode_networking/_wireshark_traffic.inc' %}
+{% include 'main/troubleshooting/renode_networking/_tunsetiff.inc' %}
+{% include 'main/troubleshooting/renode_networking/_delete_tap.inc' %}
+{% include 'main/troubleshooting/renode_networking/_cant_see_interface.inc' %}
+{% include 'main/troubleshooting/renode_networking/_cant_ping.inc' %}
+{% include 'main/troubleshooting/renode_networking/_no_packet_response.inc' %}
+
+```````
