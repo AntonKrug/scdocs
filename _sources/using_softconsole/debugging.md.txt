@@ -27,6 +27,32 @@ debug launch configurations as a guide to creating new debug launch configuratio
 
     `````
 
+## Call stack and conditional breakpoints
 
+Normally call stacks can be ignored, but they are very useful when troubleshooting pre-existing conditions. When using the recommended workspace and its `Develop and Debug` perspective then this should be in the bottom-left section of
+the screen. It can be opened (if it got previously closed) with :
+
+{{ macros.breadcrumb_square('"SoftConsole Menu toolbar" -> "Window" -> "Show view" -> "Debug"') }}
+<br/>
+
+![Call stack](images/call_stack.png)
+
+The figure above shows how nested the calls are, clicking on each will jump to the exact line of code from where the
+child stack was invoked and it will even show the content of local variables at that given time. This is very useful when
+troubleshooting what conditions lead to the given breakpoint. Using it with ISR handlers can show what the application
+was processing when the IRQ happened. Together with conditional breakpoints which makes debugging even easier.
+
+A conditional breakpoint can be enabled by holding CTRL and double-clicking on a regular breakpoint:
+
+![Conditional breakpoints](images/conditional_breakpoint.png)
+
+The figure above shows a conditional breakpoint which will break on a second event when variable x is equal to 3. The
+first event when this condition is met is ignored because `Ignore count` is set to 1. This allows to create a complex
+condition where the code should break and together with call stack can be troubleshoot why and how this event
+happened. Debugging intermittent issues with these features is easier.
+
+```{note}
+This is very useful for both a Renode and HW targets as well.
+```
 
 ```````

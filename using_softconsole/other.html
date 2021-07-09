@@ -108,12 +108,14 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="renode.html">Renode emulation platform</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Other features</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#integer-only-newlib-support">Integer only newlib support</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#static-stack-profiling">Static stack profiling</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cppcheck">Cppcheck</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#suppressing-issues">Suppressing issues</a><ul>
@@ -214,6 +216,21 @@
             
   <div class="section" id="other-features">
 <h1>Other features<a class="headerlink" href="#other-features" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="integer-only-newlib-support">
+<h2>Integer only newlib support<a class="headerlink" href="#integer-only-newlib-support" title="Permalink to this headline">¶</a></h2>
+<p>SoftConsole bundles newlib standard library support (<a class="reference external" href="https://sourceware.org/newlib/">https://sourceware.org/newlib/</a>).</p>
+<p>It is often possible to build embedded programs in constrained resource (CPU, memory etc.) environments without
+linking in any standard library overhead. However, where standard library support must be used newlib offers a
+couple of ways to reduce the overhead:</p>
+<ul>
+<li><p>Smaller integer only *iprintf() APIs (e.g. <code class="docutils literal notranslate"><span class="pre">iprintf()</span></code>, <code class="docutils literal notranslate"><span class="pre">siprintf()</span></code>, <code class="docutils literal notranslate"><span class="pre">fiprintf()</span></code> etc.) that avoid the significant additional overhead of floating point support. Refer to the newlib documentation for more information.</p></li>
+<li><p>Nano newlib which is a cut down version of the standard newlib library. To use newlib-nano go to the linker settings of your project properties:</p>
+<div class="graphviz"><img src="../_images/graphviz-a60ccded1fa87ea5a74abc791e05e8f2b4dd01f9.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Project Properties&quot; -&gt; &quot;C/C++ Build&quot; -&gt; &quot;Settings&quot; -&gt; &quot;Tool Settings&quot; -&gt; &quot;Cross Arm GNU C/C++ Linker&quot;; }" class="graphviz" /></div>
+<p>and check the <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">newlib-nano</span></code> option:</p>
+<div class="graphviz"><img src="../_images/graphviz-82728bba0e57b11a202ca35439ce197c5f8298ec.png" alt="digraph { graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent]; node [fontname=&quot;Verdana&quot;, style=filled, fillcolor=white, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;]; edge [arrowsize=.7]; &quot;Cross Arm GNU C/C++ Linker&quot; -&gt; &quot;Miscellaneous&quot; -&gt; &quot;Use newlib-nano (--specs=nano.specs)&quot; ; }" class="graphviz" /></div>
+</li>
+</ul>
+</div>
 <div class="section" id="static-stack-profiling">
 <h2>Static stack profiling<a class="headerlink" href="#static-stack-profiling" title="Permalink to this headline">¶</a></h2>
 <p>GCC supports static stack usage analysis/profiling. Depending on the nature of the application these might not be as
@@ -311,7 +328,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Address of an auto-variable returned.</p>
-<p><strong>Verbose explanation:</strong> Address of an auto-variable returned.</p>
 <p><strong>Common Weakness Enumeration:</strong> 562</p>
 </div>
 <div class="section" id="returnlocalvariable">
@@ -320,7 +336,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Pointer to local array variable returned.</p>
-<p><strong>Verbose explanation:</strong> Pointer to local array variable returned.</p>
 <p><strong>Common Weakness Enumeration:</strong> 562</p>
 </div>
 <div class="section" id="returnreference">
@@ -329,7 +344,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Reference to auto variable returned.</p>
-<p><strong>Verbose explanation:</strong> Reference to auto variable returned.</p>
 <p><strong>Common Weakness Enumeration:</strong> 562</p>
 </div>
 <div class="section" id="returntempreference">
@@ -338,7 +352,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Reference to temporary returned.</p>
-<p><strong>Verbose explanation:</strong> Reference to temporary returned.</p>
 <p><strong>Common Weakness Enumeration:</strong> 562</p>
 </div>
 <div class="section" id="autovarinvaliddeallocation">
@@ -365,7 +378,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Returning object that will be invalid when returning.</p>
-<p><strong>Verbose explanation:</strong> Returning object that will be invalid when returning.</p>
 <p><strong>Common Weakness Enumeration:</strong> 562</p>
 </div>
 <div class="section" id="invalidlifetime">
@@ -374,7 +386,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Using object that is out of scope.</p>
-<p><strong>Verbose explanation:</strong> Using object that is out of scope.</p>
 <p><strong>Common Weakness Enumeration:</strong> 562</p>
 </div>
 <div class="section" id="danglinglifetime">
@@ -383,7 +394,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Non-local variable ‘x’ will use object.</p>
-<p><strong>Verbose explanation:</strong> Non-local variable ‘x’ will use object.</p>
 <p><strong>Common Weakness Enumeration:</strong> 562</p>
 </div>
 <div class="section" id="assignbooltopointer">
@@ -392,7 +402,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Boolean value assigned to pointer.</p>
-<p><strong>Verbose explanation:</strong> Boolean value assigned to pointer.</p>
 <p><strong>Common Weakness Enumeration:</strong> 587</p>
 </div>
 <div class="section" id="pointerarithbool">
@@ -410,7 +419,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> BOOST_FOREACH caches the end() iterator. It’s undefined behavior if you modify the container inside.</p>
-<p><strong>Verbose explanation:</strong> BOOST_FOREACH caches the end() iterator. It’s undefined behavior if you modify the container inside.</p>
 <p><strong>Common Weakness Enumeration:</strong> 664</p>
 </div>
 <div class="section" id="arrayindexoutofbounds">
@@ -419,7 +427,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Array ‘array[2]’ index array[1][1] out of bounds.</p>
-<p><strong>Verbose explanation:</strong> Array ‘array[2]’ index array[1][1] out of bounds.</p>
 <p><strong>Common Weakness Enumeration:</strong> 78</p>
 </div>
 <div class="section" id="bufferaccessoutofbounds">
@@ -428,7 +435,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Buffer is accessed out of bounds: buffer</p>
-<p><strong>Verbose explanation:</strong> Buffer is accessed out of bounds: buffer</p>
 <p><strong>Common Weakness Enumeration:</strong> 78</p>
 </div>
 <div class="section" id="outofbounds">
@@ -437,7 +443,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> index is out of bounds: Supplied size 2 is larger than actual size 1.</p>
-<p><strong>Verbose explanation:</strong> index is out of bounds: Supplied size 2 is larger than actual size 1.</p>
 <p><strong>Common Weakness Enumeration:</strong> 788</p>
 </div>
 <div class="section" id="negativeindex">
@@ -446,7 +451,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Array index -1 is out of bounds.</p>
-<p><strong>Verbose explanation:</strong> Array index -1 is out of bounds.</p>
 <p><strong>Common Weakness Enumeration:</strong> 786</p>
 </div>
 <div class="section" id="insecurecmdlineargs">
@@ -455,7 +459,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Buffer overrun possible for long command line arguments.</p>
-<p><strong>Verbose explanation:</strong> Buffer overrun possible for long command line arguments.</p>
 <p><strong>Common Weakness Enumeration:</strong> 119</p>
 </div>
 <div class="section" id="negativememoryallocationsize">
@@ -473,7 +476,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Declaration of array ‘’ with negative size is undefined behaviour</p>
-<p><strong>Verbose explanation:</strong> Declaration of array ‘’ with negative size is undefined behaviour</p>
 <p><strong>Common Weakness Enumeration:</strong> 758</p>
 </div>
 <div class="section" id="invalidfunctionarg">
@@ -482,7 +484,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Invalid func_name() argument nr 1. The value is 0 or 1 (boolean) but the valid values are ‘1:4’.</p>
-<p><strong>Verbose explanation:</strong> Invalid func_name() argument nr 1. The value is 0 or 1 (boolean) but the valid values are ‘1:4’.</p>
 <p><strong>Common Weakness Enumeration:</strong> 62</p>
 </div>
 <div class="section" id="invalidfunctionargbool">
@@ -491,7 +492,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Invalid func_name() argument nr 1. A non-boolean value is required.</p>
-<p><strong>Verbose explanation:</strong> Invalid func_name() argument nr 1. A non-boolean value is required.</p>
 <p><strong>Common Weakness Enumeration:</strong> 62</p>
 </div>
 <div class="section" id="invalidfunctionargstr">
@@ -500,7 +500,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Invalid func_name() argument nr 1. A nul-terminated string is required.</p>
-<p><strong>Verbose explanation:</strong> Invalid func_name() argument nr 1. A nul-terminated string is required.</p>
 <p><strong>Common Weakness Enumeration:</strong> 62</p>
 </div>
 <div class="section" id="memsetclass">
@@ -518,7 +517,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Using ‘memfunc’ on class that contains a reference.</p>
-<p><strong>Verbose explanation:</strong> Using ‘memfunc’ on class that contains a reference.</p>
 <p><strong>Common Weakness Enumeration:</strong> 66</p>
 </div>
 <div class="section" id="malloconclasserror">
@@ -545,7 +543,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> No ‘return’ statement in non-void function causes undefined behavior.</p>
-<p><strong>Verbose explanation:</strong> No ‘return’ statement in non-void function causes undefined behavior.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="selfinitialization">
@@ -554,7 +551,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Member variable ‘var’ is initialized by itself.</p>
-<p><strong>Verbose explanation:</strong> Member variable ‘var’ is initialized by itself.</p>
 <p><strong>Common Weakness Enumeration:</strong> 66</p>
 </div>
 <div class="section" id="throwinnoexceptfunction">
@@ -563,7 +559,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Exception thrown in function declared not to throw exceptions.</p>
-<p><strong>Verbose explanation:</strong> Exception thrown in function declared not to throw exceptions.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="coutcerrmisusage">
@@ -572,7 +567,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Invalid usage of output stream: ‘&lt;&lt; std::cout’.</p>
-<p><strong>Verbose explanation:</strong> Invalid usage of output stream: ‘&lt;&lt; std::cout’.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="iowithoutpositioning">
@@ -581,7 +575,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Read and write operations without a call to a positioning function (fseek, fsetpos or rewind) or fflush in between result in undefined behaviour.</p>
-<p><strong>Verbose explanation:</strong> Read and write operations without a call to a positioning function (fseek, fsetpos or rewind) or fflush in between result in undefined behaviour.</p>
 <p><strong>Common Weakness Enumeration:</strong> 664</p>
 </div>
 <div class="section" id="readwriteonlyfile">
@@ -590,7 +583,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Read operation on a file that was opened only for writing.</p>
-<p><strong>Verbose explanation:</strong> Read operation on a file that was opened only for writing.</p>
 <p><strong>Common Weakness Enumeration:</strong> 664</p>
 </div>
 <div class="section" id="writereadonlyfile">
@@ -599,7 +591,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Write operation on a file that was opened only for reading.</p>
-<p><strong>Verbose explanation:</strong> Write operation on a file that was opened only for reading.</p>
 <p><strong>Common Weakness Enumeration:</strong> 664</p>
 </div>
 <div class="section" id="useclosedfile">
@@ -608,7 +599,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Used file that is not opened.</p>
-<p><strong>Verbose explanation:</strong> Used file that is not opened.</p>
 <p><strong>Common Weakness Enumeration:</strong> 910</p>
 </div>
 <div class="section" id="wrongprintfscanfargnum">
@@ -617,7 +607,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> printf format string requires 3 parameters but only 2 are given.</p>
-<p><strong>Verbose explanation:</strong> printf format string requires 3 parameters but only 2 are given.</p>
 <p><strong>Common Weakness Enumeration:</strong> 685</p>
 </div>
 <div class="section" id="invalidscanfformatwidth">
@@ -626,7 +615,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Width 5 given in format string (no. 10) is larger than destination buffer ‘[0]’, use %-1s to prevent overflowing it.</p>
-<p><strong>Verbose explanation:</strong> Width 5 given in format string (no. 10) is larger than destination buffer ‘[0]’, use %-1s to prevent overflowing it.</p>
 <p><strong>Common Weakness Enumeration:</strong> 687</p>
 </div>
 <div class="section" id="deallocret">
@@ -635,7 +623,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Returning/dereferencing ‘p’ after it is deallocated / released</p>
-<p><strong>Verbose explanation:</strong> Returning/dereferencing ‘p’ after it is deallocated / released</p>
 <p><strong>Common Weakness Enumeration:</strong> 67</p>
 </div>
 <div class="section" id="doublefree">
@@ -644,7 +631,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Memory pointed to by ‘varname’ is freed twice.</p>
-<p><strong>Verbose explanation:</strong> Memory pointed to by ‘varname’ is freed twice.</p>
 <p><strong>Common Weakness Enumeration:</strong> 41</p>
 </div>
 <div class="section" id="leaknovarfunctioncall">
@@ -653,7 +639,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Allocation with funcName, funcName doesn’t release it.</p>
-<p><strong>Verbose explanation:</strong> Allocation with funcName, funcName doesn’t release it.</p>
 <p><strong>Common Weakness Enumeration:</strong> 772</p>
 </div>
 <div class="section" id="leakreturnvalnotused">
@@ -662,7 +647,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Return value of allocation function ‘funcName’ is not stored.</p>
-<p><strong>Verbose explanation:</strong> Return value of allocation function ‘funcName’ is not stored.</p>
 <p><strong>Common Weakness Enumeration:</strong> 77</p>
 </div>
 <div class="section" id="memleak">
@@ -671,7 +655,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Memory leak: varname</p>
-<p><strong>Verbose explanation:</strong> Memory leak: varname</p>
 <p><strong>Common Weakness Enumeration:</strong> 40</p>
 </div>
 <div class="section" id="resourceleak">
@@ -680,7 +663,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Resource leak: varname</p>
-<p><strong>Verbose explanation:</strong> Resource leak: varname</p>
 <p><strong>Common Weakness Enumeration:</strong> 77</p>
 </div>
 <div class="section" id="deallocdealloc">
@@ -689,7 +671,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Deallocating a deallocated pointer: varname</p>
-<p><strong>Verbose explanation:</strong> Deallocating a deallocated pointer: varname</p>
 <p><strong>Common Weakness Enumeration:</strong> 41</p>
 </div>
 <div class="section" id="deallocuse">
@@ -698,7 +679,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Dereferencing ‘varname’ after it is deallocated / released</p>
-<p><strong>Verbose explanation:</strong> Dereferencing ‘varname’ after it is deallocated / released</p>
 <p><strong>Common Weakness Enumeration:</strong> 41</p>
 </div>
 <div class="section" id="mismatchsize">
@@ -707,7 +687,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> The allocated size sz is not a multiple of the underlying type’s size.</p>
-<p><strong>Verbose explanation:</strong> The allocated size sz is not a multiple of the underlying type’s size.</p>
 <p><strong>Common Weakness Enumeration:</strong> 131</p>
 </div>
 <div class="section" id="mismatchallocdealloc">
@@ -716,7 +695,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Mismatching allocation and deallocation: varname</p>
-<p><strong>Verbose explanation:</strong> Mismatching allocation and deallocation: varname</p>
 <p><strong>Common Weakness Enumeration:</strong> 76</p>
 </div>
 <div class="section" id="memleakonrealloc">
@@ -725,7 +703,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Common realloc mistake: ‘varname’ nulled but not freed upon failure</p>
-<p><strong>Verbose explanation:</strong> Common realloc mistake: ‘varname’ nulled but not freed upon failure</p>
 <p><strong>Common Weakness Enumeration:</strong> 40</p>
 </div>
 <div class="section" id="nullpointer">
@@ -734,7 +711,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Null pointer dereference</p>
-<p><strong>Verbose explanation:</strong> Null pointer dereference</p>
 <p><strong>Common Weakness Enumeration:</strong> 476</p>
 </div>
 <div class="section" id="nullpointerarithmetic">
@@ -743,7 +719,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Pointer arithmetic with NULL pointer.</p>
-<p><strong>Verbose explanation:</strong> Pointer arithmetic with NULL pointer.</p>
 <p><strong>Common Weakness Enumeration:</strong> 682</p>
 </div>
 <div class="section" id="zerodiv">
@@ -752,7 +727,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Division by zero.</p>
-<p><strong>Verbose explanation:</strong> Division by zero.</p>
 <p><strong>Common Weakness Enumeration:</strong> 369</p>
 </div>
 <div class="section" id="zerodivcond">
@@ -761,7 +735,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Either the condition is redundant or there is division by zero.</p>
-<p><strong>Verbose explanation:</strong> Either the condition is redundant or there is division by zero.</p>
 <p><strong>Common Weakness Enumeration:</strong> 369</p>
 </div>
 <div class="section" id="shiftnegative">
@@ -770,7 +743,6 @@ are accessible via:</p>
 </pre></div>
 </div>
 <p><strong>Message:</strong> Shifting by a negative value is undefined behaviour</p>
-<p><strong>Verbose explanation:</strong> Shifting by a negative value is undefined behaviour</p>
 <p><strong>Common Weakness Enumeration:</strong> 758</p>
 </div>
 <div class="section" id="wrongpipeparametersize">
@@ -789,7 +761,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Race condition: non-interlocked access after InterlockedDecrement(). Use InterlockedDecrement() return value instead.</p>
-<p><strong>Verbose explanation:</strong> Race condition: non-interlocked access after InterlockedDecrement(). Use InterlockedDecrement() return value instead.</p>
 <p><strong>Common Weakness Enumeration:</strong> 362</p>
 </div>
 <div class="section" id="invalidfree">
@@ -798,7 +769,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Invalid memory address freed.</p>
-<p><strong>Verbose explanation:</strong> Invalid memory address freed.</p>
 </div>
 <div class="section" id="unknownevaluationorder">
 <h5>unknownEvaluationOrder<a class="headerlink" href="#unknownevaluationorder" title="Permalink to this headline">¶</a></h5>
@@ -806,7 +776,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Expression ‘x = x++;’ depends on order of evaluation of side effects</p>
-<p><strong>Verbose explanation:</strong> Expression ‘x = x++;’ depends on order of evaluation of side effects</p>
 <p><strong>Common Weakness Enumeration:</strong> 768</p>
 </div>
 <div class="section" id="containeroutofbounds">
@@ -815,7 +784,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Out of bounds access of item in container ‘var’</p>
-<p><strong>Verbose explanation:</strong> Out of bounds access of item in container ‘var’</p>
 <p><strong>Common Weakness Enumeration:</strong> 39</p>
 </div>
 <div class="section" id="invaliditerator1">
@@ -824,7 +792,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Invalid iterator: iterator</p>
-<p><strong>Verbose explanation:</strong> Invalid iterator: iterator</p>
 <p><strong>Common Weakness Enumeration:</strong> 66</p>
 </div>
 <div class="section" id="iterators1">
@@ -833,7 +800,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Same iterator is used with different containers ‘container1’ and ‘container2’.</p>
-<p><strong>Verbose explanation:</strong> Same iterator is used with different containers ‘container1’ and ‘container2’.</p>
 <p><strong>Common Weakness Enumeration:</strong> 66</p>
 </div>
 <div class="section" id="iterators3">
@@ -842,7 +808,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Same iterator is used with containers ‘container’ that are defined in different scopes.</p>
-<p><strong>Verbose explanation:</strong> Same iterator is used with containers ‘container’ that are defined in different scopes.</p>
 <p><strong>Common Weakness Enumeration:</strong> 66</p>
 </div>
 <div class="section" id="iteratorscmp1">
@@ -851,7 +816,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Comparison of iterators from containers ‘container1’ and ‘container2’.</p>
-<p><strong>Verbose explanation:</strong> Comparison of iterators from containers ‘container1’ and ‘container2’.</p>
 <p><strong>Common Weakness Enumeration:</strong> 66</p>
 </div>
 <div class="section" id="iteratorscmp2">
@@ -860,7 +824,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Comparison of iterators from containers ‘container’ that are defined in different scopes.</p>
-<p><strong>Verbose explanation:</strong> Comparison of iterators from containers ‘container’ that are defined in different scopes.</p>
 <p><strong>Common Weakness Enumeration:</strong> 66</p>
 </div>
 <div class="section" id="mismatchingcontainers">
@@ -869,7 +832,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Iterators of different containers are used together.</p>
-<p><strong>Verbose explanation:</strong> Iterators of different containers are used together.</p>
 <p><strong>Common Weakness Enumeration:</strong> 664</p>
 </div>
 <div class="section" id="erasedereference">
@@ -887,7 +849,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> When i==foo.size(), foo[i] is out of bounds.</p>
-<p><strong>Verbose explanation:</strong> When i==foo.size(), foo[i] is out of bounds.</p>
 <p><strong>Common Weakness Enumeration:</strong> 78</p>
 </div>
 <div class="section" id="invaliditerator2">
@@ -895,8 +856,7 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// cppcheck-suppress invalidIterator2</span>
 </pre></div>
 </div>
-<p><strong>Message:</strong> After push_back|push_front|insert(), the iterator ‘iterator’ may be invalid.</p>
-<p><strong>Verbose explanation:</strong> After push_back|push_front|insert(), the iterator ‘iterator’ may be invalid.</p>
+<p><strong>Message:</strong> After <code class="docutils literal notranslate"><span class="pre">push_back</span></code>/<code class="docutils literal notranslate"><span class="pre">push_front</span></code>/<code class="docutils literal notranslate"><span class="pre">insert()</span></code>, the iterator ‘iterator’ may be invalid.</p>
 <p><strong>Common Weakness Enumeration:</strong> 66</p>
 </div>
 <div class="section" id="invalidpointer">
@@ -905,7 +865,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Invalid pointer ‘pointer’ after push_back().</p>
-<p><strong>Verbose explanation:</strong> Invalid pointer ‘pointer’ after push_back().</p>
 <p><strong>Common Weakness Enumeration:</strong> 66</p>
 </div>
 <div class="section" id="stlboundaries">
@@ -967,7 +926,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Modifying string literal directly or indirectly is undefined behaviour.</p>
-<p><strong>Verbose explanation:</strong> Modifying string literal directly or indirectly is undefined behaviour.</p>
 <p><strong>Common Weakness Enumeration:</strong> 758</p>
 </div>
 <div class="section" id="sprintfoverlappingdata">
@@ -985,7 +943,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Unusual pointer arithmetic. A value of type ‘char’ is added to a string literal.</p>
-<p><strong>Verbose explanation:</strong> Unusual pointer arithmetic. A value of type ‘char’ is added to a string literal.</p>
 <p><strong>Common Weakness Enumeration:</strong> 665</p>
 </div>
 <div class="section" id="shifttoomanybits">
@@ -994,7 +951,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Shifting 32-bit value by 40 bits is undefined behaviour</p>
-<p><strong>Verbose explanation:</strong> Shifting 32-bit value by 40 bits is undefined behaviour</p>
 <p><strong>Common Weakness Enumeration:</strong> 758</p>
 </div>
 <div class="section" id="shifttoomanybitssigned">
@@ -1003,7 +959,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Shifting signed 32-bit value by 31 bits is undefined behaviour</p>
-<p><strong>Verbose explanation:</strong> Shifting signed 32-bit value by 31 bits is undefined behaviour</p>
 <p><strong>Common Weakness Enumeration:</strong> 758</p>
 </div>
 <div class="section" id="integeroverflow">
@@ -1012,7 +967,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Signed integer overflow for expression ‘’.</p>
-<p><strong>Verbose explanation:</strong> Signed integer overflow for expression ‘’.</p>
 <p><strong>Common Weakness Enumeration:</strong> 190</p>
 </div>
 <div class="section" id="floatconversionoverflow">
@@ -1021,7 +975,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Undefined behaviour: float (1e+100) to integer conversion overflow.</p>
-<p><strong>Verbose explanation:</strong> Undefined behaviour: float (1e+100) to integer conversion overflow.</p>
 <p><strong>Common Weakness Enumeration:</strong> 190</p>
 </div>
 <div class="section" id="uninitstring">
@@ -1030,7 +983,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Dangerous usage of ‘varname’ (strncpy doesn’t always null-terminate it).</p>
-<p><strong>Verbose explanation:</strong> Dangerous usage of ‘varname’ (strncpy doesn’t always null-terminate it).</p>
 <p><strong>Common Weakness Enumeration:</strong> 67</p>
 </div>
 <div class="section" id="uninitdata">
@@ -1039,7 +991,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Memory is allocated but not initialized: varname</p>
-<p><strong>Verbose explanation:</strong> Memory is allocated but not initialized: varname</p>
 <p><strong>Common Weakness Enumeration:</strong> 90</p>
 </div>
 <div class="section" id="uninitvar">
@@ -1048,7 +999,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Uninitialized variable: varname</p>
-<p><strong>Verbose explanation:</strong> Uninitialized variable: varname</p>
 <p><strong>Common Weakness Enumeration:</strong> 90</p>
 </div>
 <div class="section" id="uninitstructmember">
@@ -1057,7 +1007,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Uninitialized struct member: a.b</p>
-<p><strong>Verbose explanation:</strong> Uninitialized struct member: a.b</p>
 <p><strong>Common Weakness Enumeration:</strong> 90</p>
 </div>
 <div class="section" id="deadpointer">
@@ -1066,7 +1015,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Dead pointer usage. Pointer ‘pointer’ is dead if it has been assigned ‘&amp;x’ at line 0.</p>
-<p><strong>Verbose explanation:</strong> Dead pointer usage. Pointer ‘pointer’ is dead if it has been assigned ‘&amp;x’ at line 0.</p>
 <p><strong>Common Weakness Enumeration:</strong> 82</p>
 </div>
 <div class="section" id="va-start-referencepassed">
@@ -1075,7 +1023,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Using reference ‘arg1’ as parameter for va_start() results in undefined behaviour.</p>
-<p><strong>Verbose explanation:</strong> Using reference ‘arg1’ as parameter for va_start() results in undefined behaviour.</p>
 <p><strong>Common Weakness Enumeration:</strong> 758</p>
 </div>
 <div class="section" id="va-end-missing">
@@ -1084,7 +1031,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> va_list ‘vl’ was opened but not closed by va_end().</p>
-<p><strong>Verbose explanation:</strong> va_list ‘vl’ was opened but not closed by va_end().</p>
 <p><strong>Common Weakness Enumeration:</strong> 664</p>
 </div>
 <div class="section" id="va-list-usedbeforestarted">
@@ -1093,7 +1039,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> va_list ‘vl’ used before va_start() was called.</p>
-<p><strong>Verbose explanation:</strong> va_list ‘vl’ used before va_start() was called.</p>
 <p><strong>Common Weakness Enumeration:</strong> 664</p>
 </div>
 <div class="section" id="va-start-subsequentcalls">
@@ -1102,7 +1047,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> va_start() or va_copy() called subsequently on ‘vl’ without va_end() in between.</p>
-<p><strong>Verbose explanation:</strong> va_start() or va_copy() called subsequently on ‘vl’ without va_end() in between.</p>
 <p><strong>Common Weakness Enumeration:</strong> 664</p>
 </div>
 <div class="section" id="preprocessorerrordirective">
@@ -1111,7 +1055,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> #error message</p>
-<p><strong>Verbose explanation:</strong> #error message</p>
 </div>
 </div>
 <div class="section" id="warning">
@@ -1140,7 +1083,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Address of local array array is assigned to global pointer pointer and not reassigned before array goes out of scope.</p>
-<p><strong>Verbose explanation:</strong> Address of local array array is assigned to global pointer pointer and not reassigned before array goes out of scope.</p>
 <p><strong>Common Weakness Enumeration:</strong> 56</p>
 </div>
 <div class="section" id="uselessassignmentptrarg">
@@ -1149,7 +1091,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Assignment of function parameter has no effect outside the function. Did you forget dereferencing it?</p>
-<p><strong>Verbose explanation:</strong> Assignment of function parameter has no effect outside the function. Did you forget dereferencing it?</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="compareboolexpressionwithint">
@@ -1158,7 +1099,6 @@ The variable ‘varname’ is an array of size dimension, which does not match.<
 </pre></div>
 </div>
 <p><strong>Message:</strong> Comparison of a boolean expression with an integer other than 0 or 1.</p>
-<p><strong>Verbose explanation:</strong> Comparison of a boolean expression with an integer other than 0 or 1.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="comparisonofboolwithinvalidcomparator">
@@ -1187,7 +1127,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> The size argument is given as a char constant.</p>
-<p><strong>Verbose explanation:</strong> The size argument is given as a char constant.</p>
 <p><strong>Common Weakness Enumeration:</strong> 682</p>
 </div>
 <div class="section" id="terminatestrncpy">
@@ -1223,7 +1162,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> The array ‘array’ is too small, the function ‘function’ expects a bigger one.</p>
-<p><strong>Verbose explanation:</strong> The array ‘array’ is too small, the function ‘function’ expects a bigger one.</p>
 <p><strong>Common Weakness Enumeration:</strong> 39</p>
 </div>
 <div class="section" id="arrayindexoutofboundscond">
@@ -1232,7 +1170,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Array ‘x[10]’ accessed at index 20, which is out of bounds. Otherwise condition ‘y==20’ is redundant.</p>
-<p><strong>Verbose explanation:</strong> Array ‘x[10]’ accessed at index 20, which is out of bounds. Otherwise condition ‘y==20’ is redundant.</p>
 <p><strong>Common Weakness Enumeration:</strong> 119</p>
 </div>
 <div class="section" id="ignoredreturnvalue">
@@ -1241,7 +1178,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Return value of function malloc() is not used.</p>
-<p><strong>Verbose explanation:</strong> Return value of function malloc() is not used.</p>
 <p><strong>Common Weakness Enumeration:</strong> 25</p>
 </div>
 <div class="section" id="wrongmathcall">
@@ -1250,7 +1186,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Passing value ‘#’ to #() leads to implementation-defined result.</p>
-<p><strong>Verbose explanation:</strong> Passing value ‘#’ to #() leads to implementation-defined result.</p>
 <p><strong>Common Weakness Enumeration:</strong> 758</p>
 </div>
 <div class="section" id="memsetzerobytes">
@@ -1286,7 +1221,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Member variable ‘classname::’ is not assigned a value in ‘classname::operator=’.</p>
-<p><strong>Verbose explanation:</strong> Member variable ‘classname::’ is not assigned a value in ‘classname::operator=’.</p>
 <p><strong>Common Weakness Enumeration:</strong> 39</p>
 </div>
 <div class="section" id="malloconclasswarning">
@@ -1322,7 +1256,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> The class ‘class’ defines member variable with name ‘variable’ also defined in its parent class ‘class’.</p>
-<p><strong>Verbose explanation:</strong> The class ‘class’ defines member variable with name ‘variable’ also defined in its parent class ‘class’.</p>
 <p><strong>Common Weakness Enumeration:</strong> 39</p>
 </div>
 <div class="section" id="copyctorandeqoperator">
@@ -1331,7 +1264,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> The class ‘class’ has ‘operator=’ but lack of ‘copy constructor’.</p>
-<p><strong>Verbose explanation:</strong> The class ‘class’ has ‘operator=’ but lack of ‘copy constructor’.”&gt;</p>
 </div>
 <div class="section" id="purevirtualcall">
 <h5>pureVirtualCall<a class="headerlink" href="#purevirtualcall" title="Permalink to this headline">¶</a></h5>
@@ -1347,15 +1279,13 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Virtual function ‘f’ is called from constructor ‘’ at line 1. Dynamic binding is not used.</p>
-<p><strong>Verbose explanation:</strong> Virtual function ‘f’ is called from constructor ‘’ at line 1. Dynamic binding is not used.</p>
 </div>
 <div class="section" id="badbitmaskcheck">
 <h5>badBitmaskCheck<a class="headerlink" href="#badbitmaskcheck" title="Permalink to this headline">¶</a></h5>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// cppcheck-suppress badBitmaskCheck</span>
 </pre></div>
 </div>
-<p><strong>Message:</strong> Result of operator ‘|’ is always true if one operand is non-zero. Did you intend to use ‘&amp;’?</p>
-<p><strong>Verbose explanation:</strong> Result of operator ‘|’ is always true if one operand is non-zero. Did you intend to use ‘&amp;’?</p>
+<p><strong>Message:</strong> Result of operator <code class="docutils literal notranslate"><span class="pre">|</span></code> is always true if one operand is non-zero. Did you intend to use <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>?</p>
 <p><strong>Common Weakness Enumeration:</strong> 571</p>
 </div>
 <div class="section" id="oppositeinnercondition">
@@ -1382,7 +1312,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Identical condition ‘x’, second condition is always false</p>
-<p><strong>Verbose explanation:</strong> Identical condition ‘x’, second condition is always false</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="incorrectlogicoperator">
@@ -1400,7 +1329,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Comparison of modulo result is predetermined, because it is always less than 1.</p>
-<p><strong>Verbose explanation:</strong> Comparison of modulo result is predetermined, because it is always less than 1.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="invalidtestforoverflow">
@@ -1409,7 +1337,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Invalid test for overflow ‘x + u &lt; x’. Condition is always false unless there is overflow, and overflow is undefined behaviour.</p>
-<p><strong>Verbose explanation:</strong> Invalid test for overflow ‘x + u &lt; x’. Condition is always false unless there is overflow, and overflow is undefined behaviour.</p>
 <p><strong>Common Weakness Enumeration:</strong> 570</p>
 </div>
 <div class="section" id="pointeradditionresultnotnull">
@@ -1418,7 +1345,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Comparison is wrong. Result of ‘ptr+1’ can’t be 0 unless there is pointer overflow, and pointer overflow is undefined behaviour.</p>
-<p><strong>Verbose explanation:</strong> Comparison is wrong. Result of ‘ptr+1’ can’t be 0 unless there is pointer overflow, and pointer overflow is undefined behaviour.</p>
 </div>
 <div class="section" id="exceptthrowindestructor">
 <h5>exceptThrowInDestructor<a class="headerlink" href="#exceptthrowindestructor" title="Permalink to this headline">¶</a></h5>
@@ -1435,7 +1361,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Exception thrown in invalid state, ‘p’ points at deallocated memory.</p>
-<p><strong>Verbose explanation:</strong> Exception thrown in invalid state, ‘p’ points at deallocated memory.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="seekonappendedfile">
@@ -1444,7 +1369,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Repositioning operation performed on a file opened in append mode has no effect.</p>
-<p><strong>Verbose explanation:</strong> Repositioning operation performed on a file opened in append mode has no effect.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="invalidscanf">
@@ -1476,7 +1400,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> %s in format string (no. 1) requires a ‘char *’ but the argument type is Unknown.</p>
-<p><strong>Verbose explanation:</strong> %s in format string (no. 1) requires a ‘char *’ but the argument type is Unknown.</p>
 <p><strong>Common Weakness Enumeration:</strong> 686</p>
 </div>
 <div class="section" id="invalidscanfargtype-int">
@@ -1485,7 +1408,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> %d in format string (no. 1) requires ‘int *’ but the argument type is Unknown.</p>
-<p><strong>Verbose explanation:</strong> %d in format string (no. 1) requires ‘int *’ but the argument type is Unknown.</p>
 <p><strong>Common Weakness Enumeration:</strong> 686</p>
 </div>
 <div class="section" id="invalidscanfargtype-float">
@@ -1494,7 +1416,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> %f in format string (no. 1) requires ‘float *’ but the argument type is Unknown.</p>
-<p><strong>Verbose explanation:</strong> %f in format string (no. 1) requires ‘float *’ but the argument type is Unknown.</p>
 <p><strong>Common Weakness Enumeration:</strong> 686</p>
 </div>
 <div class="section" id="invalidprintfargtype-s">
@@ -1503,7 +1424,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> %s in format string (no. 1) requires ‘char *’ but the argument type is Unknown.</p>
-<p><strong>Verbose explanation:</strong> %s in format string (no. 1) requires ‘char *’ but the argument type is Unknown.</p>
 <p><strong>Common Weakness Enumeration:</strong> 686</p>
 </div>
 <div class="section" id="invalidprintfargtype-n">
@@ -1512,7 +1432,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> %n in format string (no. 1) requires ‘int *’ but the argument type is Unknown.</p>
-<p><strong>Verbose explanation:</strong> %n in format string (no. 1) requires ‘int *’ but the argument type is Unknown.</p>
 <p><strong>Common Weakness Enumeration:</strong> 686</p>
 </div>
 <div class="section" id="invalidprintfargtype-p">
@@ -1521,7 +1440,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> %p in format string (no. 1) requires an address but the argument type is Unknown.</p>
-<p><strong>Verbose explanation:</strong> %p in format string (no. 1) requires an address but the argument type is Unknown.</p>
 <p><strong>Common Weakness Enumeration:</strong> 686</p>
 </div>
 <div class="section" id="invalidprintfargtype-uint">
@@ -1530,7 +1448,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> %u in format string (no. 1) requires ‘unsigned int’ but the argument type is Unknown.</p>
-<p><strong>Verbose explanation:</strong> %u in format string (no. 1) requires ‘unsigned int’ but the argument type is Unknown.</p>
 <p><strong>Common Weakness Enumeration:</strong> 686</p>
 </div>
 <div class="section" id="invalidprintfargtype-sint">
@@ -1539,7 +1456,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> %i in format string (no. 1) requires ‘int’ but the argument type is Unknown.</p>
-<p><strong>Verbose explanation:</strong> %i in format string (no. 1) requires ‘int’ but the argument type is Unknown.</p>
 <p><strong>Common Weakness Enumeration:</strong> 686</p>
 </div>
 <div class="section" id="invalidprintfargtype-float">
@@ -1548,7 +1464,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> %f in format string (no. 1) requires ‘double’ but the argument type is Unknown.</p>
-<p><strong>Verbose explanation:</strong> %f in format string (no. 1) requires ‘double’ but the argument type is Unknown.</p>
 <p><strong>Common Weakness Enumeration:</strong> 686</p>
 </div>
 <div class="section" id="invalidlengthmodifiererror">
@@ -1557,7 +1472,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> ‘I’ in format string (no. 1) is a length modifier and cannot be used without a conversion specifier.</p>
-<p><strong>Verbose explanation:</strong> ‘I’ in format string (no. 1) is a length modifier and cannot be used without a conversion specifier.</p>
 <p><strong>Common Weakness Enumeration:</strong> 704</p>
 </div>
 <div class="section" id="wrongprintfscanfparameterpositionerror">
@@ -1566,7 +1480,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> printf: referencing parameter 2 while 1 arguments given</p>
-<p><strong>Verbose explanation:</strong> printf: referencing parameter 2 while 1 arguments given</p>
 <p><strong>Common Weakness Enumeration:</strong> 685</p>
 </div>
 <div class="section" id="leakunsafeargalloc">
@@ -1575,7 +1488,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Unsafe allocation. If funcName() throws, memory could be leaked. Use make_shared<int>() instead.</p>
-<p><strong>Verbose explanation:</strong> Unsafe allocation. If funcName() throws, memory could be leaked. Use make_shared<int>() instead.</p>
 <p><strong>Common Weakness Enumeration:</strong> 401</p>
 </div>
 <div class="section" id="publicallocationerror">
@@ -1584,7 +1496,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Possible leak in public function. The pointer ‘varname’ is not deallocated before it is allocated.</p>
-<p><strong>Verbose explanation:</strong> Possible leak in public function. The pointer ‘varname’ is not deallocated before it is allocated.</p>
 <p><strong>Common Weakness Enumeration:</strong> 39</p>
 </div>
 <div class="section" id="nullpointerdefaultarg">
@@ -1593,7 +1504,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Possible null pointer dereference if the default parameter value is used: pointer</p>
-<p><strong>Verbose explanation:</strong> Possible null pointer dereference if the default parameter value is used: pointer</p>
 <p><strong>Common Weakness Enumeration:</strong> 47</p>
 </div>
 <div class="section" id="nullpointerredundantcheck">
@@ -1602,7 +1512,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Either the condition is redundant or there is possible null pointer dereference: pointer.</p>
-<p><strong>Verbose explanation:</strong> Either the condition is redundant or there is possible null pointer dereference: pointer.</p>
 <p><strong>Common Weakness Enumeration:</strong> 47</p>
 </div>
 <div class="section" id="comparisonfunctionisalwaystrueorfalse">
@@ -1629,7 +1538,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Redundant code: Found a statement that begins with type constant.</p>
-<p><strong>Verbose explanation:</strong> Redundant code: Found a statement that begins with type constant.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="signedchararrayindex">
@@ -1672,7 +1580,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Buffer ‘var’ is being written before its old content has been used. ‘break;’ missing?</p>
-<p><strong>Verbose explanation:</strong> Buffer ‘var’ is being written before its old content has been used. ‘break;’ missing?</p>
 <p><strong>Common Weakness Enumeration:</strong> 56</p>
 </div>
 <div class="section" id="suspiciouscase">
@@ -1680,8 +1587,8 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">// cppcheck-suppress suspiciousCase</span>
 </pre></div>
 </div>
-<p><strong>Message:</strong> Found suspicious case label in switch(). Operator ‘||’ probably doesn’t work as intended.</p>
-<p><strong>Verbose explanation:</strong> Using an operator like ‘||’ in a case label is suspicious. Did you intend to use a bitwise operator, multiple case labels or if/else instead?</p>
+<p><strong>Message:</strong> Found suspicious case label in switch(). Operator <code class="docutils literal notranslate"><span class="pre">||</span></code> probably doesn’t work as intended.</p>
+<p><strong>Verbose explanation:</strong> Using an operator like <code class="docutils literal notranslate"><span class="pre">||</span></code> in a case label is suspicious. Did you intend to use a bitwise operator, multiple case labels or if/else instead?</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="suspiciousequalitycomparison">
@@ -1690,7 +1597,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Found suspicious equality comparison. Did you intend to assign a value instead?</p>
-<p><strong>Verbose explanation:</strong> Found suspicious equality comparison. Did you intend to assign a value instead?</p>
 <p><strong>Common Weakness Enumeration:</strong> 482</p>
 </div>
 <div class="section" id="selfassignment">
@@ -1699,7 +1605,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Redundant assignment of ‘varname’ to itself.</p>
-<p><strong>Verbose explanation:</strong> Redundant assignment of ‘varname’ to itself.</p>
 <p><strong>Common Weakness Enumeration:</strong> 39</p>
 </div>
 <div class="section" id="clarifystatement">
@@ -1717,7 +1622,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Suspicious use of ; at the end of ‘’ statement.</p>
-<p><strong>Verbose explanation:</strong> Suspicious use of ; at the end of ‘’ statement.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="incompletearrayfill">
@@ -1735,7 +1639,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Label ‘’ is not used. Should this be a ‘case’ of the enclosing switch()?</p>
-<p><strong>Verbose explanation:</strong> Label ‘’ is not used. Should this be a ‘case’ of the enclosing switch()?</p>
 <p><strong>Common Weakness Enumeration:</strong> 39</p>
 </div>
 <div class="section" id="accessmoved">
@@ -1744,7 +1647,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Access of moved variable ‘v’.</p>
-<p><strong>Verbose explanation:</strong> Access of moved variable ‘v’.</p>
 <p><strong>Common Weakness Enumeration:</strong> 672</p>
 </div>
 <div class="section" id="accessforwarded">
@@ -1753,7 +1655,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Access of forwarded variable ‘v’.</p>
-<p><strong>Verbose explanation:</strong> Access of forwarded variable ‘v’.</p>
 <p><strong>Common Weakness Enumeration:</strong> 672</p>
 </div>
 <div class="section" id="redundantbitwiseoperationinswitch">
@@ -1762,7 +1663,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Redundant bitwise operation on ‘varname’ in ‘switch’ statement. ‘break;’ missing?</p>
-<p><strong>Verbose explanation:</strong> Redundant bitwise operation on ‘varname’ in ‘switch’ statement. ‘break;’ missing?”&gt;</p>
 </div>
 <div class="section" id="funcargorderdifferent">
 <h5>funcArgOrderDifferent<a class="headerlink" href="#funcargorderdifferent" title="Permalink to this headline">¶</a></h5>
@@ -1770,7 +1670,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Function ‘function’ argument order different: declaration ‘’ definition ‘’</p>
-<p><strong>Verbose explanation:</strong> Function ‘function’ argument order different: declaration ‘’ definition ‘’</p>
 <p><strong>Common Weakness Enumeration:</strong> 68</p>
 </div>
 <div class="section" id="mismatchingcontainerexpression">
@@ -1779,7 +1678,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Iterators to containers from different expressions ‘v1’ and ‘v2’ are used together.</p>
-<p><strong>Verbose explanation:</strong> Iterators to containers from different expressions ‘v1’ and ‘v2’ are used together.</p>
 <p><strong>Common Weakness Enumeration:</strong> 664</p>
 </div>
 <div class="section" id="stliffind">
@@ -1788,7 +1686,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Suspicious condition. The result of find() is an iterator, but it is not properly checked.</p>
-<p><strong>Verbose explanation:</strong> Suspicious condition. The result of find() is an iterator, but it is not properly checked.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="stlmissingcomparison">
@@ -1815,7 +1712,6 @@ The safe way to use strncat is to subtract one from the remaining space in the b
 </pre></div>
 </div>
 <p><strong>Message:</strong> Ineffective call of function ‘empty()’. Did you intend to call ‘clear()’ instead?</p>
-<p><strong>Verbose explanation:</strong> Ineffective call of function ‘empty()’. Did you intend to call ‘clear()’ instead?</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="uselesscallsremove">
@@ -1864,7 +1760,6 @@ returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size 
 </pre></div>
 </div>
 <p><strong>Message:</strong> Division by result of sizeof(). memset() expects a size in bytes, did you intend to multiply instead?</p>
-<p><strong>Verbose explanation:</strong> Division by result of sizeof(). memset() expects a size in bytes, did you intend to multiply instead?</p>
 <p><strong>Common Weakness Enumeration:</strong> 682</p>
 </div>
 <div class="section" id="sizeofwithnumericparameter">
@@ -1891,7 +1786,6 @@ returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size 
 </pre></div>
 </div>
 <p><strong>Message:</strong> Found calculation inside sizeof().</p>
-<p><strong>Verbose explanation:</strong> Found calculation inside sizeof().</p>
 <p><strong>Common Weakness Enumeration:</strong> 682</p>
 </div>
 <div class="section" id="sizeoffunctioncall">
@@ -1900,7 +1794,6 @@ returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size 
 </pre></div>
 </div>
 <p><strong>Message:</strong> Found function call inside sizeof().</p>
-<p><strong>Verbose explanation:</strong> Found function call inside sizeof().</p>
 <p><strong>Common Weakness Enumeration:</strong> 682</p>
 </div>
 <div class="section" id="multiplysizeof">
@@ -1909,7 +1802,6 @@ returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size 
 </pre></div>
 </div>
 <p><strong>Message:</strong> Multiplying sizeof() with sizeof() indicates a logic error.</p>
-<p><strong>Verbose explanation:</strong> Multiplying sizeof() with sizeof() indicates a logic error.</p>
 <p><strong>Common Weakness Enumeration:</strong> 682</p>
 </div>
 <div class="section" id="dividesizeof">
@@ -1927,7 +1819,6 @@ returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size 
 </pre></div>
 </div>
 <p><strong>Message:</strong> String literal “Hello World” doesn’t match length argument for substr().</p>
-<p><strong>Verbose explanation:</strong> String literal “Hello World” doesn’t match length argument for substr().</p>
 <p><strong>Common Weakness Enumeration:</strong> 57</p>
 </div>
 <div class="section" id="literalwithcharptrcompare">
@@ -1936,7 +1827,6 @@ returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size 
 </pre></div>
 </div>
 <p><strong>Message:</strong> String literal compared with variable ‘foo’. Did you intend to use strcmp() instead?</p>
-<p><strong>Verbose explanation:</strong> String literal compared with variable ‘foo’. Did you intend to use strcmp() instead?</p>
 <p><strong>Common Weakness Enumeration:</strong> 59</p>
 </div>
 <div class="section" id="charliteralwithcharptrcompare">
@@ -1945,7 +1835,6 @@ returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size 
 </pre></div>
 </div>
 <p><strong>Message:</strong> Char literal compared with pointer ‘foo’. Did you intend to dereference it?</p>
-<p><strong>Verbose explanation:</strong> Char literal compared with pointer ‘foo’. Did you intend to dereference it?</p>
 <p><strong>Common Weakness Enumeration:</strong> 59</p>
 </div>
 <div class="section" id="incorrectstringbooleanerror">
@@ -1954,7 +1843,6 @@ returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size 
 </pre></div>
 </div>
 <p><strong>Message:</strong> Conversion of string literal “Hello World” to bool always evaluates to true.</p>
-<p><strong>Verbose explanation:</strong> Conversion of string literal “Hello World” to bool always evaluates to true.</p>
 <p><strong>Common Weakness Enumeration:</strong> 571</p>
 </div>
 <div class="section" id="incorrectcharbooleanerror">
@@ -1963,7 +1851,6 @@ returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size 
 </pre></div>
 </div>
 <p><strong>Message:</strong> Conversion of char literal ‘x’ to bool always evaluates to true.</p>
-<p><strong>Verbose explanation:</strong> Conversion of char literal ‘x’ to bool always evaluates to true.</p>
 <p><strong>Common Weakness Enumeration:</strong> 571</p>
 </div>
 <div class="section" id="staticstringcompare">
@@ -1990,7 +1877,6 @@ returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size 
 </pre></div>
 </div>
 <p><strong>Message:</strong> The expression ‘strcmp(x,”def”) != 0’ is suspicious. It overlaps ‘strcmp(x,”abc”) == 0’.</p>
-<p><strong>Verbose explanation:</strong> The expression ‘strcmp(x,”def”) != 0’ is suspicious. It overlaps ‘strcmp(x,”abc”) == 0’.</p>
 </div>
 <div class="section" id="signconversion">
 <h5>signConversion<a class="headerlink" href="#signconversion" title="Permalink to this headline">¶</a></h5>
@@ -1998,7 +1884,6 @@ returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size 
 </pre></div>
 </div>
 <p><strong>Message:</strong> Suspicious code: sign conversion of var in calculation, even though var can have a negative value</p>
-<p><strong>Verbose explanation:</strong> Suspicious code: sign conversion of var in calculation, even though var can have a negative value</p>
 <p><strong>Common Weakness Enumeration:</strong> 19</p>
 </div>
 <div class="section" id="va-start-wrongparameter">
@@ -2007,7 +1892,6 @@ returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size 
 </pre></div>
 </div>
 <p><strong>Message:</strong> ‘arg1’ given to va_start() is not last named argument of the function. Did you intend to pass ‘arg2’?</p>
-<p><strong>Verbose explanation:</strong> ‘arg1’ given to va_start() is not last named argument of the function. Did you intend to pass ‘arg2’?</p>
 <p><strong>Common Weakness Enumeration:</strong> 688</p>
 </div>
 </div>
@@ -2083,7 +1967,6 @@ returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size 
 </pre></div>
 </div>
 <p><strong>Message:</strong> fflush() called on input stream ‘stdin’ may result in undefined behaviour on non-linux systems.</p>
-<p><strong>Verbose explanation:</strong> fflush() called on input stream ‘stdin’ may result in undefined behaviour on non-linux systems.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="invalidpointercast">
@@ -2092,7 +1975,6 @@ returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size 
 </pre></div>
 </div>
 <p><strong>Message:</strong> Casting between float* and double* which have an incompatible binary data representation.</p>
-<p><strong>Verbose explanation:</strong> Casting between float* and double* which have an incompatible binary data representation.</p>
 <p><strong>Common Weakness Enumeration:</strong> 704</p>
 </div>
 <div class="section" id="shiftnegativelhs">
@@ -2101,7 +1983,6 @@ returns 4 (in 32-bit systems) or 8 (in 64-bit systems) instead of 100 (the size 
 </pre></div>
 </div>
 <p><strong>Message:</strong> Shifting a negative value is technically undefined behaviour</p>
-<p><strong>Verbose explanation:</strong> Shifting a negative value is technically undefined behaviour</p>
 <p><strong>Common Weakness Enumeration:</strong> 758</p>
 </div>
 <div class="section" id="unknownsignchararrayindex">
@@ -2225,7 +2106,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Buffer ‘var’ is being written before its old content has been used.</p>
-<p><strong>Verbose explanation:</strong> Buffer ‘var’ is being written before its old content has been used.</p>
 <p><strong>Common Weakness Enumeration:</strong> 56</p>
 </div>
 <div class="section" id="passedbyvalue">
@@ -2288,7 +2168,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Ineffective call of function ‘substr’ because it returns a copy of the object. Use operator= instead.</p>
-<p><strong>Verbose explanation:</strong> Ineffective call of function ‘substr’ because it returns a copy of the object. Use operator= instead.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="postfixoperator">
@@ -2309,7 +2188,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> The configuration ‘’ was not checked because its code equals another one.</p>
-<p><strong>Verbose explanation:</strong> The configuration ‘’ was not checked because its code equals another one.</p>
 </div>
 <div class="section" id="toomanyconfigs">
 <h5>toomanyconfigs<a class="headerlink" href="#toomanyconfigs" title="Permalink to this headline">¶</a></h5>
@@ -2326,7 +2204,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Include file: “” not found.</p>
-<p><strong>Verbose explanation:</strong> Include file: “” not found.</p>
 </div>
 <div class="section" id="missingincludesystem">
 <h5>missingIncludeSystem<a class="headerlink" href="#missingincludesystem" title="Permalink to this headline">¶</a></h5>
@@ -2334,7 +2211,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Include file: &lt;&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</p>
-<p><strong>Verbose explanation:</strong> Include file: &lt;&gt; not found. Please note: Cppcheck does not need standard library headers to get proper results.</p>
 </div>
 <div class="section" id="configurationnotchecked">
 <h5>ConfigurationNotChecked<a class="headerlink" href="#configurationnotchecked" title="Permalink to this headline">¶</a></h5>
@@ -2342,7 +2218,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Skipping configuration ‘X’ since the value of ‘X’ is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.</p>
-<p><strong>Verbose explanation:</strong> Skipping configuration ‘X’ since the value of ‘X’ is unknown. Use -D if you want to check it. You can use -U to skip it explicitly.”&gt;</p>
 </div>
 </div>
 <div class="section" id="style">
@@ -2353,7 +2228,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Assignment of function parameter has no effect outside the function.</p>
-<p><strong>Verbose explanation:</strong> Assignment of function parameter has no effect outside the function.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="assignbooltofloat">
@@ -2362,7 +2236,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Boolean value assigned to floating point variable.</p>
-<p><strong>Verbose explanation:</strong> Boolean value assigned to floating point variable.</p>
 <p><strong>Common Weakness Enumeration:</strong> 704</p>
 </div>
 <div class="section" id="comparisonoffuncreturningboolerror">
@@ -2407,7 +2280,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Boolean variable ‘varname’ is used in bitwise operation. Did you mean ‘&amp;&amp;’?</p>
-<p><strong>Verbose explanation:</strong> Boolean variable ‘varname’ is used in bitwise operation. Did you mean ‘&amp;&amp;’?</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="returnnonboolinbooleanfunction">
@@ -2416,7 +2288,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Non-boolean value returned from function returning bool</p>
-<p><strong>Verbose explanation:</strong> Non-boolean value returned from function returning bool</p>
 </div>
 <div class="section" id="arrayindexthencheck">
 <h5>arrayIndexThenCheck<a class="headerlink" href="#arrayindexthencheck" title="Permalink to this headline">¶</a></h5>
@@ -2433,7 +2304,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Expression ‘1 - erf(x)’ can be replaced by ‘erfc(x)’ to avoid loss of precision.</p>
-<p><strong>Verbose explanation:</strong> Expression ‘1 - erf(x)’ can be replaced by ‘erfc(x)’ to avoid loss of precision.</p>
 <p><strong>Common Weakness Enumeration:</strong> 758</p>
 </div>
 <div class="section" id="noconstructor">
@@ -2460,7 +2330,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Value of pointer ‘var’, which points to allocated memory, is copied in copy constructor instead of allocating new memory.</p>
-<p><strong>Verbose explanation:</strong> Value of pointer ‘var’, which points to allocated memory, is copied in copy constructor instead of allocating new memory.</p>
 <p><strong>Common Weakness Enumeration:</strong> 39</p>
 </div>
 <div class="section" id="nocopyconstructor">
@@ -2469,7 +2338,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Class ‘class’ does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s).</p>
-<p><strong>Verbose explanation:</strong> Class ‘class’ does not have a copy constructor which is recommended since it has dynamic memory/resource allocation(s).</p>
 <p><strong>Common Weakness Enumeration:</strong> 39</p>
 </div>
 <div class="section" id="nooperatoreq">
@@ -2478,7 +2346,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Class ‘class’ does not have a operator= which is recommended since it has dynamic memory/resource allocation(s).</p>
-<p><strong>Verbose explanation:</strong> Class ‘class’ does not have a operator= which is recommended since it has dynamic memory/resource allocation(s).</p>
 <p><strong>Common Weakness Enumeration:</strong> 39</p>
 </div>
 <div class="section" id="nodestructor">
@@ -2487,7 +2354,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Class ‘class’ does not have a destructor which is recommended since it has dynamic memory/resource allocation(s).</p>
-<p><strong>Verbose explanation:</strong> Class ‘class’ does not have a destructor which is recommended since it has dynamic memory/resource allocation(s).</p>
 <p><strong>Common Weakness Enumeration:</strong> 39</p>
 </div>
 <div class="section" id="unusedprivatefunction">
@@ -2496,7 +2362,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Unused private function: ‘classname::funcname’</p>
-<p><strong>Verbose explanation:</strong> Unused private function: ‘classname::funcname’</p>
 <p><strong>Common Weakness Enumeration:</strong> 39</p>
 </div>
 <div class="section" id="operatoreq">
@@ -2514,7 +2379,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> ‘operator=’ should return reference to ‘this’ instance.</p>
-<p><strong>Verbose explanation:</strong> ‘operator=’ should return reference to ‘this’ instance.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="operatoreqshouldbeleftunimplemented">
@@ -2523,7 +2387,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> ‘operator=’ should either return reference to ‘this’ instance or be declared private and left unimplemented.</p>
-<p><strong>Verbose explanation:</strong> ‘operator=’ should either return reference to ‘this’ instance or be declared private and left unimplemented.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="functionconst">
@@ -2541,7 +2404,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Public interface of Class is not safe. When calling Class::dostuff(), if parameter x is 0 that leads to division by zero.</p>
-<p><strong>Verbose explanation:</strong> Public interface of Class is not safe. When calling Class::dostuff(), if parameter x is 0 that leads to division by zero.”&gt;</p>
 </div>
 <div class="section" id="initializerlist">
 <h5>initializerList<a class="headerlink" href="#initializerlist" title="Permalink to this headline">¶</a></h5>
@@ -2558,7 +2420,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> The function ‘’ overrides a function in a base class but is not marked with a ‘override’ specifier.</p>
-<p><strong>Verbose explanation:</strong> The function ‘’ overrides a function in a base class but is not marked with a ‘override’ specifier.”&gt;</p>
 </div>
 <div class="section" id="assigniferror">
 <h5>assignIfError<a class="headerlink" href="#assigniferror" title="Permalink to this headline">¶</a></h5>
@@ -2566,7 +2427,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Mismatching assignment and comparison, comparison ‘’ is always false.</p>
-<p><strong>Verbose explanation:</strong> Mismatching assignment and comparison, comparison ‘’ is always false.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="comparisonerror">
@@ -2584,7 +2444,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Expression is always false because ‘else if’ condition matches previous condition at line 1.</p>
-<p><strong>Verbose explanation:</strong> Expression is always false because ‘else if’ condition matches previous condition at line 1.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="mismatchingbitand">
@@ -2593,7 +2452,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Mismatching bitmasks. Result is always 0 (X = Y &amp; 0xf0; Z = X &amp; 0x1; =&gt; Z=0).</p>
-<p><strong>Verbose explanation:</strong> Mismatching bitmasks. Result is always 0 (X = Y &amp; 0xf0; Z = X &amp; 0x1; =&gt; Z=0).</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="redundantcondition">
@@ -2602,7 +2460,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Redundant condition: If x &gt; 11 the condition x &gt; 10 is always true.</p>
-<p><strong>Verbose explanation:</strong> Redundant condition: If x &gt; 11 the condition x &gt; 10 is always true.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="clarifycondition">
@@ -2611,7 +2468,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Suspicious condition (assignment + comparison); Clarify expression with parentheses.</p>
-<p><strong>Verbose explanation:</strong> Suspicious condition (assignment + comparison); Clarify expression with parentheses.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="knownconditiontruefalse">
@@ -2620,7 +2476,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Condition ‘x’ is always false</p>
-<p><strong>Verbose explanation:</strong> Condition ‘x’ is always false</p>
 <p><strong>Common Weakness Enumeration:</strong> 570</p>
 </div>
 <div class="section" id="exceptrethrowcopy">
@@ -2665,7 +2520,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Instance of ‘varname’ object is destroyed immediately.</p>
-<p><strong>Verbose explanation:</strong> Instance of ‘varname’ object is destroyed immediately.</p>
 <p><strong>Common Weakness Enumeration:</strong> 56</p>
 </div>
 <div class="section" id="redundantassignment">
@@ -2674,7 +2528,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Variable ‘var’ is reassigned a value before the old one has been used.</p>
-<p><strong>Verbose explanation:</strong> Variable ‘var’ is reassigned a value before the old one has been used.</p>
 <p><strong>Common Weakness Enumeration:</strong> 56</p>
 </div>
 <div class="section" id="cstylecast">
@@ -2683,7 +2536,7 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> C-style pointer casting</p>
-<p><strong>Verbose explanation:</strong> C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: <a class="reference external" href="https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts">https://www.securecoding.cert.org/confluence/display/cplusplus/EXP05-CPP.+Do+not+use+C-style+casts</a></p>
+<p><strong>Verbose explanation:</strong> C-style pointer casting detected. C++ offers four different kinds of casts as replacements: static_cast, const_cast, dynamic_cast and reinterpret_cast. A C-style cast could evaluate to any of those automatically, thus it is considered safer if the programmer explicitly states which kind of cast is expected. See also: <a class="reference external" href="https://wiki.sei.cmu.edu/confluence/display/c/EXP05-C.+Do+not+cast+away+a+const+qualification">https://wiki.sei.cmu.edu/confluence/display/c/EXP05-C.+Do+not+cast+away+a+const+qualification</a></p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="variablescope">
@@ -2787,7 +2640,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Statements following return, break, continue, goto or throw will never be executed.</p>
-<p><strong>Verbose explanation:</strong> Statements following return, break, continue, goto or throw will never be executed.</p>
 <p><strong>Common Weakness Enumeration:</strong> 561</p>
 </div>
 <div class="section" id="unsignedlessthanzero">
@@ -2796,7 +2648,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Checking if unsigned variable ‘varname’ is less than zero.</p>
-<p><strong>Verbose explanation:</strong> The unsigned variable ‘varname’ will never be negative so it is either pointless or an error to check if it is.</p>
 <p><strong>Common Weakness Enumeration:</strong> 57</p>
 </div>
 <div class="section" id="unsignedpositive">
@@ -2805,7 +2656,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> Unsigned variable ‘varname’ can’t be negative so it is unnecessary to test it.</p>
-<p><strong>Verbose explanation:</strong> Unsigned variable ‘varname’ can’t be negative so it is unnecessary to test it.</p>
 <p><strong>Common Weakness Enumeration:</strong> 57</p>
 </div>
 <div class="section" id="pointerlessthanzero">
@@ -2814,7 +2664,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> A pointer can not be negative so it is either pointless or an error to check if it is.</p>
-<p><strong>Verbose explanation:</strong> A pointer can not be negative so it is either pointless or an error to check if it is.</p>
 <p><strong>Common Weakness Enumeration:</strong> 570</p>
 </div>
 <div class="section" id="pointerpositive">
@@ -2823,7 +2672,6 @@ To reproduce you might be able to use this little code example on 64bit platform
 </pre></div>
 </div>
 <p><strong>Message:</strong> A pointer can not be negative so it is either pointless or an error to check if it is not.</p>
-<p><strong>Verbose explanation:</strong> A pointer can not be negative so it is either pointless or an error to check if it is not.</p>
 <p><strong>Common Weakness Enumeration:</strong> 570</p>
 </div>
 <div class="section" id="naninarithmeticexpression">
@@ -2854,7 +2702,6 @@ However it can be useful to use comma in macros. Cppcheck does not warn when suc
 </pre></div>
 </div>
 <p><strong>Message:</strong> Redundant pointer operation on ‘varname’ - it’s already a pointer.</p>
-<p><strong>Verbose explanation:</strong> Redundant pointer operation on ‘varname’ - it’s already a pointer.</p>
 <p><strong>Common Weakness Enumeration:</strong> 39</p>
 </div>
 <div class="section" id="unusedlabel">
@@ -2863,7 +2710,6 @@ However it can be useful to use comma in macros. Cppcheck does not warn when suc
 </pre></div>
 </div>
 <p><strong>Message:</strong> Label ‘’ is not used.</p>
-<p><strong>Verbose explanation:</strong> Label ‘’ is not used.</p>
 <p><strong>Common Weakness Enumeration:</strong> 39</p>
 </div>
 <div class="section" id="funcargnamesdifferent">
@@ -2872,7 +2718,6 @@ However it can be useful to use comma in macros. Cppcheck does not warn when suc
 </pre></div>
 </div>
 <p><strong>Message:</strong> Function ‘function’ argument 2 names different: declaration ‘A’ definition ‘B’.</p>
-<p><strong>Verbose explanation:</strong> Function ‘function’ argument 2 names different: declaration ‘A’ definition ‘B’.</p>
 <p><strong>Common Weakness Enumeration:</strong> 628</p>
 </div>
 <div class="section" id="shadowfunction">
@@ -2881,7 +2726,6 @@ However it can be useful to use comma in macros. Cppcheck does not warn when suc
 </pre></div>
 </div>
 <p><strong>Message:</strong> Local variable f shadows outer function</p>
-<p><strong>Verbose explanation:</strong> Local variable f shadows outer function</p>
 <p><strong>Common Weakness Enumeration:</strong> 39</p>
 </div>
 <div class="section" id="shadowvar">
@@ -2890,7 +2734,6 @@ However it can be useful to use comma in macros. Cppcheck does not warn when suc
 </pre></div>
 </div>
 <p><strong>Message:</strong> Local variable var shadows outer variable</p>
-<p><strong>Verbose explanation:</strong> Local variable var shadows outer variable</p>
 <p><strong>Common Weakness Enumeration:</strong> 39</p>
 </div>
 <div class="section" id="sameiteratorexpression">
@@ -2899,7 +2742,6 @@ However it can be useful to use comma in macros. Cppcheck does not warn when suc
 </pre></div>
 </div>
 <p><strong>Message:</strong> Same iterators expression are used for algorithm.</p>
-<p><strong>Verbose explanation:</strong> Same iterators expression are used for algorithm.</p>
 <p><strong>Common Weakness Enumeration:</strong> 664</p>
 </div>
 <div class="section" id="redundantifremove">
@@ -2926,7 +2768,6 @@ However it can be useful to use comma in macros. Cppcheck does not warn when suc
 </pre></div>
 </div>
 <p><strong>Message:</strong> Reading from empty STL container ‘var’</p>
-<p><strong>Verbose explanation:</strong> Reading from empty STL container ‘var’</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="usestlalgorithm">
@@ -2935,7 +2776,6 @@ However it can be useful to use comma in macros. Cppcheck does not warn when suc
 </pre></div>
 </div>
 <p><strong>Message:</strong> Consider using  algorithm instead of a raw loop.</p>
-<p><strong>Verbose explanation:</strong> Consider using  algorithm instead of a raw loop.</p>
 <p><strong>Common Weakness Enumeration:</strong> 398</p>
 </div>
 <div class="section" id="trunclongcastassignment">
@@ -2962,7 +2802,6 @@ However it can be useful to use comma in macros. Cppcheck does not warn when suc
 </pre></div>
 </div>
 <p><strong>Message:</strong> The function ‘funcName’ is never used.</p>
-<p><strong>Verbose explanation:</strong> The function ‘funcName’ is never used.</p>
 <p><strong>Common Weakness Enumeration:</strong> 56</p>
 </div>
 <div class="section" id="unusedvariable">
@@ -2971,7 +2810,6 @@ However it can be useful to use comma in macros. Cppcheck does not warn when suc
 </pre></div>
 </div>
 <p><strong>Message:</strong> Unused variable: varname</p>
-<p><strong>Verbose explanation:</strong> Unused variable: varname</p>
 <p><strong>Common Weakness Enumeration:</strong> 56</p>
 </div>
 <div class="section" id="unusedallocatedmemory">
@@ -2980,7 +2818,6 @@ However it can be useful to use comma in macros. Cppcheck does not warn when suc
 </pre></div>
 </div>
 <p><strong>Message:</strong> Variable ‘varname’ is allocated memory that is never used.</p>
-<p><strong>Verbose explanation:</strong> Variable ‘varname’ is allocated memory that is never used.</p>
 <p><strong>Common Weakness Enumeration:</strong> 56</p>
 </div>
 <div class="section" id="unreadvariable">
@@ -2989,7 +2826,6 @@ However it can be useful to use comma in macros. Cppcheck does not warn when suc
 </pre></div>
 </div>
 <p><strong>Message:</strong> Variable ‘varname’ is assigned a value that is never used.</p>
-<p><strong>Verbose explanation:</strong> Variable ‘varname’ is assigned a value that is never used.</p>
 <p><strong>Common Weakness Enumeration:</strong> 56</p>
 </div>
 <div class="section" id="unassignedvariable">
@@ -2998,7 +2834,6 @@ However it can be useful to use comma in macros. Cppcheck does not warn when suc
 </pre></div>
 </div>
 <p><strong>Message:</strong> Variable ‘varname’ is not assigned a value.</p>
-<p><strong>Verbose explanation:</strong> Variable ‘varname’ is not assigned a value.</p>
 <p><strong>Common Weakness Enumeration:</strong> 66</p>
 </div>
 <div class="section" id="unusedstructmember">
@@ -3007,7 +2842,6 @@ However it can be useful to use comma in macros. Cppcheck does not warn when suc
 </pre></div>
 </div>
 <p><strong>Message:</strong> struct member ‘structname::variable’ is never used.</p>
-<p><strong>Verbose explanation:</strong> struct member ‘structname::variable’ is never used.</p>
 <p><strong>Common Weakness Enumeration:</strong> 56</p>
 </div>
 </div>

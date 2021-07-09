@@ -1,6 +1,7 @@
 ```````{jinja} scvars
 {% import '_jinja/macros.html' as macros %}
 
+(riscvtrapexception)=
 # RISC-V Trap Exceptions
 
 {% include 'main/troubleshooting/riscv_trap/_exit_code.inc' %}

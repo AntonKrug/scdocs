@@ -4,6 +4,6 @@
 
 # PolarFire SoC
 
-{% include 'main/using_softconsole/_mpfs_programming.inc' %}
+{% include 'main/using_softconsole/mpfs/_mpfs_programming.inc' %}
 
 ```````

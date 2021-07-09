@@ -15,6 +15,18 @@ Users of previous releases should watch for changes and in the {ref}`What is new
 ```
 
 
+
+{% if offer_offline_document is defined %}
+## Offline versions
+
+The documentation can be download for 'offline' use. Because various version are generated, there is option to download variant which covers only the user's host operating system and doesn't include irrelevant information. Or download variant for both operating systems.
+
+ - Both Windows and Linux
+ - Only Linux
+ - Only Windows
+
+{% endif %}
+
 ## Used terms
 
 This document uses **\<SoftConsole-install-dir\>** as a placeholder for the actual SoftConsole install directory.
@@ -46,7 +58,7 @@ There are few common places where these breadcrumbs start:
 
 
 
- - The `Project's settings` as starting location, example:
+ - The `Project's properties` as starting location, example:
 
    {{ macros.breadcrumb_indent('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "General" -> "Check \'-nostartfiles\'"', '   ') }}
 
@@ -70,7 +82,7 @@ There are few common places where these breadcrumbs start:
 
    Which requires the user to open the corresponding debug launcher associated with your project:
 
-   {{ macros.breadcrumb_indent('"SoftConsole Menu toolbar" -> "Run" -> "Debug Configurations" -> "Launcher for <YOUR_PROJECT>"', '   ') }}
+   {{ macros.breadcrumb_indent('"SoftConsole Menu toolbar" -> "Run" -> "Debug Configurations" -> "Launcher for \<YOUR_PROJECT\>"', '   ') }}
 
    ```{note}
    Each project might have multiple Debug Launchers associated with the project, for example one `hw` for Hardware targets and one `Renode` for Renode emulated targets. User needs to select the coresponding launcher within the context of the SoftConsole chapter. Renode troubleshooting guide will expect users to select the Renode variants of the launchers.

@@ -114,6 +114,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/navigating.html">Navigating the IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/projects.html">Projects</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
@@ -215,6 +216,11 @@
   <div class="section" id="renode-networking">
 <h1>Renode networking<a class="headerlink" href="#renode-networking" title="Permalink to this headline">¶</a></h1>
 <p><img alt="Renode logo" src="../_images/renode_logo.png" /></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Bridging the Renode’s emulated and host network adapters is only supported under Linux.
+Windows users who need to use the tunel/bridge networking under Renode can use Linux in a VM.</p>
+</div>
 <div class="section" id="wireshark-constantly-shows-dialog-about-unsaved-packets">
 <h2>Wireshark constantly shows dialog about unsaved packets<a class="headerlink" href="#wireshark-constantly-shows-dialog-about-unsaved-packets" title="Permalink to this headline">¶</a></h2>
 <p>Wait for the Renode’s Wireshark to open and then go to:</p>
@@ -255,7 +261,8 @@ querying the network range and produce frequent packets. Temporarily disable the
 </div>
 <p>Monitoring what process do on the network might give indications of what services/tools might be causing unnecessary packets.
 Use <code class="docutils literal notranslate"><span class="pre">netstat</span></code> to print networking connections and disable unneeded services which flood the Renode’s network with
-unnecessary packets and requests.</p>
+unnecessary packets and requests.
+<span class="target" id="renodecantcreatetap"></span></p>
 </div>
 <div class="section" id="could-not-set-tunsetiff-error-2">
 <h2><code class="docutils literal notranslate"><span class="pre">Could</span> <span class="pre">not</span> <span class="pre">set</span> <span class="pre">TUNSETIFF,</span> <span class="pre">error:</span> <span class="pre">2</span></code><a class="headerlink" href="#could-not-set-tunsetiff-error-2" title="Permalink to this headline">¶</a></h2>

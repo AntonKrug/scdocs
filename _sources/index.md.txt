@@ -1,6 +1,8 @@
 ![Microchip Logo](/_static/mhcp-full.png)
 
-# SoftConsole
+![SoftConsole](/_static/softconsole-big.png)
+
+# SoftConsole documentation
 
 ```{toctree}
 :caption: Introduction
@@ -17,6 +19,7 @@ introduction/tools_resources
 
 using_softconsole/installation
 using_softconsole/post_installation
+using_softconsole/navigating
 using_softconsole/workspace
 using_softconsole/projects
 using_softconsole/debugging

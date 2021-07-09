@@ -42,9 +42,40 @@ All the Mi-V (including mpfs) projects can be run and debugged without target ha
 
 ### Example debug launch configurations
 
+Debug launch configurations for each of the above projects. Remember to ensure that the OpenOCD command
+lines parameters used in the debug launch configuration:
+
+{{ macros.breadcrumb_square('"Debug Configuration" -> "Debugger tab" -> "Other options" ') }}
+
+matches the target hardware/board used. Also, remember to configure the target hardware for FlashPro debugging (e.g. `JTAG_SEL`
+tied high and, if applicable, FlashPro/USB rather than RVI debug access enabled).
+
+```{warning}
+Be aware of the differences in debug launch configuration settings between Cortex-M1, SmartFusion Cortex-M3,
+SmartFusion2 Cortex-M3, MPFS and Mi-V RISC-V targets. On top the real hardware launchers differ from the Renode launchers.
+```
+
+When creating new debug launch configurations for other systems use the example debug launch configurations as a guide or else copy the one that most closely matches the target system and reconfigure it as needed.
+
 ## Empty workspace
 
-## Creating a new workspace
+SoftConsole includes an empty workspace which has the new integrated `develop and debug` perspective and identical settings to the example workspace. This workspace is located at:
+
+`../extras/workspace.empty.zip`
+
+This workspace can be used if the bundled example projects are not desired, but still contains the Renode platform, MPFS boot mode programer launchers and all other necessary settings. This empty workspace is ideal for importing user’s projects into as a clean slate.
+
+```{note}
+With the current SoftConsole no extra steps are needed to use the pre-configured empty workspace. Just in the SoftConsole launcher select a empty directory and the workspace will get populated.
+```
+
+All documentation assumes that only the bundled empty/examples (or cloned) workspaces are used. Because the workspaces change between the releases it’s **not** supported to re-use older workspace from previous SoftConsole. 
+
+Trying to circumvent this constrain and creating own ad-hoc workspaces might on the surface seem as working but it will eventually cause various problems. These issues might not seem to be relevant to the workspace and might be non-trivial to resolve.
+
+```{warning}
+Copying workspaces between hosts and especially different OSs is not supported and can cause various and hard to debug problems as well.
+```
 
 
 ```````

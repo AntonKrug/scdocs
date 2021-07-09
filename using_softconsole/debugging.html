@@ -108,10 +108,12 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="workspace.html">Workspaces</a></li>
 <li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Debugging</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#debug-launch-configurations">Debug launch configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#call-stack-and-conditional-breakpoints">Call stack and conditional breakpoints</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
@@ -224,6 +226,32 @@ debug launch configurations as a guide to creating new debug launch configuratio
 </div>
 </li>
 </ol>
+</div>
+<div class="section" id="call-stack-and-conditional-breakpoints">
+<h2>Call stack and conditional breakpoints<a class="headerlink" href="#call-stack-and-conditional-breakpoints" title="Permalink to this headline">¶</a></h2>
+<p>Normally call stacks can be ignored, but they are very useful when troubleshooting pre-existing conditions. When using the recommended workspace and its <code class="docutils literal notranslate"><span class="pre">Develop</span> <span class="pre">and</span> <span class="pre">Debug</span></code> perspective then this should be in the bottom-left section of
+the screen. It can be opened (if it got previously closed) with :</p>
+<div class="graphviz"><img src="../_images/graphviz-ffffad17a2f14987122d1b446b96b6e6663f2f5f.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;SoftConsole Menu toolbar&quot; -&gt; &quot;Window&quot; -&gt; &quot;Show view&quot; -&gt; &quot;Debug&quot;
+     }" class="graphviz" /></div>
+<br/><p><img alt="Call stack" src="../_images/call_stack.png" /></p>
+<p>The figure above shows how nested the calls are, clicking on each will jump to the exact line of code from where the
+child stack was invoked and it will even show the content of local variables at that given time. This is very useful when
+troubleshooting what conditions lead to the given breakpoint. Using it with ISR handlers can show what the application
+was processing when the IRQ happened. Together with conditional breakpoints which makes debugging even easier.</p>
+<p>A conditional breakpoint can be enabled by holding CTRL and double-clicking on a regular breakpoint:</p>
+<p><img alt="Conditional breakpoints" src="../_images/conditional_breakpoint.png" /></p>
+<p>The figure above shows a conditional breakpoint which will break on a second event when variable x is equal to 3. The
+first event when this condition is met is ignored because <code class="docutils literal notranslate"><span class="pre">Ignore</span> <span class="pre">count</span></code> is set to 1. This allows to create a complex
+condition where the code should break and together with call stack can be troubleshoot why and how this event
+happened. Debugging intermittent issues with these features is easier.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This is very useful for both a Renode and HW targets as well.</p>
+</div>
 </div>
 </div>
 

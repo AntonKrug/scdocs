@@ -5,7 +5,8 @@
 # Other features
 
 
-{% include 'main/using_softconsole/_stack_profiling.inc' %}
-{% include 'main/using_softconsole/_cppcheck.inc' %}
+{% include 'main/using_softconsole/other/_integer_only_newlib.inc' %}
+{% include 'main/using_softconsole/other/_stack_profiling.inc' %}
+{% include 'main/using_softconsole/other/_cppcheck.inc' %}
 
 ```````

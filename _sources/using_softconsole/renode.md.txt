@@ -17,7 +17,7 @@ To debug an example in the emulator Renode must be run with the Mi-V model (exte
 - RISC-V 32-bit targets need the following commands: 
   {{ macros.breadcrumb_indent('"Debugger" -> "GDB Client Setup" -> "Commands"','  ') }}
   Have set the architecture and symbols:
-  ```{code}
+  ```{code-block} text
 set arch riscv:rv32
   ```
   ```{note}
@@ -26,7 +26,7 @@ set arch riscv:rv32
 
 - For PolarFire SoC targets the launcher must be changed (this changed in SoftConsole 6.1).
   - The Startup -> Run/Restart Commands needs to contain the following code:
-    ```{code}
+    ```{code-block} text
 monitor $COMMON_PC=`sysbus.e51 PC`
 monitor runMacro $SetAllPCs
 monitor start
@@ -35,7 +35,7 @@ monitor start
   - Change the *e51* to *u54_1* in the code above if the connection is made to *u54_1*, change accordingly for *u54_2*, *u54_3*, and *u54_4*.
 
   - The {{sc}} platform script needs to be used (it’s not compatible with SoftConsole 6.1). The scripts now start the servers with the auto-start feature disabled (no “true” appended on each line)
-    ```{code}
+    ```{code-block} text
 e51 StartGdbServer 3333
 u54_1 StartGdbServer 3334
 u54_2 StartGdbServer 3335
@@ -71,18 +71,212 @@ u54_4 StartGdbServer 3337
 ## Useful Links
 
 - [Renode’s documentation](https://renode.readthedocs.io/en/latest/)
+- [Antmicro's blog](https://antmicro.com/blog/tags/renode/)
 
 
 {% include 'main/troubleshooting/flashpro/_firewall.inc' %}
 {% include 'main/troubleshooting/renode/_cant_open_port.inc' %}
 
+
 ## Other troubleshooting
 
 See sections:
+
  {ref}`Troubleshoot Renode <troubleshoot_renode>`
  
  {ref}`Troubleshoot Renode networking <troubleshoot_renode_networking>`
 
+
+## Macros
+
+Macros are useful in many scenarios:
+ - When using common and frequently used calls to remove code duplication (maintaining one macro is easier than maintaining all instances where it is used)
+ - When simplifying launchers, it is easier to invoke one macro than few commands
+ - When renaming actions, a command can be encapsulated into a macro in a case the original command is hard to remember.
+ - When a watch command is invoking few commands.
+ - When using ‘monitor’ with longer commands, at the moment the monitor command length is limited and might cause problems when invoking longer commands (they will get truncated and then they will misbehave). Macro can contain long commands and then it can be invoked with a short name. 
+ 
+{{sc}} has bundled a few macros, to get them listed run any PolarFire SoC platform (at the moment no Mi-V macros bundled) and type runMacro in the Renode’s monitor window:
+
+```
+Available macros:
+global.BridgeNetworkMac0
+global.WiresharkRun
+global.MCsrLegend
+global.MCsrAll
+global.TraceAll
+global.LoadSymbols
+global.SetAllPCs
+```
+
+To invoke one of these the following syntax must be used:
+
+```
+runMacro $MCsrLegend
+```
+
+or
+
+```
+runMacro $MCsrAll
+```
+
+The `MCsrAll` macro can be used to troubleshoot trap related CSRs quickly on all harts without a need to use IDE. To see how they are made open the macro file:
+
+`<SC_INSTALL_DIR>/renode-microchip-mods/script/macros-pfsoc.resc`
+
+Any project including this file inherits the macros and it is possible for users to create their own. When there is a need to trigger a command once per second, for example pressing a GPIO button, then a watch command can be used:
+
+```
+watch "gpio0.button0 PressAndRelease" 1000
+```
+
+This will invoke the `gpio0.button0 PressAndRelease` command each 1000ms. If a CSRs needs to be fetched and monitored, then the watch command can just invoke a macro which can contain much more involved commands. Combination of nested commands can be sometimes useful as well:
+
+```
+sysbus.u54_1 PC `sysbus.e51 PC`
+```
+
+The `sysbus.e51 PC` will be evaluated first, which will GET the value of the PC, it acts as GET because no second parameter with the value given after the PC property. Then this value is used as SET for the u54_1’s PC, it acts as SET because after PC property there is a value given (the PC of the e51).
+
+```{note}
+Be aware when tracking MCAUSE and the IRQ is triggered (not a trap exception) that the mcause values can be greater than 0x8000000000000000 on 64-bit platforms and greater than 0x80000000 on 32-bit platforms.
+```
+
+
+## Symbols and simple trace functionality
+
+When debugging the debugging-client connects to debugging-server which then talks to the target. With HW targets the GDB-client connects to OpenOCD (which implements and behaves as GDB server) and with FlasPro programmer talks through JTAG with the target.
+
+However, Renode is overlapping slightly with the debugging-client task even when SoftConsole treats Renode only as
+the GDB server and target. 
+
+Typically, the symbol information is used only by the debugger-client, while the debugger-server nor the target do not
+need this information. Renode has some debugger-client features, but there is no automated mechanism to transfer
+these symbols from within SoftConsole as Renode is treated as regular GDB server (which typically doesn’t need
+symbol information). This means that the following commands can’t be automated in a generic manner.
+The Renode must be launched, this is demonstrated on `mpfs-blinky` example, but can be applied to other projects.
+Use the `mpfs-blinky Renode all-harts Start-platform-and-debug` group launcher, wait for it to break on
+main and load symbols into Renode by typing the following into Renode’s monitor window:
+
+```
+sysbus LoadSymbolsFrom @../../extras/workspace.examples/mpfs-blinky/Debug/mpfsblinky.elf
+```
+
+The path to the symbols is referenced relative to Renode’s binary and needs to contain correct path to workspace,
+correct project, correct configuration (Debug/Release) and then correct binary name. Problem is that this is not generic
+and even when using macros, the path could be different depending on what workspace or what project name user’s
+use. For PolarFireSoC users there is LoadSymbols macro, but requires users to set the SYMBOLS variable:
+
+```
+set SYMBOLS @../../extras/workspace.examples/mpfs-blinky/Debug/mpfs-blinky.elf
+runMacro $LoadSymbols
+```
+
+These might be added to the debug launcher in some cases (with monitor prefix), but it’s not a reliable way to load the
+symbols as the path might change and because monitor command has string length limitation (see section Macros ).
+Now the runMacro $McsrAll can resolve symbols and can tell the user where the PC of each hart is and what it’s
+symbol. This can be used to resolve to what symbol some memory locations belong, for example (use backtick symbol):
+
+```
+sysbus FindSymbolAt `sysbus.u54_1 PC`
+sysbus FindSymbolAt `sysbus.e51 MEPC`
+```
+
+The MEPC on target’s boot-up is not populated and therefore not resolved, but when it is invoked later (when the
+emulation was started) it should get populated on the first interrupt or the first trap exception and then the resolution
+should work, this should be useful when troubleshooting traps as it can tell the user where the application had trap
+without a need to open the listing/assembly file and searching for the MEPC’s value. See the section about trap
+exceptions: 
+
+[RISC-V trap handling](riscvtrapexception)
+
+
+It is possible to resolve all the PCs to symbols as the application runs. To enable it on e51 CPU, use the following
+command:
+
+```
+sysbus.e51 LogFunctionNames true
+```
+
+The LogLevel on the platform might be set to ‘error’ only and this is an ‘info’ level, therefore execute:
+
+```
+logLevel 1 sysbus.e51
+```
+
+On PolarFireSoC targets, there is ‘TraceAll’ macro which enables this trace feature on all CPUs, or ‘TraceE51’ macro
+if just E51 trace is needed (macros for all other harts exist as well). However, enabling too much of debug/trace
+information might cause unnecessary verbosity and make the debugging harder, therefore it’s good to enable as little
+as needed.
+
+Now running the `mpfs-blinky` application by:
+ - pressing `Resume` icon button in the main toolbar
+ - `F8` key shortcut
+ - {{ macros.breadcrumb_indent('"SoftConsole Menu toolbar" -> "Run" -> "Resume"', '   ') }}
+ 
+And it should start outputting simplified trace information. The SoftConsole’s Console tab should show when and what parts of the code was the CPU
+executing:
+
+```
+17:14:04.7767 [INFO] e51: Entering function MSS_UART_polled_tx_string at 0x80024D8
+17:14:04.7767 [INFO] e51: Entering function gpio0_bit0_or_gpio2_bit13_plic_0_IRQHandler at 0x8003A1A
+17:14:15.9247 [INFO] e51: Entering function gpio0_bit0_or_gpio2_bit13_plic_0_IRQHandler at 0x8003A1A
+17:14:15.9378 [INFO] e51: Entering function gpio0_bit0_or_gpio2_bit13_plic_0_IRQHandler at 0x8003A1C
+17:14:15.9488 [INFO] e51: Entering function gpio0_bit0_or_gpio2_bit13_plic_0_IRQHandler at 0x8003A1E
+17:14:15.9603 [INFO] e51: Entering function gpio0_bit0_or_gpio2_bit13_plic_0_IRQHandler at 0x8003A22
+17:14:15.9749 [INFO] e51: Entering function MSS_GPIO_set_output (entry) at 0x80032FE
+17:14:15.9749 [INFO] e51: Entering function gpio_number_validate (entry) at 0x80034B8
+17:14:15.9749 [INFO] e51: Entering function gpio_number_validate at 0x80034D4
+17:14:15.9749 [INFO] e51: Entering function gpio_number_validate at 0x80034F6
+17:14:15.9749 [INFO] e51: Entering function gpio_number_validate at 0x800350E
+17:14:15.9749 [INFO] e51: Entering function gpio_number_validate at 0x8003524
+17:14:15.9749 [INFO] e51: Entering function gpio_number_validate at 0x8003530
+17:14:15.9749 [INFO] e51: Entering function gpio_number_validate at 0x8003552
+17:14:15.9749 [INFO] e51: Entering function MSS_GPIO_set_output at 0x8003326
+17:14:15.9749 [INFO] e51: Entering function MSS_GPIO_set_output at 0x800332A
+17:14:15.9749 [INFO] e51: Entering function MSS_GPIO_set_output at 0x8003334
+17:14:15.9749 [INFO] e51: Entering function MSS_GPIO_set_output at 0x8003362
+17:14:15.9749 [INFO] e51: Entering function gpio0_bit0_or_gpio2_bit13_plic_0_IRQHandler at 0x8003A26
+```
+
+With the current release there is no way to use this data in a more visualized manner, but even in the text-form it can
+be extremely useful.
+Sometimes it’s useful to build watch commands, for example to see what symbol the MEPC is when the IRQ/trap
+happened. It’s good to start building the commands in steps, first fetch the value of MEPC:
+
+```
+sysbus.e51 MEPC
+```
+
+Then resolving this address into a symbol (warping it with backtick character):
+
+```
+sysbus FindSymbolAt `sysbus.e51 MEPC`
+```
+
+And as last wrapping it into the watch command:
+
+```
+watch "sysbus FindSymbolAt `sysbus.e51 MEPC`" 200
+```
+
+This should keep updating the symbol where MEPC is pointing 5 times per second until `Ctrl+C` is pressed. If nothing is
+displayed then `Resume` the application in the SoftConsole and trigger an IRQ by typing in Renode’s monitor:
+
+```
+gpio0.button0 PressAndRelease
+```
+
+```{note}
+The user can make their own macros for Mi-V targets and use this feature however there are no macros bundled. Or use the commands directly without encapsulating them into macros.
+```
+
+
+
+{% if linux is defined %}
+{% include 'main/using_softconsole/renode/_networking.inc' %}
+{% endif %}
 
 
 ```````

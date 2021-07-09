@@ -6,21 +6,21 @@
 
 {% if windows is defined and linux is defined %}
 ## Windows
-{% include 'main/using_softconsole/_post_installation_windows.inc' %}
+{% include 'main/using_softconsole/post_installation/_windows.inc' %}
 ## Linux
-{% include 'main/using_softconsole/_post_installation_linux.inc' %}
+{% include 'main/using_softconsole/post_installation/_linux.inc' %}
 {% else %}
 
 
 
 
 {% if windows is defined %}
-{% include 'main/using_softconsole/_post_installation_windows.inc' %}
+{% include 'main/using_softconsole/post_installation/_windows.inc' %}
 {% endif %}  % End of Windows
 
 
 {% if linux is defined %}
-{% include 'main/using_softconsole/_post_installation_linux.inc' %}
+{% include 'main/using_softconsole/post_installation/_linux.inc' %}
 {% endif %}  % End of Linux
 
 

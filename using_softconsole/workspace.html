@@ -46,7 +46,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Projects" href="projects.html" />
-    <link rel="prev" title="Post Installation" href="post_installation.html" /> 
+    <link rel="prev" title="Navigating the IDE" href="navigating.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -108,6 +108,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="post_installation.html">Post Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="navigating.html">Navigating the IDE</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Workspaces</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#example-workspace">Example workspace</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#example-projects">Example projects</a></li>
@@ -115,7 +116,6 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#empty-workspace">Empty workspace</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#creating-a-new-workspace">Creating a new workspace</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
@@ -242,13 +242,39 @@ may be lost.</p>
 </div>
 <div class="section" id="example-debug-launch-configurations">
 <h3>Example debug launch configurations<a class="headerlink" href="#example-debug-launch-configurations" title="Permalink to this headline">¶</a></h3>
+<p>Debug launch configurations for each of the above projects. Remember to ensure that the OpenOCD command
+lines parameters used in the debug launch configuration:</p>
+<div class="graphviz"><img src="../_images/graphviz-5b9903c41a702a2d14b0d43a6d37693eb719bfd7.png" alt="digraph {
+         graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
+         node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
+         edge [arrowsize=.7];
+         &quot;Debug Configuration&quot; -&gt; &quot;Debugger tab&quot; -&gt; &quot;Other options&quot; 
+     }" class="graphviz" /></div>
+<p>matches the target hardware/board used. Also, remember to configure the target hardware for FlashPro debugging (e.g. <code class="docutils literal notranslate"><span class="pre">JTAG_SEL</span></code>
+tied high and, if applicable, FlashPro/USB rather than RVI debug access enabled).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be aware of the differences in debug launch configuration settings between Cortex-M1, SmartFusion Cortex-M3,
+SmartFusion2 Cortex-M3, MPFS and Mi-V RISC-V targets. On top the real hardware launchers differ from the Renode launchers.</p>
+</div>
+<p>When creating new debug launch configurations for other systems use the example debug launch configurations as a guide or else copy the one that most closely matches the target system and reconfigure it as needed.</p>
 </div>
 </div>
 <div class="section" id="empty-workspace">
 <h2>Empty workspace<a class="headerlink" href="#empty-workspace" title="Permalink to this headline">¶</a></h2>
+<p>SoftConsole includes an empty workspace which has the new integrated <code class="docutils literal notranslate"><span class="pre">develop</span> <span class="pre">and</span> <span class="pre">debug</span></code> perspective and identical settings to the example workspace. This workspace is located at:</p>
+<p><code class="docutils literal notranslate"><span class="pre">../extras/workspace.empty.zip</span></code></p>
+<p>This workspace can be used if the bundled example projects are not desired, but still contains the Renode platform, MPFS boot mode programer launchers and all other necessary settings. This empty workspace is ideal for importing user’s projects into as a clean slate.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>With the current SoftConsole no extra steps are needed to use the pre-configured empty workspace. Just in the SoftConsole launcher select a empty directory and the workspace will get populated.</p>
 </div>
-<div class="section" id="creating-a-new-workspace">
-<h2>Creating a new workspace<a class="headerlink" href="#creating-a-new-workspace" title="Permalink to this headline">¶</a></h2>
+<p>All documentation assumes that only the bundled empty/examples (or cloned) workspaces are used. Because the workspaces change between the releases it’s <strong>not</strong> supported to re-use older workspace from previous SoftConsole.</p>
+<p>Trying to circumvent this constrain and creating own ad-hoc workspaces might on the surface seem as working but it will eventually cause various problems. These issues might not seem to be relevant to the workspace and might be non-trivial to resolve.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Copying workspaces between hosts and especially different OSs is not supported and can cause various and hard to debug problems as well.</p>
+</div>
 </div>
 </div>
 
@@ -259,7 +285,7 @@ may be lost.</p>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="projects.html" class="btn btn-neutral float-right" title="Projects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="post_installation.html" class="btn btn-neutral float-left" title="Post Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="navigating.html" class="btn btn-neutral float-left" title="Navigating the IDE" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
