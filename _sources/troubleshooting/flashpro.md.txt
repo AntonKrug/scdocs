@@ -3,6 +3,8 @@
 
 # Flashpro and OpenOCD
 
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
 {% include 'main/troubleshooting/flashpro/_firewall.inc' %}
 {% include 'main/troubleshooting/flashpro/_multiple_sessions.inc' %}
 {% include 'main/troubleshooting/flashpro/_no_vm.inc' %}

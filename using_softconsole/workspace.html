@@ -64,9 +64,6 @@
           
 
           
-            
-            <img src="../_static/softconsole-32.png" class="logo" alt="Logo"/>
-          
           </a>
 
           
@@ -122,6 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="renode.html">Renode emulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ultrasoc.html">UltraSoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="other.html">Other features</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
@@ -130,7 +128,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode_networking.html">Renode networking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
@@ -208,6 +206,7 @@
             
   <div class="section" id="workspaces">
 <h1>Workspaces<a class="headerlink" href="#workspaces" title="Permalink to this headline">¶</a></h1>
+<p>Workspace is a concept of a Eclipse based IDEs which is used to ‘hold’ all the projects. Some settings can be set globally in the product however some aspects need to be saved either on a project level, or on workspace level. Many features which SoftConsole depends on are saved on the workspace level (for example: MPFS boot mode programmers, Renode launchers, settings which make the UX more pleasant, tweaked keyboard shortcuts…)</p>
 <div class="section" id="example-workspace">
 <h2>Example workspace<a class="headerlink" href="#example-workspace" title="Permalink to this headline">¶</a></h2>
 <p>SoftConsole includes an example workspace which is opened by default when you run SoftConsole. This example
@@ -250,7 +249,7 @@ lines parameters used in the debug launch configuration:</p>
          edge [arrowsize=.7];
          &quot;Debug Configuration&quot; -&gt; &quot;Debugger tab&quot; -&gt; &quot;Other options&quot; 
      }" class="graphviz" /></div>
-<p>matches the target hardware/board used. Also, remember to configure the target hardware for FlashPro debugging (e.g. <code class="docutils literal notranslate"><span class="pre">JTAG_SEL</span></code>
+<br/><p>matches the target hardware/board used. Also, remember to configure the target hardware for FlashPro debugging (e.g. <code class="docutils literal notranslate"><span class="pre">JTAG_SEL</span></code>
 tied high and, if applicable, FlashPro/USB rather than RVI debug access enabled).</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>

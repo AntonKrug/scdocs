@@ -1,6 +1,10 @@
 ```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
 
 # Packages, Tools and Resources
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
 
 ## Related Tools and Resources
 
@@ -52,7 +56,7 @@ The table below summarizes SoftConsole's support for FlashPro variants, OSs and 
 
 {% include 'main/introduction/_support_table6.5.inc' %}
 
-On Windows the FlashPro3/4/5/6 programmers are supported, and the relevant drivers must be installed. On Linux, the FlashPro5/6 programmers are supported and the post-install configuration steps must be carried out to allow access to the programmer by non-root users (see [Post Installation Steps](linux_post_install_hw) section).
+On Windows the FlashPro3/4/5/6 programmers are supported, and the relevant drivers must be installed. On Linux, the FlashPro5/6 programmers are supported and the post-install configuration steps must be carried out to allow access to the programmer by non-root users (see [Post Installation Steps](linuxpostinstallhw) section).
 
 ### Microchip GitHub repositories
 

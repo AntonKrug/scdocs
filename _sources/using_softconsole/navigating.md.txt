@@ -3,6 +3,8 @@
 
 # Navigating the IDE
 
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
 Through the document there are references to various actions, it's good to know how to efficiently navigate through them.
 
 Often there multiple ways to achieve the same results and this section will highlight few, so then can find whichever way is most comfortable to him.
@@ -43,7 +45,7 @@ It can be activated to search even the content of the files, however this will s
 
 ![dialog](images/find_actions/activate.png)
 
-Another useful feature is `Toggle Show Key Bindings`, triggering the action will first enable it and then activating it later again will disables it (Toggle). In times of frequent Work-from-home and remote meetings, it's nice to show popups what keyboard shortcuts  the user pressed and their purpose/action is and should make it easier for person on the other side to follow. 
+Another useful feature is `Toggle Show Key Bindings`, triggering the action will first enable it and then activating it later again will disables it (Toggle). When having remote meetings frequently, it's nice to show popups what keyboard shortcuts  the user pressed and their purpose/action is and should make it easier for person on the other side to follow. 
 
 Searching `tskb` will find the action:
 
@@ -58,7 +60,11 @@ After the is `Toggle Show Key Bindings` activated, a transparent popup is shown 
 
 ![toolbar](images/toolbar/generic.png)
 
-Toolbar icons can be seen as visual shortcuts for specific actions under the menu bar, these actions can be triggered by using the submenus and keyboard shortcuts as well.
+Toolbar icons can be seen as visual shortcuts for specific actions under the menu bar, these actions can be triggered by using the submenus, 'Find Action' and keyboard shortcuts as well. Some icons get disabled depending on their state and their relevance, if using non-git project then the Git icons are grayed out, if no changes were made to any files, the "Save All" will be disabled.
+
+```{note}
+Above icons are showcasing our combined `Develop and Debug` perspective which we recomend to users. However if the user needs to use different perspective the icons will differ.
+```
 
 ### Save all
 
@@ -255,14 +261,16 @@ Or even faster with:
 
 To open the closed projects, just double-click on their name in the Project Explorer.
 
-Similar to Debug launchers are the Run launchers, usually our examples are not shipping with Run launchers, but users can feel free to make their own:
+#### Run Launchers
+
+Similar to Debug launchers are the Run launchers, usually our examples are not shipping with Run launchers. They could be used to run applications locally (not useful in embedded IDE), however they can be used on remote/embedded targets like the Debug launchers do, in fact the logic behind Run and Debug launchers is the same, only difference between the Debug and Run launchers is that they have separate 'favorites' and 'history' so they can trigger their own 'run most recent launcher' and the Run launchers have implied `Skip all breakpoints`. Users can feel free to make their own Run launchers by duplicating the Debug launcher, renaming it to Run Launcher and then:
 
 {{ macros.breadcrumb_square('"Debug Configuration" -> "Startup" -> "Run/Restart Commands" -> "Uncheck \'Set breakpoint at\'"') }}
 <br/>
 
 ![toolbar](images/toolbar/run_launcher.png)
 
-Will make the launcher to NOT break at main function and the `Run` launchers have implied that all breakpoints will be skipped as well.
+It will make the launcher to NOT break at main function and together with the `Run` launchers implied `Skip all breakpoints` will allow user to just run the applications on the target without debugger halting it.
 
 
 ### External launchers

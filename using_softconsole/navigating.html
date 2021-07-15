@@ -70,9 +70,6 @@
           
 
           
-            
-            <img src="../_static/softconsole-32.png" class="logo" alt="Logo"/>
-          
           </a>
 
           
@@ -132,7 +129,10 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#git">Git</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#debug-and-run-launchers">Debug and Run launchers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debug-and-run-launchers">Debug and Run launchers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#run-launchers">Run Launchers</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#external-launchers">External launchers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#open-element">Open Element</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#search">Search</a></li>
@@ -147,6 +147,7 @@
 <li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="renode.html">Renode emulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ultrasoc.html">UltraSoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="other.html">Other features</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
@@ -155,7 +156,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode_networking.html">Renode networking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
@@ -260,7 +261,7 @@
 <p><img alt="dialog" src="../_images/http.png" /></p>
 <p>It can be activated to search even the content of the files, however this will slow down the indexing and has to be explicitly enabled with <code class="docutils literal notranslate"><span class="pre">Activate</span> <span class="pre">bundle</span> <span class="pre">for</span> <span class="pre">'File</span> <span class="pre">Content'</span> <span class="pre">proposals</span></code></p>
 <p><img alt="dialog" src="../_images/activate.png" /></p>
-<p>Another useful feature is <code class="docutils literal notranslate"><span class="pre">Toggle</span> <span class="pre">Show</span> <span class="pre">Key</span> <span class="pre">Bindings</span></code>, triggering the action will first enable it and then activating it later again will disables it (Toggle). In times of frequent Work-from-home and remote meetings, it’s nice to show popups what keyboard shortcuts  the user pressed and their purpose/action is and should make it easier for person on the other side to follow.</p>
+<p>Another useful feature is <code class="docutils literal notranslate"><span class="pre">Toggle</span> <span class="pre">Show</span> <span class="pre">Key</span> <span class="pre">Bindings</span></code>, triggering the action will first enable it and then activating it later again will disables it (Toggle). When having remote meetings frequently, it’s nice to show popups what keyboard shortcuts  the user pressed and their purpose/action is and should make it easier for person on the other side to follow.</p>
 <p>Searching <code class="docutils literal notranslate"><span class="pre">tskb</span></code> will find the action:</p>
 <p><img alt="dialog" src="../_images/tskb.png" /></p>
 <p>After the is <code class="docutils literal notranslate"><span class="pre">Toggle</span> <span class="pre">Show</span> <span class="pre">Key</span> <span class="pre">Bindings</span></code> activated, a transparent popup is shown on the bottom of the screen when some shortcut is invoked:</p>
@@ -269,7 +270,11 @@
 <div class="section" id="toolbar-icons">
 <h2>Toolbar icons<a class="headerlink" href="#toolbar-icons" title="Permalink to this headline">¶</a></h2>
 <p><img alt="toolbar" src="../_images/generic.png" /></p>
-<p>Toolbar icons can be seen as visual shortcuts for specific actions under the menu bar, these actions can be triggered by using the submenus and keyboard shortcuts as well.</p>
+<p>Toolbar icons can be seen as visual shortcuts for specific actions under the menu bar, these actions can be triggered by using the submenus, ‘Find Action’ and keyboard shortcuts as well. Some icons get disabled depending on their state and their relevance, if using non-git project then the Git icons are grayed out, if no changes were made to any files, the “Save All” will be disabled.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Above icons are showcasing our combined <code class="docutils literal notranslate"><span class="pre">Develop</span> <span class="pre">and</span> <span class="pre">Debug</span></code> perspective which we recomend to users. However if the user needs to use different perspective the icons will differ.</p>
+</div>
 <div class="section" id="save-all">
 <h3>Save all<a class="headerlink" href="#save-all" title="Permalink to this headline">¶</a></h3>
 <p><img alt="toolbar" src="../_images/save_all.png" /></p>
@@ -478,7 +483,9 @@
          &quot;Middle click on \&lt;YOUR_PROJECT\&gt; in the Project Explorer&quot;
      }" class="graphviz" /></div>
 <br/><p>To open the closed projects, just double-click on their name in the Project Explorer.</p>
-<p>Similar to Debug launchers are the Run launchers, usually our examples are not shipping with Run launchers, but users can feel free to make their own:</p>
+<div class="section" id="run-launchers">
+<h4>Run Launchers<a class="headerlink" href="#run-launchers" title="Permalink to this headline">¶</a></h4>
+<p>Similar to Debug launchers are the Run launchers, usually our examples are not shipping with Run launchers. They could be used to run applications locally (not useful in embedded IDE), however they can be used on remote/embedded targets like the Debug launchers do, in fact the logic behind Run and Debug launchers is the same, only difference between the Debug and Run launchers is that they have separate ‘favorites’ and ‘history’ so they can trigger their own ‘run most recent launcher’ and the Run launchers have implied <code class="docutils literal notranslate"><span class="pre">Skip</span> <span class="pre">all</span> <span class="pre">breakpoints</span></code>. Users can feel free to make their own Run launchers by duplicating the Debug launcher, renaming it to Run Launcher and then:</p>
 <div class="graphviz"><img src="../_images/graphviz-b5a54387cb9b70567d1448dec25d4983c2b57bf0.png" alt="digraph {
          graph [rankdir=&quot;LR&quot;, ranksep=.01, bgcolor=transparent];
          node [fontname=&quot;Verdana&quot;, fontsize=&quot;9&quot;, shape=&quot;rectangle&quot;, width=.1, height=.2, margin=&quot;.04,.01&quot;, style=filled, fillcolor=white];
@@ -486,7 +493,8 @@
          &quot;Debug Configuration&quot; -&gt; &quot;Startup&quot; -&gt; &quot;Run/Restart Commands&quot; -&gt; &quot;Uncheck 'Set breakpoint at'&quot;
      }" class="graphviz" /></div>
 <br/><p><img alt="toolbar" src="../_images/run_launcher.png" /></p>
-<p>Will make the launcher to NOT break at main function and the <code class="docutils literal notranslate"><span class="pre">Run</span></code> launchers have implied that all breakpoints will be skipped as well.</p>
+<p>It will make the launcher to NOT break at main function and together with the <code class="docutils literal notranslate"><span class="pre">Run</span></code> launchers implied <code class="docutils literal notranslate"><span class="pre">Skip</span> <span class="pre">all</span> <span class="pre">breakpoints</span></code> will allow user to just run the applications on the target without debugger halting it.</p>
+</div>
 </div>
 <div class="section" id="external-launchers">
 <h3>External launchers<a class="headerlink" href="#external-launchers" title="Permalink to this headline">¶</a></h3>

@@ -3,6 +3,10 @@
 
 # Workspaces
 
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
+Workspace is a concept of a Eclipse based IDEs which is used to 'hold' all the projects. Some settings can be set globally in the product however some aspects need to be saved either on a project level, or on workspace level. Many features which SoftConsole depends on are saved on the workspace level (for example: MPFS boot mode programmers, Renode launchers, settings which make the UX more pleasant, tweaked keyboard shortcuts...)
+
 ## Example workspace
 
 SoftConsole includes an example workspace which is opened by default when you run SoftConsole. This example
@@ -46,6 +50,7 @@ Debug launch configurations for each of the above projects. Remember to ensure t
 lines parameters used in the debug launch configuration:
 
 {{ macros.breadcrumb_square('"Debug Configuration" -> "Debugger tab" -> "Other options" ') }}
+<br/>
 
 matches the target hardware/board used. Also, remember to configure the target hardware for FlashPro debugging (e.g. `JTAG_SEL`
 tied high and, if applicable, FlashPro/USB rather than RVI debug access enabled).

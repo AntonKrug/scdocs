@@ -3,6 +3,8 @@
 
 # RISC-V
 
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
 {% include 'main/troubleshooting/riscv/_cpp.inc' %}
 {% include 'main/troubleshooting/riscv/_power_cycle.inc' %}
 {% include 'main/troubleshooting/riscv/_memory_view.inc' %}

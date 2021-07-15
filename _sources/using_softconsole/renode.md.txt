@@ -3,6 +3,8 @@
 
 # Renode emulation platform
 
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
 ![Renode logo](images/renode_logo.png)
 
 Renode™ is an open-source software development framework with commercial support from Antmicro that lets you develop, debug and test multi-node device systems reliably, scalably and effectively. If all installation dependencies are met (see installation section), then the RISC-V examples can be run in the emulator.
@@ -82,9 +84,9 @@ u54_4 StartGdbServer 3337
 
 See sections:
 
- {ref}`Troubleshoot Renode <troubleshoot_renode>`
- 
- {ref}`Troubleshoot Renode networking <troubleshoot_renode_networking>`
+{doc}`/troubleshooting/renode`
+
+{doc}`/troubleshooting/renode_networking`
 
 
 ## Macros

@@ -45,7 +45,7 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Renode" href="renode.html" />
+    <link rel="next" title="Renode troubleshooting" href="renode.html" />
     <link rel="prev" title="RISC-V" href="riscv.html" /> 
 </head>
 
@@ -63,9 +63,6 @@
             <a href="../index.html" class="icon icon-home"> SoftConsole
           
 
-          
-            
-            <img src="../_static/softconsole-32.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -114,6 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode emulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/ultrasoc.html">UltraSoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/other.html">Other features</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
@@ -142,7 +140,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#trap-example-mcause-2-on-non-f-target">Trap example: mcause==2 on non-F target</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="renode.html">Renode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="renode.html">Renode troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="renode_networking.html">Renode networking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="eclipse.html">Eclipse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="support.html">Product Support</a></li>
@@ -362,7 +360,7 @@
 <div class="section" id="mstatus">
 <h3>mstatus<a class="headerlink" href="#mstatus" title="Permalink to this headline">¶</a></h3>
 <p>Can contain global interrupt enable bit but many other flags (RV64/RV128):</p>
-<img alt="../_images/wavedrom-a8e089ad-4b53-42ad-9175-9729d8197a2f.svg" height="300px" src="../_images/wavedrom-a8e089ad-4b53-42ad-9175-9729d8197a2f.svg" width="840px" /><div class="admonition note">
+<img alt="../_images/wavedrom-bbec699c-6b11-4742-b6d0-670dd2ae1b24.svg" height="300px" src="../_images/wavedrom-bbec699c-6b11-4742-b6d0-670dd2ae1b24.svg" width="840px" /><div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Depending on the application and the problem, but typically the most useful and important CSRs are mcause, mtval/mbadaddr and mepc. Therefore, when troubleshooting a trap issue these 3 CSRs should be addressed first as they can give very good picture what happened and why.</p>
 </div>
@@ -556,7 +554,7 @@ To switch to soft-float <strong>both</strong> <code class="docutils literal notr
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="renode.html" class="btn btn-neutral float-right" title="Renode" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="renode.html" class="btn btn-neutral float-right" title="Renode troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="riscv.html" class="btn btn-neutral float-left" title="RISC-V" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

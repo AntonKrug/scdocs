@@ -63,9 +63,6 @@
           
 
           
-            
-            <img src="../_static/softconsole-32.png" class="logo" alt="Logo"/>
-          
           </a>
 
           
@@ -113,6 +110,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode emulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/ultrasoc.html">UltraSoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/other.html">Other features</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
@@ -121,7 +119,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/project.html">Project settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv.html">RISC-V</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/riscv_trap.html">RISC-V Trap Exceptions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode.html">Renode troubleshooting</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/renode_networking.html">Renode networking</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/eclipse.html">Eclipse</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../troubleshooting/support.html">Product Support</a></li>
@@ -138,6 +136,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#conditional-includes">Conditional includes</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Cross referencing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#personalities">Personalities</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#use-of-jinja">Use of jinja</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#variables-and-substitutions">Variables and substitutions</a></li>
@@ -276,6 +275,36 @@ Make it identical to its name doesn’t work as it will make the original handle
 <span class="p">{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}</span>  <span class="o">%</span> <span class="n">End</span> <span class="n">of</span> <span class="n">Windows</span>
 </pre></div>
 </div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="n">windows</span> <span class="ow">is</span> <span class="n">defined</span> <span class="ow">and</span> <span class="n">linux</span> <span class="ow">is</span> <span class="n">defined</span> <span class="o">%</span><span class="p">}</span>
+<span class="c1">## Windows</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">include</span> <span class="s1">&#39;main/using_softconsole/post_installation/_windows.inc&#39;</span> <span class="o">%</span><span class="p">}</span>
+<span class="c1">## Linux</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">include</span> <span class="s1">&#39;main/using_softconsole/post_installation/_linux.inc&#39;</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="k">else</span> <span class="o">%</span><span class="p">}</span>
+
+
+
+
+<span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="n">windows</span> <span class="ow">is</span> <span class="n">defined</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">include</span> <span class="s1">&#39;main/using_softconsole/post_installation/_windows.inc&#39;</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}</span>  <span class="o">%</span> <span class="n">End</span> <span class="n">of</span> <span class="n">Windows</span>
+
+
+<span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="n">linux</span> <span class="ow">is</span> <span class="n">defined</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">include</span> <span class="s1">&#39;main/using_softconsole/post_installation/_linux.inc&#39;</span> <span class="o">%</span><span class="p">}</span>
+<span class="p">{</span><span class="o">%</span> <span class="n">endif</span> <span class="o">%</span><span class="p">}</span>  <span class="o">%</span> <span class="n">End</span> <span class="n">of</span> <span class="n">Linux</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>Cross referencing<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>The whole documents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>{doc}`/troubleshooting/renode`
+
+{doc}`/troubleshooting/renode_networking`
+</pre></div>
 </div>
 </div>
 <div class="section" id="personalities">

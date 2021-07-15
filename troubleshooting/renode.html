@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Renode &mdash; SoftConsole 2021-05 v7.0.501 documentation</title>
+  <title>Renode troubleshooting &mdash; SoftConsole 2021-05 v7.0.501 documentation</title>
   
 
   
@@ -64,9 +64,6 @@
           
 
           
-            
-            <img src="../_static/softconsole-32.png" class="logo" alt="Logo"/>
-          
           </a>
 
           
@@ -114,6 +111,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/debugging.html">Debugging</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/mpfs.html">PolarFire SoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/renode.html">Renode emulation platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../using_softconsole/ultrasoc.html">UltraSoC</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../using_softconsole/other.html">Other features</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tips, Tricks and Troubleshooting</span></p>
@@ -122,7 +120,7 @@
 <li class="toctree-l1"><a class="reference internal" href="project.html">Project settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="riscv.html">RISC-V</a></li>
 <li class="toctree-l1"><a class="reference internal" href="riscv_trap.html">RISC-V Trap Exceptions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Renode</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Renode troubleshooting</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-oss-tool-such-as-renode-will-contaminate-my-proprietary-code">Using OSS tool such as Renode will contaminate my proprietary code?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#source-id-13802-was-not-found-when-attempting-to-remove-it">Source ID 13802 was not found when attempting to remove it</a></li>
@@ -189,7 +187,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Renode</li>
+      <li>Renode troubleshooting</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -206,8 +204,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="renode">
-<h1>Renode<a class="headerlink" href="#renode" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="renode-troubleshooting">
+<h1>Renode troubleshooting<a class="headerlink" href="#renode-troubleshooting" title="Permalink to this headline">¶</a></h1>
 <p><img alt="Renode logo" src="../_images/renode_logo.png" /></p>
 <div class="section" id="there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true">
 <h2>There was an error executing command <code class="docutils literal notranslate"><span class="pre">sysbus.cpu</span> <span class="pre">StartGdbServer</span> <span class="pre">3333</span> <span class="pre">true</span></code><a class="headerlink" href="#there-was-an-error-executing-command-sysbus-cpu-startgdbserver-3333-true" title="Permalink to this headline">¶</a></h2>
@@ -267,7 +265,7 @@ Renode emulation platform</p>
 <p>Then it could have been caused by moving the SoftConsole installation and the config pointing to the old (and nonexistent) location of the history file. Correct the path inside the <code class="docutils literal notranslate"><span class="pre">&lt;SC_INSTALL_DIR&gt;/extras/home/.renode/config</span></code> or just delete the config and let Renode to re-create it.</p>
 </div>
 </div>
-<span class="target" id="troubleshoot-renode"></span>
+
 
            </div>
            

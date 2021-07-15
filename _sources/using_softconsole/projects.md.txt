@@ -3,9 +3,482 @@
 
 # Projects
 
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
 ## Creating a new project
 
-![New project wizzard](images/wizzard-new-project.png)
+ 1. Depending on the type of project required select: 
+    {{ macros.breadcrumb_indent('"SoftConsole Menu toolbar" -> "File" -> "New" -> "\'C Project\' or \'C++ Project\'"', '    ') }}
+
+ 2. In the C/C++ Project page of the wizard enter the Project name, select 
+    {{ macros.breadcrumb_indent('"Project type = Executable" -> "Empty Project (or Static Library)" -> "Empty Project for a library project)"', '    ') }}
+    
+ 3. Select the appropriate toolchain.
+    - For a Cortex-M project select Toolchains = Arm Cross GCC.
+    - For a RISC-V project select Toolchains = RISC-V Cross GCC.
+
+ 4. Click `Next` to go to the next wizard page, Select Configurations:
+    ![New project wizzard](images/wizzard-new-project.png)
+
+
+ 5. The Select Configurations page of the wizard allows the configurations or build targets that the project will
+    support to be configured. By default, two configurations are created – Debug and Release. Should other
+    configurations be required these can be created using the Advanced settings… button which launches the
+    project Properties dialog in which additional configurations can be specified or properties for any or all
+    configurations can be changed. Normally the default Debug and Release configurations are sufficient. When
+    finished click the `Next` button to go to the next wizard page, `GNU Arm Cross Toolchain` or `GNU RISC-V Cross Toolchain`.
+
+ 6. The GNU Arm Cross Toolchain or GNU RISC-V Cross Toolchain wizard page specifies the name and path
+    of the toolchain to be used to build the project. These should be correct by default but double check that the
+    values are as follows:
+
+    `````{tabs}
+    ````{tab} Cortex-M project
+
+    - Toolchain name = GNU Tools for Arm Embedded Processors (arm-none-eabi-gcc)
+    - Toolchain path = ${eclipse_home}/../arm-none-eabi-gcc/bin
+
+    ````
+    ````{tab} RISC-V project
+
+    - Toolchain name = RISC-V GCC/Newlib (riscv64-unknown-elf-gcc)
+    - Toolchain path = ${eclipse_home}/../riscv-unknown-elf-gcc/bin
+
+    ````
+
+    `````
+
+ 7. Click `Finish` to complete the creation of the new project.
+
+
+## Project Settings
+
+Most of the project settings default to usable values. However, some project settings must be modified manually
+depending on the target device/CPU. Use the example projects as a guide to creating new project while bearing in
+mind that these are just simple functional examples and a real application may benefit from the use of some of the
+many other configuration options and command line options that the underlying GCC tools support.
+
+
+To modify the project settings right click on the project in the Project Explorer and select Properties from the context
+menu. Then navigate to:
+
+{{ macros.breadcrumb_square('"Project properties" -> "C/C++ Build" -> "Settings" ') }}
+<br/>
+
+Select Configuration = `All configurations` to configure settings applicable to all build targets (by default Debug and
+Release) or else select a specific configuration (e.g. Configuration = Debug or Configuration = Release) to configure
+settings applicable only to that build target.
+
+
+Except where noted the settings below can be configured for all [All Configurations].
+
+
+## All CPU targets
+
+### Target Processor
+
+The characteristics of the target CPU are configured in the:
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "Target Processor"') }}
+<br/>
+
+For Cortex-M projects these will default to Arm Family = cortex-m3 which is correct for SmartFusion2 and
+SmartFusion2. For Cortex-M1 projects this should be changed to cortex-m1.
+
+For RISC-V projects the settings must be configured to match the target CPU characteristics so that the underlying
+compiler tools are passed the correct `-march=<arch>` and `-mabi=<abi>` options, code is generated in line with
+the supported and used extensions and the appropriate multilibs are linked. Note that the RISC-V toolchain defaults
+to targeting rv64gc which may not be appropriate for all RISC-V target designs. Architecture and ABI settings affect all platforms, but it's very important with RISC-V because of all the possible extensions and their possible combinations.
+
+
+The main options of relevance here are:
+
+ - Architecture: specifies the base architecture – e.g. RV32* for Mi-V 32-bit soft cores or RV64* for PolarFire SoC 64-
+bit multi-processor
+
+ - Multiply extension (RVM): check if the target supports the M (hardware multiply/divide) extension
+
+ - Atomic extension (RVA): check if the target supports the A extension
+
+ - Floating point: specifies what hardware floating point extension the target supports
+
+ - Compressed extension (RVC): check if the target supports the C extension
+
+ - Integer ABI: specifies the integer ABI to be used – usually set to LP32 (`-mabi=ilp32`) for Mi-V or LP64 (`-mabi=lp64`) for PolarFire SoC
+
+ - Floating point ABI: specifies the floating-point ABI to be used 
+
+ - Code model: specifies the code model to be used
+
+ - Align: specifies the alignment policy – should be set to Strict (`-mstrict-align`) to avoid unaligned memory access
+exceptions when using the Microsemi (Mi-V) RISC-V Hardware Abstraction Layer (HAL) or PolarFire SoC
+PSE_HAL and `-Os` to optimize the program for size
+
+
+#### Architecture
+
+Architecture is configured with the following settings, it describes what the target HW is capable of:
+
+![board image](images/architecture-abi/arch.png)
+
+
+#### ABI
+
+ABI describes how many and what registers are used and available on the target, which ones are used to pass variable arguments to functions, which one are return variables. Which registers get saved by callee and which one by caller. The ABI can't use more than the HW is capable of. ABI can be configured with following:
+
+![board image](images/architecture-abi/abi.png)
+
+For more information see the SiFive's blog: <https://www.sifive.com/blog/all-aboard-part-1-compiler-args>
+
+#### Multilibs
+
+Are build for specific combinations of Architecture and ABI. Because these increase the size of the toolchain, not every combination is supported. Currently supported combinations are:
+
+{% include 'main/introduction/used_packages/_riscv-toolchain-multilibs.inc' %}
+
+```{note}
+ - Be specific. Avoid using `Toolchain default` settings which will revert to RV64GC and on RV32 targets will give obscure errors.
+ - Double check if your combincation of Architecture/ABI is supported, if not it will revert to the default (RV64GC) and cause problems.
+ - SoftConsole supports only native ABIs, `RV64IMAFD` architecture is supporting only the ABI which contains the `D` extension. However it is possible to change the architecture to `RV64IMAF` and then the `F` ABI will work. If it's needed to use some subset of ABI, change the Architecture first. It's OK to compile for less capable Architecture
+```
+
+
+### Linker Script
+
+It is essential that the appropriate linker script is configured for the project. This will often be one of the example
+linker scripts bundled with the relevant CMSIS/HAL firmware core which has been generated and imported/copied
+into the project.
+
+`````{tabs}
+````{tab} Cortex-M project
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "Cross Arm GNU C/C++ Linker" -> "General"') }}
+
+
+````
+````{tab} RISC-V project
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "General"') }}
+
+````
+
+`````
+
+Then:
+
+{{ macros.breadcrumb_square('"Script files (-T)" -> "Add..."') }}
+<br/>
+
+and enter the linker script name into the Add file path dialog – e.g.:
+
+
+`````{tabs}
+````{tab} PolarFire SoC
+
+Please refer to the PolarFire SoC PSE_HAL documentation and PolarFire SoC/PSE example project(s)
+bundled with SoftConsole for guidance on how to configure this option.
+
+
+````
+````{tab} Mi-V RISC-V
+
+`${workspace_loc:/${ProjName}/riscv_hal/microsemi-riscv-ram.ld}`
+
+````
+
+
+````{tab} SF2 Cortex-M3
+
+`${workspace_loc:/${ProjName}/CMSIS/startup_gcc/debug-in-microsemismartfusion2-esram.ld}`
+
+````
+
+
+````{tab} SF Cortex-M3:
+
+`${workspace_loc:/${ProjName}/CMSIS/startup_gcc/debug-in-actel-smartfusionenvm.ld}`
+
+````
+
+````{tab} Cortex-M1:
+
+`${workspace_loc:/${ProjName}/blinky_linker_config.ld}`
+
+````
+
+`````
+
+```{note}
+ - Refer to the relevant CMSIS/HAL documentation for more information about what example linker scripts are available and the circumstances in which they are used.
+ - CMSIS/HAL bundled linker scripts are just examples that can usually be used as-is in simple cases but should generally be adapted as required to match the requirements of a specific target/application.
+ - In some cases, different configurations/build targets will use different linker scripts.
+```
+
+
+### Newlib-Nano
+
+`newlib` is the standard library bundled with SoftConsole and it is optimized for use in resource/memory constrained
+bare metal embedded firmware environments. newlib also comes with a “nano” version which is even smaller at the
+cost of omitting some functionality which may be rarely used in such environments (e.g. the full range of *printf
+formatting options etc.). In many cases it makes sense to use newlib-nano and only switch to the full blown newlib if
+necessary because using newlib-nano can significantly reduce the compiled and linked programs which use
+standard library features.
+
+
+To use newlib-nano check the following option:
+
+`````{tabs}
+````{tab} Cortex-M project
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "Cross Arm GNU C/C++ Linker" -> "Miscellaneous" -> "Use newlib-nano (--specs=nano.specs)"') }}
+
+
+````
+````{tab} RISC-V project
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "Miscellaneous" -> "Use newlib-nano (--specs=nano.specs)"') }}
+
+````
+
+`````
+
+
+### Create Extended Listing
+
+An extended listing file (e.g. Debug/<project-name>.lst) is often useful for understanding the structure and layout of the linked executable.
+To enable generation of this file, check the Toolchains > Create extended listing checkbox.
+
+### Preprocessor Defines and Includes
+
+If any preprocessor defines/symbols or includes are needed, then they can be specified under:
+
+`````{tabs}
+````{tab} Cortex-M project
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "Cross Arm GNU C/C++ Compiler" -> "Preprocessor" -> "Defined symbols (-D)"') }}
+<br/>
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "Cross Arm GNU C/C++ Compiler" -> "Include paths (-I) or Include files (-include)"') }}
+
+
+````
+````{tab} RISC-V project
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Compiler" -> "Preprocessor" -> "Defined symbols (-D)"') }}
+<br/>
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Compiler" -> "Include paths (-I) or Include files (-include)"') }}
+
+````
+
+`````
+
+Depending on the target CPU and CMSIS/HAL used additional CMSIS/HAL related include paths may be required.
+Refer to the relevant CMSIS/HAL documentation for more information.
+
+### Optimization Options
+
+Most optimization options can be set at the project top level under Tool Settings > Optimization.
+Other optimization settings, including Language standard (which defaults to GNU ISO C11 (-std=gnu11) or GNU
+ISO 2011 C++ (-std=gnu++11)), can be specified under
+
+`````{tabs}
+````{tab} Cortex-M project
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "Cross Arm GNU C/C++ Compiler" -> "Optimization"') }}
+
+
+````
+````{tab} RISC-V project
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Compiler" -> "Optimization"') }}
+
+````
+
+`````
+
+"Fine grained" linking using `-fdata-sections` `-ffunction-sections` and `-gc-sections` is enabled by default here and under
+
+`````{tabs}
+````{tab} Cortex-M project
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "Cross Arm GNU C/C++ Linker" -> "General" -> "Remove unused sections (-Xlinker --gc-sections)"') }}
+
+
+````
+````{tab} RISC-V project
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "General" -> "Remove unused sections (-Xlinker --gc-sections)"') }}
+
+````
+
+`````
+
+### Library Dependencies
+
+Where an application project depends on a static library project this dependency can be configured in the
+application project’s properties so that building the application will ensure that the static library project is also built
+and up to date if necessary. 
+
+````{note}
+For this to work the same configuration/build target (e.g. Debug or Release) must be selected for both projects: e.g.
+
+{{ macros.breadcrumb_square('"Right click on \<YOUR_PROJECT\> in the Project Explorer" -> "Build Configurations" -> "Set Active" -> "select the required configuration"') }}
+
+````
+
+
+
+To configure such an application/library project dependency right click on the application project in Project Explorer
+and from the context menu select Properties then Project References and check the library project(s) on which the
+application project depends.
+
+
+### Print Size
+
+By default, the Print Size build step is configured to output size information in “Berkeley” format. The alternative,
+“SysV” format is often more informative and useful. To change this option right click on the project in Project
+Explorer and from the context menu select
+
+
+`````{tabs}
+````{tab} Cortex-M project
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "Cross Arm GNU Print Size" -> "General"') }}
+
+
+````
+````{tab} RISC-V project
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross Print Size" -> "General"') }}
+
+````
+
+`````
+
+and select `Size format = SysV` instead of `Berkeley`.
+
+### Other Options
+
+There are many other options that can be set if needed. Explore the SoftConsole project properties dialog and refer
+to the relevant GNU/GCC tool documentation for more information on these.
+
+### Specifying Options for All Build Configurations
+
+Some project settings can be set once for all configurations/build targets (e.g. Debug and Release). To do this
+select Configuration = [ All Configurations] before specifying the relevant options and applying/saving them.
+
+## RISC-V targets
+
+### Do not use standard start files (-nostartfiles)
+
+For RISC-V targets this option must be checked when using the Microsemi Mi-V RISC-V HAL (Hardware
+Abstraction Layer) to avoid link errors:
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "GNU RISC-V Cross C/C++ Linker" -> "Do not use
+standard start files (-nostartfiles)"') }}
+
+### Use strict alignment
+
+Generally, and particularly when using the Microsemi RISC-V Hardware Abstraction Layer (HAL) strict alignment
+should be used to avoid unaligned memory access trap exceptions (mcause = 4 or 6) when the program is
+optimized for size using `-Os`:
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "Align = Strict (-mstrict-align)"') }}
+
+## Cortex-M targets
+
+### CMSIS
+
+Cortex-M projects require an additional setting for the preprocessor to find the toolchain CMSIS header files
+otherwise compilation will fail to find certain CMSIS header files. Set `--specs=cmsis.specs` to the:
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "Cross Arm GNU C/C++ Compiler" -> "Miscellaneous" -> "Other compiler flags"') }}
+<br/>
+
+
+From SoftConsole v5.3 onwards the softconsole.cmd (Windows) or softconsole.sh (Linux) script used to
+run SoftConsole configures the `SC_INSTALL_DIR` environment variable which is then referenced in the
+`<SoftConsole-install-dir>/arm-none-eabi-gcc/arm-none-eabi/lib/cmsis.specs` file. If
+SoftConsole is not run from the script (usually via a menu/desktop shortcut) or the Arm GCC tools are run from the
+command line or a Makefile then the `SC_INSTALL_DIR` environment variable will need to 
+
+```{warning}
+TODO: remove Arm section?
+```
+
+## Considerations around Libero designs 
+
+For demonstration a SmartFusion2 was chosen, however similar steps can be applied to all other targets and other types of
+memories.
+
+### Production-Smartfusion2-Relocate-to-External-Ram.ld
+
+For a SmartFusion2 Cortex-M3 program linked using the SmartFusion2 CMSIS Hardware Abstraction Layer example
+linker script `production-smartfusion2-relocate-to-external-ram.ld` some additional settings must be
+specified.
+When this linker script is used the hex (Intel HEX or Motorola S-record) file generated by SoftConsole is normally
+used as the input file to a Libero SoC eNVM Data Storage client which is used to program the production firmware
+into eNVM.
+If the following project settings are not configured then the eNVM Data Storage client will reject the hex file as invalid.
+
+{{ macros.breadcrumb_square('"Project Properties" -> "C/C++ Build" -> "Settings" -> "Tool Settings" -> "Cross Arm GNU Create Flash Image" -> "General" -> "Other flags enter"') }}
+<br/>
+
+And copy this section:
+
+```{code-block} text
+---
+emphasize-lines: 1,1
+---
+--change-section-lma *-0x60000000
+```
+
+This has the effect of `normalising` addresses in the Cortex-M3 memory map view of eNVM (based at 0x60000000)
+to the more restricted view of memory of the eNVM Data Storage client which only sees eNVM based at 0x00000000.
+
+### Generic information on objcopy and normalization
+
+For more on this and other `objcopy` options see here: <https://sourceware.org/binutils/docs/binutils/objcopy.html>.
+Previously some users deleted the first line of the HEX file, even it might seem like a working solution, but it’s flawed on multiple
+levels and is **strongly not recommended nor supported**. There is a high risk of the data getting malformed and causing various
+other issues in the deployment. Making new launcher "Deploy" and adding this as the permanent flag will allow users to regenerate the file as frequently as they need without a need of any extra manual steps (and not modify the data beyond the tool’s
+back). And because the Intel HEX format is based on 16-bit blocks, the bigger applications will not work at all with the ‘delete
+the first line’ workaround (especially the error around the line 4097). This might falsely indicate that there is something wrong
+with the application, code or the compilation settings/features or something wrong between Debug/Release configurations
+because with different code/settings/configuration the issue is not observed, however it still might be caused by not "normalizing"
+the file properly.
+
+The error messages differ depending on what core/memory the hex file is getting stored into. For example, the error from
+PF_SRAM_AHBL_AXI module might be different than error from PF_uPROM or eNVM module, however all might be pointing
+to the same issue. Here is a list (not extensive) of some error messages which might be related to this issue:
+
+```
+Error: Invalid Memory File Content: Errors encountered while parsing the Memory file.
+```
+
+```
+IHX006: Intel Hex Address record error. Address extension specified in the record is more than the maximum possible address
+for the destination, when reading file “<YOUR_HEX>” at line 1.
+```
+
+```
+IHX006: Intel Hex Address record error. Address extension specified in the record is more than the maximum possible address
+for the destination, when reading file “<YOUR_HEX>” at line 4097.
+```
+
+### Libero's word is 16-bit
+
+There might be other independent but overlapping issues which make it harder for the users to debug this issue. Very common
+and easy to make mistake is having the physical memory smaller than the application requirements, make sure the memory is
+sized properly. The meaning of "word" in Libero design might not mean what users could expect and might not correlate with
+the Data Width settings, users should verify its meaning with the core’s documentation. It’s possible to set the SRAM block to
+64KiB size (**word meaning 16-bits no matter what is the Data Bus Width**) while users expecting it to be 128KiB size:
+
+```{warning}
+TODO: add image
+```
+
 
 ## Adding source files to a project
 
@@ -56,9 +529,9 @@ Typical build configurations are Debug and Release, but projects can have many o
 There is big difference between the `Debug` configuration to build unoptimized binary and the `Debug` launcher to be debugging whatever the active configuration is. It's the difference between noun and verb.
 
 It is possible:
- - To be Debuging your Debug configuraion
+ - To be Debugging your Debug configuraion
  - To be Running your Debug configuration
- - To be Debuging your Release configuraion
+ - To be Debugging your Release configuraion
  - To be Running your Release configuration
 
 All combinations have valid use cases. It's upto the users and their projects, but typically the Debug configuration has no optimalizations enabled, is linked to SRAM, can have some `#defines` enabled to increase verbosity of the logging features, possibly enabling some other helper features which are not required for production.
@@ -67,7 +540,7 @@ While the Release configuration can be seen as production release, linked to eNV
 
 However there is still need to sometimes just to Run the Debug configuraion (no need to change how it's linked/oprimised), but no need to break at main and other breakpoints.
 
-Other case is that sometimes a edge-case bug is happening and the optimised Release build has to be Debuged, which makes stepping thorugh the code not as straight forward as non-optimized variant.
+Other case is that sometimes a edge-case bug is happening and the optimised Release build has to be Debugged, which makes stepping thorugh the code not as straight forward as non-optimized variant.
 
 Therefore the `Debug` build configuration and `Debug` launchers have to be considered as two separate concepts, which they are.
 

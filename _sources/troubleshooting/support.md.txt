@@ -1,4 +1,10 @@
+```````{jinja} scvars
+{% import '_jinja/macros.html' as macros %}
+
 # Product Support
+
+{{macros.deprecated_documentation_check_and_message(doc_deprecated, doc_deprecated_url)}}
+
 Microsemi SoC Products Group backs its products with various support services, including Customer Service, Customer Technical Support Center, a website, electronic mail, and worldwide sales offices. This appendix contains information about contacting Microsemi SoC Products Group and using these support services.
 
 ## Customer Service
@@ -36,3 +42,5 @@ Customers needing assistance outside the US time zones can either contact techni
 
 ## ITAR Technical Support
 For technical support on RH and RT FPGAs that are regulated by International Traffic in Arms Regulations (ITAR), contact us via <soc_tech_itar@microsemi.com>. Alternatively, within My Cases, select Yes in the ITAR drop-down list. For a complete list of ITAR-regulated Microsemi FPGAs, visit the ITAR web page.
+
+```````
